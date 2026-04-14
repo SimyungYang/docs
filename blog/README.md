@@ -1,4 +1,4 @@
-# \<img src="https://www.databricks.com/wp-content/uploads/2022/06/db-nav-logo.svg" alt="Databricks" width="160"> Enablements
+# ![Databricks](https://www.databricks.com/wp-content/uploads/2022/06/db-nav-logo.svg) Enablements
 
 Databricks 고객을 위한 **실전 가이드 & 핸즈온 워크샵** 모음입니다.
 
