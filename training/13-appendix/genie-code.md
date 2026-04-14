@@ -1,3 +1,7 @@
+---
+title: "Genie Code (Databricks Assistant)"
+---
+
 # Genie Code (Databricks Assistant)
 
 ## Genie Code란?

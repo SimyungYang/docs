@@ -1,3 +1,7 @@
+---
+title: "OPTIMIZE와 VACUUM 상세"
+---
+
 # OPTIMIZE와 VACUUM 상세
 
 ## 왜 테이블 유지 보수가 필요한가요?

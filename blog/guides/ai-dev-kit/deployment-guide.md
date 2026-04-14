@@ -1,3 +1,7 @@
+---
+title: "Builder App 배포 가이드"
+---
+
 # Builder App 배포 가이드
 
 이 가이드는 AI Dev Kit Builder App을 Databricks Workspace에 배포하는 전체 절차를 다룹니다.

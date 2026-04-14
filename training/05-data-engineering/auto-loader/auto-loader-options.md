@@ -1,3 +1,7 @@
+---
+title: "Auto Loader 주요 옵션"
+---
+
 # Auto Loader 주요 옵션
 
 ## 왜 옵션 설정이 중요한가?

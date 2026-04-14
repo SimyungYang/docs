@@ -1,3 +1,7 @@
+---
+title: "02. webOS Smart TV 가상 데이터 생성"
+---
+
 # 02. webOS Smart TV 가상 데이터 생성
 
 > **소요 시간**: ~15분 | **사전 조건**: [01. 환경 설정](01-setup.md) 완료 | **컴퓨트**: Serverless 권장

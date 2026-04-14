@@ -1,3 +1,7 @@
+---
+title: "11. Lakebase (OLTP 데이터베이스)"
+---
+
 # 11. Lakebase (OLTP 데이터베이스)
 
 > Databricks의 관리형 PostgreSQL 호환 OLTP 데이터베이스인 Lakebase를 학습합니다.

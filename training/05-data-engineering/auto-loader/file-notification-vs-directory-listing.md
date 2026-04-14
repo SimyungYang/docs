@@ -1,3 +1,7 @@
+---
+title: "파일 감지 모드: Directory Listing vs File Notification"
+---
+
 # 파일 감지 모드: Directory Listing vs File Notification
 
 ## 왜 파일 감지 모드를 이해해야 하는가?

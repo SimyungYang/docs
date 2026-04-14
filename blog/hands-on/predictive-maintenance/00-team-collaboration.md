@@ -1,3 +1,7 @@
+---
+title: "00. 팀 협업 가이드"
+---
+
 # 00. 팀 협업 가이드
 
 > **전체 노트북 코드**: [00\_team\_collaboration.py](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/predictive-maintenance/notebooks/00_team_collaboration.py)

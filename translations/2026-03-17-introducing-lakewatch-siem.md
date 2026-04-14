@@ -1,3 +1,7 @@
+---
+title: "Databricks Lakewatch 발표: 새로운 오픈형 에이전틱 SIEM"
+---
+
 > **원문**: [Databricks Announces Lakewatch: New Open, Agentic SIEM](https://www.databricks.com/blog/databricks-announces-lakewatch-new-open-agentic-siem)
 
 # Databricks Lakewatch 발표: 새로운 오픈형 에이전틱 SIEM

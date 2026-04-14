@@ -1,3 +1,7 @@
+---
+title: "Track C: Genie Code 기반 가이드"
+---
+
 # Track C: Genie Code 기반 가이드
 
 ## Genie Code란?

@@ -1,3 +1,7 @@
+---
+title: "AI/BI Genie, 정식 출시(GA)"
+---
+
 > **원문**: [AI/BI Genie is now Generally Available](https://www.databricks.com/blog/aibi-genie-now-generally-available)
 
 ---

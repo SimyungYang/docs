@@ -1,3 +1,7 @@
+---
+title: "05-3. Lakeflow Connect"
+---
+
 # 05-3. Lakeflow Connect
 
 > 외부 데이터 소스(데이터베이스, SaaS 앱)에서 Databricks로 데이터를 수집하는 관리형 커넥터를 학습합니다.

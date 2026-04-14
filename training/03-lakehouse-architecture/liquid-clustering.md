@@ -1,3 +1,7 @@
+---
+title: "Liquid Clustering 상세 가이드"
+---
+
 # Liquid Clustering 상세 가이드
 
 ## 왜 Liquid Clustering이 필요한가요?

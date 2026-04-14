@@ -1,3 +1,7 @@
+---
+title: "04. 컴퓨트와 워크스페이스 (Compute & Workspace)"
+---
+
 # 04. 컴퓨트와 워크스페이스 (Compute & Workspace)
 
 > Databricks에서 코드를 실행하는 컴퓨트 리소스와 워크스페이스 관리 방법을 학습합니다.

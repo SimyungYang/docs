@@ -1,3 +1,7 @@
+---
+title: "에이전틱 소프트웨어 개발이 데이터베이스를 어떻게 바꾸는가"
+---
+
 # 에이전틱 소프트웨어 개발이 데이터베이스를 어떻게 바꾸는가
 
 작성자: Ippokratis Pandis, Nikita Shamgunov, Reynold Xin | 게시: 2026년 3월 30일

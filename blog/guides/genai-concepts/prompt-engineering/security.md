@@ -1,3 +1,7 @@
+---
+title: "Prompt Injection 방어"
+---
+
 # Prompt Injection 방어
 
 ## Prompt Injection이란?

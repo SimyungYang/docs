@@ -1,3 +1,7 @@
+---
+title: "MCP (Model Context Protocol)"
+---
+
 # MCP (Model Context Protocol)
 
 ## MCP란 무엇인가?

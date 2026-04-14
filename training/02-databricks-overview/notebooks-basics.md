@@ -1,3 +1,7 @@
+---
+title: "Notebook 사용법"
+---
+
 # Notebook 사용법
 
 ## Notebook이란?

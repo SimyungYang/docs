@@ -1,3 +1,7 @@
+---
+title: "실시간 피처 서빙 (Online Feature Serving)"
+---
+
 # 실시간 피처 서빙 (Online Feature Serving)
 
 ## 왜 온라인 서빙이 필요한가요?

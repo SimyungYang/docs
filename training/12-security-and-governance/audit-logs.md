@@ -1,3 +1,7 @@
+---
+title: "감사 로그 (Audit Logs) 상세"
+---
+
 # 감사 로그 (Audit Logs) 상세
 
 ## 감사 로그란?

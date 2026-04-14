@@ -1,3 +1,7 @@
+---
+title: "데이터 품질 관리 — Expectations"
+---
+
 # 데이터 품질 관리 — Expectations
 
 ## 왜 데이터 품질 관리가 필요한가?

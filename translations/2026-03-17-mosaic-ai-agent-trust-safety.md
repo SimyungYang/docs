@@ -1,3 +1,7 @@
+---
+title: "Mosaic AI Agent Framework와 Agent Evaluation 발표: 신뢰할 수 있는 에이전틱 시스템을 위한 안전 및 거버넌스"
+---
+
 > **원문**: [Announcing Mosaic AI Agent Framework and Agent Evaluation](https://www.databricks.com/blog/announcing-mosaic-ai-agent-framework-and-agent-evaluation)
 
 # Mosaic AI Agent Framework와 Agent Evaluation 발표: 신뢰할 수 있는 에이전틱 시스템을 위한 안전 및 거버넌스

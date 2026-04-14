@@ -1,3 +1,7 @@
+---
+title: "Delta Sharing — 조직 간 데이터 공유"
+---
+
 # Delta Sharing — 조직 간 데이터 공유
 
 ## 개념

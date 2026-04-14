@@ -1,3 +1,7 @@
+---
+title: "SQL Warehouse"
+---
+
 # SQL Warehouse
 
 ## SQL Warehouse란?

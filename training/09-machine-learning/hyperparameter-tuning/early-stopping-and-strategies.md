@@ -1,3 +1,7 @@
+---
+title: "Early Stopping과 대규모 탐색 전략"
+---
+
 # Early Stopping과 대규모 탐색 전략
 
 ## Early Stopping 전략

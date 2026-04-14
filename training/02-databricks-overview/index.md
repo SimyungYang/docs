@@ -1,3 +1,7 @@
+---
+title: "02. Databricks 개요 (Databricks Overview)"
+---
+
 # 02. Databricks 개요 (Databricks Overview)
 
 > Databricks 플랫폼이 무엇이고, 어떤 문제를 해결하는지 전체 그림을 그립니다.

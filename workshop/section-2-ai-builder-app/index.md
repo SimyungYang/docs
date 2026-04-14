@@ -1,3 +1,7 @@
+---
+title: "AI Builder App 배포 핸즈온"
+---
+
 # AI Builder App 배포 핸즈온
 
 > **소요 시간**: ~30분 | **핵심**: Databricks Apps에 AI Dev Kit MCP 서버를 배포하기

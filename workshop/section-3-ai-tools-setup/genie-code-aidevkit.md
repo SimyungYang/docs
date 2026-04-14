@@ -1,3 +1,7 @@
+---
+title: "Genie Code에 AI Dev Kit 구성하기"
+---
+
 # Genie Code에 AI Dev Kit 구성하기
 
 > **소요 시간**: ~30분 | **사전 조건**: Section 2 AI Builder App 배포 완료

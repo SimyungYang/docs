@@ -1,3 +1,7 @@
+---
+title: "Hallucination (환각)"
+---
+
 # Hallucination (환각)
 
 [\< LLM 기초 목차로 돌아가기](README.md)

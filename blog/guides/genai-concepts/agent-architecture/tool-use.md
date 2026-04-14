@@ -1,3 +1,7 @@
+---
+title: "Tool Use / Function Calling"
+---
+
 # Tool Use / Function Calling
 
 [← AI Agent 아키텍처 개요](README.md)

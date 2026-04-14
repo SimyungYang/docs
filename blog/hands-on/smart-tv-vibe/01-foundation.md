@@ -1,3 +1,7 @@
+---
+title: "Module 1: Foundation - Lakehouse 아키텍처 & Unity Catalog"
+---
+
 # Module 1: Foundation - Lakehouse 아키텍처 & Unity Catalog
 
 ## 이 가이드 사용 방법

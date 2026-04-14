@@ -1,3 +1,7 @@
+---
+title: "컬럼 마스킹 (Column Masking)"
+---
+
 # 컬럼 마스킹 (Column Masking)
 
 ## 컬럼 마스킹이란?

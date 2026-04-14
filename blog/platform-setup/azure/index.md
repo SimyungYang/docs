@@ -1,3 +1,7 @@
+---
+title: "Azure Workspace 구성 가이드"
+---
+
 # Azure Workspace 구성 가이드
 
 Azure Portal 기반으로 Databricks Workspace를 처음부터 구성하는 전체 가이드입니다. VNet Injection, Private Link, Unity Catalog까지 엔터프라이즈 환경에 필요한 모든 단계를 다룹니다.

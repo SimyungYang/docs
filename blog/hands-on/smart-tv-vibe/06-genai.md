@@ -1,3 +1,7 @@
+---
+title: "Module 6: GenAI & Agent Bricks - AI 에이전트 구축"
+---
+
 # Module 6: GenAI & Agent Bricks - AI 에이전트 구축
 
 ## 이 가이드 사용 방법

@@ -1,3 +1,7 @@
+---
+title: "Databricks Marketplace — 데이터 제품의 앱스토어"
+---
+
 # Databricks Marketplace — 데이터 제품의 앱스토어
 
 ## Marketplace란?

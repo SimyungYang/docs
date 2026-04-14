@@ -1,3 +1,7 @@
+---
+title: "Delta Lake 실전 — MERGE, OPTIMIZE, VACUUM"
+---
+
 # Delta Lake 실전 — MERGE, OPTIMIZE, VACUUM
 
 ## 이 문서에서 다루는 내용

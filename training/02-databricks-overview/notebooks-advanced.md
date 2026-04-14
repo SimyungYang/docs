@@ -1,3 +1,7 @@
+---
+title: "Notebook 고급 기능"
+---
+
 # Notebook 고급 기능
 
 ## 개요

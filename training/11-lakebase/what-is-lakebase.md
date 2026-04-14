@@ -1,3 +1,7 @@
+---
+title: "Lakebase란?"
+---
+
 # Lakebase란?
 
 ## 개념

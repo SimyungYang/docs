@@ -1,3 +1,7 @@
+---
+title: "05. 데이터 엔지니어링 (Data Engineering)"
+---
+
 # 05. 데이터 엔지니어링 (Data Engineering)
 
 > 실제 데이터 파이프라인을 구축하는 핵심 기술을 학습합니다.

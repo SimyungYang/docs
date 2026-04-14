@@ -1,3 +1,7 @@
+---
+title: "Knowledge Assistant"
+---
+
 # Knowledge Assistant
 
 ---

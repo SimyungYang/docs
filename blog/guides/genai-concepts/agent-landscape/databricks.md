@@ -1,3 +1,7 @@
+---
+title: "Databricks의 AI Agent 전략"
+---
+
 # Databricks의 AI Agent 전략
 
 Databricks의 Agent 전략은 다른 벤더와 근본적으로 다릅니다. AWS/Microsoft/Google이 "Agent 인프라/모델을 제공하는" 포지션인 반면, Databricks는 **"데이터와 Agent의 통합 거버넌스"** 를 핵심 가치로 제시합니다.

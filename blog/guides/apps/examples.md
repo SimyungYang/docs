@@ -1,3 +1,7 @@
+---
+title: "예제 (Streamlit, FastAPI, Agent UI)"
+---
+
 # 예제 (Streamlit, FastAPI, Agent UI)
 
 ---

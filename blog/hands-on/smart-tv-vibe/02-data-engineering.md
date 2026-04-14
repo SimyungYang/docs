@@ -1,3 +1,7 @@
+---
+title: "Module 2: Data Engineering - 스마트TV 데이터 파이프라인"
+---
+
 # Module 2: Data Engineering - 스마트TV 데이터 파이프라인
 
 ## 이 가이드 사용 방법

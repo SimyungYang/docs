@@ -1,3 +1,7 @@
+---
+title: "Databricks Geo (데이터 거주)"
+---
+
 # Databricks Geo (데이터 거주)
 
 ## 1. Databricks Geo란?

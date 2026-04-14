@@ -1,3 +1,7 @@
+---
+title: "04. 모델 등록 (Unity Catalog Model Registry)"
+---
+
 # 04. 모델 등록 (Unity Catalog Model Registry)
 
 > **전체 노트북 코드**: [04_model_registration_uc.py](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/predictive-maintenance/notebooks/04_model_registration_uc.py)

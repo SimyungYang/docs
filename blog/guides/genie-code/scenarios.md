@@ -1,3 +1,7 @@
+---
+title: "Genie Code 활용 시나리오"
+---
+
 # Genie Code 활용 시나리오
 
 ---

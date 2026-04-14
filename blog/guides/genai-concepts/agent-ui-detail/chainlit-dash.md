@@ -1,3 +1,7 @@
+---
+title: "Chainlit & Dash"
+---
+
 # Chainlit & Dash
 
 Agent 추론 과정 시각화에 특화된 Chainlit과, 데이터 대시보드의 정석인 Dash를 다룹니다.

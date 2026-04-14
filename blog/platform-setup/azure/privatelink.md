@@ -1,3 +1,7 @@
+---
+title: "Backend Private Link"
+---
+
 # Backend Private Link
 
 ## Private Link 아키텍처 개요

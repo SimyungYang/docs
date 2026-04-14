@@ -1,3 +1,7 @@
+---
+title: "Genie Code 사용법"
+---
+
 # Genie Code 사용법
 
 ---

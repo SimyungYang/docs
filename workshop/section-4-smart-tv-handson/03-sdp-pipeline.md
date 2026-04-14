@@ -1,3 +1,7 @@
+---
+title: "03. SDP 파이프라인 — 데이터 품질과 Medallion Architecture"
+---
+
 # 03. SDP 파이프라인 — 데이터 품질과 Medallion Architecture
 
 > **소요 시간**: ~1시간 | **사전 조건**: [02. 가상 데이터 생성](02-data-generation.md) 완료 (17개 Bronze 테이블 필요)

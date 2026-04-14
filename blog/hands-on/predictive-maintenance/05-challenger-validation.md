@@ -1,3 +1,7 @@
+---
+title: "05. 챌린저 검증 (Challenger Validation)"
+---
+
 # 05. 챌린저 검증 (Challenger Validation)
 
 > **전체 노트북 코드**: [05_challenger_validation.py](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/predictive-maintenance/notebooks/05_challenger_validation.py)

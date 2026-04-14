@@ -1,3 +1,7 @@
+---
+title: "Databricks 종합 교육 자료"
+---
+
 # Databricks 종합 교육 자료
 
 Databricks Data Intelligence Platform의 핵심 기능과 아키텍처를 체계적으로 다루는 한국어 교육 자료입니다.

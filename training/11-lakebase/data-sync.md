@@ -1,3 +1,7 @@
+---
+title: "Data Sync — Lakebase ↔ Delta Lake"
+---
+
 # Data Sync — Lakebase ↔ Delta Lake
 
 ## 왜 Data Sync가 필요한가요?

@@ -1,3 +1,7 @@
+---
+title: "Databricks CLI"
+---
+
 # Databricks CLI
 
 ## 개념

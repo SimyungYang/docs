@@ -1,3 +1,7 @@
+---
+title: "PIVOT / UNPIVOT 완전 가이드"
+---
+
 # PIVOT / UNPIVOT 완전 가이드
 
 ## 1. 왜 PIVOT / UNPIVOT이 필요한가

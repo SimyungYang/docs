@@ -1,3 +1,7 @@
+---
+title: "Databricks AutoML 상세"
+---
+
 # Databricks AutoML 상세
 
 ## AutoML이란?

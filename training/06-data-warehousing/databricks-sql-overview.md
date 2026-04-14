@@ -1,3 +1,7 @@
+---
+title: "Databricks SQL 개요"
+---
+
 # Databricks SQL 개요
 
 ## Databricks SQL이란?

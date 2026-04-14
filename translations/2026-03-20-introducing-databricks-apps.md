@@ -1,3 +1,7 @@
+---
+title: "Databricks Apps 소개: 데이터 및 AI 애플리케이션을 구축하는 가장 빠르고 안전한 방법"
+---
+
 > **원문**: [Introducing Databricks Apps: The fastest and most secure way to build data and AI applications](https://www.databricks.com/blog/introducing-databricks-apps)
 
 # Databricks Apps 소개: 데이터 및 AI 애플리케이션을 구축하는 가장 빠르고 안전한 방법

@@ -1,3 +1,7 @@
+---
+title: "Structured Streaming 심화"
+---
+
 # Structured Streaming 심화
 
 ## 윈도우 유형 (Window Types)

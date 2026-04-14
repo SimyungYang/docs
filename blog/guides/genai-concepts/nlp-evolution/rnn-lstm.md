@@ -1,3 +1,7 @@
+---
+title: "순환 신경망의 시대 (2014~2017)"
+---
+
 # 순환 신경망의 시대 (2014~2017)
 
 ## RNN (Recurrent Neural Network)

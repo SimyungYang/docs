@@ -1,3 +1,7 @@
+---
+title: "스키마 진화(Schema Evolution)와 스키마 강제(Schema Enforcement)"
+---
+
 # 스키마 진화(Schema Evolution)와 스키마 강제(Schema Enforcement)
 
 ## 왜 스키마 관리가 중요한가요?

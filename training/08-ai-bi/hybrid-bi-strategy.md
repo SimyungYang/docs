@@ -1,3 +1,7 @@
+---
+title: "하이브리드 BI 전략 (Hybrid BI Strategy)"
+---
+
 # 하이브리드 BI 전략 (Hybrid BI Strategy)
 
 ## 1. 왜 하이브리드 BI 전략이 필요한가?

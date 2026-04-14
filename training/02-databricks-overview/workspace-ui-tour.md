@@ -1,3 +1,7 @@
+---
+title: "Workspace UI 둘러보기"
+---
+
 # Workspace UI 둘러보기
 
 ## Workspace에 접속하기

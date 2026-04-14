@@ -1,3 +1,7 @@
+---
+title: "Claude Code 사용하기"
+---
+
 # Claude Code 사용하기
 
 > **참고**: 이 워크샵(Track C)에서는 **Genie Code**를 주력으로 사용합니다. Claude Code는 "이런 도구도 있다"는 소개 차원이며, 직접 설치하지 않아도 Section 4 핸즈온 진행에 문제 없습니다.

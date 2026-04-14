@@ -1,3 +1,7 @@
+---
+title: "Databricks에서 OpenAI Agents SDK로 멀티 에이전트 시스템 구축하기"
+---
+
 > **원문**: [Building a Multi-Agent System with OpenAI Agents SDK on Databricks](https://medium.com/@AI-on-Databricks/building-a-multi-agent-system-with-openai-agents-sdk-on-databricks-6b6ad6774477)
 
 # Databricks에서 OpenAI Agents SDK로 멀티 에이전트 시스템 구축하기

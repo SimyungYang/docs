@@ -1,3 +1,7 @@
+---
+title: "Genie Spaces 연동"
+---
+
 # Genie Spaces 연동
 
 ---

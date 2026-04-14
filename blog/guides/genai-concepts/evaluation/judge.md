@@ -1,3 +1,7 @@
+---
+title: "Human vs LLM-as-Judge"
+---
+
 # Human vs LLM-as-Judge
 
 ## Human Evaluation vs LLM-as-Judge 비교

@@ -1,3 +1,7 @@
+---
+title: "Storage Account (ADLS Gen2)"
+---
+
 # Storage Account (ADLS Gen2)
 
 ## 용도

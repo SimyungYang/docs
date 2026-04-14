@@ -1,3 +1,7 @@
+---
+title: "실시간 처리 기술 — Kafka, Flink, Spark Streaming"
+---
+
 # 실시간 처리 기술 — Kafka, Flink, Spark Streaming
 
 ## 왜 실시간 처리가 필요한가요?

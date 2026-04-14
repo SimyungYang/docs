@@ -1,3 +1,7 @@
+---
+title: "CDC & 실전 체크리스트"
+---
+
 # CDC & 실전 체크리스트
 
 ## CDC 기반 증분 처리: APPLY CHANGES

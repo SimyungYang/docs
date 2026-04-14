@@ -1,3 +1,7 @@
+---
+title: "Unity Catalog 함수 (Functions)"
+---
+
 # Unity Catalog 함수 (Functions)
 
 ## UC 함수란?

@@ -1,3 +1,7 @@
+---
+title: "AWS, Microsoft & Meta의 AI Agent 전략"
+---
+
 # AWS, Microsoft & Meta의 AI Agent 전략
 
 2025-2026년, 주요 클라우드 벤더와 AI 기업들은 **AI Agent를 차세대 컴퓨팅 패러다임** 으로 선언하고 각자의 전략적 포지션을 구축하고 있습니다. 이 가이드는 AWS, Microsoft, Meta의 Agent 전략을 심층 비교합니다. Databricks의 전략은 [별도 페이지](databricks.md)에서 다룹니다.

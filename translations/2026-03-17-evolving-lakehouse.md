@@ -1,3 +1,7 @@
+---
+title: "레이크하우스의 진화: Databricks Apps, Lakebase, Lakewatch, Semantic Layer 발표"
+---
+
 > **원문**: [Evolving the Lakehouse: Announcing Databricks Apps, Lakebase, Lakewatch, and Semantic Layer](https://www.databricks.com/blog/evolving-lakehouse-announcing-databricks-apps-lakebase-lakewatch-and-semantic-layer)
 
 > **주의**

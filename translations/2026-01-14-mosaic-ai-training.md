@@ -1,3 +1,7 @@
+---
+title: "GenAI 모델 파인튜닝을 위한 Databricks Model Training 소개"
+---
+
 # GenAI 모델 파인튜닝을 위한 Databricks Model Training 소개
 
 > **원문**: [Introducing Databricks Model Training for Fine-Tuning GenAI Models](https://www.databricks.com/blog/introducing-mosaic-ai-model-training-fine-tuning-genai-models)

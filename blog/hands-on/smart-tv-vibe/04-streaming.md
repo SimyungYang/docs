@@ -1,3 +1,7 @@
+---
+title: "Module 4: Structured Streaming — 실시간 데이터 처리"
+---
+
 # Module 4: Structured Streaming — 실시간 데이터 처리
 
 ## 이 가이드 사용 방법

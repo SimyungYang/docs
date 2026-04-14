@@ -1,3 +1,7 @@
+---
+title: "권한 관리와 Model Serving 연동"
+---
+
 # 권한 관리와 Model Serving 연동
 
 ## 왜 모델 권한 관리가 중요한가

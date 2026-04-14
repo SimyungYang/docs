@@ -1,3 +1,7 @@
+---
+title: "AWS Workspace 구성 가이드"
+---
+
 # AWS Workspace 구성 가이드
 
 Marketplace 구독부터 PrivateLink까지, AWS Console 기반으로 Databricks Workspace를 처음부터 구성하는 전체 가이드입니다.

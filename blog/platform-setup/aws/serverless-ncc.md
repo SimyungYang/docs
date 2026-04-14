@@ -1,3 +1,7 @@
+---
+title: "Serverless NCC"
+---
+
 # Serverless NCC
 
 ## NCC 개요

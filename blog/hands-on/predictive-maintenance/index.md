@@ -1,3 +1,7 @@
+---
+title: "Databricks MLOps 완전 가이드: 예지보전 & 이상탐지 파이프라인"
+---
+
 # Databricks MLOps 완전 가이드: 예지보전 & 이상탐지 파이프라인
 
 > **최종 업데이트**: 2026-03-27 | **대상**: Databricks Lakehouse 기반 MLOps 구축을 위한 실전 가이드

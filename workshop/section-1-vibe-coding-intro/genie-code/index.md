@@ -1,3 +1,7 @@
+---
+title: "Genie Code 완전 가이드"
+---
+
 # Genie Code 완전 가이드
 
 Databricks 내장 AI 코딩 에이전트 **Genie Code**를 "잘" 쓰는 방법을 배웁니다.

@@ -1,3 +1,7 @@
+---
+title: "04. AI/BI 대시보드 & Genie Space — 분석과 자연어 탐색"
+---
+
 # 04. AI/BI 대시보드 & Genie Space — 분석과 자연어 탐색
 
 > **소요 시간**: ~1.5시간 | **사전 조건**: [03. SDP 파이프라인](03-sdp-pipeline.md) 완료 (Gold 테이블 10개 필요)

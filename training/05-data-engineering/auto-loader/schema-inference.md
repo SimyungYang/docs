@@ -1,3 +1,7 @@
+---
+title: "Auto Loader 스키마 추론과 진화"
+---
+
 # Auto Loader 스키마 추론과 진화
 
 ## 왜 스키마 관리가 중요한가?

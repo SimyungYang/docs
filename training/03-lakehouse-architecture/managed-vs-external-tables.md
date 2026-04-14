@@ -1,3 +1,7 @@
+---
+title: "Managed Table vs External Table vs Foreign Table"
+---
+
 # Managed Table vs External Table vs Foreign Table
 
 ## 왜 테이블 유형을 이해해야 하나요?

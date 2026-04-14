@@ -1,3 +1,7 @@
+---
+title: "추론 모델 (Reasoning Models)"
+---
+
 # 추론 모델 (Reasoning Models)
 
 [\< LLM 기초 목차로 돌아가기](README.md)

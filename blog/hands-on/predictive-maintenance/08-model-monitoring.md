@@ -1,3 +1,7 @@
+---
+title: "08. 모델 모니터링 (Model Monitoring)"
+---
+
 # 08. 모델 모니터링 (Model Monitoring)
 
 > **전체 노트북 코드**: [08_model_monitoring.py](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/predictive-maintenance/notebooks/08_model_monitoring.py)

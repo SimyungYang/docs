@@ -1,3 +1,7 @@
+---
+title: "Optuna 연동과 MLflow 로깅"
+---
+
 # Optuna 연동과 MLflow 로깅
 
 ## Optuna 연동

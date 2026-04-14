@@ -1,3 +1,7 @@
+---
+title: "RAG 체인 구축"
+---
+
 # RAG 체인 구축
 
 이 장에서는 LangChain과 Databricks를 통합하여 검색-증강-생성 체인을 구축하는 방법을 다룹니다.

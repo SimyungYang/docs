@@ -1,3 +1,7 @@
+---
+title: "UniForm (Universal Format) 상세"
+---
+
 # UniForm (Universal Format) 상세
 
 ## 왜 UniForm이 필요한가요?

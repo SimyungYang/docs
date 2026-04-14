@@ -1,3 +1,7 @@
+---
+title: "엔터프라이즈 규모 거버넌스: Hive Metastore에서 Unity Catalog로 마이그레이션"
+---
+
 # 엔터프라이즈 규모 거버넌스: Hive Metastore에서 Unity Catalog로 마이그레이션
 
 **대규모·복잡한 워크로드를 Hive Metastore에서 Unity Catalog로 마이그레이션하는 방법 — 데이터 거버넌스와 성능 최적화를 중단 없이 달성하기**

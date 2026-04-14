@@ -1,3 +1,7 @@
+---
+title: "A2A (Agent-to-Agent Protocol)"
+---
+
 # A2A (Agent-to-Agent Protocol)
 
 A2A는 Google이 2025년 4월에 발표한 **에이전트 간 통신을 위한 개방형 프로토콜** 입니다. 서로 다른 프레임워크와 벤더에서 만든 AI Agent들이 표준화된 방식으로 협업할 수 있게 합니다.

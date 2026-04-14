@@ -1,3 +1,7 @@
+---
+title: "Unity Catalog 모범 사례 (Best Practices)"
+---
+
 # Unity Catalog 모범 사례 (Best Practices)
 
 > **원문**: [Unity Catalog best practices](https://docs.databricks.com/aws/en/data-governance/unity-catalog/best-practices)

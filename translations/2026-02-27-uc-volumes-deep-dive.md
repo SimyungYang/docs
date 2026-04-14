@@ -1,3 +1,7 @@
+---
+title: "Unity Catalog Volumes 심층 분석: 비정형 데이터 관리"
+---
+
 # Unity Catalog Volumes 심층 분석: 비정형 데이터 관리
 
 > **원문**: [Unity Catalog Volumes Deep Dive: Unstructured Data Management](https://www.databricks.com/blog/unity-catalog-volumes-deep-dive-unstructured-data-management)

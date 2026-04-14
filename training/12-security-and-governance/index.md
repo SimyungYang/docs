@@ -1,3 +1,7 @@
+---
+title: "12. 보안과 거버넌스 (Security & Governance)"
+---
+
 # 12. 보안과 거버넌스 (Security & Governance)
 
 > Databricks 플랫폼의 보안 모델과 데이터 거버넌스 기능을 학습합니다.

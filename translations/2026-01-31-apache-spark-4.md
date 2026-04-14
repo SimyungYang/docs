@@ -1,3 +1,7 @@
+---
+title: "Apache Spark 4.0 소개"
+---
+
 # Apache Spark 4.0 소개
 
 > **원문**: [Introducing Apache Spark 4.0](https://www.databricks.com/blog/introducing-apache-spark-40)

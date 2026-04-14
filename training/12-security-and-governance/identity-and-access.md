@@ -1,3 +1,7 @@
+---
+title: "인증과 접근 제어 (Identity & Access Management)"
+---
+
 # 인증과 접근 제어 (Identity & Access Management)
 
 ## 왜 ID 관리가 중요한가요?

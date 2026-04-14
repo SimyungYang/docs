@@ -1,3 +1,7 @@
+---
+title: "01. Overview — 전체 아키텍처 소개"
+---
+
 # 01. Overview — 전체 아키텍처 소개
 
 > **전체 노트북 코드**: [01_overview.py](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/predictive-maintenance/notebooks/01_overview.py)

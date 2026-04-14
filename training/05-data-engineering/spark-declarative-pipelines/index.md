@@ -1,3 +1,7 @@
+---
+title: "05-2. Spark Declarative Pipelines (SDP)"
+---
+
 # 05-2. Spark Declarative Pipelines (SDP)
 
 > "무엇을(What)" 정의하면 Databricks가 "어떻게(How)"를 처리해주는 선언적 파이프라인을 학습합니다.

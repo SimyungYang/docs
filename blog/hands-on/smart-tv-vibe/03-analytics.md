@@ -1,3 +1,7 @@
+---
+title: "Module 3: AI/BI Dashboard & Genie Space"
+---
+
 # Module 3: AI/BI Dashboard & Genie Space
 
 ## 이 가이드 사용 방법

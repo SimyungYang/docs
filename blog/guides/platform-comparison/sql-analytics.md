@@ -1,3 +1,7 @@
+---
+title: "SQL & Analytics 비교"
+---
+
 # SQL & Analytics 비교
 
 ## SQL 엔진 및 BI

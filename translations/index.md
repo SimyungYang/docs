@@ -1,3 +1,7 @@
+---
+title: "Databricks 블로그 한글 번역"
+---
+
 # Databricks 블로그 한글 번역
 
 Databricks 공식 블로그의 주요 포스트를 한국어로 번역하여 제공합니다.

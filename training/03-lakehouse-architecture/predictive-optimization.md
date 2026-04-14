@@ -1,3 +1,7 @@
+---
+title: "Predictive Optimization (예측 최적화)"
+---
+
 # Predictive Optimization (예측 최적화)
 
 ## 왜 Predictive Optimization이 필요한가요?

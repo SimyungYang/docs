@@ -1,3 +1,7 @@
+---
+title: "Workspace 생성"
+---
+
 # Workspace 생성
 
 ## Workspace 생성 — Account Console

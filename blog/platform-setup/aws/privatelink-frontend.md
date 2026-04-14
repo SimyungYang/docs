@@ -1,3 +1,7 @@
+---
+title: "Frontend PrivateLink"
+---
+
 # Frontend PrivateLink
 
 ## Frontend PrivateLink — 왜 필요한가?

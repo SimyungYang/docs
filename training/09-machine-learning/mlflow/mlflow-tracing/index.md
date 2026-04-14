@@ -1,3 +1,7 @@
+---
+title: "MLflow Tracing — GenAI 앱의 관찰 가능성"
+---
+
 # MLflow Tracing — GenAI 앱의 관찰 가능성
 
 ---

@@ -1,3 +1,7 @@
+---
+title: "Databricks Agent Bricks 실전 가이드"
+---
+
 # Databricks Agent Bricks 실전 가이드
 
 > **Agent Bricks** 는 Databricks Mosaic AI 기반의 선언형(Declarative) AI 에이전트 빌더입니다.

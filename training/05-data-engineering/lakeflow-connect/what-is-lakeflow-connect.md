@@ -1,3 +1,7 @@
+---
+title: "Lakeflow Connect란?"
+---
+
 # Lakeflow Connect란?
 
 ## 왜 Lakeflow Connect가 필요한가요?

@@ -1,3 +1,7 @@
+---
+title: "Backend PrivateLink"
+---
+
 # Backend PrivateLink
 
 ## PrivateLink 개요 — Backend vs Frontend 비교

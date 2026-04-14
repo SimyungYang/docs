@@ -1,3 +1,7 @@
+---
+title: "07. Unity Catalog (데이터 거버넌스)"
+---
+
 # 07. Unity Catalog (데이터 거버넌스)
 
 > Databricks의 통합 거버넌스 솔루션인 Unity Catalog를 학습합니다.

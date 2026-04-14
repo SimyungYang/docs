@@ -1,3 +1,7 @@
+---
+title: "Foundation Model API"
+---
+
 # Foundation Model API
 
 ## 개념

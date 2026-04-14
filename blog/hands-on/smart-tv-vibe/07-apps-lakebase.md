@@ -1,3 +1,7 @@
+---
+title: "Module 7: Databricks Apps & Lakebase"
+---
+
 # Module 7: Databricks Apps & Lakebase
 
 ## 이 가이드 사용 방법

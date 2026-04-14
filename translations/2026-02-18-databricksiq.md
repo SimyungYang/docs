@@ -1,3 +1,7 @@
+---
+title: "LakehouseIQ 소개: 당신의 비즈니스를 독자적으로 이해하는 AI 기반 엔진"
+---
+
 > **원문**: [Introducing LakehouseIQ: The AI-Powered Engine that Uniquely Understands Your Business](https://www.databricks.com/blog/introducing-lakehouseiq-ai-powered-engine-uniquely-understands-your-business)
 
 ---

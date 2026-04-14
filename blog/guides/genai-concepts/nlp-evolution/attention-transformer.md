@@ -1,3 +1,7 @@
+---
+title: "Seq2Seq, Attention, Transformer (2014~2017)"
+---
+
 # Seq2Seq, Attention, Transformer (2014~2017)
 
 ## Seq2Seq (Sequence-to-Sequence, Sutskever et al., 2014)

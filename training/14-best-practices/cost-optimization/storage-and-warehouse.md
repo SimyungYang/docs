@@ -1,3 +1,7 @@
+---
+title: "스토리지와 SQL Warehouse 최적화"
+---
+
 # 스토리지와 SQL Warehouse 최적화
 
 ## 3. 스토리지 최적화

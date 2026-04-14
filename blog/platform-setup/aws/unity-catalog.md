@@ -1,3 +1,7 @@
+---
+title: "Unity Catalog"
+---
+
 # Unity Catalog
 
 ## Unity Catalog Storage Credential

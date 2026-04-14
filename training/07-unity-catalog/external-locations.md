@@ -1,3 +1,7 @@
+---
+title: "외부 로케이션 (External Location)"
+---
+
 # 외부 로케이션 (External Location)
 
 ## 외부 로케이션이란?

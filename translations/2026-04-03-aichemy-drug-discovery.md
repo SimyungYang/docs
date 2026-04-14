@@ -1,3 +1,7 @@
+---
+title: "AiChemy: MCP, Skills, 맞춤형 데이터를 활용한 신약 개발을 위한 차세대 에이전트"
+---
+
 # AiChemy: MCP, Skills, 맞춤형 데이터를 활용한 신약 개발을 위한 차세대 에이전트
 
 **저자**: Yen Low, Sean Zhang

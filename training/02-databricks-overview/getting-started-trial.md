@@ -1,3 +1,7 @@
+---
+title: "무료 체험 시작하기"
+---
+
 # 무료 체험 시작하기
 
 ## Databricks 무료 체험 (Free Trial)

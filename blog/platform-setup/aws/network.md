@@ -1,3 +1,7 @@
+---
+title: "Network 구성"
+---
+
 # Network 구성
 
 ## VPC 생성 — 요구사항

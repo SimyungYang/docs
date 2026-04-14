@@ -1,3 +1,7 @@
+---
+title: "Delta Lake 핵심"
+---
+
 # Delta Lake 핵심
 
 ## Delta Lake란?

@@ -1,3 +1,7 @@
+---
+title: "프레임워크별 연결 예제"
+---
+
 # 프레임워크별 연결 예제
 
 ## 왜 Databricks Apps + Lakebase인가요?

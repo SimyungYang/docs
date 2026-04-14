@@ -1,3 +1,7 @@
+---
+title: "CrewAI, OpenAI Agents SDK & AutoGen"
+---
+
 # CrewAI, OpenAI Agents SDK & AutoGen
 
 역할 기반 멀티에이전트(CrewAI), 핸드오프 패턴(OpenAI Agents SDK), 대화 기반 협업(AutoGen) 세 가지 프레임워크를 비교합니다. 각각의 설계 철학, 코드 예시, 장단점을 다룹니다.

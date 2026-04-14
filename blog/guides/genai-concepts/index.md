@@ -1,3 +1,7 @@
+---
+title: "GenAI 핵심 개념 총정리"
+---
+
 # GenAI 핵심 개념 총정리
 
 이 섹션은 Databricks 플랫폼에서 Generative AI를 활용하기 위해 알아야 할 배경지식을 체계적으로 정리합니다.

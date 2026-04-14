@@ -1,3 +1,7 @@
+---
+title: "Managed vs External Volume 심화"
+---
+
 # Managed vs External Volume 심화
 
 ## Managed vs External Volume 심화

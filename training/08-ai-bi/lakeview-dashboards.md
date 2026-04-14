@@ -1,3 +1,7 @@
+---
+title: "AI/BI 대시보드 (Lakeview)"
+---
+
 # AI/BI 대시보드 (Lakeview)
 
 ## 대시보드란?

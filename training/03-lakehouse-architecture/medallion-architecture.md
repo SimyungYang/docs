@@ -1,3 +1,7 @@
+---
+title: "Medallion 아키텍처"
+---
+
 # Medallion 아키텍처
 
 ## Medallion 아키텍처란?

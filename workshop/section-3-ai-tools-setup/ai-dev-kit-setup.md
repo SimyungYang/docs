@@ -1,3 +1,7 @@
+---
+title: "AI Dev Kit 설치 & 구성"
+---
+
 # AI Dev Kit 설치 & 구성
 
 > **사전 조건**:

@@ -1,3 +1,7 @@
+---
+title: "Unity Catalog란?"
+---
+
 # Unity Catalog란?
 
 ## 왜 Unity Catalog가 필요한가?

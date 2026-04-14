@@ -1,3 +1,7 @@
+---
+title: "AI Vibe Coding Workshop — Smart TV 데이터 플랫폼 시나리오"
+---
+
 # AI Vibe Coding Workshop — Smart TV 데이터 플랫폼 시나리오
 
 > **최종 업데이트**: 2026-04 | **소요 시간**: 8~10시간 (1일 집중 또는 2일 분할)

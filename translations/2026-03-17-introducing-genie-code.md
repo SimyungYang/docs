@@ -1,3 +1,7 @@
+---
+title: "Genie Code 소개"
+---
+
 > **원문**: [Introducing Genie Code](https://www.databricks.com/blog/introducing-genie-code)
 
 ---

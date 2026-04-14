@@ -1,3 +1,7 @@
+---
+title: "Lakeflow Connect 실습"
+---
+
 # Lakeflow Connect 실습
 
 ## 시나리오

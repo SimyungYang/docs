@@ -1,3 +1,7 @@
+---
+title: "LangChain & LangGraph"
+---
+
 # LangChain & LangGraph
 
 LangChain은 최초의 범용 LLM 프레임워크이며, LangGraph는 그 한계를 극복한 차세대 그래프 기반 프레임워크입니다. 이 페이지에서는 두 프레임워크의 핵심 개념, 코드 예시, 비교를 다룹니다.

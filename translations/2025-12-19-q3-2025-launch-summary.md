@@ -1,3 +1,7 @@
+---
+title: "Databricks, 전년 대비 55% 이상 성장 — 연간 매출 런레이트 $48억 돌파 및 기업 가치 $1,340억에 $40억 이상 Series L 투자 유치"
+---
+
 # Databricks, 전년 대비 55% 이상 성장 — 연간 매출 런레이트 $48억 돌파 및 기업 가치 $1,340억에 $40억 이상 Series L 투자 유치
 
 > **원문**: [Databricks Grows >55% YoY, Surpasses $4.8B Revenue Run-Rate, and is Raising >$4B Series L at $134B Valuation](https://www.databricks.com/blog/q3-2025-launch-summary)

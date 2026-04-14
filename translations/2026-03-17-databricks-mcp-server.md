@@ -1,3 +1,7 @@
+---
+title: "Unity Catalog 및 Mosaic AI 통합으로 관리형 MCP 서버 발표"
+---
+
 > **원문**: [Announcing managed MCP servers with Unity Catalog and Mosaic AI Integration](https://www.databricks.com/blog/announcing-managed-mcp-servers-unity-catalog-and-mosaic-ai-integration)
 
 > **참고**

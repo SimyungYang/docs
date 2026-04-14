@@ -1,3 +1,7 @@
+---
+title: "엔드포인트 모니터링 (Endpoint Monitoring)"
+---
+
 # 엔드포인트 모니터링 (Endpoint Monitoring)
 
 ## 왜 모니터링이 중요한가요?

@@ -1,3 +1,7 @@
+---
+title: "06. 배치 추론 (Batch Inference)"
+---
+
 # 06. 배치 추론 (Batch Inference)
 
 > **전체 노트북 코드**: [06_batch_inference.py](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/predictive-maintenance/notebooks/06_batch_inference.py)

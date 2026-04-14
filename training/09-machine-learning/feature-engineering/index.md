@@ -1,3 +1,7 @@
+---
+title: "09-3. Feature Engineering"
+---
+
 # 09-3. Feature Engineering
 
 > ML 모델에 사용할 피처(Feature)를 체계적으로 관리하는 방법을 학습합니다.

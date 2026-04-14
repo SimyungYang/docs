@@ -1,3 +1,7 @@
+---
+title: "Workspace 배포"
+---
+
 # Workspace 배포
 
 ## Step 1 — Azure Databricks 리소스 만들기

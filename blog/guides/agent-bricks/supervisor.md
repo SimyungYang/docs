@@ -1,3 +1,7 @@
+---
+title: "Supervisor Agent (Multi-Agent)"
+---
+
 # Supervisor Agent (Multi-Agent)
 
 ---

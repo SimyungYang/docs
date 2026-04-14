@@ -1,3 +1,7 @@
+---
+title: "MCP(Model Context Protocol) 연동"
+---
+
 # MCP(Model Context Protocol) 연동
 
 ---

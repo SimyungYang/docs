@@ -1,3 +1,7 @@
+---
+title: "SDP 실습 — Medallion 파이프라인 구축"
+---
+
 # SDP 실습 — Medallion 파이프라인 구축
 
 ## 시나리오

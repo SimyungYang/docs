@@ -1,3 +1,7 @@
+---
+title: "기존 Workspace에 PrivateLink 추가"
+---
+
 # 기존 Workspace에 PrivateLink 추가
 
 ## 개요

@@ -1,3 +1,7 @@
+---
+title: "Databricks Apps와 Lakebase 연동"
+---
+
 # Databricks Apps와 Lakebase 연동
 
 ---

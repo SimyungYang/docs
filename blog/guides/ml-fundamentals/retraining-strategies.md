@@ -1,3 +1,7 @@
+---
+title: "재학습 전략 (Retraining Strategies)"
+---
+
 # 재학습 전략 (Retraining Strategies)
 
 > **전체 노트북 코드**: [03d\_retraining\_strategies.py](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/predictive-maintenance/notebooks/03d_retraining_strategies.py)

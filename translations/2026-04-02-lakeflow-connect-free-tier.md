@@ -1,3 +1,7 @@
+---
+title: "Lakeflow Connect로 비즈니스 인사이트를 가속화하세요 — 이제 Free Tier 출시"
+---
+
 # Lakeflow Connect로 비즈니스 인사이트를 가속화하세요 — 이제 Free Tier 출시
 
 **무료 데이터 수집으로 더 스마트한 AI 추론을 실현하세요**

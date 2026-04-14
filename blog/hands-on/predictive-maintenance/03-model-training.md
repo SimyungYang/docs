@@ -1,3 +1,7 @@
+---
+title: "03. 모델 학습 (XGBoost Training + 고급 기법)"
+---
+
 # 03. 모델 학습 (XGBoost Training + 고급 기법)
 
 > **전체 노트북 코드**: [03_structured_model_training.py](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/predictive-maintenance/notebooks/03_structured_model_training.py)

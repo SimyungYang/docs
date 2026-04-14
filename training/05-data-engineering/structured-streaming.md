@@ -1,3 +1,7 @@
+---
+title: "Spark Structured Streaming 상세"
+---
+
 # Spark Structured Streaming 상세
 
 ## Structured Streaming이란?

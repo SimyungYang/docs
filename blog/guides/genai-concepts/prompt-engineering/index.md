@@ -1,3 +1,7 @@
+---
+title: "Prompt Engineering"
+---
+
 # Prompt Engineering
 
 Prompt Engineering은 LLM에게 원하는 결과를 이끌어내기 위해 입력(Prompt)을 체계적으로 설계하는 기술입니다. 코드 한 줄 없이 AI의 성능을 극대화할 수 있는 가장 접근성 높은 방법입니다.

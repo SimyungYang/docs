@@ -1,3 +1,7 @@
+---
+title: "TPE 알고리즘과 SparkTrials 심화"
+---
+
 # TPE 알고리즘과 SparkTrials 심화
 
 ## TPE(Tree-structured Parzen Estimator) 알고리즘 원리

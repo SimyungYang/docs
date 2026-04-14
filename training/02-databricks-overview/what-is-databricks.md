@@ -1,3 +1,7 @@
+---
+title: "Databricks란?"
+---
+
 # Databricks란?
 
 ## 왜 Databricks가 필요한가요?

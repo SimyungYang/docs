@@ -1,3 +1,7 @@
+---
+title: "Databricks vs 경쟁사"
+---
+
 # Databricks vs 경쟁사
 
 ## 1. 시장 컨텍스트 — 왜 비교가 중요한가?

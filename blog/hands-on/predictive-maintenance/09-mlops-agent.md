@@ -1,3 +1,7 @@
+---
+title: "09. MLOps Agent"
+---
+
 # 09. MLOps Agent
 
 > **전체 노트북 코드**: [09_mlops_agent.py](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/predictive-maintenance/notebooks/09_mlops_agent.py)

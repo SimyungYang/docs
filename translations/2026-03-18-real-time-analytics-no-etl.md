@@ -1,3 +1,7 @@
+---
+title: "Zerobus Ingest와 Lakebase로 준실시간 애플리케이션 구축하기"
+---
+
 > **원문**: [Building a near real-time application with Zerobus Ingest and Lakebase](https://www.databricks.com/blog/building-near-real-time-application-zerobus-ingest-and-lakebase)
 
 ---

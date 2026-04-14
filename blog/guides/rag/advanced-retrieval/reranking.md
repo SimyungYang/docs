@@ -1,3 +1,7 @@
+---
+title: "Reranking 전략"
+---
+
 # Reranking 전략
 
 ## 개념

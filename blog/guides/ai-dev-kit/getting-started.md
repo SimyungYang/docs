@@ -1,3 +1,7 @@
+---
+title: "Getting Started"
+---
+
 # Getting Started
 
 AI Dev Kit Builder App을 로컬 환경에 설치하고 Databricks 워크스페이스에 연결하는 단계별 가이드입니다.

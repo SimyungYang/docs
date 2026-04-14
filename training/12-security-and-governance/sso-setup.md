@@ -1,3 +1,7 @@
+---
+title: "SSO (Single Sign-On) 설정 상세 가이드"
+---
+
 # SSO (Single Sign-On) 설정 상세 가이드
 
 ## SSO란?

@@ -1,3 +1,7 @@
+---
+title: "Declarative Automation Bundles (DABs)"
+---
+
 # Declarative Automation Bundles (DABs)
 
 ## 개념

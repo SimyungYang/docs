@@ -1,3 +1,7 @@
+---
+title: "Databricks Apps"
+---
+
 # Databricks Apps
 
 ## 왜 Databricks Apps가 필요한가요?

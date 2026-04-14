@@ -1,3 +1,7 @@
+---
+title: "ReAct 패턴 & Planning"
+---
+
 # ReAct 패턴 & Planning
 
 [← AI Agent 아키텍처 개요](README.md)

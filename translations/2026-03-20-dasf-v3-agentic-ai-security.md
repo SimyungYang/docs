@@ -1,3 +1,7 @@
+---
+title: "에이전틱 AI 보안: Databricks AI 보안 프레임워크(DASF v3.0)의 새로운 위험과 통제"
+---
+
 > **원문**: [Agentic AI Security: New Risks and Controls in the Databricks AI Security Framework (DASF v3.0)](https://www.databricks.com/blog/agentic-ai-security-new-risks-and-controls-databricks-ai-security-framework-dasf-v30)
 
 # 에이전틱 AI 보안: Databricks AI 보안 프레임워크(DASF v3.0)의 새로운 위험과 통제

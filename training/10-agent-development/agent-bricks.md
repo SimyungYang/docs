@@ -1,3 +1,7 @@
+---
+title: "Agent Bricks — 사전 구축 에이전트"
+---
+
 # Agent Bricks — 사전 구축 에이전트
 
 ## Agent Bricks란?

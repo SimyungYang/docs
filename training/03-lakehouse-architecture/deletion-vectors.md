@@ -1,3 +1,7 @@
+---
+title: "Deletion Vectors 상세"
+---
+
 # Deletion Vectors 상세
 
 ## 왜 Deletion Vectors가 필요한가요?

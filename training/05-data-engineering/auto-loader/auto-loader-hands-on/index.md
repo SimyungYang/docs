@@ -1,3 +1,7 @@
+---
+title: "Auto Loader 실습 (Hands-On)"
+---
+
 # Auto Loader 실습 (Hands-On)
 
 ## 실습 개요

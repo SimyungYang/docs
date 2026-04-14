@@ -1,3 +1,7 @@
+---
+title: "ML 트렌드 & 최신 기법"
+---
+
 # ML 트렌드 & 최신 기법
 
 > **전체 노트북 코드**: [03a\_ml\_trends\_and\_techniques.py](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/predictive-maintenance/notebooks/03a_ml_trends_and_techniques.py)

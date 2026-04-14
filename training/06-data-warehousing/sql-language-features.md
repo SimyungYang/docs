@@ -1,3 +1,7 @@
+---
+title: "SQL 주요 기능"
+---
+
 # SQL 주요 기능
 
 ## Databricks SQL의 고급 기능

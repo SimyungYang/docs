@@ -1,3 +1,7 @@
+---
+title: "구체화된 뷰(Materialized View) 상세"
+---
+
 # 구체화된 뷰(Materialized View) 상세
 
 ## 구체화된 뷰란?

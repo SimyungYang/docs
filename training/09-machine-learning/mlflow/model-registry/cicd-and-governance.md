@@ -1,3 +1,7 @@
+---
+title: "CI/CD 패턴과 거버넌스"
+---
+
 # CI/CD 패턴과 거버넌스
 
 ## Alias 기반 CI/CD 패턴

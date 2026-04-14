@@ -1,3 +1,7 @@
+---
+title: "Multi-Agent 패턴"
+---
+
 # Multi-Agent 패턴
 
 [← AI Agent 아키텍처 개요](README.md)

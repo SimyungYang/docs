@@ -1,3 +1,7 @@
+---
+title: "Hyperopt와 SparkTrials"
+---
+
 # Hyperopt와 SparkTrials
 
 ## 하이퍼파라미터 튜닝이란?

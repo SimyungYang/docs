@@ -1,3 +1,7 @@
+---
+title: "Custom Instructions — 팀 규칙을 Genie Code에 심기"
+---
+
 # Custom Instructions — 팀 규칙을 Genie Code에 심기
 
 > 매번 "Delta로 저장해", "한국어로 해줘"를 반복하지 마세요. **한 번 설정하면 자동 적용됩니다.**

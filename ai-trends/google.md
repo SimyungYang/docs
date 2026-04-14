@@ -1,3 +1,7 @@
+---
+title: "Google / DeepMind 동향 분석 (2026년 초 기준)"
+---
+
 # Google / DeepMind 동향 분석 (2026년 초 기준)
 
 > **참고**

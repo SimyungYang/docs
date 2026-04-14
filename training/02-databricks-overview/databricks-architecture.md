@@ -1,3 +1,7 @@
+---
+title: "Databricks 아키텍처"
+---
+
 # Databricks 아키텍처
 
 ## 왜 아키텍처를 이해해야 하나요?

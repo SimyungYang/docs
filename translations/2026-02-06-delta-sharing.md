@@ -1,3 +1,7 @@
+---
+title: "새로운 Delta Sharing 기능, 데이터 협업 생태계 성장, Databricks Clean Rooms Public Preview, Marketplace 모멘텀"
+---
+
 # 새로운 Delta Sharing 기능, 데이터 협업 생태계 성장, Databricks Clean Rooms Public Preview, Marketplace 모멘텀
 
 > **원문**: [New Delta Sharing Features, Data Collaboration Ecosystem Growth, Databricks Clean Rooms in Public Preview, Marketplace Momentum](https://www.databricks.com/blog/whats-new-data-sharing-and-collaboration)

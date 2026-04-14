@@ -1,3 +1,7 @@
+---
+title: "Agentic AI로 대규모 데이터 품질 모니터링하기"
+---
+
 # Agentic AI로 대규모 데이터 품질 모니터링하기
 
 > **원문**: [Data Quality Monitoring at scale with Agentic AI](https://www.databricks.com/blog/data-quality-monitoring-scale-agentic-ai)

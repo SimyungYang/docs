@@ -1,3 +1,7 @@
+---
+title: "Databricks Python SDK"
+---
+
 # Databricks Python SDK
 
 ## Databricks SDK란?

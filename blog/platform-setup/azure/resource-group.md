@@ -1,3 +1,7 @@
+---
+title: "Resource Group 생성"
+---
+
 # Resource Group 생성
 
 ## Step 1 — Azure Portal 접속

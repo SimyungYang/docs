@@ -1,3 +1,7 @@
+---
+title: "SQL Warehouse와 파이프라인 최적화"
+---
+
 # SQL Warehouse와 파이프라인 최적화
 
 ## 3. SQL Warehouse 성능 최적화

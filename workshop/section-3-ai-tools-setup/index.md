@@ -1,3 +1,7 @@
+---
+title: "Section 3: AI 도구 환경 구성"
+---
+
 # Section 3: AI 도구 환경 구성
 
 > **소요 시간**: ~1시간 | 이 섹션의 흐름: AI Gateway (비용 통제) → Claude Code 사용 → AI Dev Kit 설치 → Genie Code 연결

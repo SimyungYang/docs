@@ -1,3 +1,7 @@
+---
+title: "실습 3: SDP와 Auto Loader 통합"
+---
+
 # 실습 3: SDP와 Auto Loader 통합
 
 ## 목적과 학습 목표

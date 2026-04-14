@@ -1,3 +1,7 @@
+---
+title: "피처 테이블 관리 (Feature Table Management)"
+---
+
 # 피처 테이블 관리 (Feature Table Management)
 
 ## 왜 피처 테이블 관리가 중요한가?

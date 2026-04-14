@@ -1,3 +1,7 @@
+---
+title: "Genie Space & Code 선택 가이드"
+---
+
 # Genie Space & Code 선택 가이드
 
 ---

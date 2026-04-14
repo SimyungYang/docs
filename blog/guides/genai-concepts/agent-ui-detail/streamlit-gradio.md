@@ -1,3 +1,7 @@
+---
+title: "Streamlit & Gradio"
+---
+
 # Streamlit & Gradio
 
 Python 개발자를 위한 빠른 프로토타이핑 UI 프레임워크 두 가지를 비교합니다. Streamlit은 대시보드 + 채팅에, Gradio는 ML 모델 데모에 각각 특화되어 있습니다.

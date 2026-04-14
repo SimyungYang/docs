@@ -1,3 +1,7 @@
+---
+title: "Agent Bricks 소개: 여러분의 데이터로 자동 최적화되는 AI 에이전트"
+---
+
 # Agent Bricks 소개: 여러분의 데이터로 자동 최적화되는 AI 에이전트
 
 > **원문**: [Introducing Agent Bricks: Auto-Optimized Agents Using Your Data](https://www.databricks.com/blog/introducing-agent-bricks)

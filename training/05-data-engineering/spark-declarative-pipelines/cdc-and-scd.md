@@ -1,3 +1,7 @@
+---
+title: "CDC 처리 — APPLY CHANGES"
+---
+
 # CDC 처리 — APPLY CHANGES
 
 ## 왜 CDC가 필요한가?

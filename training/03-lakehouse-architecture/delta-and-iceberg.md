@@ -1,3 +1,7 @@
+---
+title: "Delta Lake & Apache Iceberg — 상호 운용성"
+---
+
 # Delta Lake & Apache Iceberg — 상호 운용성
 
 ## 왜 이 주제를 다루나요?
