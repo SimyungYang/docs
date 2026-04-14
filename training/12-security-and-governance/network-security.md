@@ -18,7 +18,7 @@ title: "네트워크 보안"
 
 Databricks는 크게 **Control Plane** 과 **Data Plane** 이라는 두 영역으로 나뉩니다. 이 구조를 이해하는 것이 네트워크 보안 설정의 출발점입니다.
 
-<!-- 📌 대체 예정: Databricks 네트워크 아키텍처 공식 이미지 확보 후 교체 -->
+
 | 경로 | 설명 |
 |------|------|
 | ① 사용자 → Control Plane | HTTPS로 웹 UI/API 접근 |
@@ -114,7 +114,7 @@ curl -X POST "https://<workspace-url>/api/2.0/ip-access-lists" \
 
 ### Front-end vs Back-end Private Link
 
-<!-- 📌 대체 예정: Private Link 아키텍처 공식 이미지 확보 후 교체 -->
+
 ![Backend PrivateLink](https://docs.databricks.com/aws/en/assets/images/pl-aws-be-89d73d019437bb90e32610dd5e82ade9.png)
 
 ![Frontend PrivateLink](https://docs.databricks.com/aws/en/assets/images/pl-aws-fe-84ca114d753c6130f407c6f9b776956d.png)

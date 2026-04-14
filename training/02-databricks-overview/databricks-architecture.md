@@ -32,7 +32,7 @@ Databricks 아키텍처의 핵심은 **Control Plane(제어 평면)** 과 **Data
 
 > 출처: [Databricks 공식 문서 — Architecture overview](https://docs.databricks.com/aws/en/getting-started/overview.html)
 
-<!-- 📌 이미지가 표시되지 않는 경우: Databricks 공식 문서의 Architecture overview 페이지에서 최신 이미지 URL을 확인하세요 -->
+
 
 ### 각 영역의 상세 구성
 
