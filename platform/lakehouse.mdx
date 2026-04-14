@@ -1,0 +1,285 @@
+---
+title: "레이크하우스 아키텍처: 데이터와 AI의 통합"
+sidebarTitle: "레이크하우스"
+description: "레이크하우스가 데이터 레이크와 웨어하우스를 하나로 통합하는 방식을 배웁니다. Delta Lake의 ACID 트랜잭션, 스키마 적용과 진화, Time Travel, Z-Ordering, 메달리온 아키텍처 구현 방법을 실전 코드로 설명합니다."
+---
+
+레이크하우스(Lakehouse)는 데이터 레이크의 비용 효율성과 유연성에 데이터 웨어하우스의 신뢰성과 성능을 결합한 차세대 데이터 아키텍처입니다. 기존에는 원시 데이터를 레이크에 저장하고, 분석을 위해 웨어하우스로 복사하는 이중 구조가 일반적이었습니다. 레이크하우스는 이 이중 구조를 제거하여 단일 스토리지 계층에서 BI 쿼리, 머신러닝, 스트리밍 처리를 모두 수행합니다.
+
+## 기존 아키텍처의 한계
+
+레이크하우스를 이해하려면 먼저 기존 아키텍처가 왜 문제가 되었는지 알아야 합니다.
+
+<AccordionGroup>
+  <Accordion title="데이터 레이크의 문제점">
+    데이터 레이크는 오브젝트 스토리지(S3, ADLS 등)에 원시 데이터를 저장하는 방식입니다. 저렴하고 유연하지만 여러 문제가 있습니다.
+
+    - **ACID 트랜잭션 미지원**: 쓰기 중 장애 발생 시 데이터가 불일치 상태가 됩니다.
+    - **스키마 미적용**: 잘못된 형식의 데이터가 삽입되어 "데이터 늪(Data Swamp)"이 됩니다.
+    - **느린 쿼리 성능**: 파일 수준의 쿼리 최적화가 없어 전체 파일을 스캔합니다.
+    - **DELETE/UPDATE 불가**: Parquet 파일은 불변(immutable)이므로 수정이 어렵습니다.
+    - **메타데이터 관리 부재**: 어떤 데이터가 있는지 파악하기 어렵습니다.
+  </Accordion>
+  <Accordion title="데이터 웨어하우스의 문제점">
+    데이터 웨어하우스는 강력한 SQL 성능과 ACID 보장을 제공하지만 다른 문제가 있습니다.
+
+    - **높은 비용**: 컴퓨트와 스토리지가 결합되어 있어 저장 비용이 높습니다.
+    - **비구조화 데이터 처리 불가**: 이미지, 텍스트, 로그 등을 직접 저장할 수 없습니다.
+    - **ML 워크로드 부적합**: 대용량 모델 학습에는 Spark 또는 GPU 클러스터가 필요합니다.
+    - **벤더 종속성**: 독점 포맷으로 인해 다른 시스템과 연동이 어렵습니다.
+  </Accordion>
+  <Accordion title="이중 스택 아키텍처의 문제">
+    레이크와 웨어하우스를 모두 운영하는 이중 스택은 더 많은 문제를 만듭니다.
+
+    - **데이터 이중화**: 동일 데이터를 두 곳에 저장하여 비용이 2배가 됩니다.
+    - **데이터 불일치**: ETL 파이프라인 지연으로 두 시스템의 데이터가 달라집니다.
+    - **복잡한 파이프라인**: 레이크 → 웨어하우스 ETL 파이프라인 관리가 어렵습니다.
+    - **운영 복잡성**: 두 가지 시스템의 모니터링, 보안, 거버넌스를 따로 관리해야 합니다.
+  </Accordion>
+</AccordionGroup>
+
+## 레이크하우스 아키텍처
+
+레이크하우스는 오픈 포맷의 오브젝트 스토리지 위에 **메타데이터·거버넌스 계층**을 추가하여 레이크와 웨어하우스 양쪽의 장점을 구현합니다.
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     애플리케이션 계층                              │
+│  BI 도구(Tableau, Power BI)  │  ML/AI  │  스트리밍  │  노트북     │
+└──────────────────────┬───────────────────────────────────────────┘
+                       │
+┌──────────────────────▼───────────────────────────────────────────┐
+│                    컴퓨트 계층                                      │
+│   SQL Warehouse  │  Spark 클러스터  │  ML Runtime  │  Serverless  │
+└──────────────────────┬───────────────────────────────────────────┘
+                       │
+┌──────────────────────▼───────────────────────────────────────────┐
+│              Delta Lake (메타데이터·트랜잭션 계층)                   │
+│  Transaction Log │ Schema Enforcement │ Statistics │ Z-Ordering   │
+└──────────────────────┬───────────────────────────────────────────┘
+                       │
+┌──────────────────────▼───────────────────────────────────────────┐
+│              오브젝트 스토리지 (저비용, 내구성 높음)                  │
+│         Amazon S3  │  Azure ADLS Gen2  │  Google Cloud Storage    │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+<Note>
+  Databricks에서 레이크하우스의 핵심은 **Delta Lake**입니다. Delta Lake는 오브젝트 스토리지 위에 트랜잭션 로그를 추가하여 ACID 보장, 스키마 관리, 쿼리 최적화를 제공합니다.
+</Note>
+
+## Delta Lake 핵심 기능
+
+### ACID 트랜잭션
+
+Delta Lake는 `_delta_log` 디렉터리에 JSON 형식의 트랜잭션 로그를 유지합니다. 모든 쓰기 작업은 이 로그에 커밋된 후에만 적용됩니다.
+
+```python
+# 동시 쓰기에도 안전한 MERGE 작업
+from delta.tables import DeltaTable
+
+delta_table = DeltaTable.forName(spark, "my_catalog.my_schema.customers")
+
+# Upsert: 기존 레코드 업데이트, 신규 레코드 삽입
+delta_table.alias("target") \
+    .merge(
+        updates_df.alias("source"),
+        "target.customer_id = source.customer_id"
+    ) \
+    .whenMatchedUpdateAll() \
+    .whenNotMatchedInsertAll() \
+    .execute()
+```
+
+### 스키마 적용과 스키마 진화
+
+```python
+# 스키마 적용: 잘못된 컬럼이 있으면 쓰기를 거부합니다
+df_correct.write.format("delta") \
+    .mode("append") \
+    .saveAsTable("my_catalog.my_schema.events")
+
+# 스키마 진화: 새 컬럼을 자동으로 추가합니다
+df_with_new_column.write.format("delta") \
+    .option("mergeSchema", "true") \
+    .mode("append") \
+    .saveAsTable("my_catalog.my_schema.events")
+```
+
+### 타임 트래블
+
+Delta Lake는 모든 변경 이력을 보관하므로 과거 버전의 데이터에 쿼리할 수 있습니다.
+
+```python
+# 버전 번호로 과거 데이터 조회
+df_v10 = spark.read.format("delta") \
+    .option("versionAsOf", 10) \
+    .table("my_catalog.my_schema.sales")
+
+# 타임스탬프로 조회
+df_yesterday = spark.read.format("delta") \
+    .option("timestampAsOf", "2025-01-13 00:00:00") \
+    .table("my_catalog.my_schema.sales")
+```
+
+```sql
+-- SQL로 타임 트래블
+SELECT * FROM my_catalog.my_schema.sales VERSION AS OF 10;
+SELECT * FROM my_catalog.my_schema.sales TIMESTAMP AS OF '2025-01-13';
+```
+
+```python
+# 변경 이력 확인
+from delta.tables import DeltaTable
+
+dt = DeltaTable.forName(spark, "my_catalog.my_schema.sales")
+dt.history().show(truncate=False)
+```
+
+### Z-Ordering (다차원 인덱싱)
+
+Z-Ordering은 자주 필터링하는 컬럼의 데이터를 물리적으로 함께 배치하여 쿼리 성능을 향상시킵니다.
+
+```sql
+-- Z-Order로 파일 최적화 (쿼리 자주 사용하는 컬럼 기준)
+OPTIMIZE my_catalog.my_schema.events
+ZORDER BY (event_date, user_id);
+```
+
+<Tip>
+  Z-Ordering은 높은 카디널리티(cardinality)를 가진 컬럼에 적용하면 가장 효과적입니다. `event_date`, `user_id`, `product_id` 같은 컬럼이 좋은 예입니다.
+</Tip>
+
+### VACUUM으로 스토리지 정리
+
+타임 트래블 데이터는 오래될수록 스토리지를 차지합니다. `VACUUM` 명령으로 오래된 파일을 삭제합니다.
+
+```sql
+-- 7일(기본값)보다 오래된 파일 삭제
+VACUUM my_catalog.my_schema.sales;
+
+-- 보존 기간을 직접 지정 (최소 7일 권장)
+VACUUM my_catalog.my_schema.sales RETAIN 168 HOURS;
+```
+
+<Warning>
+  `VACUUM` 후에는 해당 기간 이전의 타임 트래블이 불가능합니다. 규정 준수(compliance) 요건이 있는 경우 보존 기간을 충분히 설정하세요.
+</Warning>
+
+## 레이크하우스 테이블 유형
+
+Databricks 레이크하우스에서는 두 가지 방식으로 테이블을 생성할 수 있습니다.
+
+<Tabs>
+  <Tab title="관리형 테이블 (Managed Table)">
+    Unity Catalog 또는 Hive 메타스토어가 데이터 파일의 위치와 라이프사이클을 관리합니다.
+
+    ```sql
+    -- 관리형 테이블 생성 (저장 위치를 지정하지 않음)
+    CREATE TABLE my_catalog.my_schema.sales (
+      sale_id   BIGINT NOT NULL,
+      product   STRING,
+      amount    DOUBLE,
+      sale_date DATE
+    )
+    USING DELTA
+    COMMENT '판매 트랜잭션 테이블';
+    ```
+
+    **장점:**
+    - 테이블 삭제 시 데이터 파일도 자동 삭제
+    - Unity Catalog의 거버넌스 기능을 완전히 활용 가능
+    - 위치 관리가 필요 없음
+
+    **용도:** 내부 분석 데이터, 파이프라인 중간 결과, 완전히 관리되는 데이터셋
+  </Tab>
+  <Tab title="외부 테이블 (External Table)">
+    데이터 파일 위치를 직접 지정합니다. 테이블을 삭제해도 데이터 파일은 유지됩니다.
+
+    ```sql
+    -- 외부 테이블 생성 (저장 위치 지정)
+    CREATE TABLE my_catalog.my_schema.raw_events
+    USING DELTA
+    LOCATION 'abfss://raw@mystorageaccount.dfs.core.windows.net/events/'
+    COMMENT '외부 스토리지의 원시 이벤트 데이터';
+    ```
+
+    **장점:**
+    - 기존 데이터 경로 유지 가능
+    - 다른 시스템에서도 동일 경로 접근 가능
+    - 테이블 메타데이터와 데이터 파일 독립적 관리
+
+    **용도:** 외부에서 생성된 데이터, 다른 팀과 공유하는 데이터, 마이그레이션 중인 데이터
+  </Tab>
+</Tabs>
+
+## 레이크하우스 메달리온 아키텍처
+
+대부분의 Databricks 구현에서는 데이터를 품질 수준에 따라 세 개의 계층으로 구분하는 **메달리온 아키텍처**를 사용합니다.
+
+```
+원본 시스템
+    │
+    ▼
+┌─────────────────────────────────────────────┐
+│  Bronze (원시 데이터)                         │
+│  - 원본에서 수집한 그대로 저장                  │
+│  - 스키마 변경 없음, 삭제 없음                  │
+│  - 감사 및 재처리를 위한 원천 데이터              │
+└──────────────┬──────────────────────────────┘
+               │ 클렌징, 표준화
+               ▼
+┌─────────────────────────────────────────────┐
+│  Silver (정제된 데이터)                        │
+│  - 중복 제거, 스키마 표준화                    │
+│  - 비즈니스 규칙 적용, 품질 검사               │
+│  - 분석 및 ML 학습에 활용 가능한 수준           │
+└──────────────┬──────────────────────────────┘
+               │ 집계, 비즈니스 로직
+               ▼
+┌─────────────────────────────────────────────┐
+│  Gold (비즈니스 집계 데이터)                   │
+│  - 부서별/도메인별 데이터 마트                  │
+│  - KPI, 대시보드, 보고서 전용                  │
+│  - BI 도구가 직접 연결하는 계층                 │
+└─────────────────────────────────────────────┘
+```
+
+```python
+# Bronze → Silver 파이프라인 예시
+from pyspark.sql import functions as F
+
+# Bronze: 원시 데이터 읽기
+bronze_df = spark.table("my_catalog.bronze.raw_orders")
+
+# Silver: 클렌징 및 표준화
+silver_df = bronze_df \
+    .dropDuplicates(["order_id"]) \
+    .filter(F.col("order_id").isNotNull()) \
+    .withColumn("order_date", F.to_date("order_date", "yyyy-MM-dd")) \
+    .withColumn("amount", F.col("amount").cast("double")) \
+    .withColumn("_ingested_at", F.current_timestamp())
+
+# Silver 테이블에 저장
+silver_df.write.format("delta") \
+    .mode("overwrite") \
+    .option("overwriteSchema", "true") \
+    .saveAsTable("my_catalog.silver.orders")
+```
+
+## 다음 단계
+
+<CardGroup cols={2}>
+  <Card title="컴퓨트 설정" icon="server" href="/platform/compute">
+    클러스터 유형별 특성과 비용 최적화 방법을 알아봅니다.
+  </Card>
+  <Card title="Unity Catalog" icon="shield" href="/platform/unity-catalog">
+    레이크하우스 데이터 거버넌스와 접근 제어를 설정합니다.
+  </Card>
+  <Card title="데이터 엔지니어링" icon="wrench" href="/training/data-engineering">
+    Delta Live Tables로 프로덕션 파이프라인을 구축합니다.
+  </Card>
+  <Card title="시작하기" icon="rocket" href="/getting-started">
+    아직 환경이 설정되지 않았다면 워크스페이스 설정 가이드로 돌아갑니다.
+  </Card>
+</CardGroup>

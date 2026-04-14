@@ -1,0 +1,359 @@
+---
+title: "MLflow로 ML 실험 추적과 모델 관리하기"
+sidebarTitle: "MLflow"
+description: "MLflow의 실험(Experiment) 추적, 중첩 Run 하이퍼파라미터 탐색, 모델 레지스트리 스테이지 전환, autolog, SHAP 아티팩트 기록, 프로젝트 패키징으로 재현 가능한 ML 개발 프로세스를 구축하는 방법을 배웁니다."
+---
+
+MLflow는 ML 실험의 파라미터·메트릭·아티팩트를 자동으로 기록하고, 모델의 전체 수명주기를 버전으로 관리하는 오픈 소스 플랫폼입니다. Databricks는 MLflow를 네이티브로 통합하여 별도 서버 설치 없이 워크스페이스에서 바로 사용할 수 있습니다. 모든 Run은 Unity Catalog와 연결되어 거버넌스 규칙이 자동 적용됩니다.
+
+## MLflow 핵심 구성 요소
+
+<CardGroup cols={2}>
+  <Card title="Tracking" icon="chart-line">
+    실험(Experiment) 단위로 Run을 그룹화합니다. 각 Run에 파라미터, 메트릭, 태그, 아티팩트를 기록합니다. UI에서 Run을 비교하고 최적 모델을 시각적으로 선택할 수 있습니다.
+  </Card>
+  <Card title="Model Registry" icon="box-archive">
+    모델 버전을 중앙에서 관리합니다. 버전별 스테이지(None → Staging → Production → Archived)를 통해 배포 파이프라인을 표준화합니다.
+  </Card>
+  <Card title="Projects" icon="folder-open">
+    Conda 또는 Docker 환경을 포함한 재현 가능한 코드 패키지입니다. `mlflow run` 명령으로 동일한 환경에서 실험을 재실행합니다.
+  </Card>
+  <Card title="Models" icon="cube">
+    표준화된 모델 포맷(MLmodel)으로 Scikit-learn, TensorFlow, PyTorch, Spark ML 등 다양한 프레임워크를 동일한 방식으로 서빙합니다.
+  </Card>
+</CardGroup>
+
+## 실험 추적 시작하기
+
+### 기본 Run 기록
+
+```python
+import mlflow
+import mlflow.sklearn
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import roc_auc_score, f1_score
+from sklearn.model_selection import train_test_split
+import pandas as pd
+import numpy as np
+
+# 실험 이름 설정 (없으면 자동 생성)
+mlflow.set_experiment("/Experiments/credit-risk-model")
+
+# 데이터 준비 (예시)
+X, y = load_credit_data()  # 실제 데이터 로드 함수
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Run 시작
+with mlflow.start_run(run_name="LogReg_C0.1_lbfgs") as run:
+    # 파라미터 기록
+    params = {"C": 0.1, "solver": "lbfgs", "max_iter": 1000}
+    mlflow.log_params(params)
+
+    # 태그로 메타데이터 추가
+    mlflow.set_tags({
+        "team":       "risk-analytics",
+        "data_ver":   "v2024q1",
+        "use_case":   "credit-default",
+    })
+
+    # 모델 학습
+    model = LogisticRegression(**params)
+    model.fit(X_train, y_train)
+
+    # 메트릭 기록
+    y_pred  = model.predict(X_test)
+    y_proba = model.predict_proba(X_test)[:, 1]
+
+    mlflow.log_metrics({
+        "train_auc": roc_auc_score(y_train, model.predict_proba(X_train)[:, 1]),
+        "test_auc":  roc_auc_score(y_test,  y_proba),
+        "test_f1":   f1_score(y_test, y_pred),
+    })
+
+    # 모델 등록 (Model Registry에 자동 추가)
+    model_info = mlflow.sklearn.log_model(
+        sk_model=model,
+        artifact_path="model",
+        registered_model_name="credit-risk-predictor",
+        input_example=X_test.head(3),
+        signature=mlflow.models.infer_signature(X_test, y_pred),
+    )
+
+    print(f"Run ID: {run.info.run_id}")
+    print(f"모델 URI: {model_info.model_uri}")
+```
+
+### 반복 메트릭 기록 (학습 곡선)
+
+```python
+import mlflow
+import torch
+import torch.nn as nn
+from torch.utils.data import DataLoader
+
+mlflow.set_experiment("/Experiments/neural-net-training")
+
+with mlflow.start_run(run_name="DNN_hidden256_lr0.001"):
+    mlflow.log_params({
+        "hidden_size": 256,
+        "learning_rate": 0.001,
+        "epochs": 50,
+        "batch_size": 64,
+    })
+
+    model = build_model(hidden_size=256)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    criterion = nn.BCELoss()
+
+    for epoch in range(50):
+        train_loss = train_one_epoch(model, train_loader, optimizer, criterion)
+        val_loss, val_auc = evaluate(model, val_loader)
+
+        # 에폭별 메트릭 — step 파라미터로 x축 설정
+        mlflow.log_metrics(
+            {
+                "train_loss": train_loss,
+                "val_loss":   val_loss,
+                "val_auc":    val_auc,
+            },
+            step=epoch,
+        )
+
+    # PyTorch 모델 등록
+    mlflow.pytorch.log_model(
+        model,
+        artifact_path="pytorch_model",
+        registered_model_name="credit-risk-dnn",
+    )
+```
+
+## 하이퍼파라미터 탐색
+
+```python
+import mlflow
+from itertools import product
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import cross_val_score
+
+mlflow.set_experiment("/Experiments/rf-hyperparameter-search")
+
+# 탐색할 파라미터 그리드
+param_grid = {
+    "n_estimators": [100, 200, 300],
+    "max_depth":    [3, 5, 7, None],
+    "min_samples_split": [2, 5, 10],
+}
+
+best_auc   = 0
+best_params = {}
+
+parent_run_id = None
+
+with mlflow.start_run(run_name="RF_Grid_Search") as parent_run:
+    parent_run_id = parent_run.info.run_id
+    mlflow.log_param("search_strategy", "grid")
+    mlflow.log_param("cv_folds", 5)
+
+    for n_est, max_d, min_split in product(
+        param_grid["n_estimators"],
+        param_grid["max_depth"],
+        param_grid["min_samples_split"],
+    ):
+        # 각 조합을 중첩 Run으로 기록
+        with mlflow.start_run(
+            run_name=f"RF_n{n_est}_d{max_d}_s{min_split}",
+            nested=True,
+        ):
+            params = {
+                "n_estimators":    n_est,
+                "max_depth":       max_d,
+                "min_samples_split": min_split,
+                "random_state":    42,
+            }
+            mlflow.log_params(params)
+
+            rf = RandomForestClassifier(**params, n_jobs=-1)
+            cv_auc = cross_val_score(rf, X_train, y_train, cv=5, scoring="roc_auc")
+
+            mlflow.log_metrics({
+                "cv_auc_mean": float(cv_auc.mean()),
+                "cv_auc_std":  float(cv_auc.std()),
+            })
+
+            if cv_auc.mean() > best_auc:
+                best_auc    = cv_auc.mean()
+                best_params = params
+
+    # 최적 파라미터로 최종 모델 학습
+    with mlflow.start_run(run_name="RF_Best_Final", nested=True):
+        mlflow.log_params(best_params)
+        mlflow.log_metric("best_cv_auc", best_auc)
+
+        final_model = RandomForestClassifier(**best_params, n_jobs=-1)
+        final_model.fit(X_train, y_train)
+
+        mlflow.sklearn.log_model(
+            final_model,
+            artifact_path="best_model",
+            registered_model_name="credit-risk-rf-best",
+        )
+
+print(f"최적 AUC: {best_auc:.4f}")
+print(f"최적 파라미터: {best_params}")
+```
+
+## 아티팩트 기록
+
+```python
+import mlflow
+import matplotlib.pyplot as plt
+import shap
+import json
+
+with mlflow.start_run():
+    # 모델 학습 (생략)
+
+    # 1. 혼동 행렬 이미지 저장
+    fig, ax = plt.subplots(figsize=(6, 5))
+    plot_confusion_matrix(model, X_test, y_test, ax=ax)
+    mlflow.log_figure(fig, "confusion_matrix.png")
+    plt.close(fig)
+
+    # 2. SHAP 피처 중요도 저장
+    explainer  = shap.TreeExplainer(model)
+    shap_values = explainer.shap_values(X_test[:100])
+    fig, ax = plt.subplots(figsize=(10, 6))
+    shap.summary_plot(shap_values[1], X_test[:100], show=False)
+    mlflow.log_figure(fig, "shap_summary.png")
+    plt.close(fig)
+
+    # 3. 메타데이터 JSON 기록
+    metadata = {
+        "training_date":   "2024-03-15",
+        "training_rows":   len(X_train),
+        "feature_columns": list(X_train.columns),
+        "class_balance":   y_train.value_counts(normalize=True).to_dict(),
+    }
+    mlflow.log_dict(metadata, "model_metadata.json")
+
+    # 4. 데이터 샘플 테이블 기록
+    sample_preds = pd.DataFrame({
+        "actual":      y_test[:20].values,
+        "predicted":   model.predict(X_test[:20]),
+        "probability": model.predict_proba(X_test[:20])[:, 1],
+    })
+    mlflow.log_table(sample_preds, artifact_file="sample_predictions.json")
+```
+
+## Model Registry 관리
+
+```python
+from mlflow.tracking import MlflowClient
+
+client = MlflowClient()
+model_name = "credit-risk-predictor"
+
+# 등록된 모델 정보 조회
+registered_model = client.get_registered_model(model_name)
+print(f"모델: {registered_model.name}")
+print(f"최신 버전: {registered_model.latest_versions}")
+
+# 버전 설명 추가
+client.update_model_version(
+    name=model_name,
+    version="3",
+    description="GBT 모델 — AUC 0.891, 2024 Q1 데이터로 재학습",
+)
+
+# 태그 추가
+client.set_model_version_tag(
+    name=model_name,
+    version="3",
+    key="validated_by",
+    value="risk-team@company.com",
+)
+
+# Staging → Production 전환
+client.transition_model_version_stage(
+    name=model_name,
+    version="3",
+    stage="Production",
+    archive_existing_versions=True,  # 기존 Production 버전 자동 아카이브
+)
+print(f"v3 → Production 전환 완료")
+
+# Production 모델 로드
+production_model = mlflow.sklearn.load_model(
+    f"models:/{model_name}/Production"
+)
+```
+
+## 자동 로깅 (autolog)
+
+```python
+import mlflow
+
+# 프레임워크별 자동 로깅 활성화 — 파라미터/메트릭/모델 자동 기록
+mlflow.sklearn.autolog(
+    log_input_examples=True,
+    log_model_signatures=True,
+    log_models=True,
+    silent=False,
+)
+
+# autolog가 활성화된 상태에서 fit() 호출만 해도 자동 기록
+from sklearn.ensemble import GradientBoostingClassifier
+
+with mlflow.start_run(run_name="autolog_demo"):
+    model = GradientBoostingClassifier(n_estimators=100, max_depth=4)
+    model.fit(X_train, y_train)
+    # 파라미터, 메트릭, 모델이 자동으로 MLflow에 기록됨
+```
+
+<Note>
+  `mlflow.autolog()`를 노트북 상단에서 한 번 호출하면 Scikit-learn, XGBoost, LightGBM, TensorFlow, PyTorch 등 지원되는 모든 프레임워크에 자동 로깅이 적용됩니다. Databricks 환경에서는 기본적으로 자동 로깅이 활성화되어 있습니다.
+</Note>
+
+## MLflow Projects로 재현 가능한 실험
+
+```yaml
+# MLproject 파일
+name: credit-risk-training
+
+conda_env: conda.yaml   # 또는 docker_env:
+
+entry_points:
+  main:
+    parameters:
+      n_estimators: {type: int,   default: 200}
+      max_depth:    {type: int,   default: 5}
+      data_version: {type: string, default: "v2024q1"}
+    command: >
+      python train.py
+        --n-estimators {n_estimators}
+        --max-depth {max_depth}
+        --data-version {data_version}
+```
+
+```bash
+# 원격 Git 리포지토리에서 바로 실행
+mlflow run https://github.com/company/credit-risk \
+  -P n_estimators=300 \
+  -P max_depth=6 \
+  --experiment-name "/Experiments/credit-risk-model"
+
+# 로컬에서 실행
+mlflow run . -P n_estimators=200
+```
+
+## 다음 단계
+
+<CardGroup cols={2}>
+  <Card title="머신러닝 워크플로우" icon="brain" href="/training/machine-learning">
+    Feature Store, AutoML, Model Serving을 포함한 전체 ML 파이프라인을 구성합니다.
+  </Card>
+  <Card title="AI 에이전트" icon="robot" href="/training/agents">
+    MLflow로 관리하는 모델을 LLM 에이전트 워크플로우에 통합합니다.
+  </Card>
+</CardGroup>

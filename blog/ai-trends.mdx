@@ -1,0 +1,249 @@
+---
+title: "엔터프라이즈 AI 트렌드와 Databricks 전략"
+sidebarTitle: "AI 트렌드"
+description: "복합 AI 시스템, RAG 주류화, LoRA·QLoRA 파인튜닝, AI 에이전트의 부상 등 2024-2025 엔터프라이즈 AI 핵심 트렌드를 분석하고 Databricks가 오픈소스 데이터 전략으로 각 트렌드에 어떻게 대응하는지 설명합니다."
+---
+
+2024~2025년 엔터프라이즈 AI 시장은 단순한 챗봇 수준을 넘어 실질적인 비즈니스 가치를 창출하는 시스템으로 빠르게 진화하고 있습니다. 단일 LLM 호출에 의존하던 방식에서 벗어나, 데이터·모델·워크플로를 긴밀하게 통합한 복잡한 AI 시스템이 프로덕션에 배포되고 있습니다. Databricks는 이 변화를 데이터 플랫폼의 연장선에서 지원합니다.
+
+## 주요 트렌드 개요
+
+<CardGroup cols={2}>
+  <Card title="복합 AI 시스템" icon="network-wired">
+    여러 모델과 도구를 조합하는 Compound AI Systems가 단일 LLM을 대체하고 있습니다.
+  </Card>
+  <Card title="RAG의 주류화" icon="magnifying-glass">
+    기업 내부 데이터를 LLM에 실시간 주입하는 RAG가 표준 패턴으로 자리잡았습니다.
+  </Card>
+  <Card title="파인튜닝의 실용화" icon="sliders">
+    PEFT, LoRA 등의 기법으로 도메인 특화 모델을 경제적으로 학습할 수 있게 되었습니다.
+  </Card>
+  <Card title="AI 에이전트의 부상" icon="robot">
+    자율적으로 도구를 선택하고 다단계 작업을 수행하는 AI 에이전트가 확산되고 있습니다.
+  </Card>
+</CardGroup>
+
+## 트렌드별 상세 분석
+
+<Tabs>
+  <Tab title="복합 AI 시스템">
+    ### 복합 AI 시스템 (Compound AI Systems)
+
+    UC Berkeley의 연구에서 명명된 "Compound AI Systems"는 단일 모델 호출 대신, 검색 엔진·코드 실행기·외부 API·여러 LLM을 조합하여 복잡한 작업을 수행하는 아키텍처입니다. 2024년 이후 프로덕션 AI 시스템의 대부분이 이 패턴을 따르고 있습니다.
+
+    **주요 특징:**
+    - 각 컴포넌트가 독립적으로 최적화 가능
+    - 단일 LLM의 한계(컨텍스트 길이, 지식 제한)를 시스템 수준에서 보완
+    - 개별 컴포넌트 교체 및 업그레이드가 용이
+
+    **Databricks의 접근:**
+
+    Databricks는 Mosaic AI와 Unity Catalog를 통해 복합 AI 시스템의 각 컴포넌트(벡터 DB, 임베딩 서버, LLM 엔드포인트, 도구 함수)를 하나의 플랫폼에서 관리할 수 있도록 합니다. MLflow Tracing은 복잡한 멀티-컴포넌트 시스템의 호출 흐름을 시각화하고 디버깅하는 데 핵심적인 역할을 합니다.
+
+    ```python
+    import mlflow
+    from databricks.sdk import WorkspaceClient
+
+    w = WorkspaceClient()
+
+    @mlflow.trace(name="compound-ai-pipeline")
+    def compound_ai_pipeline(user_query: str) -> str:
+        # 1단계: 쿼리 분류
+        with mlflow.start_span("query_classification"):
+            query_type = classify_query(user_query)
+
+        # 2단계: 조건부 라우팅
+        if query_type == "data_analysis":
+            with mlflow.start_span("sql_generation"):
+                sql = generate_sql(user_query)
+            with mlflow.start_span("sql_execution"):
+                data = execute_sql(sql)
+            with mlflow.start_span("result_summarization"):
+                return summarize_data(data, user_query)
+        else:
+            with mlflow.start_span("rag_retrieval"):
+                context = retrieve_context(user_query)
+            with mlflow.start_span("response_generation"):
+                return generate_response(user_query, context)
+    ```
+  </Tab>
+  <Tab title="RAG 표준화">
+    ### RAG의 표준 패턴 정착
+
+    2024년에는 기본 RAG를 넘어 Advanced RAG 패턴이 널리 채택되었습니다. 단순한 유사도 검색에서 하이브리드 검색, 쿼리 재작성, 재순위화, 계층적 검색 등 다양한 고급 기법이 실무에서 활용되고 있습니다.
+
+    **주목할 발전:**
+
+    | 기법 | 설명 | 효과 |
+    |------|------|------|
+    | 쿼리 재작성 | LLM으로 검색 쿼리를 최적화 | 검색 재현율 20~30% 향상 |
+    | 하이브리드 검색 | BM25 + 벡터 검색 결합 | 키워드 쿼리 정확도 향상 |
+    | 재순위화 | 크로스-인코더로 결과 정렬 | 상위 결과 정밀도 향상 |
+    | 계층적 인덱싱 | 문서 요약 + 청크 이중 인덱스 | 긴 문서 처리 개선 |
+
+    **Databricks Vector Search의 차별점:**
+
+    Databricks Vector Search는 Delta Lake와 네이티브 통합을 제공합니다. 원본 데이터가 Delta 테이블에서 업데이트되면 인덱스가 자동으로 동기화되어, 항상 최신 데이터를 기반으로 검색할 수 있습니다. 이는 별도의 벡터 DB 운영 부담 없이 거버넌스가 보장된 RAG 시스템을 구축할 수 있음을 의미합니다.
+
+    ```python
+    # Delta Sync로 자동 동기화되는 Vector Search 인덱스
+    # 원본 테이블 업데이트 시 인덱스 자동 갱신
+    spark.sql("""
+        INSERT INTO main.rag.documents
+        VALUES (
+            'doc_001',
+            '신규 제품 출시 안내문',
+            '2025년 1월 신제품이 출시되었습니다...',
+            current_timestamp()
+        )
+    """)
+    # 인덱스는 파이프라인 스케줄에 따라 자동 동기화됩니다
+    ```
+  </Tab>
+  <Tab title="파인튜닝">
+    ### 파인튜닝의 실용화
+
+    오픈소스 모델의 발전과 PEFT(Parameter-Efficient Fine-Tuning) 기법의 성숙으로, 대규모 GPU 클러스터 없이도 도메인 특화 모델을 학습할 수 있게 되었습니다. 2024~2025년에는 기업 내부 언어·스타일·도메인 지식에 특화된 소형 모델이 범용 대형 모델을 비용 대비 성능에서 능가하는 사례가 증가하고 있습니다.
+
+    **주요 파인튜닝 기법:**
+
+    <AccordionGroup>
+      <Accordion title="LoRA (Low-Rank Adaptation)">
+        모델 가중치 행렬을 저차원 행렬의 곱으로 근사하여 학습 파라미터를 99% 이상 줄입니다. 전체 파인튜닝 대비 GPU 메모리를 1/10 이하로 사용하면서 유사한 성능을 달성합니다.
+
+        ```python
+        from peft import LoraConfig, get_peft_model
+        from transformers import AutoModelForCausalLM
+
+        model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-3-8b-hf")
+
+        lora_config = LoraConfig(
+            r=16,              # LoRA 랭크
+            lora_alpha=32,     # 스케일링 파라미터
+            target_modules=["q_proj", "v_proj"],
+            lora_dropout=0.05,
+            bias="none",
+            task_type="CAUSAL_LM",
+        )
+
+        model = get_peft_model(model, lora_config)
+        model.print_trainable_parameters()
+        # trainable params: 4,194,304 || all params: 8,034,770,944 (0.052%)
+        ```
+      </Accordion>
+      <Accordion title="DPO (Direct Preference Optimization)">
+        사람의 선호 데이터(좋은 응답 vs 나쁜 응답 쌍)로 모델을 직접 최적화하는 기법입니다. RLHF보다 구현이 단순하면서 유사한 성능 향상을 달성합니다.
+      </Accordion>
+      <Accordion title="QLoRA">
+        4비트 양자화와 LoRA를 결합하여 단일 A100 GPU에서 70B 파라미터 모델도 파인튜닝할 수 있습니다. 메모리 효율이 극도로 높아 비용 절감에 효과적입니다.
+      </Accordion>
+    </AccordionGroup>
+
+    **Databricks Mosaic AI Fine-tuning:**
+
+    ```python
+    # Databricks Fine-tuning API 사용
+    from databricks.sdk import WorkspaceClient
+    from databricks.sdk.service.finetuning import CreateFineTuneRequest
+
+    w = WorkspaceClient()
+
+    fine_tune_job = w.fine_tuning.create(
+        model="meta-llama/Llama-3-8b-instruct",
+        train_data_path="dbfs:/training_data/korean_qa_train.jsonl",
+        eval_data_path="dbfs:/training_data/korean_qa_eval.jsonl",
+        task_type="INSTRUCTION_FINETUNE",
+        training_duration="2ep",  # 2 에포크
+        learning_rate=2e-5,
+        registered_model_name="main.models.korean_llm_v1",
+    )
+    ```
+  </Tab>
+  <Tab title="AI 에이전트">
+    ### AI 에이전트의 부상
+
+    AI 에이전트는 사용자의 지시를 받아 스스로 도구를 선택하고, 결과를 평가하며, 다단계 작업을 자율적으로 수행하는 시스템입니다. 2025년에는 단순 Q&A를 넘어 코드 실행, 데이터베이스 조회, 외부 API 호출, 파일 처리 등 실질적인 업무 자동화에 AI 에이전트가 활용되고 있습니다.
+
+    **에이전트 아키텍처 패턴:**
+
+    - **ReAct**: 추론(Reasoning)과 행동(Acting)을 반복하며 문제를 해결
+    - **Plan-and-Execute**: 전체 계획 수립 후 단계별 실행
+    - **Multi-Agent**: 전문화된 에이전트들이 협력하여 복잡한 작업 처리
+
+    ```python
+    from langchain.agents import AgentExecutor, create_tool_calling_agent
+    from langchain.tools import tool
+    from langchain_community.chat_models import ChatDatabricks
+    from langchain.prompts import ChatPromptTemplate
+
+    llm = ChatDatabricks(endpoint="databricks-dbrx-instruct")
+
+    @tool
+    def query_databricks_sql(sql: str) -> str:
+        """Databricks SQL 쿼리를 실행하고 결과를 반환합니다."""
+        result = spark.sql(sql).limit(100).toPandas()
+        return result.to_string(index=False)
+
+    @tool
+    def search_documentation(query: str) -> str:
+        """내부 문서에서 관련 내용을 검색합니다."""
+        chunks = retrieve_relevant_chunks(query, num_results=3)
+        return "\n\n".join([c["content"] for c in chunks])
+
+    tools = [query_databricks_sql, search_documentation]
+
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", "당신은 데이터 분석과 문서 검색을 돕는 AI 에이전트입니다."),
+        ("human", "{input}"),
+        ("placeholder", "{agent_scratchpad}"),
+    ])
+
+    agent = create_tool_calling_agent(llm, tools, prompt)
+    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
+    result = agent_executor.invoke({
+        "input": "지난 달 대비 이번 달 매출이 얼마나 증가했는지 분석하고, "
+                 "매출 향상을 위한 전략을 내부 문서에서 찾아줘."
+    })
+    ```
+
+    <Note>
+      Databricks는 2025년에 에이전트 평가, 모니터링, 거버넌스를 위한 Mosaic AI Agent Framework를 출시했습니다. MLflow를 통해 에이전트의 모든 추론 단계와 도구 호출을 추적할 수 있습니다.
+    </Note>
+  </Tab>
+</Tabs>
+
+## Databricks의 전략적 포지셔닝
+
+<AccordionGroup>
+  <Accordion title="데이터 + AI 통합: 데이터 인텔리전스 플랫폼">
+    Databricks는 2024년 자사 제품을 "데이터 인텔리전스 플랫폼"으로 재정의했습니다. 이는 데이터 엔지니어링, 데이터 웨어하우스, ML/AI를 하나의 플랫폼에서 통합 제공한다는 전략입니다. AI 모델이 데이터와 같은 거버넌스 정책 아래 관리되며, 데이터 파이프라인과 AI 파이프라인이 자연스럽게 연결됩니다.
+  </Accordion>
+  <Accordion title="오픈소스 중심 전략">
+    Databricks는 Apache Spark, Delta Lake, MLflow, LlamaIndex 등 핵심 오픈소스 프로젝트를 주도하며 벤더 종속 없는 AI 인프라를 구축합니다. DBRX를 오픈소스로 공개한 것도 같은 맥락입니다. 고객은 Databricks 플랫폼을 떠나더라도 오픈소스 표준 기반의 자산을 그대로 활용할 수 있습니다.
+  </Accordion>
+  <Accordion title="거버넌스 우선 AI">
+    Unity Catalog는 데이터뿐 아니라 ML 모델, 피처 스토어, 벡터 인덱스까지 통합 거버넌스를 제공합니다. 금융·헬스케어·공공 분야처럼 규제 환경이 엄격한 기업에서 AI를 책임감 있게 운영하기 위한 기반입니다.
+  </Accordion>
+  <Accordion title="멀티클라우드 및 온프레미스 지원">
+    AWS, Azure, GCP 세 곳의 주요 클라우드에서 동일한 경험을 제공하며, 일부 고객을 위한 Bring Your Own Cloud(BYOC) 및 온프레미스 배포 옵션도 제공합니다. 데이터 주권이 중요한 기업에게 특히 중요한 요소입니다.
+  </Accordion>
+</AccordionGroup>
+
+## 2025년에 주목해야 할 기술
+
+<CardGroup cols={3}>
+  <Card title="멀티모달 AI" icon="image">
+    텍스트, 이미지, 오디오, 비디오를 함께 처리하는 멀티모달 모델이 엔터프라이즈 분야로 확산됩니다. Databricks는 이미지-텍스트 데이터의 통합 관리를 위한 기능을 확장 중입니다.
+  </Card>
+  <Card title="소형 언어 모델 (SLM)" icon="microchip">
+    Phi-3, Gemma 등 소형이지만 특정 도메인에서 대형 모델에 필적하는 성능을 보이는 SLM의 채택이 증가합니다. 비용과 지연 시간에서 큰 이점이 있습니다.
+  </Card>
+  <Card title="AI 시스템 관측 가능성" icon="chart-line">
+    MLflow Tracing, LLM 모니터링, 비용 추적 등 AI 시스템의 프로덕션 운영을 위한 관측 가능성(observability) 도구의 중요성이 높아지고 있습니다.
+  </Card>
+</CardGroup>
+
+<Info>
+  Databricks 연간 보고서 "The State of Data + AI"에서 전 세계 기업의 AI 도입 현황과 트렌드를 확인할 수 있습니다. 이 보고서는 Databricks 플랫폼의 실제 사용 데이터를 기반으로 작성됩니다.
+</Info>

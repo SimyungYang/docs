@@ -1,0 +1,583 @@
+---
+title: "AI Vibe Coding 실습: SmartTV AI 기능 구현"
+sidebarTitle: "실습"
+description: "시청 이력 데이터를 Delta Lake에 적재하고 피처를 엔지니어링한 뒤 Foundation Model API로 콘텐츠 추천 모델을 구축합니다. MLflow로 실험을 추적하고 LG SmartTV Genie SDK와 REST API로 연동하는 핵심 실습입니다."
+---
+
+이 섹션이 워크샵의 핵심입니다. Databricks 노트북 안에서 데이터를 탐색하고, LLM을 활용한 추천 로직을 작성하고, Model Serving 엔드포인트를 배포한 뒤 실제 SmartTV 에뮬레이터에서 API 호출까지 완성합니다. 각 모듈은 독립적으로 실행할 수 있지만, 순서대로 진행하는 것을 권장합니다.
+
+<Info>
+  실습에 사용하는 노트북은 Databricks Workspace의 `/Users/<your-email>/smarttv-workshop/` 폴더에 있습니다. [환경 설정](/workshop/setup)을 먼저 완료해 주세요.
+</Info>
+
+## 모듈 1: 데이터 준비 및 피처 엔지니어링
+
+<Steps>
+  <Step title="샘플 시청 이력 데이터 적재">
+    `01_data_prep.ipynb` 노트북을 열고 클러스터에 연결합니다. 첫 번째 셀을 실행해 샘플 데이터를 Delta Lake 테이블에 적재합니다.
+
+    ```python
+    # 환경 변수 로드
+    import os
+    from dotenv import load_dotenv
+    load_dotenv()
+
+    CATALOG = os.getenv("CATALOG_NAME", "smarttv_workshop")
+    SCHEMA  = os.getenv("SCHEMA_NAME", "default_lab")
+
+    # 카탈로그 및 스키마 생성
+    spark.sql(f"CREATE CATALOG IF NOT EXISTS {CATALOG}")
+    spark.sql(f"CREATE SCHEMA IF NOT EXISTS {CATALOG}.{SCHEMA}")
+    spark.sql(f"USE {CATALOG}.{SCHEMA}")
+
+    print(f"✓ 카탈로그/스키마 준비 완료: {CATALOG}.{SCHEMA}")
+    ```
+
+    다음으로 CSV 샘플 데이터를 Delta 테이블로 저장합니다.
+
+    ```python
+    from pyspark.sql import functions as F
+
+    # 샘플 시청 이력 데이터 로드
+    df_raw = spark.read.option("header", True).csv(
+        "/Volumes/smarttv_workshop/assets/watch_history_sample.csv"
+    )
+
+    # 타입 변환 및 기본 전처리
+    df_clean = (
+        df_raw
+        .withColumn("watch_duration_min", F.col("watch_duration_min").cast("int"))
+        .withColumn("rating",             F.col("rating").cast("double"))
+        .withColumn("watch_ts",           F.to_timestamp("watch_ts"))
+        .withColumn("date",               F.to_date("watch_ts"))
+    )
+
+    # Delta 테이블로 저장
+    df_clean.write.format("delta").mode("overwrite").saveAsTable("watch_history")
+    print(f"✓ 저장 완료: {df_clean.count():,}개 행")
+    ```
+  </Step>
+
+  <Step title="피처 엔지니어링">
+    시청 이력을 바탕으로 사용자 취향 피처를 생성합니다.
+
+    ```python
+    # 사용자별 선호 장르 및 시청 패턴 계산
+    df_user_features = (
+        spark.table("watch_history")
+        .groupBy("user_id")
+        .agg(
+            F.count("content_id").alias("total_views"),
+            F.avg("watch_duration_min").alias("avg_watch_min"),
+            F.avg("rating").alias("avg_rating"),
+            F.collect_set("genre").alias("preferred_genres"),
+            F.max("watch_ts").alias("last_watched_ts"),
+        )
+        .withColumn(
+            "engagement_score",
+            F.round(F.col("avg_watch_min") * F.col("avg_rating") / 100, 2)
+        )
+    )
+
+    df_user_features.write.format("delta").mode("overwrite").saveAsTable("user_features")
+    display(df_user_features.limit(5))
+    ```
+
+    <Tip>
+      `display()` 함수는 Databricks 노트북 전용입니다. 데이터프레임을 인터랙티브 테이블로 시각화해 주므로, `.show()` 대신 사용하세요.
+    </Tip>
+  </Step>
+
+  <Step title="콘텐츠 메타데이터 테이블 생성">
+    추천에 사용할 콘텐츠 메타데이터를 Delta 테이블로 저장합니다.
+
+    ```python
+    # 콘텐츠 메타데이터 (제목, 장르, 설명, 임베딩 입력용 텍스트)
+    df_content = spark.read.option("header", True).csv(
+        "/Volumes/smarttv_workshop/assets/content_catalog.csv"
+    )
+
+    df_content = df_content.withColumn(
+        "search_text",
+        F.concat_ws(" | ", F.col("title"), F.col("genre"), F.col("synopsis"))
+    )
+
+    df_content.write.format("delta").mode("overwrite").saveAsTable("content_catalog")
+    print(f"✓ 콘텐츠 카탈로그: {df_content.count()}개 항목 저장 완료")
+    ```
+  </Step>
+</Steps>
+
+---
+
+## 모듈 2: LLM 기반 콘텐츠 추천 로직 구현
+
+<Steps>
+  <Step title="Databricks Foundation Model API 연결">
+    `02_llm_recommender.ipynb` 노트북을 열고 Databricks Foundation Model API에 연결합니다. 별도 API 키 없이 워크스페이스 토큰으로 바로 사용할 수 있습니다.
+
+    <Tabs>
+      <Tab title="OpenAI 호환 SDK 사용 (권장)">
+        ```python
+        from openai import OpenAI
+        import os
+
+        client = OpenAI(
+            api_key=os.getenv("DATABRICKS_TOKEN"),
+            base_url=f"{os.getenv('DATABRICKS_HOST')}/serving-endpoints"
+        )
+
+        # 연결 테스트
+        response = client.chat.completions.create(
+            model="databricks-dbrx-instruct",   # 또는 databricks-meta-llama-3-70b-instruct
+            messages=[{"role": "user", "content": "안녕하세요! 테스트 메시지입니다."}],
+            max_tokens=64
+        )
+        print(response.choices[0].message.content)
+        ```
+      </Tab>
+      <Tab title="LangChain 사용">
+        ```python
+        from langchain_community.chat_models import ChatDatabricks
+
+        llm = ChatDatabricks(
+            endpoint="databricks-dbrx-instruct",
+            max_tokens=512,
+            temperature=0.3,
+        )
+
+        response = llm.invoke("안녕하세요! 응답해 주세요.")
+        print(response.content)
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="추천 프롬프트 엔지니어링">
+    사용자 피처와 시청 이력을 컨텍스트로 제공하는 추천 프롬프트를 작성합니다.
+
+    ```python
+    def build_recommendation_prompt(user_id: str, top_n: int = 5) -> str:
+        """사용자 피처를 기반으로 추천 프롬프트를 생성합니다."""
+
+        # 사용자 피처 조회
+        user_feat = (
+            spark.table("user_features")
+            .filter(F.col("user_id") == user_id)
+            .collect()
+        )
+        if not user_feat:
+            raise ValueError(f"user_id '{user_id}'를 찾을 수 없습니다.")
+
+        row = user_feat[0]
+        genres = ", ".join(row["preferred_genres"][:5])
+
+        # 최근 시청 콘텐츠 5개 조회
+        recent_titles = (
+            spark.table("watch_history")
+            .filter(F.col("user_id") == user_id)
+            .orderBy(F.col("watch_ts").desc())
+            .limit(5)
+            .select("title")
+            .toPandas()["title"]
+            .tolist()
+        )
+
+        prompt = f"""당신은 LG SmartTV 콘텐츠 추천 AI입니다.
+
+사용자 정보:
+- 선호 장르: {genres}
+- 평균 시청 시간: {row['avg_watch_min']:.0f}분
+- 평균 평점: {row['avg_rating']:.1f}/5.0
+- 최근 시청 작품: {', '.join(recent_titles)}
+
+위 정보를 바탕으로 이 사용자에게 적합한 콘텐츠 {top_n}편을 추천하고,
+각각 한 문장으로 추천 이유를 설명해 주세요.
+JSON 형식으로만 응답하세요:
+[{{"rank": 1, "title": "...", "genre": "...", "reason": "..."}}]"""
+
+        return prompt
+
+
+    # 테스트 실행
+    prompt = build_recommendation_prompt("user_0042", top_n=5)
+    print(prompt)
+    ```
+  </Step>
+
+  <Step title="추천 결과 생성 및 파싱">
+    LLM을 호출하고 결과를 파싱합니다.
+
+    ```python
+    import json
+    import re
+
+    def get_recommendations(user_id: str, top_n: int = 5) -> list[dict]:
+        """LLM을 호출해 추천 결과를 반환합니다."""
+        prompt = build_recommendation_prompt(user_id, top_n)
+
+        response = client.chat.completions.create(
+            model="databricks-dbrx-instruct",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "당신은 SmartTV 콘텐츠 추천 전문가입니다. JSON으로만 응답하세요."
+                },
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=1024,
+            temperature=0.2,
+        )
+
+        raw = response.choices[0].message.content.strip()
+
+        # JSON 추출 (마크다운 코드 블록 처리)
+        json_match = re.search(r'\[.*\]', raw, re.DOTALL)
+        if not json_match:
+            raise ValueError(f"JSON 파싱 실패: {raw[:200]}")
+
+        recommendations = json.loads(json_match.group())
+        return recommendations
+
+
+    # 테스트
+    recs = get_recommendations("user_0042")
+    for r in recs:
+        print(f"{r['rank']}. {r['title']} ({r['genre']})\n   → {r['reason']}\n")
+    ```
+
+    <Tip>
+      `temperature=0.2`로 낮게 설정하면 추천 결과가 일관성 있게 나옵니다. 창의적인 추천을 원한다면 `0.5~0.7` 범위로 조정해 보세요.
+    </Tip>
+  </Step>
+
+  <Step title="MLflow로 실험 추적">
+    여러 프롬프트 전략의 성능을 MLflow로 비교합니다.
+
+    ```python
+    import mlflow
+    import time
+
+    mlflow.set_experiment("/Users/<your-email>/smarttv-recommender")
+
+    strategies = [
+        {"name": "genre_based",   "top_n": 5, "temperature": 0.2},
+        {"name": "balanced",      "top_n": 5, "temperature": 0.5},
+        {"name": "exploratory",   "top_n": 5, "temperature": 0.8},
+    ]
+
+    for strategy in strategies:
+        with mlflow.start_run(run_name=strategy["name"]):
+            mlflow.log_params(strategy)
+
+            start = time.time()
+            recs = get_recommendations("user_0042", top_n=strategy["top_n"])
+            latency_ms = (time.time() - start) * 1000
+
+            mlflow.log_metric("latency_ms",    latency_ms)
+            mlflow.log_metric("num_results",   len(recs))
+            mlflow.log_text(json.dumps(recs, ensure_ascii=False, indent=2),
+                            "recommendations.json")
+
+            print(f"[{strategy['name']}] 지연시간: {latency_ms:.0f}ms, 결과: {len(recs)}개")
+    ```
+  </Step>
+</Steps>
+
+---
+
+## 모듈 3: Model Serving 엔드포인트 배포
+
+<Steps>
+  <Step title="PyFunc 모델 클래스 정의">
+    `03_model_serving.ipynb` 노트북을 열어 MLflow PyFunc 래퍼를 작성합니다.
+
+    ```python
+    import mlflow.pyfunc
+
+    class SmartTVRecommender(mlflow.pyfunc.PythonModel):
+        """Databricks Model Serving용 SmartTV 추천 모델."""
+
+        def load_context(self, context):
+            import os
+            from openai import OpenAI
+
+            self.client = OpenAI(
+                api_key=os.environ["DATABRICKS_TOKEN"],
+                base_url=f"{os.environ['DATABRICKS_HOST']}/serving-endpoints"
+            )
+            self.model_name = "databricks-dbrx-instruct"
+
+        def predict(self, context, model_input):
+            """
+            model_input: pandas DataFrame
+              - user_id (str): 추천을 요청할 사용자 ID
+              - top_n   (int, optional): 추천 개수, 기본 5
+            """
+            import json, re, pandas as pd
+
+            results = []
+            for _, row in model_input.iterrows():
+                user_id = row["user_id"]
+                top_n   = int(row.get("top_n", 5))
+
+                try:
+                    recs = get_recommendations(user_id, top_n)
+                    results.append({
+                        "user_id":         user_id,
+                        "recommendations": recs,
+                        "status":          "ok"
+                    })
+                except Exception as e:
+                    results.append({
+                        "user_id":         user_id,
+                        "recommendations": [],
+                        "status":          f"error: {e}"
+                    })
+
+            return pd.DataFrame(results)
+    ```
+  </Step>
+
+  <Step title="모델 로깅 및 Model Registry 등록">
+    ```python
+    import pandas as pd
+
+    # 입력 스키마 정의
+    input_example = pd.DataFrame([
+        {"user_id": "user_0042", "top_n": 5}
+    ])
+
+    with mlflow.start_run(run_name="smarttv-recommender-v1"):
+        model_info = mlflow.pyfunc.log_model(
+            artifact_path="model",
+            python_model=SmartTVRecommender(),
+            input_example=input_example,
+            registered_model_name="smarttv_recommender",
+            pip_requirements=[
+                "openai>=1.30.0",
+                "pandas>=2.0.0",
+            ]
+        )
+        print(f"✓ 모델 등록 완료: {model_info.model_uri}")
+    ```
+  </Step>
+
+  <Step title="Model Serving 엔드포인트 배포">
+    Databricks SDK를 사용해 엔드포인트를 프로그래밍 방식으로 배포합니다.
+
+    ```python
+    from databricks.sdk import WorkspaceClient
+    from databricks.sdk.service.serving import (
+        EndpointCoreConfigInput,
+        ServedModelInput,
+        ServedModelInputWorkloadSize,
+    )
+
+    w = WorkspaceClient()
+
+    endpoint_name = os.getenv("SERVING_ENDPOINT_NAME", "smarttv-recommender-endpoint")
+
+    w.serving_endpoints.create_and_wait(
+        name=endpoint_name,
+        config=EndpointCoreConfigInput(
+            served_models=[
+                ServedModelInput(
+                    model_name="smarttv_recommender",
+                    model_version="1",
+                    workload_size=ServedModelInputWorkloadSize.SMALL,
+                    scale_to_zero_enabled=True,
+                )
+            ]
+        ),
+    )
+    print(f"✓ 엔드포인트 배포 완료: {endpoint_name}")
+    ```
+
+    <Note>
+      `scale_to_zero_enabled=True`를 설정하면 트래픽이 없을 때 자동으로 다운스케일됩니다. 워크샵 환경에서는 비용 절감을 위해 권장합니다.
+    </Note>
+  </Step>
+
+  <Step title="엔드포인트 REST API 호출 테스트">
+    배포된 엔드포인트를 `curl`과 Python 양쪽으로 테스트합니다.
+
+    <Tabs>
+      <Tab title="Python (requests)">
+        ```python
+        import requests, json, os
+
+        HOST  = os.getenv("DATABRICKS_HOST")
+        TOKEN = os.getenv("DATABRICKS_TOKEN")
+        EP    = os.getenv("SERVING_ENDPOINT_NAME")
+
+        url = f"{HOST}/serving-endpoints/{EP}/invocations"
+
+        payload = {
+            "dataframe_records": [
+                {"user_id": "user_0042", "top_n": 5}
+            ]
+        }
+
+        resp = requests.post(
+            url,
+            headers={
+                "Authorization": f"Bearer {TOKEN}",
+                "Content-Type":  "application/json",
+            },
+            json=payload,
+            timeout=30,
+        )
+        resp.raise_for_status()
+        print(json.dumps(resp.json(), ensure_ascii=False, indent=2))
+        ```
+      </Tab>
+      <Tab title="curl">
+        ```bash
+        curl -X POST \
+          "${DATABRICKS_HOST}/serving-endpoints/${SERVING_ENDPOINT_NAME}/invocations" \
+          -H "Authorization: Bearer ${DATABRICKS_TOKEN}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "dataframe_records": [
+              {"user_id": "user_0042", "top_n": 5}
+            ]
+          }'
+        ```
+      </Tab>
+    </Tabs>
+
+    성공 응답 예시입니다.
+
+    ```json
+    {
+      "predictions": [
+        {
+          "user_id": "user_0042",
+          "status": "ok",
+          "recommendations": [
+            {"rank": 1, "title": "오징어 게임 시즌 3", "genre": "드라마", "reason": "선호하는 스릴러 장르와 높은 평점 이력에 적합합니다."},
+            {"rank": 2, "title": "더 글로리 파트 2",   "genre": "드라마", "reason": "복수극 장르를 즐겨 시청하는 패턴과 일치합니다."}
+          ]
+        }
+      ]
+    }
+    ```
+  </Step>
+</Steps>
+
+---
+
+## 모듈 4: LG SmartTV Genie SDK 연동
+
+<Steps>
+  <Step title="Genie SDK 초기화">
+    `04_genie_integration.ipynb` 노트북(또는 로컬 `src/genie_connector.py`)을 열고 Genie SDK를 초기화합니다.
+
+    ```python
+    # genie-sdk/ 폴더의 경량 에뮬레이터 SDK 사용
+    import sys
+    sys.path.insert(0, "./genie-sdk")
+
+    from genie_emulator import GenieApp, ContentRequest, ContentResponse
+
+    app = GenieApp(
+        app_id="smarttv.workshop.recommender",
+        emulator_port=8888,   # 로컬 에뮬레이터 포트
+    )
+    print(f"✓ Genie 에뮬레이터 연결: {app.status()}")
+    ```
+  </Step>
+
+  <Step title="추천 핸들러 등록">
+    Genie 플랫폼의 콘텐츠 요청 이벤트에 Databricks 엔드포인트 호출을 연결합니다.
+
+    ```python
+    import requests, os
+
+    DATABRICKS_HOST = os.getenv("DATABRICKS_HOST")
+    DATABRICKS_TOKEN = os.getenv("DATABRICKS_TOKEN")
+    ENDPOINT_NAME   = os.getenv("SERVING_ENDPOINT_NAME")
+
+    def fetch_recommendations_from_databricks(user_id: str, top_n: int = 5) -> list:
+        """Databricks Serving 엔드포인트에서 추천 결과를 가져옵니다."""
+        url = f"{DATABRICKS_HOST}/serving-endpoints/{ENDPOINT_NAME}/invocations"
+        resp = requests.post(
+            url,
+            headers={
+                "Authorization": f"Bearer {DATABRICKS_TOKEN}",
+                "Content-Type":  "application/json",
+            },
+            json={"dataframe_records": [{"user_id": user_id, "top_n": top_n}]},
+            timeout=10,
+        )
+        resp.raise_for_status()
+        predictions = resp.json()["predictions"]
+        return predictions[0]["recommendations"] if predictions else []
+
+
+    @app.on_content_request
+    def handle_content_request(req: ContentRequest) -> ContentResponse:
+        """SmartTV에서 콘텐츠 추천 요청이 오면 호출됩니다."""
+        recs = fetch_recommendations_from_databricks(
+            user_id=req.user_id,
+            top_n=req.requested_count or 5,
+        )
+
+        return ContentResponse(
+            request_id=req.request_id,
+            items=[
+                {"title": r["title"], "genre": r["genre"], "reason": r["reason"]}
+                for r in recs
+            ]
+        )
+
+    print("✓ 핸들러 등록 완료")
+    ```
+  </Step>
+
+  <Step title="에뮬레이터에서 엔드-투-엔드 테스트">
+    에뮬레이터를 실행하고 SmartTV 화면에서 추천이 표시되는지 확인합니다.
+
+    ```python
+    # 에뮬레이터 시작 (백그라운드 스레드로 실행)
+    app.start(blocking=False)
+
+    # 테스트 요청 전송
+    import time
+    time.sleep(2)   # 에뮬레이터 기동 대기
+
+    test_result = app.simulate_request(
+        user_id="user_0042",
+        requested_count=5,
+    )
+
+    print("에뮬레이터 응답:")
+    for i, item in enumerate(test_result.items, 1):
+        print(f"  {i}. {item['title']} ({item['genre']})")
+        print(f"     {item['reason']}")
+    ```
+
+    <Tip>
+      에뮬레이터 UI(`http://localhost:8888`)를 브라우저에서 열면 SmartTV 홈 화면에 추천 콘텐츠가 표시되는 것을 시각적으로 확인할 수 있습니다.
+    </Tip>
+  </Step>
+</Steps>
+
+---
+
+## 실습 체크리스트
+
+워크샵 실습을 모두 완료했는지 확인하세요.
+
+| 항목 | 완료 |
+|------|------|
+| Delta 테이블에 시청 이력 데이터 적재 | ☐ |
+| 사용자 피처 테이블 생성 | ☐ |
+| LLM 호출로 추천 결과 생성 | ☐ |
+| MLflow 실험 추적 | ☐ |
+| Model Serving 엔드포인트 배포 | ☐ |
+| REST API 호출 테스트 성공 | ☐ |
+| Genie SDK 에뮬레이터 연동 성공 | ☐ |
+
+모든 항목을 완료했다면 [마무리](/workshop/wrap-up) 섹션으로 이동하세요.

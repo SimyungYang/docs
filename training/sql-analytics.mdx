@@ -1,0 +1,291 @@
+---
+title: "Databricks SQL Analytics: 대화형 쿼리와 대시보드"
+sidebarTitle: "SQL Analytics"
+description: "Databricks SQL 쿼리 에디터와 파라미터화된 동적 쿼리 작성법, 펀넬·코호트·RFM 분석 SQL 패턴, 대시보드 시각화 구성 및 공유, 임계값 자동 알림(Alert) 설정으로 셀프 서비스 분석 환경을 구축합니다."
+---
+
+Databricks SQL Analytics는 데이터 분석가와 비즈니스 사용자가 SQL만으로 데이터를 탐색하고 대시보드를 만들 수 있는 웹 기반 환경입니다. SQL Warehouse에 연결하여 Delta 테이블을 대화형으로 쿼리하고, 결과를 시각화하여 팀과 공유하거나 임계값 초과 시 자동 알림을 받을 수 있습니다.
+
+## 쿼리 에디터 핵심 기능
+
+<CardGroup cols={2}>
+  <Card title="자동 완성과 스키마 탐색" icon="magnifying-glass">
+    Unity Catalog의 카탈로그·스키마·테이블이 에디터 왼쪽 패널에 트리 구조로 표시됩니다. 테이블 이름 입력 시 컬럼 자동 완성이 동작합니다.
+  </Card>
+  <Card title="쿼리 파라미터" icon="sliders">
+    `{{parameter_name}}` 문법으로 동적 파라미터를 정의합니다. 대시보드 위젯과 연동하면 사용자가 드롭다운이나 날짜 선택기로 필터를 변경할 수 있습니다.
+  </Card>
+  <Card title="쿼리 스니펫" icon="code">
+    자주 사용하는 WHERE 절, CTE, 함수 조합을 스니펫으로 저장합니다. `{{snippet:my_snippet}}` 형식으로 다른 쿼리에서 재사용합니다.
+  </Card>
+  <Card title="결과 다운로드" icon="download">
+    쿼리 결과를 CSV 또는 Excel로 내보냅니다. 최대 64,000행을 다운로드할 수 있습니다. 더 큰 결과셋은 Delta 테이블로 저장 후 내보내십시오.
+  </Card>
+</CardGroup>
+
+## 주요 SQL 분석 쿼리
+
+### 파라미터화된 대화형 쿼리
+
+```sql
+-- 날짜 범위와 세그먼트를 파라미터로 받아 매출 분석
+-- 파라미터: {{start_date}}, {{end_date}}, {{segment}}
+
+WITH daily_revenue AS (
+    SELECT
+        d.full_date,
+        d.week_of_year,
+        d.month_name,
+        c.segment,
+        c.country,
+        SUM(f.net_amount)          AS revenue,
+        COUNT(DISTINCT f.order_id) AS orders,
+        AVG(f.net_amount)          AS avg_order_value
+    FROM gold.dw.fact_orders f
+    JOIN gold.dw.dim_date      d ON f.date_key = d.date_key
+    JOIN gold.dw.dim_customers c ON f.customer_key = c.customer_key
+    WHERE
+        d.full_date BETWEEN '{{start_date}}' AND '{{end_date}}'
+        AND (c.segment = '{{segment}}' OR '{{segment}}' = 'ALL')
+    GROUP BY 1, 2, 3, 4, 5
+)
+SELECT
+    full_date,
+    week_of_year,
+    month_name,
+    segment,
+    country,
+    revenue,
+    orders,
+    ROUND(avg_order_value, 0) AS avg_order_value,
+    SUM(revenue) OVER (
+        PARTITION BY segment
+        ORDER BY full_date
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    ) AS cumulative_revenue
+FROM daily_revenue
+ORDER BY full_date;
+```
+
+### 펀넬 분석
+
+```sql
+-- 사용자 이벤트 펀넬: 방문 → 장바구니 → 결제 → 완료
+WITH events AS (
+    SELECT
+        user_id,
+        event_type,
+        event_date,
+        session_id
+    FROM silver.events.user_actions
+    WHERE event_date BETWEEN '{{start_date}}' AND '{{end_date}}'
+),
+funnel AS (
+    SELECT
+        COUNT(DISTINCT CASE WHEN event_type = 'page_view'         THEN user_id END) AS step1_visit,
+        COUNT(DISTINCT CASE WHEN event_type = 'add_to_cart'       THEN user_id END) AS step2_cart,
+        COUNT(DISTINCT CASE WHEN event_type = 'checkout_start'    THEN user_id END) AS step3_checkout,
+        COUNT(DISTINCT CASE WHEN event_type = 'purchase_complete' THEN user_id END) AS step4_purchase
+    FROM events
+)
+SELECT
+    '1. 페이지 방문'     AS funnel_step, step1_visit     AS users, 100.0                              AS conversion_pct FROM funnel
+UNION ALL
+SELECT '2. 장바구니 추가', step2_cart,    ROUND(step2_cart    * 100.0 / NULLIF(step1_visit, 0), 1) FROM funnel
+UNION ALL
+SELECT '3. 결제 시작',     step3_checkout, ROUND(step3_checkout * 100.0 / NULLIF(step1_visit, 0), 1) FROM funnel
+UNION ALL
+SELECT '4. 구매 완료',     step4_purchase, ROUND(step4_purchase * 100.0 / NULLIF(step1_visit, 0), 1) FROM funnel;
+```
+
+### 코호트 분석
+
+```sql
+-- 월별 신규 고객 코호트의 리텐션률
+WITH first_order AS (
+    SELECT
+        c.customer_key,
+        DATE_TRUNC('month', MIN(d.full_date)) AS cohort_month
+    FROM gold.dw.fact_orders f
+    JOIN gold.dw.dim_date      d ON f.date_key = d.date_key
+    JOIN gold.dw.dim_customers c ON f.customer_key = c.customer_key
+    GROUP BY 1
+),
+cohort_activity AS (
+    SELECT
+        fo.cohort_month,
+        DATE_TRUNC('month', d.full_date)                          AS activity_month,
+        DATEDIFF(
+            DATE_TRUNC('month', d.full_date), fo.cohort_month
+        ) / 30                                                    AS months_since_first,
+        COUNT(DISTINCT f.customer_key)                            AS active_customers
+    FROM gold.dw.fact_orders f
+    JOIN gold.dw.dim_date  d  ON f.date_key = d.date_key
+    JOIN first_order       fo ON f.customer_key = fo.customer_key
+    GROUP BY 1, 2, 3
+),
+cohort_size AS (
+    SELECT cohort_month, COUNT(*) AS cohort_customers
+    FROM first_order
+    GROUP BY 1
+)
+SELECT
+    ca.cohort_month,
+    ca.months_since_first AS month_number,
+    ca.active_customers,
+    cs.cohort_customers,
+    ROUND(ca.active_customers * 100.0 / cs.cohort_customers, 1) AS retention_rate
+FROM cohort_activity ca
+JOIN cohort_size     cs ON ca.cohort_month = cs.cohort_month
+ORDER BY ca.cohort_month, ca.months_since_first;
+```
+
+## 시각화 유형과 활용 가이드
+
+<Tabs>
+  <Tab title="차트 유형 선택">
+    | 시각화 유형 | 적합한 데이터 | 예시 |
+    |------------|--------------|------|
+    | 라인 차트 | 시계열 추이 | 일별 매출, MAU 변화 |
+    | 바 차트 | 카테고리 비교 | 지역별 매출, 세그먼트 비교 |
+    | 파이/도넛 | 구성 비율 (7개 이하) | 채널별 비중, 세그먼트 분포 |
+    | 히트맵 | 2차원 밀도 | 시간대 × 요일 주문량 |
+    | 산점도 | 변수 간 상관관계 | 주문 금액 vs 방문 횟수 |
+    | 카운터 | 단일 지표 하이라이트 | 오늘 총 매출, DAU |
+    | 피벗 테이블 | 다차원 집계 | 지역 × 분기 × 세그먼트 |
+    | 지도 | 지리 분포 | 국가별 고객 수 |
+  </Tab>
+  <Tab title="시각화 설정 팁">
+    **라인 차트 설정**
+    - X축: 날짜 컬럼 선택 후 그룹 단위(일/주/월) 설정
+    - Y축: 집계값, 오른쪽 Y축을 추가하여 비율(%)을 겹쳐 표시
+    - 색상: 세그먼트 컬럼을 **그룹화**에 매핑하면 자동으로 계열 분리
+
+    **바 차트 설정**
+    - 100% 스택 바: 비율 비교에 적합
+    - 가로 바: 카테고리 이름이 길 때 가독성 향상
+    - 정렬: 값 기준 내림차순 정렬로 주요 항목을 강조
+
+    **카운터 설정**
+    - 전기간 값을 계산하는 두 번째 컬럼을 추가하여 증감율(%) 자동 표시
+    - 긍정/부정 색상을 설정하여 목표 대비 현황을 직관적으로 표현
+  </Tab>
+</Tabs>
+
+## 대시보드 구성
+
+<Steps>
+  <Step title="대시보드 생성">
+    SQL 에디터 상단의 **대시보드** 메뉴에서 **새 대시보드 만들기**를 클릭합니다. 대시보드 이름은 목적과 대상 독자를 포함하여 명확하게 지정합니다 (예: "영업팀 주간 KPI 대시보드").
+  </Step>
+  <Step title="시각화 위젯 추가">
+    저장된 쿼리에서 시각화를 선택하여 대시보드에 추가합니다. 각 위젯의 크기를 드래그로 조절하고, 텍스트 위젯으로 섹션 제목이나 설명을 추가합니다.
+  </Step>
+  <Step title="필터 위젯 연결">
+    파라미터(`{{start_date}}` 등)를 사용하는 쿼리는 대시보드 레벨 필터로 연결할 수 있습니다. 사용자가 필터를 변경하면 연결된 모든 위젯이 동시에 갱신됩니다.
+
+    ```sql
+    -- 파라미터 예시: 드롭다운, 날짜, 자유 입력 지원
+    WHERE region = '{{region}}'           -- 드롭다운 (쿼리로 옵션 로드 가능)
+      AND order_date >= '{{start_date}}'  -- 날짜 선택기
+      AND customer_name LIKE '%{{search}}%' -- 텍스트 입력
+    ```
+  </Step>
+  <Step title="자동 새로고침 설정">
+    대시보드 설정에서 새로고침 주기를 설정합니다 (1분~24시간). Serverless Warehouse를 사용하면 새로고침 시에만 비용이 발생합니다.
+  </Step>
+  <Step title="공유 및 권한 설정">
+    **공유** 버튼을 클릭하여 특정 사용자나 그룹에 **조회** 또는 **편집** 권한을 부여합니다. 공개 링크를 생성하면 Databricks 계정 없는 외부 관계자도 조회할 수 있습니다.
+  </Step>
+</Steps>
+
+## 알림(Alert) 설정
+
+알림은 쿼리 결과가 특정 조건을 만족할 때 Slack, 이메일, Webhook으로 자동 통지합니다.
+
+```sql
+-- 알림용 쿼리: 반드시 단일 숫자 값을 반환해야 함
+-- 예: 오늘 결제 실패율이 5%를 초과하면 알림
+SELECT
+    ROUND(
+        COUNT(CASE WHEN status = 'failed' THEN 1 END) * 100.0
+        / NULLIF(COUNT(*), 0),
+        2
+    ) AS failure_rate_pct
+FROM silver.payments.transactions
+WHERE payment_date = CURRENT_DATE();
+```
+
+<Steps>
+  <Step title="알림 쿼리 저장">
+    단일 숫자 지표를 반환하는 쿼리를 작성하고 저장합니다.
+  </Step>
+  <Step title="알림 생성">
+    **알림** 메뉴에서 **새 알림 만들기**를 선택하고, 저장한 쿼리와 조건을 설정합니다.
+    - 조건 예시: `failure_rate_pct > 5`
+    - 리프레시 주기: 5분마다 실행
+  </Step>
+  <Step title="알림 대상 설정">
+    Slack 웹훅 URL, 이메일 주소, 또는 PagerDuty를 알림 대상으로 추가합니다. 여러 채널을 동시에 설정할 수 있습니다.
+  </Step>
+</Steps>
+
+<Note>
+  알림이 동작하려면 SQL Warehouse가 실행 중이어야 합니다. Serverless Warehouse는 알림 쿼리 실행 시 자동으로 시작되므로 별도 관리가 필요 없습니다.
+</Note>
+
+## 유용한 SQL 분석 함수
+
+```sql
+-- 이동 평균 (7일)
+AVG(revenue) OVER (
+    ORDER BY order_date
+    ROWS BETWEEN 6 PRECEDING AND CURRENT ROW
+) AS revenue_7d_avg,
+
+-- 전년 동기 대비 성장률
+LAG(revenue, 365) OVER (ORDER BY order_date) AS revenue_yoy,
+ROUND((revenue - LAG(revenue, 365) OVER (ORDER BY order_date))
+    / NULLIF(LAG(revenue, 365) OVER (ORDER BY order_date), 0) * 100, 1) AS yoy_growth,
+
+-- 누적 합계 (연간)
+SUM(revenue) OVER (
+    PARTITION BY YEAR(order_date)
+    ORDER BY order_date
+) AS ytd_revenue,
+
+-- 백분위수 (p50, p90, p99)
+PERCENTILE_CONT(0.5)  WITHIN GROUP (ORDER BY response_time) AS p50_ms,
+PERCENTILE_CONT(0.9)  WITHIN GROUP (ORDER BY response_time) AS p90_ms,
+PERCENTILE_CONT(0.99) WITHIN GROUP (ORDER BY response_time) AS p99_ms,
+
+-- 중앙값
+MEDIAN(order_value) AS median_order_value,
+
+-- 최빈값 (Mode)
+MODE() WITHIN GROUP (ORDER BY product_category) AS top_category
+```
+
+<Tip>
+  Databricks SQL은 ANSI SQL을 완전히 지원하며 Spark SQL 함수도 사용할 수 있습니다. `QUALIFY` 절을 사용하면 윈도우 함수 결과를 서브쿼리 없이 바로 필터링할 수 있습니다.
+
+  ```sql
+  -- QUALIFY: 각 고객의 가장 최근 주문만 조회
+  SELECT customer_id, order_id, order_date, amount
+  FROM gold.dw.fact_orders
+  QUALIFY ROW_NUMBER() OVER (
+      PARTITION BY customer_id ORDER BY order_date DESC
+  ) = 1;
+  ```
+</Tip>
+
+## 다음 단계
+
+<CardGroup cols={2}>
+  <Card title="데이터 웨어하우스" icon="building-columns" href="/training/data-warehouse">
+    SQL Analytics의 기반인 SQL Warehouse 설정과 BI 도구 연동을 확인합니다.
+  </Card>
+  <Card title="머신러닝" icon="brain" href="/training/machine-learning">
+    SQL로 탐색한 피처를 Feature Store에 등록하고 ML 모델 학습에 활용합니다.
+  </Card>
+</CardGroup>

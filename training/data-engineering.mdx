@@ -1,0 +1,268 @@
+---
+title: "Databricks 데이터 엔지니어링 완전 가이드"
+sidebarTitle: "데이터 엔지니어링"
+description: "PySpark, Auto Loader, Delta Live Tables로 신뢰할 수 있는 ETL/ELT 파이프라인을 설계하는 방법을 실전 코드로 배웁니다. Bronze·Silver·Gold 메달리온 아키텍처로 데이터 품질을 단계적으로 향상시킵니다."
+---
+
+Databricks 데이터 엔지니어링은 대규모 데이터를 안정적으로 수집·변환·제공하는 모든 과정을 하나의 플랫폼에서 처리합니다. Apache Spark 기반의 분산 처리 엔진 위에 Delta Lake의 신뢰성과 Unity Catalog의 거버넌스가 결합되어, 배치와 스트리밍 파이프라인을 동일한 코드로 작성할 수 있습니다.
+
+## 핵심 개념
+
+<CardGroup cols={3}>
+  <Card title="ETL vs ELT" icon="arrows-rotate">
+    Databricks에서는 데이터를 먼저 레이크하우스에 적재(Load)한 뒤 변환(Transform)하는 ELT 패턴을 권장합니다. 원본 데이터를 보존하면서 반복 변환이 가능합니다.
+  </Card>
+  <Card title="메달리온 아키텍처" icon="layer-group">
+    Bronze(원시) → Silver(정제) → Gold(집계) 3계층으로 데이터 품질을 단계적으로 높입니다. 각 레이어는 Delta 테이블로 관리됩니다.
+  </Card>
+  <Card title="스트리밍과 배치 통합" icon="bolt">
+    Structured Streaming과 배치 API가 동일한 DataFrame API를 공유합니다. 코드 변경 없이 배치 파이프라인을 스트리밍으로 전환할 수 있습니다.
+  </Card>
+</CardGroup>
+
+## PySpark로 Delta 테이블 읽고 쓰기
+
+기본적인 ETL 흐름은 읽기 → 변환 → 쓰기 세 단계로 구성됩니다.
+
+<Tabs>
+  <Tab title="배치 ETL">
+    ```python
+    from pyspark.sql import SparkSession
+    from pyspark.sql.functions import col, to_date, trim, upper
+
+    spark = SparkSession.builder.appName("BatchETL").getOrCreate()
+
+    # Bronze: 원시 데이터 읽기 (CSV → Delta)
+    raw_df = (
+        spark.read
+        .option("header", "true")
+        .option("inferSchema", "true")
+        .csv("/mnt/landing/sales/2024/")
+    )
+
+    # Silver: 데이터 정제 및 변환
+    silver_df = (
+        raw_df
+        .withColumn("order_date", to_date(col("order_date"), "yyyy-MM-dd"))
+        .withColumn("customer_name", trim(upper(col("customer_name"))))
+        .withColumn("amount", col("amount").cast("double"))
+        .filter(col("amount") > 0)
+        .dropDuplicates(["order_id"])
+    )
+
+    # Delta 테이블로 저장 (MERGE 방식 업서트)
+    silver_df.write \
+        .format("delta") \
+        .mode("overwrite") \
+        .option("overwriteSchema", "true") \
+        .saveAsTable("sales.silver.orders")
+
+    print(f"처리된 레코드 수: {silver_df.count():,}")
+    ```
+  </Tab>
+  <Tab title="스트리밍 ETL">
+    ```python
+    from pyspark.sql.functions import col, from_json
+    from pyspark.sql.types import StructType, StructField, StringType, DoubleType
+
+    # 이벤트 스키마 정의
+    schema = StructType([
+        StructField("order_id", StringType()),
+        StructField("customer_id", StringType()),
+        StructField("amount", DoubleType()),
+        StructField("event_time", StringType()),
+    ])
+
+    # Kafka에서 실시간 이벤트 수신
+    stream_df = (
+        spark.readStream
+        .format("kafka")
+        .option("kafka.bootstrap.servers", "broker:9092")
+        .option("subscribe", "orders")
+        .load()
+        .select(from_json(col("value").cast("string"), schema).alias("data"))
+        .select("data.*")
+    )
+
+    # Delta 테이블에 연속 기록
+    query = (
+        stream_df.writeStream
+        .format("delta")
+        .outputMode("append")
+        .option("checkpointLocation", "/mnt/checkpoints/orders")
+        .table("sales.silver.orders_stream")
+    )
+
+    query.awaitTermination()
+    ```
+  </Tab>
+</Tabs>
+
+## Auto Loader로 클라우드 스토리지 자동 수집
+
+Auto Loader는 클라우드 오브젝트 스토리지에 도착하는 신규 파일을 자동으로 감지하여 처리합니다. 수백만 개의 파일도 효율적으로 다룰 수 있는 확장성을 제공합니다.
+
+```python
+# Auto Loader — cloudFiles 포맷 사용
+autoloader_df = (
+    spark.readStream
+    .format("cloudFiles")
+    .option("cloudFiles.format", "json")
+    .option("cloudFiles.schemaLocation", "/mnt/schema/events")
+    .option("cloudFiles.inferColumnTypes", "true")
+    # 신규 파일만 자동 감지 (S3 / ADLS / GCS 지원)
+    .load("/mnt/landing/events/")
+)
+
+# 변환 후 Delta에 저장
+(
+    autoloader_df
+    .withColumn("ingestion_date", col("_metadata.file_modification_time").cast("date"))
+    .writeStream
+    .format("delta")
+    .outputMode("append")
+    .option("checkpointLocation", "/mnt/checkpoints/events")
+    .option("mergeSchema", "true")
+    .trigger(availableNow=True)          # 배치처럼 한 번만 실행 후 종료
+    .table("bronze.events")
+)
+```
+
+<Tip>
+  `trigger(availableNow=True)`를 사용하면 현재 적재된 파일을 모두 처리한 뒤 스트리밍 잡이 자동 종료됩니다. 스케줄 기반 배치와 동일한 비용 효율을 유지하면서도 스트리밍 파이프라인의 체크포인트 이점을 함께 누릴 수 있습니다.
+</Tip>
+
+## Delta Live Tables (DLT) 파이프라인
+
+DLT는 파이프라인 의존성, 품질 기대치(Expectations), 자동 재처리를 선언적으로 정의합니다.
+
+```python
+import dlt
+from pyspark.sql.functions import col, current_timestamp
+
+# Bronze 레이어: 원시 데이터 수집
+@dlt.table(
+    name="raw_orders",
+    comment="원시 주문 데이터 — Auto Loader로 수집",
+    table_properties={"quality": "bronze"},
+)
+def raw_orders():
+    return (
+        spark.readStream
+        .format("cloudFiles")
+        .option("cloudFiles.format", "csv")
+        .option("cloudFiles.schemaLocation", "/mnt/schema/orders")
+        .load("/mnt/landing/orders/")
+    )
+
+# Silver 레이어: 정제 + 품질 기대치
+@dlt.expect_or_drop("유효한 금액", "amount > 0")
+@dlt.expect_or_drop("주문 ID 필수", "order_id IS NOT NULL")
+@dlt.table(
+    name="cleaned_orders",
+    comment="정제된 주문 데이터 — 품질 검증 통과",
+    table_properties={"quality": "silver"},
+)
+def cleaned_orders():
+    return (
+        dlt.read_stream("raw_orders")
+        .withColumn("amount", col("amount").cast("double"))
+        .withColumn("processed_at", current_timestamp())
+        .dropDuplicates(["order_id"])
+    )
+
+# Gold 레이어: 집계
+@dlt.table(
+    name="daily_sales_summary",
+    comment="일별 매출 집계 — BI 연동용",
+    table_properties={"quality": "gold"},
+)
+def daily_sales_summary():
+    return (
+        dlt.read("cleaned_orders")
+        .groupBy("order_date", "region")
+        .agg(
+            {"amount": "sum", "order_id": "count"}
+        )
+        .withColumnRenamed("sum(amount)", "total_amount")
+        .withColumnRenamed("count(order_id)", "order_count")
+    )
+```
+
+<Note>
+  DLT 파이프라인에서 `@dlt.expect_or_drop`을 사용하면 기대치를 위반한 레코드는 자동으로 제거되고 품질 메트릭이 UI에 기록됩니다. 이벤트 로그를 쿼리하여 드롭된 레코드 수를 추적할 수 있습니다.
+</Note>
+
+## 파이프라인 구축 단계
+
+<Steps>
+  <Step title="데이터 소스 파악 및 스키마 설계">
+    소스 시스템의 데이터 형식(CSV, JSON, Parquet, JDBC 등), 도착 주기, 예상 볼륨을 파악합니다. Unity Catalog에서 카탈로그·스키마 구조를 먼저 정의하고 테이블 소유자와 접근 권한을 설정합니다.
+  </Step>
+  <Step title="Bronze 레이어 구성">
+    Auto Loader 또는 COPY INTO를 사용해 원시 데이터를 최소 변환으로 Delta 테이블에 적재합니다. 원본 파일 경로와 수집 타임스탬프를 메타데이터 컬럼으로 함께 저장합니다.
+
+    ```sql
+    -- COPY INTO: 멱등성 있는 배치 수집
+    COPY INTO bronze.raw_clickstream
+    FROM '/mnt/landing/clickstream/'
+    FILEFORMAT = JSON
+    FORMAT_OPTIONS ('inferSchema' = 'true')
+    COPY_OPTIONS ('mergeSchema' = 'true');
+    ```
+  </Step>
+  <Step title="Silver 레이어 변환">
+    중복 제거, 타입 변환, NULL 처리, 비즈니스 규칙 적용을 수행합니다. DLT Expectations 또는 `assert` 기반 품질 체크로 불량 데이터를 격리합니다.
+  </Step>
+  <Step title="Gold 레이어 집계">
+    BI 도구와 API가 직접 소비하는 집계 테이블을 생성합니다. 쿼리 성능을 위해 Z-Ordering 또는 파티셔닝을 적용합니다.
+  </Step>
+  <Step title="Workflows로 스케줄링">
+    Databricks Workflows에서 태스크 의존성을 정의하고, SLA 알림과 재시도 정책을 설정합니다. DLT 파이프라인은 Workflows 태스크로 직접 등록할 수 있습니다.
+  </Step>
+</Steps>
+
+## 성능 최적화 팁
+
+<Accordion title="파티셔닝과 Z-Ordering">
+  날짜처럼 카디널리티가 낮고 필터에 자주 사용되는 컬럼으로 파티션을 구성합니다. 카디널리티가 높은 컬럼(user_id, product_id)에는 Z-Ordering을 사용합니다.
+
+  ```sql
+  OPTIMIZE silver.orders
+  ZORDER BY (customer_id, order_date);
+  ```
+</Accordion>
+
+<Accordion title="Adaptive Query Execution (AQE)">
+  Spark 3.x 이상에서 기본 활성화된 AQE는 실행 중 통계를 기반으로 조인 전략과 파티션 수를 동적으로 조정합니다. 스큐 조인 최적화도 자동으로 수행됩니다.
+
+  ```python
+  spark.conf.set("spark.sql.adaptive.enabled", "true")
+  spark.conf.set("spark.sql.adaptive.skewJoin.enabled", "true")
+  ```
+</Accordion>
+
+<Accordion title="캐싱 전략">
+  반복 사용되는 중간 DataFrame은 `cache()` 또는 `persist()`로 메모리에 보관합니다. 단, 스트리밍 파이프라인에서는 캐싱이 지원되지 않습니다.
+
+  ```python
+  # 재사용 빈도가 높은 DataFrame 캐싱
+  lookup_df = spark.table("silver.product_master").cache()
+  lookup_df.count()  # 캐시 materialization 트리거
+  ```
+</Accordion>
+
+<Warning>
+  소형 파일이 대량 생성되면 메타데이터 오버헤드로 쿼리 성능이 저하됩니다. `OPTIMIZE` 명령을 정기적으로 실행하거나 DLT의 자동 최적화 기능을 활성화하여 파일 크기를 관리하십시오.
+</Warning>
+
+## 다음 단계
+
+<CardGroup cols={2}>
+  <Card title="Delta Lake 심화" icon="database" href="/training/delta-lake">
+    ACID 트랜잭션, 스키마 진화, Time Travel, MERGE INTO 패턴을 자세히 학습합니다.
+  </Card>
+  <Card title="Workflows 오케스트레이션" icon="diagram-project" href="/training/workflows">
+    파이프라인 스케줄링, 태스크 의존성, 알림 설정 방법을 확인합니다.
+  </Card>
+</CardGroup>

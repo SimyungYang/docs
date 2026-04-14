@@ -1,0 +1,344 @@
+---
+title: "Databricks ML: 엔드투엔드 머신러닝 워크플로우"
+sidebarTitle: "머신러닝"
+description: "Databricks Feature Store, AutoML, scikit-learn·Spark ML 학습, MLflow 추적, Model Serving 엔드포인트 배포까지 ML 프로젝트의 전체 수명주기를 관리하고 프로덕션에 배포하는 방법을 배웁니다."
+---
+
+Databricks ML은 데이터 준비부터 모델 배포까지 머신러닝 전체 수명주기를 하나의 플랫폼에서 관리합니다. MLflow가 기본 통합되어 실험을 자동 추적하고, Feature Store로 피처를 재사용하며, Model Serving으로 실시간 추론 엔드포인트를 몇 분 안에 배포할 수 있습니다.
+
+## ML 워크플로우 개요
+
+<Steps>
+  <Step title="데이터 준비 및 피처 엔지니어링">
+    Delta 테이블에서 학습 데이터를 조회하고 피처를 계산합니다. Feature Store에 등록하면 여러 모델이 동일한 피처 정의를 재사용하여 학습-서빙 간 일관성을 보장합니다.
+  </Step>
+  <Step title="실험 및 모델 학습">
+    MLflow로 파라미터, 메트릭, 아티팩트를 자동 기록합니다. AutoML을 사용하면 최적 알고리즘과 하이퍼파라미터를 자동으로 탐색합니다.
+  </Step>
+  <Step title="모델 평가 및 등록">
+    검증 세트 성능을 비교하고 최적 모델을 MLflow Model Registry에 등록합니다. 스테이지(Staging → Production)를 통해 변경을 관리합니다.
+  </Step>
+  <Step title="모델 서빙">
+    Model Serving 엔드포인트를 생성하여 REST API로 실시간 추론을 제공합니다. A/B 테스트와 트래픽 분할도 설정 가능합니다.
+  </Step>
+</Steps>
+
+## Feature Store로 피처 관리
+
+Feature Store는 피처 계산 로직을 중앙에서 관리하여 학습 시와 서빙 시 동일한 피처 값이 사용되도록 보장합니다.
+
+```python
+from databricks.feature_engineering import FeatureEngineeringClient
+from pyspark.sql.functions import col, datediff, current_date, avg, count, sum as spark_sum
+
+fe = FeatureEngineeringClient()
+
+# 1. 고객 피처 계산
+def compute_customer_features(orders_df, customers_df):
+    """최근 90일 고객 행동 피처"""
+    recent_orders = orders_df.filter(
+        datediff(current_date(), col("order_date")) <= 90
+    )
+
+    features = (
+        recent_orders
+        .groupBy("customer_id")
+        .agg(
+            count("order_id").alias("orders_last_90d"),
+            spark_sum("net_amount").alias("revenue_last_90d"),
+            avg("net_amount").alias("avg_order_value_90d"),
+            count("order_id").alias("order_frequency_90d"),
+        )
+        .join(customers_df.select("customer_id", "segment", "country"), "customer_id", "left")
+    )
+    return features
+
+orders_df    = spark.table("gold.dw.fact_orders")
+customers_df = spark.table("gold.dw.dim_customers").filter("is_current = true")
+features_df  = compute_customer_features(orders_df, customers_df)
+
+# 2. Feature Store 테이블 생성 및 등록
+fe.create_table(
+    name="ml.feature_store.customer_features",
+    primary_keys=["customer_id"],
+    df=features_df,
+    description="고객 90일 구매 행동 피처 — 이탈 예측 모델용",
+)
+
+# 이후 업데이트는 write_table로
+fe.write_table(
+    name="ml.feature_store.customer_features",
+    df=features_df,
+    mode="merge",   # upsert
+)
+
+print("Feature Store 등록 완료")
+print(features_df.show(5))
+```
+
+## 모델 학습 with MLflow 자동 추적
+
+<Tabs>
+  <Tab title="Scikit-learn">
+    ```python
+    import mlflow
+    import mlflow.sklearn
+    from sklearn.ensemble import GradientBoostingClassifier
+    from sklearn.model_selection import train_test_split, cross_val_score
+    from sklearn.metrics import (
+        roc_auc_score, f1_score, precision_score, recall_score
+    )
+    from sklearn.preprocessing import LabelEncoder
+    import pandas as pd
+    import numpy as np
+
+    # Feature Store에서 학습 데이터 로드
+    features_df = fe.read_table("ml.feature_store.customer_features")
+    labels_df   = spark.table("ml.labels.churn_labels").toPandas()
+
+    pdf = features_df.toPandas().merge(labels_df, on="customer_id")
+    pdf["segment_enc"] = LabelEncoder().fit_transform(pdf["segment"].fillna("Unknown"))
+
+    feature_cols = [
+        "orders_last_90d", "revenue_last_90d",
+        "avg_order_value_90d", "order_frequency_90d", "segment_enc",
+    ]
+    X = pdf[feature_cols].fillna(0)
+    y = pdf["is_churned"].astype(int)
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
+
+    # MLflow 실험 설정
+    mlflow.set_experiment("/Experiments/churn-prediction")
+
+    with mlflow.start_run(run_name="GBT_baseline"):
+        # 하이퍼파라미터 기록
+        params = {
+            "n_estimators":   200,
+            "max_depth":      5,
+            "learning_rate":  0.05,
+            "subsample":      0.8,
+            "random_state":   42,
+        }
+        mlflow.log_params(params)
+
+        # 모델 학습
+        model = GradientBoostingClassifier(**params)
+        model.fit(X_train, y_train)
+
+        # 교차 검증
+        cv_auc = cross_val_score(model, X_train, y_train, cv=5, scoring="roc_auc")
+        mlflow.log_metric("cv_auc_mean",  float(cv_auc.mean()))
+        mlflow.log_metric("cv_auc_std",   float(cv_auc.std()))
+
+        # 테스트 세트 평가
+        y_pred  = model.predict(X_test)
+        y_proba = model.predict_proba(X_test)[:, 1]
+
+        metrics = {
+            "test_auc":       roc_auc_score(y_test, y_proba),
+            "test_f1":        f1_score(y_test, y_pred),
+            "test_precision": precision_score(y_test, y_pred),
+            "test_recall":    recall_score(y_test, y_pred),
+        }
+        mlflow.log_metrics(metrics)
+
+        # 피처 중요도 기록
+        importance_df = pd.DataFrame({
+            "feature":    feature_cols,
+            "importance": model.feature_importances_,
+        }).sort_values("importance", ascending=False)
+        mlflow.log_table(importance_df, artifact_file="feature_importance.json")
+
+        # 모델 등록
+        mlflow.sklearn.log_model(
+            model,
+            artifact_path="model",
+            registered_model_name="customer-churn-predictor",
+            input_example=X_test.head(5),
+            signature=mlflow.models.infer_signature(X_train, y_train),
+        )
+
+        print(f"AUC: {metrics['test_auc']:.4f} | F1: {metrics['test_f1']:.4f}")
+    ```
+  </Tab>
+  <Tab title="Spark ML (대규모 데이터)">
+    ```python
+    import mlflow
+    import mlflow.spark
+    from pyspark.ml import Pipeline
+    from pyspark.ml.classification import GBTClassifier
+    from pyspark.ml.feature import VectorAssembler, StringIndexer, Imputer
+    from pyspark.ml.evaluation import BinaryClassificationEvaluator
+    from pyspark.ml.tuning import CrossValidator, ParamGridBuilder
+
+    mlflow.set_experiment("/Experiments/churn-spark")
+
+    # Spark DataFrame으로 피처 준비
+    feature_sdf = spark.table("ml.feature_store.customer_features") \
+        .join(spark.table("ml.labels.churn_labels"), "customer_id")
+
+    # 파이프라인 구성
+    imputer = Imputer(
+        inputCols=["orders_last_90d", "revenue_last_90d", "avg_order_value_90d"],
+        outputCols=["orders_imp", "revenue_imp", "avg_value_imp"],
+    )
+    indexer  = StringIndexer(inputCol="segment",    outputCol="segment_idx", handleInvalid="keep")
+    assembler = VectorAssembler(
+        inputCols=["orders_imp", "revenue_imp", "avg_value_imp", "segment_idx"],
+        outputCol="features",
+    )
+    gbt = GBTClassifier(
+        featuresCol="features",
+        labelCol="is_churned",
+        maxIter=100,
+        maxDepth=5,
+    )
+    pipeline = Pipeline(stages=[imputer, indexer, assembler, gbt])
+
+    train_df, test_df = feature_sdf.randomSplit([0.8, 0.2], seed=42)
+
+    with mlflow.start_run(run_name="GBT_Spark_Pipeline"):
+        mlflow.log_param("maxIter",  100)
+        mlflow.log_param("maxDepth", 5)
+
+        model = pipeline.fit(train_df)
+        predictions = model.transform(test_df)
+
+        evaluator = BinaryClassificationEvaluator(
+            labelCol="is_churned", metricName="areaUnderROC"
+        )
+        auc = evaluator.evaluate(predictions)
+        mlflow.log_metric("test_auc", auc)
+
+        mlflow.spark.log_model(
+            model,
+            artifact_path="spark_model",
+            registered_model_name="customer-churn-spark",
+        )
+        print(f"Spark ML AUC: {auc:.4f}")
+    ```
+  </Tab>
+</Tabs>
+
+## AutoML로 빠른 베이스라인 수립
+
+AutoML은 여러 알고리즘과 하이퍼파라미터 조합을 자동으로 탐색하고 최적 모델을 찾습니다.
+
+```python
+from databricks import automl
+import pandas as pd
+
+# 학습 데이터 준비
+train_df = spark.table("ml.feature_store.customer_features") \
+    .join(spark.table("ml.labels.churn_labels"), "customer_id")
+
+# AutoML 실행 — 분류 문제
+summary = automl.classify(
+    dataset=train_df,
+    target_col="is_churned",
+    primary_metric="f1",         # 최적화 지표
+    timeout_minutes=30,          # 탐색 시간 제한
+    max_trials=20,               # 최대 시도 횟수
+    experiment_name="/Experiments/automl-churn",
+    exclude_cols=["customer_id"],
+    # 제외할 알고리즘 (옵션)
+    # exclude_frameworks=["sklearn"],
+)
+
+# 최적 모델 정보 확인
+print(f"최적 모델 유형: {summary.best_trial.model_description}")
+print(f"검증 F1:       {summary.best_trial.metrics['val_f1_score']:.4f}")
+print(f"실험 URL:      {summary.experiment.artifact_location}")
+
+# 최적 모델 노트북 경로 (자동 생성됨)
+print(f"모델 노트북:   {summary.best_trial.notebook_path}")
+```
+
+<Tip>
+  AutoML이 생성한 최적 모델 노트북을 열면 피처 중요도, SHAP 값 분석, 혼동 행렬 등 상세한 모델 해석 자료를 확인할 수 있습니다. 이 노트북을 직접 수정하여 커스터마이징의 시작점으로 활용하십시오.
+</Tip>
+
+## Model Serving으로 실시간 배포
+
+```python
+import mlflow
+from mlflow.tracking import MlflowClient
+
+client = MlflowClient()
+
+# 최적 모델 버전을 Production으로 전환
+model_name = "customer-churn-predictor"
+latest_version = client.get_latest_versions(model_name, stages=["None"])[0]
+
+client.transition_model_version_stage(
+    name=model_name,
+    version=latest_version.version,
+    stage="Production",
+    archive_existing_versions=True,
+)
+print(f"모델 v{latest_version.version} → Production 전환 완료")
+```
+
+```bash
+# Databricks CLI로 Model Serving 엔드포인트 생성
+databricks serving-endpoints create \
+  --name "churn-predictor-endpoint" \
+  --config '{
+    "served_models": [{
+      "name": "churn-predictor-v1",
+      "model_name": "customer-churn-predictor",
+      "model_version": "3",
+      "workload_size": "Small",
+      "scale_to_zero_enabled": true
+    }]
+  }'
+```
+
+```python
+import requests
+import json
+
+# 엔드포인트로 추론 요청
+workspace_url = "https://<workspace>.azuredatabricks.net"
+token         = "<personal-access-token>"
+endpoint_name = "churn-predictor-endpoint"
+
+data = {
+    "dataframe_records": [
+        {
+            "orders_last_90d":      15,
+            "revenue_last_90d":     450000,
+            "avg_order_value_90d":  30000,
+            "order_frequency_90d":  15,
+            "segment_enc":          1,
+        }
+    ]
+}
+
+response = requests.post(
+    url=f"{workspace_url}/serving-endpoints/{endpoint_name}/invocations",
+    headers={
+        "Authorization":  f"Bearer {token}",
+        "Content-Type":   "application/json",
+    },
+    data=json.dumps(data),
+)
+
+result = response.json()
+churn_probability = result["predictions"][0]
+print(f"이탈 확률: {churn_probability:.2%}")
+```
+
+## 다음 단계
+
+<CardGroup cols={2}>
+  <Card title="MLflow 심화" icon="flask" href="/training/mlflow">
+    실험 추적, 모델 레지스트리, 프로젝트 패키징, 모델 서빙 상세 설정을 학습합니다.
+  </Card>
+  <Card title="AI 에이전트" icon="robot" href="/training/agents">
+    학습된 모델을 LLM 기반 에이전트 워크플로우에 통합하는 방법을 확인합니다.
+  </Card>
+</CardGroup>

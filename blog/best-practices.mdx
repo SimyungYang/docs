@@ -1,0 +1,332 @@
+---
+title: "Databricks 모범 사례: 성능과 비용 최적화"
+sidebarTitle: "모범 사례"
+description: "클러스터 크기 선정, 스팟 인스턴스 활용, Delta Lake OPTIMIZE·VACUUM 최적화, 시스템 테이블 기반 비용 태그 관리, 열 마스킹 보안까지 Databricks 운영 비용을 줄이고 성능을 극대화하는 실전 기법을 정리합니다."
+---
+
+Databricks는 올바르게 구성하면 뛰어난 가격-성능 비를 제공하지만, 기본 설정 그대로 사용하면 불필요한 비용과 성능 저하가 발생합니다. 이 가이드는 수백 개의 프로덕션 워크로드 경험에서 도출한 실전 모범 사례를 컴퓨트, 스토리지, 거버넌스 세 영역으로 나누어 정리합니다.
+
+## 컴퓨트 최적화
+
+### 클러스터 유형 선택
+
+<Tip>
+  인터랙티브 분석에는 All-Purpose 클러스터를, 예약 파이프라인에는 Job 클러스터를 사용하세요. Job 클러스터는 시작 시 생성되고 완료 후 자동 삭제되므로 비용이 30~50% 절감됩니다.
+</Tip>
+
+| 클러스터 유형 | 적합한 사용 사례 | DBU 비용 |
+|-------------|--------------|---------|
+| All-Purpose | 탐색적 분석, 노트북 개발 | 높음 |
+| Job Compute | 예약 파이프라인, 배치 처리 | 낮음 (~40% 절감) |
+| SQL Warehouse (Serverless) | SQL 분석, BI 도구 연결 | 사용량 기반 |
+| Single Node | 소규모 데이터, 개발·테스트 | 가장 낮음 |
+
+### 인스턴스 유형 선택 지침
+
+<AccordionGroup>
+  <Accordion title="메모리 최적화 인스턴스 (r 시리즈)">
+    대규모 조인, 집계, 머신러닝 피처 엔지니어링처럼 셔플 데이터가 많은 워크로드에 적합합니다. 데이터가 메모리에 맞지 않아 디스크 스필이 발생한다면 r 시리즈 인스턴스로 전환하세요.
+
+    ```python
+    # 스필 발생 여부 확인 (Spark UI 대신 프로그래밍 방식으로)
+    # SparkListener를 통해 스테이지 메트릭 수집
+    spark.conf.set("spark.sql.adaptive.enabled", "true")
+    spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "true")
+    ```
+  </Accordion>
+  <Accordion title="컴퓨트 최적화 인스턴스 (c 시리즈)">
+    CPU 집약적인 변환, 복잡한 UDF, ML 모델 학습에 적합합니다. 메모리보다 CPU 사용률이 먼저 포화된다면 c 시리즈가 비용 효율적입니다.
+  </Accordion>
+  <Accordion title="GPU 인스턴스">
+    딥러닝 학습, LLM 파인튜닝, 대규모 임베딩 생성에만 사용하세요. GPU 인스턴스는 비용이 높으므로 반드시 GPU 활용률이 70% 이상 유지되는지 확인합니다. Photon 가속 SQL 워크로드에는 GPU가 불필요합니다.
+  </Accordion>
+  <Accordion title="Spot / Preemptible 인스턴스 활용">
+    중단에 내성이 있는 배치 파이프라인에서 Spot 인스턴스를 혼합 사용하면 컴퓨트 비용을 60~80% 절감할 수 있습니다. 드라이버 노드는 항상 온디맨드로 유지하고, 워커 노드만 Spot으로 설정하세요.
+
+    ```json
+    {
+      "aws_attributes": {
+        "availability": "SPOT_WITH_FALLBACK",
+        "spot_bid_price_percent": 100,
+        "first_on_demand": 1
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+### 자동 스케일링 설정
+
+```python
+from databricks.sdk import WorkspaceClient
+from databricks.sdk.service.compute import AutoScale
+
+w = WorkspaceClient()
+
+# 자동 스케일링 클러스터 (최소 2, 최대 10 워커)
+cluster = w.clusters.create(
+    cluster_name="autoscaling-prod-cluster",
+    spark_version="15.4.x-scala2.12",
+    node_type_id="m5.2xlarge",
+    autoscale=AutoScale(min_workers=2, max_workers=10),
+    autotermination_minutes=30,
+    spark_conf={
+        "spark.sql.adaptive.enabled": "true",
+        "spark.sql.adaptive.coalescePartitions.enabled": "true",
+        "spark.sql.shuffle.partitions": "auto",
+        "spark.databricks.io.cache.enabled": "true",
+    },
+)
+```
+
+<Note>
+  `spark.sql.adaptive.enabled`(AQE)를 반드시 활성화하세요. 런타임에 파티션 수와 조인 전략을 자동 조정하여 대부분의 워크로드에서 20~50%의 성능 향상을 제공합니다.
+</Note>
+
+---
+
+## Delta Lake 스토리지 최적화
+
+### OPTIMIZE 및 ZORDER
+
+소규모 파일이 누적된 Delta 테이블은 쿼리 성능이 급격히 저하됩니다. 정기적인 `OPTIMIZE` 실행으로 파일을 병합하고, 자주 필터링하는 컬럼에 `ZORDER`를 적용하세요.
+
+```sql
+-- 날짜와 지역으로 자주 필터링하는 테이블 최적화
+OPTIMIZE main.gold.sales_transactions
+ZORDER BY (transaction_date, region_code);
+
+-- 결과 확인
+DESCRIBE DETAIL main.gold.sales_transactions;
+```
+
+```python
+# 파이프라인에서 자동 OPTIMIZE
+spark.conf.set("spark.databricks.delta.optimizeWrite.enabled", "true")
+spark.conf.set("spark.databricks.delta.autoCompact.enabled", "true")
+
+# 대용량 테이블의 경우 주간 전체 최적화 스케줄링
+from databricks.sdk import WorkspaceClient
+from databricks.sdk.service.jobs import Task, SqlTask, SqlTaskQuery
+
+w = WorkspaceClient()
+
+w.jobs.create(
+    name="weekly-table-optimize",
+    tasks=[
+        Task(
+            task_key="optimize-sales",
+            sql_task=SqlTask(
+                warehouse_id="<sql-warehouse-id>",
+                query=SqlTaskQuery(
+                    query_id="<saved-query-id>"
+                ),
+            ),
+        )
+    ],
+    schedule={"quartz_cron_expression": "0 0 2 ? * SUN", "timezone_id": "Asia/Seoul"},
+)
+```
+
+### VACUUM으로 스토리지 비용 절감
+
+<Warning>
+  `VACUUM`은 지정한 보존 기간보다 오래된 파일을 영구적으로 삭제합니다. 타임 트래블 요구사항을 먼저 확인하고, 기본값(7일)보다 짧은 보존 기간은 신중하게 설정하세요.
+</Warning>
+
+```sql
+-- 7일(기본값) 이전 삭제된 파일 정리
+VACUUM main.gold.sales_transactions RETAIN 168 HOURS;
+
+-- DRY RUN으로 삭제 대상 먼저 확인
+VACUUM main.gold.sales_transactions RETAIN 168 HOURS DRY RUN;
+```
+
+### Delta 테이블 설계 모범 사례
+
+<Tip>
+  파티셔닝은 1GB 이상의 테이블에만 적용하세요. 소규모 테이블에 파티션을 추가하면 오히려 메타데이터 오버헤드로 성능이 저하됩니다.
+</Tip>
+
+```sql
+-- 좋은 파티션 기준: 카디널리티가 적당하고 자주 필터링하는 컬럼
+CREATE TABLE main.silver.events (
+    event_id BIGINT,
+    event_type STRING,
+    user_id BIGINT,
+    event_ts TIMESTAMP,
+    payload MAP<STRING, STRING>
+)
+USING DELTA
+PARTITIONED BY (DATE(event_ts))  -- 날짜 기준 파티션
+TBLPROPERTIES (
+    'delta.autoOptimize.optimizeWrite' = 'true',
+    'delta.autoOptimize.autoCompact' = 'true',
+    'delta.deletedFileRetentionDuration' = 'interval 14 days',
+    'delta.logRetentionDuration' = 'interval 30 days'
+);
+```
+
+```sql
+-- 나쁜 예: userId로 파티션 (카디널리티가 너무 높아 수백만 개의 파티션 디렉토리 생성)
+-- PARTITIONED BY (user_id)  -- 절대 사용하지 마세요
+```
+
+---
+
+## 비용 관리
+
+### 태그 기반 비용 추적
+
+모든 클러스터와 SQL Warehouse에 일관된 태그를 적용하면 팀별, 프로젝트별 비용을 정확하게 추적할 수 있습니다.
+
+```python
+# 클러스터 생성 시 태그 적용
+cluster = w.clusters.create(
+    cluster_name="data-team-analytics",
+    custom_tags={
+        "Team": "data-engineering",
+        "CostCenter": "CC-12345",
+        "Environment": "production",
+        "Project": "sales-pipeline",
+    },
+    ...
+)
+```
+
+```sql
+-- 시스템 테이블로 클러스터 비용 조회
+SELECT
+    t.custom_tags['Team'] AS team,
+    t.custom_tags['Project'] AS project,
+    SUM(u.dbu_quantity) AS total_dbu,
+    SUM(u.dbu_quantity * 0.55) AS estimated_cost_usd  -- DBU 단가에 맞게 조정
+FROM system.billing.usage u
+LEFT JOIN system.compute.clusters t ON u.cluster_id = t.cluster_id
+WHERE u.usage_date >= DATE_SUB(CURRENT_DATE(), 30)
+GROUP BY 1, 2
+ORDER BY total_dbu DESC;
+```
+
+### SQL Warehouse 비용 최적화
+
+<Tip>
+  SQL Warehouse는 Serverless 유형을 우선 검토하세요. 사용하지 않을 때 과금이 없고 콜드 스타트 시간이 Pro 대비 빠릅니다. 쿼리 실행 시간이 길거나 동시 접속자가 많은 경우 Pro를 고려합니다.
+</Tip>
+
+```sql
+-- SQL Warehouse 자동 중지 설정 (유휴 5분 후 중지)
+-- Databricks SQL → SQL Warehouses → Edit → Auto Stop: 5 minutes
+
+-- 쿼리 결과 캐싱 활용 (동일 쿼리 재실행 시 비용 없음)
+-- Settings → SQL Warehouse → Enable result caching: ON
+
+-- 쿼리 프로파일로 비효율 탐지
+EXPLAIN COST
+SELECT region, SUM(revenue) FROM main.gold.sales GROUP BY region;
+```
+
+### 예산 알림 설정
+
+```python
+# Databricks 계정 레벨 예산 알림 (계정 관리자 권한 필요)
+from databricks.sdk import AccountClient
+
+a = AccountClient()
+
+# 월별 DBU 사용량 임계값 알림 설정
+# (계정 콘솔 → Budgets에서 설정하는 것이 더 편리합니다)
+```
+
+---
+
+## 보안 모범 사례
+
+### 비밀 관리
+
+<Warning>
+  노트북, 코드, 설정 파일에 자격 증명을 직접 입력하지 마세요. Git에 푸시되거나 클러스터 로그에 노출될 수 있습니다.
+</Warning>
+
+```python
+# 나쁜 예 — 절대 하지 마세요
+password = "my-secret-password-123"
+api_key = "sk-abc123def456"
+
+# 좋은 예 — Databricks Secrets 사용
+password = dbutils.secrets.get(scope="prod-secrets", key="db-password")
+api_key = dbutils.secrets.get(scope="prod-secrets", key="openai-api-key")
+```
+
+### 최소 권한 원칙
+
+```sql
+-- 역할 기반 접근 제어 (RBAC) 설계 예시
+
+-- 분석가: 골드 레이어 읽기만 허용
+GRANT USE CATALOG ON CATALOG main TO `analysts`;
+GRANT USE SCHEMA ON SCHEMA main.gold TO `analysts`;
+GRANT SELECT ON ALL TABLES IN SCHEMA main.gold TO `analysts`;
+
+-- 데이터 엔지니어: 실버 레이어 쓰기 허용
+GRANT USE CATALOG ON CATALOG main TO `data-engineers`;
+GRANT USE SCHEMA, MODIFY ON SCHEMA main.silver TO `data-engineers`;
+GRANT SELECT ON SCHEMA main.raw TO `data-engineers`;
+
+-- PII 컬럼 마스킹
+CREATE COLUMN MASK mask_email
+  RETURN CASE
+    WHEN is_member('pii-admins') THEN email
+    ELSE REGEXP_REPLACE(email, '^(.{2}).*(@.*)$', '$1***$2')
+  END;
+
+ALTER TABLE main.silver.customers
+  ALTER COLUMN email SET MASK mask_email;
+```
+
+### 감사 로그 활용
+
+<Tip>
+  시스템 테이블(`system.access.*`)을 활용하면 별도 파이프라인 없이 쿼리 이력, 데이터 접근 로그를 즉시 분석할 수 있습니다. Delta Sharing을 통해 감사 팀과 안전하게 공유할 수 있습니다.
+</Tip>
+
+```sql
+-- 지난 7일간 민감 테이블 접근 현황 조회
+SELECT
+    user_identity.email AS user_email,
+    request_params.full_name_arg AS table_accessed,
+    COUNT(*) AS access_count,
+    MAX(event_time) AS last_access
+FROM system.access.audit
+WHERE
+    event_date >= CURRENT_DATE() - INTERVAL 7 DAYS
+    AND request_params.full_name_arg LIKE 'main.silver.customers%'
+    AND action_name = 'commandSubmit'
+GROUP BY 1, 2
+ORDER BY access_count DESC;
+```
+
+---
+
+## 요약: 즉시 적용 가능한 빠른 개선 사항
+
+<CardGroup cols={2}>
+  <Card title="AQE 활성화" icon="bolt">
+    `spark.sql.adaptive.enabled=true`로 설정하면 코드 변경 없이 대부분의 워크로드가 빨라집니다.
+  </Card>
+  <Card title="자동 최적화 설정" icon="wrench">
+    테이블 생성 시 `delta.autoOptimize.optimizeWrite=true`를 기본으로 적용하세요.
+  </Card>
+  <Card title="자동 종료 강제" icon="clock">
+    클러스터 정책으로 최대 120분 자동 종료를 강제하면 야간 낭비를 막을 수 있습니다.
+  </Card>
+  <Card title="Job 클러스터로 전환" icon="rotate">
+    반복 실행 파이프라인을 All-Purpose → Job 클러스터로 전환하면 비용이 30~50% 절감됩니다.
+  </Card>
+  <Card title="Spot 인스턴스 혼합" icon="percent">
+    배치 워커 노드에 Spot 인스턴스를 사용하면 컴퓨트 비용을 60~80% 절감할 수 있습니다.
+  </Card>
+  <Card title="태그 표준화" icon="tag">
+    팀, 프로젝트, 환경 태그를 모든 리소스에 일관 적용하여 비용을 정확히 추적하세요.
+  </Card>
+</CardGroup>
