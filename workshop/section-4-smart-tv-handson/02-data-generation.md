@@ -173,7 +173,7 @@ lge_smart_tv.bronze.devices 테이블이 잘 생성됐는지 확인해줘.
 ## 카테고리: System (시스템 로그)
 
 
-### \<strong>시스템 로그 3개 테이블 펼치기</strong> — boot_events(50K), resource_utilization(200K), firmware_updates(15K)
+### **시스템 로그 3개 테이블 펼치기** — boot_events(50K), resource_utilization(200K), firmware_updates(15K)
 
 ### 테이블 2: system_boot_events (시스템 부팅/전원 이벤트)
 
@@ -318,7 +318,7 @@ Delta 테이블로 저장해줘.
 ## 카테고리: Viewing (시청 로그)
 
 
-### \<strong>시청 로그 3개 테이블 펼치기</strong> — viewing_logs(500K), app_launch_events(300K), input_switch_events(80K)
+### **시청 로그 3개 테이블 펼치기** — viewing_logs(500K), app_launch_events(300K), input_switch_events(80K)
 
 ### 테이블 5: viewing_logs (시청 로그)
 
@@ -464,7 +464,7 @@ Delta 테이블로 저장해줘.
 ## 카테고리: Network (네트워크)
 
 
-### \<strong>네트워크 2개 테이블 펼치기</strong> — wifi_connection_events(100K), streaming_buffer_events(150K)
+### **네트워크 2개 테이블 펼치기** — wifi_connection_events(100K), streaming_buffer_events(150K)
 
 ### 테이블 8: wifi_connection_events (WiFi 연결 이벤트)
 
@@ -561,7 +561,7 @@ Delta 테이블로 저장해줘.
 ## 카테고리: Media & Ad (미디어 & 광고)
 
 
-### \<strong>미디어/광고 3개 테이블 펼치기</strong> — media_playback_events(200K), acr_events(300K), ad_impressions(200K)
+### **미디어/광고 3개 테이블 펼치기** — media_playback_events(200K), acr_events(300K), ad_impressions(200K)
 
 ### 테이블 10: media_playback_events (미디어 재생 이벤트)
 
@@ -715,7 +715,7 @@ Delta 테이블로 저장해줘.
 ## 카테고리: IoT & Voice & App
 
 
-### \<strong>IoT/음성/앱 3개 테이블 펼치기</strong> — thinq_device_events(50K), voice_command_events(80K), app_lifecycle_events(100K)
+### **IoT/음성/앱 3개 테이블 펼치기** — thinq_device_events(50K), voice_command_events(80K), app_lifecycle_events(100K)
 
 ### 테이블 13: thinq_device_events (ThinQ IoT 디바이스 이벤트)
 
@@ -866,7 +866,7 @@ Delta 테이블로 저장해줘.
 ## 카테고리: Display & Error (디스플레이 & 에러)
 
 
-### \<strong>디스플레이/에러 2개 테이블 펼치기</strong> — panel_diagnostics(30K), error_crash_events(40K)
+### **디스플레이/에러 2개 테이블 펼치기** — panel_diagnostics(30K), error_crash_events(40K)
 
 ### 테이블 16: panel_diagnostics (패널/디스플레이 진단)
 
