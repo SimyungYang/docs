@@ -1,23 +1,14 @@
----
-original_title: "Unity Catalog Best Practices"
-authors: "Databricks"
-date: "2026-02-03"
-category: "Data Governance"
-original_url: "https://docs.databricks.com/aws/en/data-governance/unity-catalog/best-practices"
-translated_date: "2026-04-07"
----
-
 # Unity Catalog 모범 사례 (Best Practices)
 
 > **원문**: [Unity Catalog best practices](https://docs.databricks.com/aws/en/data-governance/unity-catalog/best-practices)
 
-{% hint style="info" %}
+> **참고**
 **요약**
 
 - Unity Catalog의 ID 관리, 권한 할당, 메타스토어 구성, 카탈로그·스키마 설계, 스토리지 전략, 컴퓨트 설정에 걸친 포괄적인 모범 사례를 제공합니다.
 - Managed Tables(관리형 테이블)·Volumes 우선 사용, 그룹 기반 소유권 관리, SCIM 프로비저닝, Delta Sharing 기반 크로스 리전 공유가 핵심 권장 사항입니다.
 - External Locations(외부 위치)는 최소 권한 원칙으로 관리하고, 엔드유저에게는 External Tables·Volumes를 통해 접근 권한을 부여하는 것을 권장합니다.
-{% endhint %}
+
 
 ---
 
@@ -129,9 +120,9 @@ Unity Catalog의 보안 개체는 계층적으로 구성되어 있으며, 권한
 
 - **Metastore Admin 역할은 선택 사항입니다.** 할당 여부에 대한 권장 사항은 **Admin roles and powerful privileges** 를 참고하십시오.
 
-{% hint style="warning" %}
+> **주의**
 **중요**: 자주 접근되는 테이블을 둘 이상의 메타스토어에 External Table로 등록하지 마십시오. 이렇게 할 경우, 메타스토어 A에 대한 쓰기 결과로 발생한 스키마, 테이블 속성, 주석 및 기타 메타데이터 변경 사항이 메타스토어 B에 전혀 반영되지 않습니다. 또한 Databricks 커밋 서비스(Commit Service)에 일관성 문제가 발생할 수 있습니다.
-{% endhint %}
+
 
 ---
 
@@ -247,9 +238,9 @@ Managed Tables(관리형 테이블)와 Volumes(볼륨)은 수명 주기가 Unity
 
 - Databricks는 하나의 스키마 내 하나의 External Location에서 External Volumes를 생성하도록 권장합니다.
 
-{% hint style="info" %}
+> **참고**
 **팁**: 데이터가 다른 위치로 복사되는 수집 사용 사례(예: Auto Loader 또는 `COPY INTO` 사용)에는 External Volumes를 사용하십시오. 복사 없이 데이터를 테이블로 직접 쿼리하려면 External Tables를 사용하십시오.
-{% endhint %}
+
 
 자세한 내용은 **Managed versus external volumes** 및 **External locations** 를 참고하십시오.
 

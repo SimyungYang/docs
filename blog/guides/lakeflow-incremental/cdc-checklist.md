@@ -15,9 +15,9 @@
 
 APPLY CHANGES는 이 모든 것을 **선언적으로** 처리합니다.
 
-{% hint style="info" %}
-APPLY CHANGES는 내부적으로 Streaming Table 위에서 동작하지만, 대상 테이블을 **자동으로 MERGE** 하므로 append-only가 아닌 **upsert** 가 가능합니다.
-{% endhint %}
+> **참고**
+> APPLY CHANGES는 내부적으로 Streaming Table 위에서 동작하지만, 대상 테이블을 **자동으로 MERGE** 하므로 append-only가 아닌 **upsert** 가 가능합니다.
+
 
 ---
 
@@ -194,6 +194,6 @@ FROM STREAM(raw_customer_cdc)
 | APPLY CHANGES 후 데이터 불일치 | `SEQUENCE BY` 컬럼에 중복 값 존재 | SEQUENCE BY에 고유하고 단조 증가하는 컬럼 사용 (예: `updated_at` + `sequence_number`) |
 | 새 소스 추가 후 기존 ST가 Full Refresh | 기존 ST의 소스를 직접 변경함 | Append Flow 패턴으로 새 소스를 독립적으로 추가 |
 
-{% hint style="info" %}
-파이프라인 이벤트 로그는 **Pipeline UI > Events** 탭에서 확인할 수 있으며, `system.lakeflow.events` 시스템 테이블에서 SQL로 쿼리할 수도 있습니다.
-{% endhint %}
+> **참고**
+> 파이프라인 이벤트 로그는 **Pipeline UI > Events** 탭에서 확인할 수 있으며, `system.lakeflow.events` 시스템 테이블에서 SQL로 쿼리할 수도 있습니다.
+

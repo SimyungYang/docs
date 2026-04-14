@@ -27,9 +27,9 @@ Unity Catalog의 **Managed Storage** 로 사용할 ADLS Gen2 스토리지 계정
 | **Blob 공용 액세스** | 사용 안 함 | 보안 |
 | **최소 TLS 버전** | TLS 1.2 | 보안 |
 
-{% hint style="danger" %}
+> **위험**
 **계층 구조 네임스페이스(Hierarchical Namespace)를 반드시 "사용"으로 설정하세요.** 이 옵션이 ADLS Gen2를 활성화합니다. 일반 Blob Storage로 생성하면 Unity Catalog에서 사용할 수 없으며, 스토리지 계정 생성 후에는 이 설정을 변경할 수 없습니다.
-{% endhint %}
+
 
 ## Step 4 — 네트워킹
 
@@ -37,9 +37,9 @@ Unity Catalog의 **Managed Storage** 로 사용할 ADLS Gen2 스토리지 계정
 |------|-----|
 | **네트워크 액세스** | 모든 네트워크에서 퍼블릭 액세스 사용 (초기 설정용) |
 
-{% hint style="info" %}
-초기 구성 완료 후 네트워크 액세스를 **선택한 가상 네트워크 및 IP 주소에서 퍼블릭 액세스 사용** 또는 **퍼블릭 액세스 사용 안 함** 으로 변경하여 보안을 강화할 수 있습니다.
-{% endhint %}
+> **참고**
+> 초기 구성 완료 후 네트워크 액세스를 **선택한 가상 네트워크 및 IP 주소에서 퍼블릭 액세스 사용** 또는 **퍼블릭 액세스 사용 안 함** 으로 변경하여 보안을 강화할 수 있습니다.
+
 
 ## Step 5 — 검토 + 만들기
 
@@ -63,8 +63,8 @@ Access Connector의 Managed Identity가 이 스토리지에 접근할 수 있도
 5. 앞서 생성한 `ac-databricks-prod` 선택
 6. **검토 + 할당** 클릭
 
-{% hint style="warning" %}
+> **주의**
 **Storage Blob Data Contributor** 역할이 정확해야 합니다. `Storage Blob Data Reader`는 읽기만 가능하므로 Unity Catalog가 테이블을 생성/수정할 수 없습니다. `Storage Account Contributor`는 데이터 접근 권한이 아닌 관리 권한이므로 올바르지 않습니다.
-{% endhint %}
+
 
 *참고: [Unity Catalog에 Azure 스토리지 사용](https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/azure-managed-identities#step-2-grant-the-managed-identity-access-to-the-storage-account)*

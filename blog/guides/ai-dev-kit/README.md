@@ -6,9 +6,9 @@
 
 **AI Dev Kit** 은 Databricks Field Engineering 팀이 개발하고 유지보수하는 **오픈소스 프로젝트** 입니다. Claude Code와 Databricks 워크스페이스를 연결하는 통합 도구 모음으로, 자연어로 Databricks의 모든 리소스를 조작할 수 있는 **AI 기반 개발 환경** 을 제공합니다.
 
-{% hint style="info" %}
-GitHub 저장소: [databricks-solutions/ai-dev-kit](https://github.com/databricks-solutions/ai-dev-kit)
-{% endhint %}
+> **참고**
+> GitHub 저장소: [databricks-solutions/ai-dev-kit](https://github.com/databricks-solutions/ai-dev-kit)
+
 
 기존에는 Databricks 워크스페이스에서 테이블을 생성하거나, 파이프라인을 구성하거나, 대시보드를 배포하려면 각각의 API를 직접 호출하거나 UI를 클릭해야 했습니다. AI Dev Kit은 이 모든 작업을 **자연어 한 문장** 으로 가능하게 만듭니다. "매출 데이터 분석 환경을 만들어줘"라고 말하면, 에이전트가 테이블 생성부터 대시보드 배포, Genie Space 구성까지 자동으로 수행합니다.
 
@@ -60,9 +60,9 @@ AI Dev Kit은 크게 세 가지 핵심 컴포넌트로 구성됩니다.
 | **Vector Search** | Endpoint, Index, 검색 | 6 |
 | **기타** | Workspace, Apps, KA, MAS 등 | 8 |
 
-{% hint style="info" %}
-MCP Server는 독립적으로 사용할 수 있습니다. Builder App 없이도 Claude Code의 `claude_desktop_config.json`에 MCP Server를 등록하면 바로 Databricks 도구를 사용할 수 있습니다.
-{% endhint %}
+> **참고**
+> MCP Server는 독립적으로 사용할 수 있습니다. Builder App 없이도 Claude Code의 `claude_desktop_config.json`에 MCP Server를 등록하면 바로 Databricks 도구를 사용할 수 있습니다.
+
 
 ### 2. Builder App
 
@@ -76,9 +76,9 @@ MCP Server는 독립적으로 사용할 수 있습니다. Builder App 없이도 
 | **Persistence** | Lakebase (PostgreSQL) | 프로젝트, 대화 이력, 실행 결과 영구 저장 |
 | **Auth** | contextvars 기반 | 요청별 자격 증명 격리, 멀티 유저 지원 |
 
-{% hint style="tip" %}
-Builder App에 대한 상세 소개는 [Builder App](builder-app.md) 서브페이지를 참고하세요.
-{% endhint %}
+> **팁**
+> Builder App에 대한 상세 소개는 [Builder App](builder-app.md) 서브페이지를 참고하세요.
+
 
 ### 3. Skills & Plugins
 
@@ -207,6 +207,6 @@ Builder App을 로컬 또는 Databricks Apps에 배포하여 사용하는 방법
 | **슬라이드** | [GenAI 소개 슬라이드](https://simyungyang.github.io/databricks-enablement-blog/genai-genie-code-ai-dev-kit.html) |
 | **PDF** | [GenAI 소개](https://simyungyang.github.io/databricks-enablement-blog/genai-intro.pdf) / [AI Dev Kit 상세](https://simyungyang.github.io/databricks-enablement-blog/ai-dev-kit-guide.pdf) |
 
-{% hint style="info" %}
-AI Dev Kit은 활발히 개발 중인 프로젝트입니다. 최신 변경 사항은 [GitHub 저장소](https://github.com/databricks-solutions/ai-dev-kit)에서 확인하세요.
-{% endhint %}
+> **참고**
+> AI Dev Kit은 활발히 개발 중인 프로젝트입니다. 최신 변경 사항은 [GitHub 저장소](https://github.com/databricks-solutions/ai-dev-kit)에서 확인하세요.
+

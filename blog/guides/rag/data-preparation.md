@@ -21,9 +21,9 @@ RAG 시스템의 성능 병목은 대부분 **LLM이 아니라 데이터 품질*
 
 이 문제들 중 가장 치명적인 것은 **깨진 PDF 파싱** 과 **오래된 문서** 입니다. 전자는 검색 자체가 불가능해지고, 후자는 사용자에게 틀린 정보를 자신 있게 전달하는 결과를 낳습니다.
 
-{% hint style="warning" %}
-실제 프로젝트에서 RAG 품질 개선에 투입하는 시간의 60~70%는 데이터 전처리에 할당됩니다. 모델이나 검색 알고리즘을 바꾸기 전에, 먼저 데이터 품질을 점검하세요.
-{% endhint %}
+> **주의**
+> 실제 프로젝트에서 RAG 품질 개선에 투입하는 시간의 60~70%는 데이터 전처리에 할당됩니다. 모델이나 검색 알고리즘을 바꾸기 전에, 먼저 데이터 품질을 점검하세요.
+
 
 ### 데이터 품질 체크리스트
 
@@ -64,9 +64,9 @@ docs = requests.get("https://api.example.com/documents").json()
 spark.createDataFrame(docs).write.mode("overwrite").saveAsTable("catalog.schema.raw_documents")
 ```
 
-{% hint style="info" %}
-UC Volumes 사용을 권장합니다. Unity Catalog의 거버넌스(접근 제어, 감사 로그, 리니지)가 자동 적용됩니다.
-{% endhint %}
+> **참고**
+> UC Volumes 사용을 권장합니다. Unity Catalog의 거버넌스(접근 제어, 감사 로그, 리니지)가 자동 적용됩니다.
+
 
 ## 2. 문서 파싱
 
@@ -97,9 +97,9 @@ def parse_pdf(file_path):
     return "\n".join([page.extract_text() for page in reader.pages])
 ```
 
-{% hint style="warning" %}
-`ai_parse_document`는 테이블, 이미지 포함 문서도 정확하게 파싱합니다. 복잡한 레이아웃의 PDF라면 이 함수를 우선 사용하세요.
-{% endhint %}
+> **주의**
+> `ai_parse_document`는 테이블, 이미지 포함 문서도 정확하게 파싱합니다. 복잡한 레이아웃의 PDF라면 이 함수를 우선 사용하세요.
+
 
 ### 문서 포맷별 처리 전략
 
@@ -181,9 +181,9 @@ def extract_metadata(file_path: str, parsed_text: str) -> dict:
     return metadata
 ```
 
-{% hint style="tip" %}
-메타데이터는 검색 품질을 높이는 **가장 비용 효율적인 방법** 입니다. 특히 `doc_type`, `created_at`, `department` 같은 필드는 Vector Search의 메타데이터 필터와 결합하여 검색 정밀도를 크게 향상시킵니다.
-{% endhint %}
+> **팁**
+> 메타데이터는 검색 품질을 높이는 **가장 비용 효율적인 방법** 입니다. 특히 `doc_type`, `created_at`, `department` 같은 필드는 Vector Search의 메타데이터 필터와 결합하여 검색 정밀도를 크게 향상시킵니다.
+
 
 ### 노이즈 제거 파이프라인
 
@@ -264,9 +264,9 @@ chunks = splitter.create_documents([document_text])
 | **512~1024 토큰** | **균형 잡힌 선택 (권장)** | **일반 문서, 기술 문서** |
 | 2048 토큰 | 풍부한 맥락, 검색 정확도 저하 가능 | 긴 서술형 문서 |
 
-{% hint style="success" %}
+> **성공**
 **권장 설정**: `chunk_size=1000`, `chunk_overlap=200` (Recursive 방식). 대부분의 기술 문서에서 좋은 성능을 보입니다.
-{% endhint %}
+
 
 ## 4. Delta Table로 저장
 
@@ -284,9 +284,9 @@ chunks_df.write.format("delta") \
     .mode("overwrite").saveAsTable("catalog.schema.document_chunks")
 ```
 
-{% hint style="danger" %}
-Vector Search Delta Sync Index를 사용하려면 소스 테이블에 **Change Data Feed(CDF)** 가 반드시 활성화되어야 합니다. CDF는 Delta Table에서 행 단위의 변경 이력(INSERT, UPDATE, DELETE)을 추적하는 기능으로, Vector Search가 이 변경 로그를 읽어 **변경된 행의 임베딩만 재계산** 합니다. CDF 없이는 전체 테이블을 매번 재스캔해야 하므로 비효율적입니다. 테이블 생성 시 `delta.enableChangeDataFeed = true` 옵션을 잊지 마세요.
-{% endhint %}
+> **위험**
+> Vector Search Delta Sync Index를 사용하려면 소스 테이블에 **Change Data Feed(CDF)** 가 반드시 활성화되어야 합니다. CDF는 Delta Table에서 행 단위의 변경 이력(INSERT, UPDATE, DELETE)을 추적하는 기능으로, Vector Search가 이 변경 로그를 읽어 **변경된 행의 임베딩만 재계산** 합니다. CDF 없이는 전체 테이블을 매번 재스캔해야 하므로 비효율적입니다. 테이블 생성 시 `delta.enableChangeDataFeed = true` 옵션을 잊지 마세요.
+
 
 ## 5. 데이터 파이프라인 자동화
 
@@ -315,9 +315,9 @@ new_chunks_df.write.format("delta") \
     .mode("append").saveAsTable("catalog.schema.document_chunks")
 ```
 
-{% hint style="tip" %}
-증분 처리와 Delta Sync Index를 조합하면, 새 문서가 추가될 때마다 자동으로 임베딩이 계산되고 인덱스가 갱신됩니다. 이 패턴으로 **항상 최신 상태의 RAG 시스템** 을 유지할 수 있습니다.
-{% endhint %}
+> **팁**
+> 증분 처리와 Delta Sync Index를 조합하면, 새 문서가 추가될 때마다 자동으로 임베딩이 계산되고 인덱스가 갱신됩니다. 이 패턴으로 **항상 최신 상태의 RAG 시스템** 을 유지할 수 있습니다.
+
 
 ## 다음 단계
 

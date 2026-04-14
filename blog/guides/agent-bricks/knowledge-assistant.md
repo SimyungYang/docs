@@ -55,9 +55,9 @@ Knowledge Assistant는 **문서 기반 Q&A 챗봇** 을 생성합니다. 기존 
 4. **Content Description** 입력: 소스 데이터 활용 방법 안내
 5. **Instructions**(선택): 응답 가이드라인 설정
 
-{% hint style="warning" %}
+> **주의**
 **Knowledge Source 동기화**: Knowledge Assistant 생성자만 소스를 동기화할 수 있습니다. 소스 파일을 업데이트한 후 **Sync** 아이콘을 클릭하면 변경 사항을 증분 처리합니다.
-{% endhint %}
+
 
 ### Step 2: 에이전트 테스트
 
@@ -215,9 +215,9 @@ Knowledge Assistant의 응답 품질은 **검색 품질** 과 **생성 품질** 
 - 청크가 너무 크면: 관련 없는 내용이 함께 검색되어 답변의 정확도 저하
 - 오버랩이 없으면: 문장이 두 청크 사이에서 잘려 의미가 손실됨
 
-{% hint style="info" %}
+> **참고**
 **Vector Search Index를 직접 사용하는 경우**, 청킹 전략을 세밀하게 제어할 수 있습니다. UC Files 자동 청킹의 품질이 만족스럽지 않다면, 별도로 청킹 파이프라인을 구축하고 Vector Search Index를 Knowledge Source로 연결하는 것을 권장합니다.
-{% endhint %}
+
 
 ### 2. 임베딩 모델
 

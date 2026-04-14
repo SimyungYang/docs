@@ -15,9 +15,9 @@ MicroStrategy, Tableau Server, Power BI, Informatica 등 외부 BI/ETL 서비스
 | **외부 서비스 → Databricks** | 외부 서비스가 Databricks에 JDBC/ODBC로 접속하여 쿼리 실행 | BI 대시보드, 리포팅, 데이터 조회 |
 | **Databricks Serverless → 외부 서비스** | Databricks Serverless 컴퓨팅에서 외부 VPC 리소스에 접근 | 외부 DB 연동, 역방향 데이터 푸시 |
 
-{% hint style="info" %}
-이 가이드는 **AWS 환경** 기준입니다. Azure의 경우 Private Endpoint 구성이 다르며, 별도 가이드를 참고하세요.
-{% endhint %}
+> **참고**
+> 이 가이드는 **AWS 환경** 기준입니다. Azure의 경우 Private Endpoint 구성이 다르며, 별도 가이드를 참고하세요.
+
 
 ---
 
@@ -42,13 +42,13 @@ jdbc:databricks://<workspace-host>:443;httpPath=/sql/1.0/warehouses/<warehouse-i
 
 외부 서비스 입장에서 Databricks workspace 도메인에 HTTPS(443)로 접속하는 것이 전부이므로, SQL Warehouse가 Classic이든 **Serverless** 든 접속 경로와 PrivateLink 구성은 동일합니다.
 
-{% hint style="tip" %}
-각 BI 도구별 상세 설정은 Databricks 공식 파트너 문서를 참고하세요:
+> **팁**
+> 각 BI 도구별 상세 설정은 Databricks 공식 파트너 문서를 참고하세요:
 - [MicroStrategy 연결](https://docs.databricks.com/aws/en/partners/bi/microstrategy)
 - [Tableau 연결](https://docs.databricks.com/aws/en/partners/bi/tableau)
 - [Power BI 연결](https://docs.databricks.com/aws/en/partners/bi/power-bi)
 - [JDBC 드라이버 설정](https://docs.databricks.com/aws/en/integrations/jdbc/configure)
-{% endhint %}
+
 
 ---
 
@@ -69,9 +69,9 @@ Databricks는 각 리전에 **VPC Endpoint Service** 를 이미 운영하고 있
 
 PrivateLink를 적용하면 트래픽이 인터넷을 경유하지 않으므로, **보안 정책상 인터넷 아웃바운드가 차단된 환경** 에서도 Databricks에 접속할 수 있습니다.
 
-{% hint style="info" %}
+> **참고**
 **핵심 포인트**: 외부 서비스(MicroStrategy, Tableau 등) 입장에서는 JDBC connection string의 호스트 주소가 동일합니다. PrivateLink 구성 후에도 `adb-xxxx.cloud.databricks.com`으로 접속하며, DNS가 해당 도메인을 VPC Endpoint의 Private IP로 resolving하여 프라이빗 경로로 라우팅합니다.
-{% endhint %}
+
 
 ### 구성 절차
 
@@ -93,9 +93,9 @@ AWS Console → VPC → Endpoints → Create endpoint
 com.amazonaws.vpce.ap-northeast-2.vpce-svc-0babb9bde64f34d7e
 ```
 
-{% hint style="info" %}
-다른 리전의 Endpoint Service name은 [Databricks 리전별 엔드포인트 목록](https://docs.databricks.com/aws/en/resources/ip-domain-region) 문서를 참고하세요.
-{% endhint %}
+> **참고**
+> 다른 리전의 Endpoint Service name은 [Databricks 리전별 엔드포인트 목록](https://docs.databricks.com/aws/en/resources/ip-domain-region) 문서를 참고하세요.
+
 
 #### Step 2: Databricks Account Console에 VPC Endpoint 등록
 
@@ -107,9 +107,9 @@ com.amazonaws.vpce.ap-northeast-2.vpce-svc-0babb9bde64f34d7e
    - **Region**: `ap-northeast-2`
 4. **Register** 클릭
 
-{% hint style="warning" %}
-Workspace의 **Private Access Settings** 에서 Public access가 Disabled인 경우, 이 VPC Endpoint ID를 **Allowed VPC endpoint IDs** 목록에도 추가해야 합니다. 그렇지 않으면 VPC Endpoint를 등록해도 접근이 차단됩니다.
-{% endhint %}
+> **주의**
+> Workspace의 **Private Access Settings** 에서 Public access가 Disabled인 경우, 이 VPC Endpoint ID를 **Allowed VPC endpoint IDs** 목록에도 추가해야 합니다. 그렇지 않으면 VPC Endpoint를 등록해도 접근이 차단됩니다.
+
 
 #### Step 3: DNS 구성
 
@@ -122,9 +122,9 @@ Workspace의 **Private Access Settings** 에서 Public access가 Disabled인 경
    - Name: workspace 호스트명 (예: `adb-1234567890123456.18`)
    - Alias Target: VPC Endpoint의 DNS name
 
-{% hint style="tip" %}
-기존에 동일 VPC에서 이미 Databricks Frontend PrivateLink를 사용 중이라면, DNS가 이미 구성되어 있으므로 Step 3은 생략 가능합니다. 새로운 VPC라면 반드시 DNS를 구성해야 합니다.
-{% endhint %}
+> **팁**
+> 기존에 동일 VPC에서 이미 Databricks Frontend PrivateLink를 사용 중이라면, DNS가 이미 구성되어 있으므로 Step 3은 생략 가능합니다. 새로운 VPC라면 반드시 DNS를 구성해야 합니다.
+
 
 ### 구성 완료 후 확인
 
@@ -205,9 +205,9 @@ Databricks가 자동으로 VPC Endpoint를 생성합니다.
 
 승인 후 수 분 내에 NCC의 상태가 **ESTABLISHED** 로 변경됩니다.
 
-{% hint style="info" %}
-NCC 구성에 대한 상세 가이드는 [Serverless NCC 가이드](serverless-ncc.md) 페이지를 참고하세요.
-{% endhint %}
+> **참고**
+> NCC 구성에 대한 상세 가이드는 [Serverless NCC 가이드](serverless-ncc.md) 페이지를 참고하세요.
+
 
 ---
 
@@ -218,9 +218,9 @@ NCC 구성에 대한 상세 가이드는 [Serverless NCC 가이드](serverless-n
 | **외부 → Databricks** (Frontend PrivateLink) | 외부 서비스가 SQL Warehouse에 JDBC/ODBC로 쿼리 실행 | **필수** (프라이빗 연결 시) | 외부 서비스 VPC + Databricks 관리자 | VPC Endpoint 생성 → Databricks 등록 → DNS 구성 |
 | **Databricks → 외부** (NCC) | Databricks Serverless에서 외부 VPC 리소스 접근 | BI 연결에서는 불필요 | 외부 VPC (NLB+Endpoint Service) + Databricks NCC | NLB 구성 → NCC에서 연결 → 승인 |
 
-{% hint style="tip" %}
-대부분의 BI 도구 연결은 **방향 1(Frontend PrivateLink)만 구성하면 됩니다.** 외부 서비스가 Databricks에 쿼리를 보내고 결과를 받는 일반적인 패턴에서는 Databricks → 외부 방향의 연결이 필요 없습니다.
-{% endhint %}
+> **팁**
+> 대부분의 BI 도구 연결은 **방향 1(Frontend PrivateLink)만 구성하면 됩니다.** 외부 서비스가 Databricks에 쿼리를 보내고 결과를 받는 일반적인 패턴에서는 Databricks → 외부 방향의 연결이 필요 없습니다.
+
 
 ---
 

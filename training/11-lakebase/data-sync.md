@@ -212,7 +212,7 @@ print(f"지연시간(초): {sync_status.lag_seconds}")
 
 | 메트릭 | 설명 | 정상 범위 |
 |--------|------|-----------|
-| **lag_seconds** | 현재 동기화 지연 시간 | CONTINUOUS: < 60초 |
+| **lag_seconds** | 현재 동기화 지연 시간 | CONTINUOUS: \< 60초 |
 | **rows_synced** | 누적 동기화된 행 수 | 지속 증가 |
 | **errors_count** | 동기화 오류 횟수 | 0 |
 | **state** | 동기화 상태 | RUNNING |

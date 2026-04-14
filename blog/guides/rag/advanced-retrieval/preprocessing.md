@@ -80,9 +80,9 @@ multi_retriever = MultiQueryRetriever.from_llm(
 results = multi_retriever.invoke("Delta Lake 성능 개선")
 ```
 
-{% hint style="info" %}
-Query Expansion은 검색 recall(재현율, 관련 문서를 빠뜨리지 않는 비율)을 높이지만, LLM 호출 비용이 추가됩니다. Multi-Query, HyDE, Step-back 중 하나를 선택하여 적용하고, 평가를 통해 효과를 검증하세요. 일반적으로 Multi-Query는 범용적이고, HyDE는 질문-문서 간 어휘 격차가 큰 경우에, Step-back은 지나치게 구체적인 질문이 많은 경우에 효과적입니다.
-{% endhint %}
+> **참고**
+> Query Expansion은 검색 recall(재현율, 관련 문서를 빠뜨리지 않는 비율)을 높이지만, LLM 호출 비용이 추가됩니다. Multi-Query, HyDE, Step-back 중 하나를 선택하여 적용하고, 평가를 통해 효과를 검증하세요. 일반적으로 Multi-Query는 범용적이고, HyDE는 질문-문서 간 어휘 격차가 큰 경우에, Step-back은 지나치게 구체적인 질문이 많은 경우에 효과적입니다.
+
 
 ---
 
@@ -213,9 +213,9 @@ def add_context_to_chunk(chunk_text: str, full_document: str) -> str:
 #               GRANT SELECT ON TABLE TO user@email.com"
 ```
 
-{% hint style="info" %}
-Contextual Retrieval은 청킹 단계에서 **한 번만** 수행하면 되므로, 검색 시점에 추가 LLM 호출이 발생하지 않습니다. 초기 인덱싱 비용은 증가하지만, 검색 품질 향상 효과가 큽니다. Anthropic의 벤치마크에서 **검색 실패율을 49% 감소** 시킨 것으로 보고되었습니다.
-{% endhint %}
+> **참고**
+> Contextual Retrieval은 청킹 단계에서 **한 번만** 수행하면 되므로, 검색 시점에 추가 LLM 호출이 발생하지 않습니다. 초기 인덱싱 비용은 증가하지만, 검색 품질 향상 효과가 큽니다. Anthropic의 벤치마크에서 **검색 실패율을 49% 감소** 시킨 것으로 보고되었습니다.
+
 
 ### Query Routing
 

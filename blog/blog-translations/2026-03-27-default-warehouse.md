@@ -10,12 +10,12 @@
 
 ---
 
-{% hint style="info" %}
+> **참고**
 **요약**
 - 대규모 프로덕션 웨어하우스가 임시 브라우징으로 불필요하게 시작되는 것을 방지합니다
 - 임시 쿼리가 의도된 웨어하우스로 라우팅되어 핵심 워크로드가 성능 경합 없이 실행될 수 있도록 합니다
 - SQL Editor, Catalog Explorer, AI/BI Dashboards, Alerts, Genie Spaces 등 임시 SQL 서피스 전반에 걸쳐 기본 동작을 표준화하여 비용 및 워크로드 거버넌스를 대규모로 개선합니다
-{% endhint %}
+
 
 ---
 
@@ -65,13 +65,13 @@ Default Warehouse는 관리자가 SQL Editor, Catalog Explorer, AI/BI Dashboards
 
 ---
 
-{% hint style="info" %}
+> **참고**
 **가이드**
 
 현대 분석을 위한 간결한 가이드
 
 [지금 읽기](https://www.databricks.com/resources/ebook/compact-guide-to-modern-analytics)
-{% endhint %}
+
 
 ---
 

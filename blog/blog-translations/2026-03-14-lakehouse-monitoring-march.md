@@ -1,15 +1,12 @@
 ---
 title: "Lakehouse Monitoring GA: 지능형 데이터 품질 프로파일링, 진단 및 적용"
-date: 2024-08-01
-authors: Jacqueline Li, Kasey Uhlenhuth, Paul Lappas, Danny Chiao
-tags: [lakehouse-monitoring, data-quality, unity-catalog, mlops]
 ---
 
 > **원문**: [Lakehouse Monitoring GA: Profiling, Diagnosing, and Enforcing Data Quality with Intelligence](https://www.databricks.com/blog/lakehouse-monitoring-ga-profiling-diagnosing-and-enforcing-data-quality-intelligence)
 
-{% hint style="info" %}
-이 블로그 포스트는 2024년 Data and AI Summit에서 발표된 Databricks Data Quality Monitoring (Lakehouse Monitoring) GA 출시를 다룹니다. 요청하신 URL(databricks-lakehouse-monitoring-update-march-2026)은 현재 존재하지 않으며, 가장 관련성 높은 공식 블로그 포스트를 번역하였습니다.
-{% endhint %}
+> **참고**
+> 이 블로그 포스트는 2024년 Data and AI Summit에서 발표된 Databricks Data Quality Monitoring (Lakehouse Monitoring) GA 출시를 다룹니다. 요청하신 URL(databricks-lakehouse-monitoring-update-march-2026)은 현재 존재하지 않으며, 가장 관련성 높은 공식 블로그 포스트를 번역하였습니다.
+
 
 Data and AI Summit에서 우리는 **Databricks Data Quality Monitoring** 의 정식 출시(General Availability)를 발표했습니다. 데이터와 AI를 모니터링하는 통합적인 접근 방식을 통해, **Databricks Data Intelligence Platform** 내에서 품질을 손쉽게 프로파일링하고, 진단하고, 적용할 수 있습니다. **Unity Catalog** 위에 직접 구축된 Lakehouse Monitoring([AWS](https://docs.databricks.com/aws/en/lakehouse-monitoring) | [Azure](https://learn.microsoft.com/en-us/azure/databricks/lakehouse-monitoring))은 추가적인 도구나 복잡성 없이 사용할 수 있습니다. 다운스트림 프로세스가 영향을 받기 전에 품질 문제를 발견함으로써, 조직은 데이터에 대한 접근을 민주화하고 신뢰를 회복할 수 있습니다.
 
@@ -62,9 +59,9 @@ Lakehouse Monitoring을 시작하려면 Unity Catalog의 원하는 테이블 **Q
 - **Snapshot(스냅샷)**: 품질 메트릭이 전체 테이블에 대해 계산됩니다. 이는 메트릭이 갱신될 때마다 전체 테이블에 대해 재계산됨을 의미합니다.
 - **Inference(추론)**: 데이터 품질 메트릭 외에 모델 성능 및 드리프트 메트릭이 함께 계산됩니다. 이러한 메트릭을 시간 경과에 따라 비교하거나, 선택적으로 기준선(baseline) 또는 정답 레이블(ground-truth labels)과 비교할 수 있습니다.
 
-{% hint style="info" %}
+> **참고**
 **모범 사례 팁**: 대규모 모니터링을 위해 테이블에 Change Data Feed (CDF)([AWS](https://docs.databricks.com/aws/en/delta/delta-change-data-feed.html) | [Azure](https://learn.microsoft.com/en-us/azure/databricks/delta/delta-change-data-feed))를 활성화할 것을 권장합니다. 이를 통해 증분 처리(incremental processing)가 가능해져, 매번 갱신 시 전체 테이블을 재처리하는 대신 테이블에 새로 추가된 데이터만 처리합니다. 결과적으로 실행이 더 효율적이고, 여러 테이블에 걸쳐 모니터링을 확장할 때 비용을 절감할 수 있습니다. 이 기능은 Snapshot이 매번 전체 테이블 스캔을 필요로 하기 때문에 Time series 또는 Inference 프로파일에서만 사용 가능합니다.
-{% endhint %}
+
 
 Lakehouse Monitoring에 대해 더 자세히 알아보거나 직접 사용해 보려면 아래 제품 링크를 확인하세요:
 

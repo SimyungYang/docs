@@ -61,9 +61,9 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
 ```
 
-{% hint style="tip" %}
-CI/CD 파이프라인을 사용하면 코드 변경 시 자동으로 테스트 → 빌드 → 배포가 수행됩니다. `main` 브랜치에 머지하면 프로덕션 환경에 자동 배포되는 GitOps 패턴을 구현할 수 있습니다.
-{% endhint %}
+> **팁**
+> CI/CD 파이프라인을 사용하면 코드 변경 시 자동으로 테스트 → 빌드 → 배포가 수행됩니다. `main` 브랜치에 머지하면 프로덕션 환경에 자동 배포되는 GitOps 패턴을 구현할 수 있습니다.
+
 
 ## 사전 요구사항
 
@@ -96,9 +96,9 @@ databricks auth login --host https://<workspace-url>.cloud.databricks.com
 databricks apps create <app-name>
 ```
 
-{% hint style="info" %}
-앱 이름은 소문자, 숫자, 하이픈만 사용 가능합니다. 예: `my-builder-app`
-{% endhint %}
+> **참고**
+> 앱 이름은 소문자, 숫자, 하이픈만 사용 가능합니다. 예: `my-builder-app`
+
 
 ## Step 4: app.yaml 설정
 
@@ -167,9 +167,9 @@ env:
     value: "databricks_postgres"
 ```
 
-{% hint style="warning" %}
-Lakebase Autoscale는 Databricks App의 리소스로 추가할 필요 없이 OAuth로 자동 연결됩니다.
-{% endhint %}
+> **주의**
+> Lakebase Autoscale는 Databricks App의 리소스로 추가할 필요 없이 OAuth로 자동 연결됩니다.
+
 
 ### Option C: Lakebase Provisioned로 배포
 
@@ -214,12 +214,12 @@ bash scripts/deploy.sh <app-name>
 4. **Workspace에 소스코드 업로드**— Databricks Workspace Files에 소스코드를 동기화합니다.
 5. **앱 배포 및 시작**— Databricks Apps가 컨테이너를 생성하고, `uvicorn`으로 FastAPI 서버를 시작합니다.
 
-{% hint style="info" %}
-프론트엔드가 이미 빌드되어 있으면 `--skip-build` 옵션으로 빌드를 건너뛸 수 있습니다:
+> **참고**
+> 프론트엔드가 이미 빌드되어 있으면 `--skip-build` 옵션으로 빌드를 건너뛸 수 있습니다:
 ```bash
 bash scripts/deploy.sh <app-name> --skip-build
 ```
-{% endhint %}
+
 
 ## Step 6: 확인
 
@@ -285,9 +285,9 @@ bash scripts/deploy.sh <app-name> --skip-build
 | `databricks apps start <name>` | 중지된 앱 재시작 |
 | `databricks apps delete <name>` | 앱 완전 삭제 |
 
-{% hint style="tip" %}
-사용하지 않는 앱은 `stop`으로 중지하여 비용을 절약할 수 있습니다. 중지된 앱은 URL에 접근할 수 없지만, 설정과 데이터는 유지됩니다. `start`로 언제든 재시작할 수 있습니다.
-{% endhint %}
+> **팁**
+> 사용하지 않는 앱은 `stop`으로 중지하여 비용을 절약할 수 있습니다. 중지된 앱은 URL에 접근할 수 없지만, 설정과 데이터는 유지됩니다. `start`로 언제든 재시작할 수 있습니다.
+
 
 ## 참고
 

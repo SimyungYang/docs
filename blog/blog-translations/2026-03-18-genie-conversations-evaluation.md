@@ -88,8 +88,8 @@ Databricks 팀은 항상 AI/BI Genie 경험을 개선하기 위해 노력하고 
 
 ---
 
-{% hint style="info" %}
+> **참고**
 **관련 자료**
 
 이 블로그 포스트는 Genie space 평가의 기초 개념을 다룹니다. 더 심층적인 실전 사례로는 **[Genie Space를 프로덕션 수준으로 구축하는 방법](https://www.databricks.com/blog/how-build-production-ready-genie-spaces-and-build-trust-along-way)** 블로그를 참고하세요. 해당 포스트에서는 벤치마크 기반의 반복적 개발 방법론을 통해 0%에서 100% 정확도까지 도달하는 엔드투엔드 실전 사례를 자세히 다룹니다.
-{% endhint %}
+

@@ -207,21 +207,21 @@ databricks cluster-policies create --json '{
 ### 태그 전략 예시
 
 ```json
-{
-  "custom_tags.team": {
+\{
+  "custom_tags.team": \{
     "type": "fixed",
     "value": "data-engineering"
-  },
-  "custom_tags.env": {
+  \},
+  "custom_tags.env": \{
     "type": "fixed",
     "value": "production"
-  },
-  "custom_tags.cost_center": {
+  \},
+  "custom_tags.cost_center": \{
     "type": "regex",
-    "pattern": "CC-[0-9]{4}",
+    "pattern": "CC-[0-9]\{4\}",
     "hidden": false
-  }
-}
+  \}
+\}
 ```
 
 ### 시스템 테이블로 비용 분석

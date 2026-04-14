@@ -170,7 +170,7 @@ WHERE order_date BETWEEN :date_start AND :date_end;
 |-----------|-------------|------|
 | 원본 테이블 직접 집계 (10억 건) | 30초~2분 | 높음 (풀 스캔) |
 | Materialized View 조회 | **1~5초** | 낮음 (사전 계산) |
-| Materialized View + 파티션 프루닝 | **< 1초** | 매우 낮음 |
+| Materialized View + 파티션 프루닝 | **\< 1초** | 매우 낮음 |
 
 #### 파티션 프루닝과 Data Skipping
 

@@ -26,13 +26,13 @@
 | **감사 로그** | System Tables — SQL로 직접 분석 | Access History, Query History | CloudTrail (JSON) | Cloud Audit Logs | 통합 감사 로그 |
 | **사용량 모니터링** | System Tables (Billing, Usage) — SQL 분석 | Resource Monitors | Cost Explorer + CloudWatch | Billing Export + BigQuery | 비용 관리 대시보드 |
 
-{% hint style="success" %}
+> **성공**
 **Unity Catalog는 업계 유일의 데이터 + AI 통합 거버넌스 솔루션** 입니다. 테이블, ML 모델, Feature, Vector Index, AI Agent, 비정형 파일을 하나의 카탈로그에서 통합 관리하며, 컬럼 레벨까지의 End-to-End 리니지를 자동 추적합니다.
-{% endhint %}
 
-{% hint style="warning" %}
+
+> **주의**
 **경쟁사 장점**: Snowflake Horizon은 SQL 중심 데이터 거버넌스에서 성숙도가 높고 Data Clean Room 기능이 강력합니다. MS Purview는 Microsoft 365 생태계 전체에 걸친 거버넌스를 제공하며, 이미 MS 환경을 사용하는 조직에 자연스럽습니다. AWS Lake Formation은 IAM 기반의 세밀한 접근 제어가 가능합니다.
-{% endhint %}
+
 
 ---
 
@@ -80,9 +80,9 @@ Account Level
 | **외부 연결** | **지원 (연합 쿼리)** | 미지원 | 제한적 | 제한적 | 지원 |
 | **Model Serving Endpoint** | **지원** | 미지원 | 미지원 | 미지원 | 미지원 |
 
-{% hint style="success" %}
+> **성공**
 **Unity Catalog는 "데이터 + AI 거버넌스"의 업계 유일 솔루션** 입니다. 경쟁사 카탈로그는 테이블/뷰만 관리하는 반면, Unity Catalog는 ML 모델, Feature, Vector Index, Agent까지 **동일한 접근 제어, 리니지, 감사** 를 적용합니다.
-{% endhint %}
+
 
 ---
 
@@ -141,9 +141,9 @@ ALTER TABLE catalog.schema.customers ALTER COLUMN email SET MASK catalog.schema.
 
 **결과**: `pii_viewer` 그룹은 원본 이메일을, 다른 사용자는 `j***@example.com` 형태를 봅니다.
 
-{% hint style="info" %}
+> **참고**
 **Row Filter/Column Mask의 핵심 장점**: SQL 함수로 정의하므로 **비즈니스 로직을 유연하게 구현** 할 수 있습니다. 예: 현재 사용자의 부서, 역할, 심지어 외부 API 호출 결과에 따라 동적으로 접근을 제어할 수 있습니다. Snowflake의 Masking Policy도 유사하지만, **ML 모델/Agent에는 적용되지 않습니다.**
-{% endhint %}
+
 
 ---
 
@@ -200,9 +200,9 @@ FROM weekly_cost
 WHERE cost > LAG(cost) OVER (ORDER BY week) * 1.5;
 ```
 
-{% hint style="success" %}
+> **성공**
 **System Tables의 핵심 가치**: 비용, 감사, 성능, 파이프라인 이벤트를 **모두 SQL로 분석** 할 수 있습니다. 별도 도구(CloudTrail → Athena, Cost Explorer 등)를 조합할 필요 없이, Databricks 안에서 통합 모니터링 대시보드를 구성할 수 있습니다.
-{% endhint %}
+
 
 ---
 
@@ -220,9 +220,9 @@ WHERE cost > LAG(cost) OVER (ORDER BY week) * 1.5;
 | **Clean Room** | Databricks Clean Rooms | **Snowflake Clean Room (성숙)** | AWS Clean Rooms | BigQuery Clean Room | 제한적 |
 | **비용** | 수신자: 컴퓨팅만 부담 | 수신자: Snowflake Credit | 데이터 전송 비용 | 데이터 전송 비용 | Azure 비용 |
 
-{% hint style="info" %}
+> **참고**
 **Delta Sharing의 핵심 차별화**: **오픈 프로토콜** 이므로 수신자가 Databricks를 사용하지 않아도 됩니다. Spark, Pandas, Power BI, R 등 수십 개 클라이언트에서 직접 읽을 수 있습니다. 반면 Snowflake Data Sharing은 수신자도 **반드시 Snowflake 계정** 이 필요합니다.
-{% endhint %}
+
 
 ---
 
@@ -253,6 +253,6 @@ WHERE cost > LAG(cost) OVER (ORDER BY week) * 1.5;
 | AI Agent가 접근하는 데이터/도구를 통제할 수 있는가? | UC Functions as Tools | 충족 |
 | 규제 기관에 감사 보고서를 제출할 수 있는가? | System Tables SQL 쿼리로 즉시 생성 | 충족 |
 
-{% hint style="success" %}
+> **성공**
 **SA/SE 핵심 메시지**: AI 규제 시대에 **"데이터 거버넌스와 AI 거버넌스를 하나로 통합"** 하는 것은 선택이 아니라 필수입니다. Unity Catalog는 **유일하게 데이터, ML 모델, Feature, Vector Index, AI Agent를 하나의 카탈로그에서 통합 관리** 하는 솔루션입니다. 경쟁사에서는 데이터 거버넌스(Lake Formation/Dataplex)와 AI 거버넌스(SageMaker/Vertex AI)가 분리되어 있어, 통합 감사와 리니지가 불가능합니다.
-{% endhint %}
+

@@ -230,9 +230,9 @@ results = mlflow.evaluate(
 # → 품질 드리프트, 지연시간 이상, 비용 급증 알림
 ```
 
-{% hint style="info" %}
-Databricks의 관측성 스택은 **오픈소스(MLflow) + 네이티브 통합(Inference Table, Lakehouse Monitoring)** 의 조합입니다. 외부 관측성 도구(LangSmith, W&B)와 병행 사용도 가능하지만, 데이터 통합과 거버넌스 관점에서는 Databricks 네이티브 스택이 유리합니다.
-{% endhint %}
+> **참고**
+> Databricks의 관측성 스택은 **오픈소스(MLflow) + 네이티브 통합(Inference Table, Lakehouse Monitoring)** 의 조합입니다. 외부 관측성 도구(LangSmith, W&B)와 병행 사용도 가능하지만, 데이터 통합과 거버넌스 관점에서는 Databricks 네이티브 스택이 유리합니다.
+
 
 ---
 
@@ -258,6 +258,6 @@ Databricks의 관측성 스택은 **오픈소스(MLflow) + 네이티브 통합(I
 
 **Phoenix** 또는 **Langfuse** 를 선택하세요. 두 도구 모두 오픈소스로 자체 인프라에 배포할 수 있으며, OpenTelemetry 기반으로 이식성이 높습니다.
 
-{% hint style="warning" %}
-관측성 도구 선택보다 중요한 것은 **"관측성을 하는 것 자체"** 입니다. 많은 팀이 LLM 앱을 프로덕션에 배포한 후 관측성 없이 운영하다가, 품질 저하나 비용 급증을 뒤늦게 발견합니다. 어떤 도구든 하나를 선택하여 최소한의 트레이싱과 평가를 시작하는 것이 가장 중요합니다.
-{% endhint %}
+> **주의**
+> 관측성 도구 선택보다 중요한 것은 **"관측성을 하는 것 자체"** 입니다. 많은 팀이 LLM 앱을 프로덕션에 배포한 후 관측성 없이 운영하다가, 품질 저하나 비용 급증을 뒤늦게 발견합니다. 어떤 도구든 하나를 선택하여 최소한의 트레이싱과 평가를 시작하는 것이 가장 중요합니다.
+

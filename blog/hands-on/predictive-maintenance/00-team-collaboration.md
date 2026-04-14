@@ -47,7 +47,7 @@ Workspace/
 
 | 폴더 | 용도 | 적합한 작업 |
 |------|------|-----------|
-| **Users/{내 이메일}** | 개인 실험, 탐색 | 모델 프로토타이핑, 데이터 분석 |
+| **Users/\{내 이메일\}** | 개인 실험, 탐색 | 모델 프로토타이핑, 데이터 분석 |
 | **Shared/** | 팀 공유 코드 | 운영 파이프라인, 공통 유틸리티 |
 | **Repos/** | Git 기반 협업 | 코드 리뷰, 브랜치별 개발, CI/CD |
 
@@ -59,9 +59,9 @@ Workspace/
 | **직접 실행 주의** | `%run` 경로가 사용자별로 다를 수 있음 | 절대 경로 대신 상대 경로 사용 (`./` 또는 `../`) |
 | **운영 코드 직접 수정 금지** | 검증 없이 배포되는 셈 | 누군가 "잠깐 테스트"하고 원복을 깜빡함 → 운영 Job 실패 |
 
-{% hint style="info" %}
+> **참고**
 **권장:** Shared 폴더의 운영 코드는 **Repos (Git)** 를 통해서만 수정하세요. 개인 브랜치에서 수정 → PR(Pull Request) → 리뷰 → 머지 → Shared에 배포. 이게 제조업의 "ECR (Engineering Change Request, 설계 변경 요청서)" 프로세스와 동일합니다.
-{% endhint %}
+
 
 ---
 
@@ -75,9 +75,9 @@ Workspace/
 | **Shared (다중 사용자)** | 여러 명이 동시 사용 | 비용 절약 | 자원 경쟁, 라이브러리 충돌 |
 | **No Isolation Shared** | 격리 없이 공유 | 가장 저렴 | 보안/안정성 위험 |
 
-{% hint style="info" %}
+> **참고**
 **권장:** 개발 단계에서는 **Single User** 클러스터를 각자 만들되, Auto Termination을 10~20분으로 설정하세요. 비용이 걱정되면 **Shared** 모드를 쓰되, 아래 규칙을 반드시 지키세요.
-{% endhint %}
+
 
 ### 같은 클러스터 공유 시 반드시 지킬 것
 
@@ -109,9 +109,9 @@ Workspace/
   결과:  각각 성공, 안 쓸 때 자동 종료 → 비용도 최적화
 ```
 
-{% hint style="warning" %}
-GPU 메모리(VRAM)는 CPU 메모리와 달리 **스왑(Swap)이 불가능** 합니다. 하나라도 초과하면 즉시 OOM으로 프로세스가 죽습니다.
-{% endhint %}
+> **주의**
+> GPU 메모리(VRAM)는 CPU 메모리와 달리 **스왑(Swap)이 불가능** 합니다. 하나라도 초과하면 즉시 OOM으로 프로세스가 죽습니다.
+
 
 #### 장시간 작업은 반드시 Job으로 실행
 
@@ -160,9 +160,9 @@ catalog = "bob_park"       # Bob의 카탈로그
 | **스키마 분리** | `catalog.alice_dev.table` | 중간 분리 | 스테이징 |
 | **접두사 분리** | `catalog.schema.alice_table` | 약한 분리 | 임시용 |
 
-{% hint style="info" %}
-이 PoC에서는 **카탈로그 분리** 를 사용합니다. `00-setup` 노트북에서 사용자 이메일 기반으로 카탈로그가 자동 생성됩니다.
-{% endhint %}
+> **참고**
+> 이 PoC에서는 **카탈로그 분리** 를 사용합니다. `00-setup` 노트북에서 사용자 이메일 기반으로 카탈로그가 자동 생성됩니다.
+
 
 ---
 
@@ -197,9 +197,9 @@ all_runs = mlflow.search_runs(
 display(all_runs[["run_id", "tags.mlflow.runName", "metrics.val_f1_score"]])
 ```
 
-{% hint style="info" %}
+> **참고**
 **Databricks 장점:** MLflow 실험은 사용자 폴더별로 자동 분리되지만, `search_runs` API로 **팀 전체의 실험을 한 눈에 비교** 할 수 있습니다. "누가 가장 좋은 모델을 만들었는가"를 코드 한 줄로 확인할 수 있습니다.
-{% endhint %}
+
 
 ---
 
@@ -225,9 +225,9 @@ display(all_runs[["run_id", "tags.mlflow.runName", "metrics.val_f1_score"]])
 6. main 브랜치 → Shared 폴더에 자동 배포 (CI/CD)
 ```
 
-{% hint style="info" %}
+> **참고**
 **현장 경험담:**"Git 도입하면 느려진다"는 반론을 많이 받습니다. 하지만 Git 없이 운영하다 코드 사고가 나면 복구하는 데 며칠이 걸립니다. Git 도입 초기에 1~2시간 투자하면, 나중에 수십 시간을 절약합니다.
-{% endhint %}
+
 
 ---
 
@@ -346,9 +346,9 @@ api_key = dbutils.secrets.get(scope="lgit-secrets", key="openai-api-key")
 | **보호** | Auto Termination, `dbutils.secrets`, Champion 변경 권한 제한 |
 | **추적** | 모델 태그 필수, Git 이력, MLflow 자동 기록 |
 
-{% hint style="info" %}
+> **참고**
 **핵심 한 줄:**"내 실험은 내 공간에서, 운영 변경은 리뷰를 거쳐서."
-{% endhint %}
+
 
 ---
 

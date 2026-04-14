@@ -9,9 +9,9 @@
 | **Backend만** | 사용자 → **인터넷**→ Workspace → PrivateLink → Compute |
 | **Backend + Frontend** | 사용자 → **VPN/DX**→ Transit VPC → **PrivateLink**→ Workspace → PrivateLink → Compute |
 
-{% hint style="info" %}
+> **참고**
 **적용 시점**: VPN/DirectConnect로 AWS에 접근하는 고객, 퍼블릭 인터넷 접근 정책상 불가한 환경. End-to-End 프라이빗 연결 — 인터넷 경유 Zero
-{% endhint %}
+
 
 *참고: [Inbound PrivateLink](https://docs.databricks.com/aws/en/security/network/front-end/front-end-private-connect) · [PrivateLink DNS](https://docs.databricks.com/aws/en/security/network/classic/privatelink-dns)*
 
@@ -54,9 +54,9 @@ AWS Console → VPC → Endpoints → Create endpoint
 | **Subnet** | Transit Endpoint Subnet |
 | **Enable private DNS names** | **No**(Route 53으로 관리) |
 
-{% hint style="warning" %}
-Frontend Endpoint는 반드시 **Enable private DNS names = No**
-{% endhint %}
+> **주의**
+> Frontend Endpoint는 반드시 **Enable private DNS names = No**
+
 
 ## Step 2: Databricks 등록
 
@@ -115,9 +115,9 @@ On-Premises에서 Private Hosted Zone 해석 (VPN/DX 사용 시):
 
 검증: `nslookup <ws>.cloud.databricks.com` → `10.x.x.x` 반환 시 정상
 
-{% hint style="warning" %}
+> **주의**
 **SSO/Unified Login** 시 CNAME 추가: `accounts-pl-auth.privatelink.cloud.databricks.com`
-{% endhint %}
+
 
 ## Frontend PrivateLink — 구성 체크리스트
 

@@ -98,7 +98,7 @@ lge_smart_tv.bronze의 모든 테이블에 대해 데이터 품질 리포트를 
 | `silver.media_sessions` | media_playback_events | START/STOP 쌍 매칭, NULL hdr_type → "SDR" |
 | `silver.network_events` | wifi_connection_events | signal_strength 부호 보정, CONNECTED/DISCONNECTED 쌍 매칭 |
 | `silver.ad_funnel` | ad_impressions | VAST 이벤트 시퀀스 정합성 검증, 순서 역전 필터 |
-| `silver.acr_content` | acr_events | 중복 fingerprint 제거, match_confidence < 0.5 필터 |
+| `silver.acr_content` | acr_events | 중복 fingerprint 제거, match_confidence \< 0.5 필터 |
 | `silver.voice_interactions` | voice_command_events | transcript 정규화, 빈 transcript 필터 |
 | `silver.iot_interactions` | thinq_device_events | command/ack 쌍 매칭, 응답시간 이상치 필터 |
 | `silver.panel_health` | panel_diagnostics | OLED/LCD 분리, 시간순 정렬 |

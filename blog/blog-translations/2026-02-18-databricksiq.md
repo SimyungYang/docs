@@ -11,9 +11,9 @@
 | **발행일** | 2023년 6월 28일 |
 | **원문 URL** | https://www.databricks.com/blog/introducing-lakehouseiq-ai-powered-engine-uniquely-understands-your-business |
 
-{% hint style="info" %}
+> **참고**
 **참고**: 요청하신 URL(`introducing-databricksiq`)은 현재 404 페이지로, 이 포스트가 해당 URL에서 가리키는 원본 콘텐츠입니다. LakehouseIQ는 이후 **DatabricksIQ** 로 이름이 변경되었습니다.
-{% endhint %}
+
 
 ---
 

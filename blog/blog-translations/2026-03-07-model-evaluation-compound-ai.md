@@ -1,12 +1,3 @@
----
-original_title: "Introducing Enhanced Agent Evaluation"
-authors: "Eric Peter, Daniel Smilkov, Nikhil Thorat, Alkis Polyzotis, Chenen Liang"
-date: "2025-03-12"
-category: "Announcements"
-original_url: "https://www.databricks.com/blog/introducing-enhanced-agent-evaluation"
-translated_date: "2026-04-07"
----
-
 # Compound AI Systems를 위한 Model Evaluation 소개
 
 > **원문**: [Introducing Enhanced Agent Evaluation](https://www.databricks.com/blog/introducing-enhanced-agent-evaluation)

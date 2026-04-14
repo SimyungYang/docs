@@ -2,7 +2,7 @@
 
 2025년은 AI Agent가 "데모 단계"에서 "프로덕션 단계"로 전환되는 변곡점입니다. 단일 Agent의 한계가 명확해지면서, 멀티에이전트 시스템(MAS)이 엔터프라이즈 AI의 핵심 아키텍처로 부상하고 있습니다. 이 가이드는 오케스트레이션 패턴, 프로토콜 표준화, 관측성, 메모리 아키텍처, 안전성, 시장 동향, 그리고 Vibe Coding까지 -- 2025년 Agentic AI 지형의 전체 그림을 제공합니다.
 
-{% hint style="info" %}
+> **참고**
 **학습 목표**
 - 멀티에이전트 오케스트레이션 5대 패턴의 설계 원리와 적용 기준을 설명할 수 있다
 - MCP와 A2A 프로토콜의 역할 분담과 상호보완 관계를 이해한다
@@ -10,11 +10,11 @@
 - Agent Memory의 유형별 설계 전략을 수립할 수 있다
 - 엔터프라이즈 Agent 거버넌스 프레임워크를 적용할 수 있다
 - Databricks 플랫폼에서의 멀티에이전트 구현 전략을 수립할 수 있다
-{% endhint %}
 
-{% hint style="warning" %}
+
+> **주의**
 **용어 정리**: 이 문서에서 "Agentic AI"는 **복수의 Agent가 협업하는 시스템 전체** 를, "AI Agent"는 **그 시스템을 구성하는 개별 컴포넌트** 를 지칭합니다. 이 구분은 Gartner, Forrester 등 주요 애널리스트 기관에서도 채택한 표준 용법입니다.
-{% endhint %}
+
 
 ---
 
@@ -51,9 +51,9 @@
 3. **점진적 확장**: 새 도메인 추가 시 전문 Agent만 추가하면 됨
 4. **디버깅 용이**: 라우팅 로그만 보면 어떤 Agent가 호출되었는지 즉시 파악
 
-{% hint style="success" %}
+> **성공**
 **Databricks 매핑**: Databricks의 **Supervisor Agent**(Agent Bricks)가 정확히 이 패턴입니다. Knowledge Assistant, Genie Agent 등을 하위 Agent로 등록하고, Supervisor가 라우팅합니다.
-{% endhint %}
+
 
 ### 1.3 Swarm/Handoff 패턴
 
@@ -72,9 +72,9 @@
 - 디버깅 난이도 높음 (제어 흐름이 분산)
 - 토큰 소비 예측 어려움
 
-{% hint style="warning" %}
+> **주의**
 **주의**: Swarm 패턴은 **탐색적 리서치, 브레인스토밍** 등에 적합하지만, **결정론적 비즈니스 프로세스**(예: 결재, 주문 처리)에는 부적합합니다. 이런 경우 Supervisor 또는 Pipeline 패턴을 사용하세요.
-{% endhint %}
+
 
 ### 1.4 Hierarchical 패턴 (대규모 시스템)
 
@@ -134,9 +134,9 @@ Researcher → Writer → Editor → Fact-Checker → Publisher
 | **Google ADK** | 멀티패턴 | 모든 패턴 | A2A 프로토콜 네이티브. Google Cloud 통합 |
 | **Databricks Agent Framework** | Supervisor | Pipeline | MLflow 통합 추적. Unity Catalog 거버넌스 |
 
-{% hint style="info" %}
+> **참고**
 **실전 권장 조합**: 대부분의 엔터프라이즈 프로젝트에서는 **LangGraph(오케스트레이션) + Databricks Agent Framework(거버넌스/배포/모니터링)** 조합이 최적입니다. LangGraph로 복잡한 흐름을 설계하고, Databricks로 프로덕션 운영을 관리하세요.
-{% endhint %}
+
 
 ---
 
@@ -176,9 +176,9 @@ Researcher → Writer → Editor → Fact-Checker → Publisher
 
 **주요 MCP Server 예시:** Databricks MCP Server (SQL, Unity Catalog, Vector Search), GitHub MCP Server, Slack MCP Server 등 수천 개
 
-{% hint style="success" %}
+> **성공**
 **Databricks MCP**: Databricks는 공식 MCP Server를 제공합니다. SQL 실행, Unity Catalog 탐색, Vector Search 쿼리, Genie 질의 등을 MCP 프로토콜로 통합할 수 있습니다. Claude Desktop, Cursor 등에서 바로 연결 가능합니다.
-{% endhint %}
+
 
 ### 2.3 A2A (Agent-to-Agent) -- Agent 간 통신 표준
 
@@ -211,9 +211,9 @@ Researcher → Writer → Editor → Fact-Checker → Publisher
 | **채택 속도** | 매우 빠름 | 상대적으로 느림 |
 | **상호 관계** | A2A와 상호보완 | MCP와 상호보완 |
 
-{% hint style="warning" %}
+> **주의**
 **A2A 채택이 느린 이유**: A2A는 "Agent가 다른 Agent를 발견하고 협업하는" 시나리오를 전제합니다. 하지만 2025년 현재 대부분의 엔터프라이즈는 **단일 벤더 스택** 내에서 Agent를 운영하고 있어, 크로스 벤더 Agent 협업 수요가 아직 제한적입니다. 2026~2027년에 본격적으로 채택될 것으로 전망됩니다.
-{% endhint %}
+
 
 ### 2.4 AAIF (Agentic AI Forum) -- 표준화 거버넌스
 
@@ -248,16 +248,16 @@ Researcher → Writer → Editor → Fact-Checker → Publisher
 |----------|--------|------|-----------------|
 | **비용** | 토큰 사용량 | 에이전트별, 태스크별 토큰 소비 | 동일 태스크 대비 **50x 편차** 발생 가능! |
 | **비용** | 달러/태스크 | 태스크 1건 처리 비용 | 비즈니스 가치 대비 ROI 계산 |
-| **지연** | E2E Latency | 사용자 요청~최종 응답 시간 | 대화형: < 5s, 배치: SLA 기준 |
-| **지연** | TTFT | Time to First Token | < 2s (사용자 체감 기준) |
+| **지연** | E2E Latency | 사용자 요청~최종 응답 시간 | 대화형: \< 5s, 배치: SLA 기준 |
+| **지연** | TTFT | Time to First Token | \< 2s (사용자 체감 기준) |
 | **신뢰성** | Tool Call 성공률 | 도구 호출 성공/실패 비율 | > 95% (이하면 프롬프트 튜닝 필요) |
 | **신뢰성** | Task 완료율 | 태스크 정상 완료 비율 | > 90% |
 | **품질** | Trajectory 분석 | Agent의 행동 경로가 최적이었는지 | 불필요한 Tool Call 3회 이상이면 비효율 |
-| **품질** | 환각(Hallucination) 비율 | 사실과 다른 응답 비율 | < 5% |
+| **품질** | 환각(Hallucination) 비율 | 사실과 다른 응답 비율 | \< 5% |
 
-{% hint style="warning" %}
+> **주의**
 **토큰 비용의 50x 편차**: 동일한 질문에 대해 Agent의 경로 선택에 따라 토큰 소비가 **최대 50배** 차이날 수 있습니다. 예를 들어, 단순 질문에 불필요하게 여러 Tool을 호출하거나, 대규모 컨텍스트를 반복 전달하는 경우입니다. **Trajectory 분석** 을 통해 이런 비효율을 탐지하고 최적화해야 합니다.
-{% endhint %}
+
 
 ### 3.2 Tool Calling Accuracy -- 지배적 신뢰성 이슈
 
@@ -281,9 +281,9 @@ Researcher → Writer → Editor → Fact-Checker → Publisher
 | **Langfuse** | 오픈소스/SaaS | 자체 호스팅 가능. 비용 추적 우수 | 별도 연동 | 오픈소스 무료 |
 | **AgentOps** | SaaS | Agent 전용. 세션 리플레이 | 별도 연동 | 프리미엄 |
 
-{% hint style="success" %}
+> **성공**
 **Databricks 고객 권장**: **MLflow Tracing** 을 1차 관측 도구로 사용하세요. Databricks 환경에서 자동으로 trace가 수집되며, Unity Catalog의 거버넌스와 통합됩니다. LangGraph를 사용하는 경우 LangSmith를 보조 도구로 추가하면 개발 단계에서의 디버깅이 수월합니다.
-{% endhint %}
+
 
 ### 3.4 관측성 구현 체크리스트
 
@@ -347,9 +347,9 @@ Agent의 "기억"은 사용자 경험과 태스크 품질을 결정하는 핵심
 | **Azure Cosmos DB** | 멀티모델 DB | 글로벌 분산. 벡터 + 문서 + 그래프 | Azure 네이티브 |
 | **Bedrock AgentCore Memory** | 관리형 | AWS Agent 생태계 통합 | 외부 연동 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks 고객 권장**: **Databricks Vector Search** 를 장기 기억의 핵심 저장소로 사용하세요. Delta 테이블과 자동 동기화되므로, 기존 데이터 파이프라인에 자연스럽게 통합됩니다. 구조화 검색은 Unity Catalog의 SQL 인터페이스를 활용하여 하이브리드 검색을 구현할 수 있습니다.
-{% endhint %}
+
 
 ### 4.5 공유 기억 (Shared/Collective Memory) 패턴
 
@@ -414,9 +414,9 @@ Forrester Research가 2025년 발표한 **AEGIS (Agentic Enterprise Governance a
 | **Tier 2** | Step-up | 특정 조건 충족 시 승인 요청 | 데이터 수정, 비용 발생 API 호출, 외부 시스템 연동 |
 | **Tier 3** | Prohibited | Agent 실행 금지. 반드시 인간이 수행 | PII 삭제, 금융 거래, 인사 결정, 법적 결정 |
 
-{% hint style="warning" %}
+> **주의**
 **핵심 원칙**: Tier 분류는 **"되돌릴 수 있는가(reversibility)"** 를 기준으로 합니다. 되돌릴 수 있는 행동은 Tier 1~2, 되돌릴 수 없는 행동은 반드시 Tier 2~3으로 분류하세요.
-{% endhint %}
+
 
 ### 5.4 권한 부여 모델 비교
 
@@ -447,9 +447,9 @@ Forrester Research가 2025년 발표한 **AEGIS (Agentic Enterprise Governance a
 | `token_usage` | 해당 행동의 토큰 소비 |
 | `latency_ms` | 행동 소요 시간 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks 장점**: Unity Catalog의 **감사 로그(Audit Log)** 와 **데이터 계보(Lineage)** 기능을 Agent 거버넌스에 활용할 수 있습니다. Agent가 어떤 테이블에 접근했는지, 어떤 쿼리를 실행했는지가 자동으로 추적됩니다.
-{% endhint %}
+
 
 ---
 
@@ -512,13 +512,13 @@ Forrester Research가 2025년 발표한 **AEGIS (Agentic Enterprise Governance a
 
 ### 7.3 생산성 논쟁 -- 체감 vs 실제
 
-{% hint style="warning" %}
+> **주의**
 **주목할 연구 결과**: METR(Model Evaluation and Threat Research)의 2025년 연구에 따르면, 숙련된 오픈소스 개발자들이 AI 코딩 도구를 사용했을 때 **체감 생산성은 20% 향상** 되었지만, **실제 작업 완료 시간은 19% 더 길었습니다**. 이 역설적 결과는 다음을 시사합니다:
 
 1. **코드 리뷰 시간 증가**: AI가 생성한 코드를 검증하는 데 추가 시간 소요
 2. **맥락 전환 비용**: AI와의 대화 ↔ 코드 검토를 오가는 오버헤드
 3. **과도한 위임**: AI에 맡기는 것이 나을 것 같지만, 결국 수정이 필요한 경우
-{% endhint %}
+
 
 **그러나** 이것이 Vibe Coding의 무용론을 의미하지는 않습니다. 해당 연구는 "이미 익숙한 코드베이스에서 숙련 개발자가 사용한 경우"의 결과이며, 다음 경우에는 생산성이 확실히 향상됩니다:
 
@@ -539,9 +539,9 @@ Forrester Research가 2025년 발표한 **AEGIS (Agentic Enterprise Governance a
 | **확장성** | 개인 생산성 도구 | 팀/조직 수준의 개발 프로세스 |
 | **대상** | 개인 개발자, 프로토타이핑 | 엔터프라이즈 소프트웨어 개발 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks에서의 Vibe Coding**: Databricks 환경에서는 **Genie Code**(자연어 → SQL/Python), **AI Dev Kit**(Builder App 개발), **MCP 연동 Claude Code/Cursor**(Databricks 리소스 접근)가 Vibe Coding을 지원합니다. 특히 데이터 엔지니어가 SQL만 알아도 Python UDF를 작성하거나, 비즈니스 분석가가 대시보드 자동 생성을 할 수 있게 합니다.
-{% endhint %}
+
 
 ---
 
@@ -570,9 +570,9 @@ Databricks는 "Agent를 만드는 프레임워크"가 아닌, **"Agent를 엔터
 | **멀티클라우드** | AWS, Azure, GCP 모두 지원 | AWS 전용 | Azure 전용 | GCP 전용 |
 | **데이터와의 거리** | 제로 (Lakehouse 위에 Agent) | ETL 필요 | ETL 필요 | ETL 필요 |
 
-{% hint style="success" %}
+> **성공**
 **핵심 차별점**: Databricks의 가장 큰 강점은 **"Agent가 데이터 바로 위에 앉는다"** 는 것입니다. 다른 플랫폼에서는 Agent가 데이터를 가져오기 위해 ETL 파이프라인을 거쳐야 하지만, Databricks에서는 Agent가 Unity Catalog를 통해 **원본 데이터에 직접 접근** 하며, 동일한 거버넌스 정책이 적용됩니다.
-{% endhint %}
+
 
 ### 8.3 구현 시나리오별 권장 아키텍처
 
@@ -677,6 +677,6 @@ Databricks는 "Agent를 만드는 프레임워크"가 아닌, **"Agent를 엔터
 
 ---
 
-{% hint style="info" %}
+> **참고**
 **이 문서는 2025년 Q1 기준으로 작성되었습니다.** Agentic AI 분야는 매우 빠르게 변화하고 있으므로, 분기별 업데이트를 권장합니다. 최신 정보는 [Databricks 블로그](https://www.databricks.com/blog)와 [AAIF 공지](https://www.linuxfoundation.org/press)를 참조하세요.
-{% endhint %}
+

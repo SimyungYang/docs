@@ -1,12 +1,3 @@
----
-original_title: "Introducing Databricks Apps: The fastest and most secure way to build data and AI applications"
-authors: "Andre Furlan Bueno, Patrick Wendell, Shanku Niyogi, Akhil Gupta, Nick Kramer, Jackie Zhang"
-date: "2024-10-08"
-category: "Platform & Products & Announcements"
-original_url: "https://www.databricks.com/blog/introducing-databricks-apps"
-translated_date: "2026-04-07"
----
-
 > **원문**: [Introducing Databricks Apps: The fastest and most secure way to build data and AI applications](https://www.databricks.com/blog/introducing-databricks-apps)
 
 # Databricks Apps 소개: 데이터 및 AI 애플리케이션을 구축하는 가장 빠르고 안전한 방법

@@ -1,12 +1,3 @@
----
-original_title: "A multi-agent approach to audience intelligence"
-authors: "Bradley Munday, Tyler Hickey"
-date: "2026-04-06"
-category: "Solutions"
-original_url: "https://www.databricks.com/blog/multi-agent-approach-audience-intelligence"
-translated_date: "2026-04-07"
----
-
 # 오디언스 인텔리전스를 위한 멀티 에이전트 접근법
 
 ## 요약

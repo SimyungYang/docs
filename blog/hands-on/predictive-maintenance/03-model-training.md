@@ -57,9 +57,9 @@ for feat, val, sv in sorted(zip(feature_columns, X_test.iloc[idx], shap_values[i
     print(f"  {feat:30s}: {val:10.2f} → SHAP {sv:+.4f} ({direction})")
 ```
 
-{% hint style="info" %}
-SHAP 해석은 제조 현장에서 " **왜 이 설비가 고장 위험으로 판단되었는가?**" 에 답할 수 있게 합니다. 이는 정비팀의 신뢰도 확보와 의사결정에 핵심적입니다.
-{% endhint %}
+> **참고**
+> SHAP 해석은 제조 현장에서 " **왜 이 설비가 고장 위험으로 판단되었는가?**" 에 답할 수 있게 합니다. 이는 정비팀의 신뢰도 확보와 의사결정에 핵심적입니다.
+
 
 ---
 
@@ -83,9 +83,9 @@ model_lgb = lgb.LGBMClassifier(
 model_lgb.fit(X_tr, Y_tr, eval_set=[(X_val, Y_val)])
 ```
 
-{% hint style="warning" %}
-제조 예지보전에서는 **Recall(고장 탐지율)** 이 가장 중요합니다. Recall이 낮으면 실제 고장을 놓쳐 설비 다운타임이 발생합니다. 알고리즘 선택 시 Recall >= 0.7을 필수 조건으로 설정하세요.
-{% endhint %}
+> **주의**
+> 제조 예지보전에서는 **Recall(고장 탐지율)** 이 가장 중요합니다. Recall이 낮으면 실제 고장을 놓쳐 설비 다운타임이 발생합니다. 알고리즘 선택 시 Recall >= 0.7을 필수 조건으로 설정하세요.
+
 
 ---
 
@@ -169,11 +169,11 @@ mlflow.log_metric("optimal_threshold", optimal_threshold)
 
 ### 비즈니스 기반 임계값 선택
 
-{% hint style="warning" %}
-임계값은 비즈니스 요구사항에 따라 결정합니다:
+> **주의**
+> 임계값은 비즈니스 요구사항에 따라 결정합니다:
 - **놓침이 치명적**(반도체, 자동차 부품) → 임계값 낮춤 (0.3~0.4) → Recall 상승, Precision 하락
 - **오탐 비용이 높음**(불필요 정비 비용 큼) → 임계값 높임 (0.6~0.7) → Precision 상승, Recall 하락
 - **최적점**: PR 곡선에서 비용함수를 최소화하는 점 = `cost = FN x 50000 + FP x 3000`
-{% endhint %}
+
 
 **다음 단계**: [04. 모델 등록](04-model-registration.md)

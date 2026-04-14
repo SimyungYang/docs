@@ -22,9 +22,9 @@ Databricks Vector Search는 **HNSW** 알고리즘을 사용합니다. 이 알고
 
 HNSW가 다른 ANN 알고리즘 대비 메모리 사용량이 높은 이유는 각 노드가 여러 계층에 걸쳐 연결 정보를 유지하기 때문입니다. 하지만 검색 속도와 정확도의 균형이 가장 우수하여, 대부분의 상용 벡터 DB(Pinecone, Weaviate, Qdrant 등)에서도 HNSW를 기본 알고리즘으로 채택하고 있습니다.
 
-{% hint style="info" %}
-Databricks Vector Search는 HNSW 알고리즘의 파라미터를 자동 최적화합니다. 사용자가 `ef_construction`이나 `M` 값을 직접 설정할 필요가 없으므로, 인덱스 유형과 임베딩 모델 선택에 집중하면 됩니다.
-{% endhint %}
+> **참고**
+> Databricks Vector Search는 HNSW 알고리즘의 파라미터를 자동 최적화합니다. 사용자가 `ef_construction`이나 `M` 값을 직접 설정할 필요가 없으므로, 인덱스 유형과 임베딩 모델 선택에 집중하면 됩니다.
+
 
 ## 1. Vector Search Endpoint 생성
 
@@ -51,9 +51,9 @@ client.create_endpoint(
 | **쿼리 지연** | 낮음 | ~250ms 추가 |
 | **적합한 케이스** | 일반 RAG | 대규모 문서 컬렉션 |
 
-{% hint style="info" %}
-대부분의 RAG 사용 사례에서는 **Standard** 엔드포인트로 충분합니다. 워크스페이스당 최대 100개 엔드포인트, 엔드포인트당 최대 50개 인덱스를 생성할 수 있습니다.
-{% endhint %}
+> **참고**
+> 대부분의 RAG 사용 사례에서는 **Standard** 엔드포인트로 충분합니다. 워크스페이스당 최대 100개 엔드포인트, 엔드포인트당 최대 50개 인덱스를 생성할 수 있습니다.
+
 
 ## 2. Vector Search Index 유형
 
@@ -108,9 +108,9 @@ index = client.create_direct_access_index(
 )
 ```
 
-{% hint style="success" %}
+> **성공**
 **권장**: Delta Sync Index + Databricks 관리 임베딩 조합. 임베딩 계산과 인덱스 동기화가 자동으로 처리되어 운영 부담이 최소화됩니다.
-{% endhint %}
+
 
 ## 3. Embedding 모델 선택
 
@@ -199,9 +199,9 @@ index.sync()
 # pipeline_type="CONTINUOUS"로 생성 시 자동 활성화
 ```
 
-{% hint style="tip" %}
-대부분의 RAG 사용 사례에서는 **TRIGGERED** 모드로 충분합니다. 문서가 자주 변경되지 않는 경우 불필요한 CONTINUOUS 동기화 비용을 절약할 수 있습니다. 일 단위 갱신이면 Databricks Job으로 `index.sync()`를 스케줄링하세요.
-{% endhint %}
+> **팁**
+> 대부분의 RAG 사용 사례에서는 **TRIGGERED** 모드로 충분합니다. 문서가 자주 변경되지 않는 경우 불필요한 CONTINUOUS 동기화 비용을 절약할 수 있습니다. 일 단위 갱신이면 Databricks Job으로 `index.sync()`를 스케줄링하세요.
+
 
 ### 인덱스 상태 모니터링
 
@@ -222,9 +222,9 @@ sync_status = index.wait_until_ready(timeout=timedelta(minutes=30))
 
 | 기준 | Standard | Storage-Optimized |
 |------|----------|-------------------|
-| **문서 수** | < 100만 청크 | 100만+ 청크 |
+| **문서 수** | \< 100만 청크 | 100만+ 청크 |
 | **쿼리 빈도** | 높음 (실시간 서빙) | 낮음~중간 (배치 검색) |
-| **응답 시간 요구** | P95 < 200ms | P95 < 500ms 허용 |
+| **응답 시간 요구** | P95 \< 200ms | P95 \< 500ms 허용 |
 | **비용 우선순위** | 성능 > 비용 | 비용 > 성능 |
 | **인덱스 빌드** | 소규모 빠르게 | 대규모 효율적으로 |
 
@@ -236,9 +236,9 @@ sync_status = index.wait_until_ready(timeout=timedelta(minutes=30))
 4. **엔드포인트 통합**: 여러 인덱스를 하나의 엔드포인트에서 서빙합니다. 엔드포인트당 최대 50개 인덱스를 지원합니다.
 5. **문서 수명 관리**: 더 이상 필요 없는 문서는 소스 테이블에서 삭제하여 인덱스 크기를 줄입니다.
 
-{% hint style="warning" %}
-Storage-Optimized 엔드포인트는 쿼리 지연이 약 250ms 추가되지만, 대규모 데이터셋에서 인덱싱 비용이 크게 절감됩니다. 10만 건 이하에서는 Standard가 비용 효율적이고, 100만 건 이상에서는 Storage-Optimized를 고려하세요.
-{% endhint %}
+> **주의**
+> Storage-Optimized 엔드포인트는 쿼리 지연이 약 250ms 추가되지만, 대규모 데이터셋에서 인덱싱 비용이 크게 절감됩니다. 10만 건 이하에서는 Standard가 비용 효율적이고, 100만 건 이상에서는 Storage-Optimized를 고려하세요.
+
 
 ## 다음 단계
 

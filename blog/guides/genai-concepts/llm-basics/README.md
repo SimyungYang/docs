@@ -14,14 +14,14 @@ LLM은 대규모 텍스트 데이터로 학습된 딥러닝 모델로, 자연어
 - **번역**: 다국어 텍스트 변환
 - **코드 생성**: 프로그래밍 코드 작성 및 디버깅
 
-{% hint style="info" %}
+> **참고**
 **학습 목표**
 - Transformer 아키텍처와 Self-Attention의 핵심 원리를 설명할 수 있다
 - 토큰화 과정과 컨텍스트 윈도우의 제한 이유를 이해한다
 - Hallucination의 발생 원인과 해결 방법(RAG/Grounding)을 설명할 수 있다
 - 주요 LLM 모델을 비교하고 용도에 맞게 선택할 수 있다
 - Fine-tuning, Prompting, RAG의 트레이드오프를 판단할 수 있다
-{% endhint %}
+
 
 ---
 

@@ -203,7 +203,7 @@ fine_best = fmin(fn=objective, space=fine_space,
 
 | 상황 | 권장 전략 | 이유 |
 |------|----------|------|
-| 파라미터 2~3개, 각 5개 이하 값 | Grid Search | 전수 조사 가능 (< 125회) |
+| 파라미터 2~3개, 각 5개 이하 값 | Grid Search | 전수 조사 가능 (\< 125회) |
 | 파라미터 5~8개, 적당한 범위 | Bayesian (TPE) | 효율적 탐색 |
 | 파라미터 10개+, 넓은 범위 | Random → Bayesian 2단계 | 단계적 범위 축소 |
 | 학습 시간이 매우 긴 모델 | Optuna + Pruning | 조기 중단으로 시간 절약 |

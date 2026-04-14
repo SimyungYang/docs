@@ -1,13 +1,3 @@
----
-original_title: "Announcing managed MCP servers with Unity Catalog and Mosaic AI Integration"
-authors: "Databricks"
-date: "2025-06-18"
-category: "Product"
-original_url: "https://www.databricks.com/blog/announcing-managed-mcp-servers-unity-catalog-and-mosaic-ai-integration"
-translated_date: "2026-04-07"
-note: "요청하신 URL(insights-deploying-mcp-scale-lessons-our-production-environment)은 404로 존재하지 않습니다. Databricks 공식 사이트맵 기준, MCP 관련 가장 유사한 포스트인 이 글로 대체합니다."
----
-
 # Unity Catalog와 Mosaic AI가 통합된 관리형 MCP 서버 발표
 
 > **원문**: [Announcing managed MCP servers with Unity Catalog and Mosaic AI Integration](https://www.databricks.com/blog/announcing-managed-mcp-servers-unity-catalog-and-mosaic-ai-integration)

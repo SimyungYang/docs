@@ -12,9 +12,9 @@
 | **도메인 전문성** | 전문가 투입 시 높음 | 일반적 기준만 평가 가능 |
 | **적합 시기** | 최종 검증, 엣지 케이스 | 일상적 모니터링, 대량 평가 |
 
-{% hint style="success" %}
+> **성공**
 **권장 조합**: LLM-as-Judge로 대량 자동 평가 → 낮은 점수의 응답만 Human Evaluation으로 정밀 검토. 이 조합이 비용 대비 가장 효과적입니다.
-{% endhint %}
+
 
 ---
 
@@ -31,9 +31,9 @@
 | 3. Judge 모델 실행 | GPT-4, Claude 등 강력한 모델이 점수와 이유 생성 |
 | 4. 결과 집계 | 메트릭별 평균 점수, 분포 분석 |
 
-{% hint style="info" %}
+> **참고**
 **팁**: Judge 모델은 평가 대상 모델보다 **같거나 더 강력한 모델** 을 사용하세요. 약한 모델이 강한 모델을 평가하면 신뢰도가 낮습니다.
-{% endhint %}
+
 
 ### LLM-as-Judge의 한계
 
@@ -149,6 +149,6 @@ def format_checker(inputs, outputs, expectations):
         return {"score": 0.0, "justification": "Invalid JSON format"}
 ```
 
-{% hint style="info" %}
+> **참고**
 **MLflow 3 변경사항**: 기존 `mlflow.evaluate()`의 `model_type="databricks-agent"` 방식은 계속 사용 가능하지만, 새 프로젝트에서는 `mlflow.genai.evaluate()` + Scorer 패턴을 권장합니다. `@scorer` 데코레이터로 비즈니스 로직에 맞는 평가 기준을 자유롭게 정의할 수 있습니다.
-{% endhint %}
+

@@ -6,19 +6,19 @@
 
 > **원문**: [Delta Live Tables: Declarative ETL](https://www.databricks.com/blog/delta-live-tables-declarative-etl)
 
-{% hint style="warning" %}
+> **주의**
 **참고**: 원문 URL(https://www.databricks.com/blog/delta-live-tables-declarative-etl)은 현재 404 오류를 반환합니다. 이 번역은 Databricks 공식 블로그 GA 발표(2022년 4월) 및 공식 DLT 문서를 기반으로 작성되었습니다. 관련 원문은 [Announcing General Availability of Databricks Delta Live Tables](https://www.databricks.com/blog/2022/04/05/announcing-generally-availability-of-databricks-delta-live-tables-dlt.html)에서 확인할 수 있습니다.
-{% endhint %}
+
 
 ---
 
-{% hint style="info" %}
+> **참고**
 **핵심 요약**
 - **선언적 ETL**: Delta Live Tables(DLT)는 데이터 엔지니어가 "무엇을 원하는지"만 선언하면, 실행 방법·인프라·의존성 관리를 플랫폼이 자동으로 처리합니다.
 - **배치 + 스트리밍 통합**: 동일한 코드로 배치 파일과 실시간 스트리밍 소스를 처리하며, DLT가 실행 시맨틱스를 자동으로 결정합니다.
 - **내장 데이터 품질**: CONSTRAINT(제약 조건) 기반의 기대값(Expectations)으로 데이터 품질을 파이프라인 레벨에서 선언적으로 보장합니다.
 - **완전 관리형 운영**: 클러스터 프로비저닝, 자동 스케일링, 재시도, 체크포인트, 리니지(Lineage) 추적이 모두 자동화됩니다.
-{% endhint %}
+
 
 ---
 
@@ -378,9 +378,9 @@ DLT 도입 기업들이 공통적으로 보고하는 비즈니스 효과는 세 
 
 이 통합은 DLT의 핵심 선언적 철학을 유지하면서 더 넓은 데이터 엔지니어링 생태계와 통합되는 방향입니다. 기존 DLT 파이프라인은 코드 변경 없이 Lakeflow Declarative Pipelines로 전환됩니다.
 
-{% hint style="info" %}
+> **참고**
 **마이그레이션 가이드**: 기존 DLT 파이프라인을 Lakeflow Declarative Pipelines로 전환하는 방법은 [What happened to Delta Live Tables (DLT)?](https://docs.databricks.com/aws/en/ldp/where-is-dlt) 문서를 참고하세요.
-{% endhint %}
+
 
 ---
 

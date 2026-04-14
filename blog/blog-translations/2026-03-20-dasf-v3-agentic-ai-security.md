@@ -1,12 +1,3 @@
----
-original_title: "Agentic AI Security: New Risks and Controls in the Databricks AI Security Framework (DASF v3.0)"
-authors: "David Veuve, Omar Khawaja, Arun Pamulapati, Nishith Sinha, Caelin Kaplan"
-date: "2026-03-20"
-category: "Security and Trust"
-original_url: "https://www.databricks.com/blog/agentic-ai-security-new-risks-and-controls-databricks-ai-security-framework-dasf-v30"
-translated_date: "2026-04-07"
----
-
 > **원문**: [Agentic AI Security: New Risks and Controls in the Databricks AI Security Framework (DASF v3.0)](https://www.databricks.com/blog/agentic-ai-security-new-risks-and-controls-databricks-ai-security-framework-dasf-v30)
 
 # 에이전틱 AI 보안: Databricks AI 보안 프레임워크(DASF v3.0)의 새로운 위험과 통제
@@ -17,11 +8,11 @@ _Published: March 20, 2026 | 작성자: David Veuve, Omar Khawaja, Arun Pamulapa
 
 ![DASF v3.0 Agentic AI Security](https://www.databricks.com/sites/default/files/2026-03/2026-03-blog-secure-agentic-ai-with-the-databricks-ai-security-framework-og-1200x628.png?v=1774285996)
 
-{% hint style="info" %}
+> **참고**
 **요약**
 
 Databricks AI 보안 프레임워크(DASF)는 이제 에이전틱 AI(Agentic AI)를 13번째 시스템 컴포넌트로 다루며, 35가지 새로운 기술 보안 위험과 6가지 새로운 완화 통제를 추가함으로써 조직이 자율 에이전트를 안심하고 배포할 수 있도록 지원합니다. 이번 확장은 에이전트 메모리, 계획, 도구 사용의 고유한 위험을 다루며, 에이전트를 엔터프라이즈 도구에 연결하는 신흥 표준인 MCP(Model Context Protocol)가 도입하는 위협도 포함합니다. DASF Agentic AI Extension 백서와 업데이트된 컴펜디엄(Compendium)이 지금 바로 제공됩니다. 이를 다운로드하여 에이전트 아키텍처를 평가하고, 도구 에코시스템을 매핑하고, 자율성을 위해 특별히 설계된 심층 방어(Defense-in-Depth) 통제를 구현하세요.
-{% endhint %}
+
 
 Databricks AI 보안 프레임워크(DASF)의 **에이전틱 AI Extension 백서** 출시를 발표하게 되어 기쁩니다! Databricks 고객들은 이미 데이터베이스를 쿼리하고, 외부 API를 호출하며, 코드를 실행하고, 다른 에이전트와 협력하는 AI 에이전트를 배포하고 있습니다. 이러한 배포를 담당하는 팀들이 어려운 질문을 던지고 있음을 우리는 지속적으로 듣고 있습니다: AI가 단순히 말하는 것을 넘어 실제로 무언가를 **할 수 있을 때** 어떤 일이 일어날까요?
 

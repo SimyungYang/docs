@@ -121,9 +121,9 @@ SET TBLPROPERTIES('delta.dataSkippingStatsColumns' = 'event_date, user_id, regio
 | **Small File 문제** | 고카디널리티 시 심각 | 없음 | 없음 |
 | **쓰기 성능 영향** | 없음 | OPTIMIZE 시 높은 비용 | 최소 (증분) |
 
-{% hint style="info" %}
+> **참고**
 **마이그레이션 권장**: 신규 테이블은 Liquid Clustering을 기본으로 사용하세요. 기존 파티셔닝/Z-ORDER 테이블은 점진적으로 전환하되, `CLUSTER BY AUTO` 를 먼저 적용하여 Databricks가 최적 키를 자동 분석하게 하는 것이 안전합니다.
-{% endhint %}
+
 
 ### 2.2 Liquid Clustering 모니터링
 
@@ -208,9 +208,9 @@ ALTER TABLE catalog.schema.table_name
 SET TBLPROPERTIES ('delta.logRetentionDuration' = 'interval 60 days');
 ```
 
-{% hint style="warning" %}
+> **주의**
 **VACUUM 후 Time Travel 불가**: VACUUM으로 삭제된 파일에 해당하는 버전은 Time Travel로 접근할 수 없습니다. 규제 요건이 있는 테이블은 보존 기간을 충분히 길게 설정하세요.
-{% endhint %}
+
 
 ### 3.3 VACUUM 자동화
 
@@ -278,9 +278,9 @@ OPTIMIZE catalog.schema.table_name;
 -- 일반적으로 삭제 비율이 10% 이상이면 OPTIMIZE 권장
 ```
 
-{% hint style="info" %}
+> **참고**
 **Deletion Vectors + MERGE 패턴**: SCD Type 2 MERGE에서 Deletion Vectors가 큰 효과를 발휘합니다. 기존에 수십 분 걸리던 MERGE 작업이 수 분으로 단축됩니다. Predictive Optimization이 활성화되어 있으면 누적된 Deletion Vectors는 자동으로 정리됩니다.
-{% endhint %}
+
 
 ---
 
@@ -335,9 +335,9 @@ ORDER BY 1 DESC;
 | **Auto-ANALYZE** | 통계 불일치 감지 시 | 쿼리 옵티마이저 정확도 향상 |
 | **Auto-Compaction** | 스트리밍 테이블 Small File | 실시간 파일 병합 |
 
-{% hint style="info" %}
+> **참고**
 **비용 대비 효과**: Predictive Optimization의 비용은 일반적으로 수동 OPTIMIZE/VACUUM 실행 비용의 30~50%입니다. 자동 실행이므로 관리 인력 비용도 절감됩니다. 2024년 11월 이후 생성된 계정에는 기본 활성화되어 있습니다.
-{% endhint %}
+
 
 ---
 

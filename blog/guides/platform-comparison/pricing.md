@@ -21,13 +21,13 @@
 | **비용 모니터링** | System Tables — 비용을 SQL로 분석/알림 | Resource Monitors | Cost Explorer | Budget Alerts | 비용 관리 대시보드 |
 | **데이터 이동 비용** | 오픈 포맷 — 이관 비용 최소 | 독점 포맷 — 이관 시 높은 비용 | AWS 내부 무료, 외부 과금 | GCP 내부 무료, 외부 과금 | Azure 내부 최적화 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks 비용 투명성**: 스토리지는 고객 클라우드(S3/ADLS/GCS) 직접 과금으로 마크업이 없고, 컴퓨팅은 DBU 기반 초 단위 과금입니다. System Tables를 통해 비용을 SQL로 직접 분석하고, 이상 비용에 대한 알림을 설정할 수 있습니다.
-{% endhint %}
 
-{% hint style="warning" %}
+
+> **주의**
 **경쟁사 가격 강점**: BigQuery On-demand는 쿼리 실행량이 적은 경우 매우 경제적입니다 (쿼리당 과금, 유휴 비용 Zero). Snowflake는 Auto-suspend로 유휴 비용을 쉽게 관리할 수 있으며, Credit 기반 예측이 직관적입니다. MS Fabric은 이미 Microsoft E5 라이선스가 있는 조직에 추가 비용 부담이 적을 수 있습니다.
-{% endhint %}
+
 
 ---
 
@@ -54,9 +54,9 @@
 | **로컬 Agent 개발** | AI Dev Kit — 로컬에서 Agent 개발/테스트/배포 | 미지원 | 미지원 | 미지원 | 미지원 |
 | **워크스페이스 컨텍스트** | Unity Catalog 메타데이터 활용 (도메인 인식) | 스키마 인식 | 서비스별 분리 | 서비스별 분리 | Fabric 메타데이터 |
 
-{% hint style="info" %}
+> **참고**
 **과거 Databricks의 약점으로 여겨졌던 "학습 곡선"은 Genie Code, AI Dev Kit, Databricks Assistant로 완전히 해소** 되었습니다. SQL만 아는 분석가부터 Python 개발자, 비즈니스 사용자까지 — 자연어로 즉시 생산적인 작업이 가능합니다.
-{% endhint %}
+
 
 ---
 
@@ -94,13 +94,13 @@
 | **3년 TCO 합계** | **$633,000** | **$1,473,000** | **$1,620,000** |
 | **연간 TCO** | **$211,000** | **$491,000** | **$540,000** |
 
-{% hint style="warning" %}
+> **주의**
 **주의**: 위 수치는 가상 시나리오이며, 실제 비용은 워크로드, 데이터 크기, 리전, 계약 조건에 따라 크게 달라집니다. **PoC를 통한 실제 비용 측정** 을 권장합니다.
-{% endhint %}
 
-{% hint style="success" %}
+
+> **성공**
 **핵심 메시지**: 컴퓨팅 비용만 보면 플랫폼 간 차이가 크지 않을 수 있습니다. 하지만 **데이터 이동, 3rd party 도구, 추가 인력, 벤더 종속 비용** 을 포함하면 Databricks의 **단일 플랫폼 전략** 이 TCO 기준으로 가장 경제적입니다.
-{% endhint %}
+
 
 ---
 
@@ -160,9 +160,9 @@
 | **AWS Full (Redshift + Glue + SageMaker + Bedrock + Lake Formation)** | ~$38,000 | +2명 | **~$68,000** |
 | **BigQuery + Vertex AI** | ~$36,000 | +1명 | **~$51,000** |
 
-{% hint style="info" %}
+> **참고**
 **핵심 포인트**: 워크로드가 SQL만이면 BigQuery/Snowflake가 경쟁력 있습니다. 하지만 **ETL + SQL + ML + AI를 모두 수행** 하는 경우, Databricks의 단일 플랫폼 전략이 **인력 비용 포함 TCO에서 가장 경제적** 입니다.
-{% endhint %}
+
 
 ---
 
@@ -208,9 +208,9 @@
 | **컨설팅/파트너 비용** | Databricks 파트너 에코시스템 | Snowflake 파트너 | AWS 파트너 | GCP 파트너 |
 | **Reclustering 비용** | 없음 (Liquid Clustering) | **Snowflake Credit 소모** | 수동 VACUUM | 자동 (무료) |
 
-{% hint style="warning" %}
+> **주의**
 **Snowflake 숨은 비용 주의**: (1) 스토리지 마크업은 대규모 데이터에서 수천만 원 차이가 납니다. (2) Automatic Reclustering은 백그라운드에서 Credit을 소모합니다. (3) ML 워크로드 추가 시 SageMaker + 데이터 복사 비용이 발생합니다. (4) 독점 포맷이므로 이관 시 UNLOAD + 재적재 비용이 큽니다.
-{% endhint %}
+
 
 ---
 
@@ -239,6 +239,6 @@
 | **예측** | 월말/분기말 비용 예측 | System Tables 추세 분석 |
 | **정책** | 클러스터 크기 제한, Auto-terminate 강제 | Cluster Policies |
 
-{% hint style="success" %}
+> **성공**
 **SA/SE 핵심 메시지**: Databricks는 **비용 투명성이 업계 최고** 입니다. (1) 스토리지는 클라우드 직접 과금으로 마크업 Zero. (2) System Tables로 DBU 단위까지 비용을 SQL로 분석. (3) 비용 이상 감지를 자동화. Snowflake는 Credit 기반으로 실제 비용 매핑이 어렵고, AWS는 5-10개 서비스의 비용을 각각 모니터링해야 합니다.
-{% endhint %}
+

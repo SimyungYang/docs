@@ -1,16 +1,12 @@
 ---
 title: "MLflow 3 출시 발표"
-date: 2025-06-09
-author: "MLflow Maintainers"
-original_url: "https://mlflow.org/blog/mlflow-3-launch"
-tags: [mlflow, genai, tracing, evaluation, mlops]
 ---
 
 > **원문**: [Announcing MLflow 3](https://mlflow.org/blog/mlflow-3-launch)
 
-{% hint style="info" %}
-요청하신 URL(`databricks.com/blog/mlflow-3-release`)은 404 오류를 반환합니다. 동일한 주제를 다루는 공식 MLflow 블로그의 출시 공지 포스트를 번역합니다.
-{% endhint %}
+> **참고**
+> 요청하신 URL(`databricks.com/blog/mlflow-3-release`)은 404 오류를 반환합니다. 동일한 주제를 다루는 공식 MLflow 블로그의 출시 공지 포스트를 번역합니다.
+
 
 # MLflow 3 출시 발표
 

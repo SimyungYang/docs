@@ -13,13 +13,13 @@
 | **인덱싱/클러스터링** | Liquid Clustering (자동 데이터 레이아웃) | Micro-partition Pruning | Sort Key, Distribution Key (수동) | Clustering (자동/수동) | 자동 관리 |
 | **유휴 시 비용** | 자동 종료, 유휴 비용 Zero | 자동 일시중지 | Serverless: 자동, Provisioned: 과금 | On-demand: 쿼리당, Editions: 슬롯 | Capacity 단위 과금 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks Photon 엔진**: C++ 네이티브 벡터화 실행 엔진으로, TPC-DS 100TB 벤치마크에서 업계 최고 수준의 가격 대비 성능을 달성합니다. **Liquid Clustering** 은 파티셔닝의 진화로, 데이터 레이아웃을 자동 최적화하여 수동 OPTIMIZE 없이 최적의 쿼리 성능을 유지합니다.
-{% endhint %}
 
-{% hint style="warning" %}
+
+> **주의**
 **경쟁사 장점**: BigQuery는 프로비저닝 없이 완전 서버리스로 동작하여 관리 오버헤드가 가장 낮습니다. Snowflake는 Auto-suspend/Auto-resume이 매우 직관적이며, 멀티 클러스터 자동 확장이 간단합니다.
-{% endhint %}
+
 
 ---
 
@@ -48,9 +48,9 @@
 | **문자열 처리** | C++ 네이티브로 JVM 대비 5-10x |
 | **집계 연산** | 벡터화로 3-5x 향상 |
 
-{% hint style="info" %}
+> **참고**
 **Photon은 추가 설정 없이 자동 적용** 됩니다. SQL Warehouse에서는 기본 활성화되어 있으며, All-Purpose Cluster에서도 Photon 옵션을 켜면 즉시 적용됩니다. 기존 Spark SQL 코드를 수정할 필요가 없습니다.
-{% endhint %}
+
 
 ### 경쟁사 쿼리 엔진과의 비교
 
@@ -173,9 +173,9 @@ ML 학습 (GPU)
 | **Model Serving** | $0.06-0.10/DBU | 모델 추론 — 저렴 |
 | **Serverless Real-Time Inference** | $0.07/DBU | 실시간 추론 |
 
-{% hint style="warning" %}
+> **주의**
 **가격은 클라우드(AWS/Azure/GCP)와 리전에 따라 다릅니다.** 위 수치는 참고용이며, 정확한 가격은 [Databricks Pricing 페이지](https://www.databricks.com/product/pricing)에서 확인하세요. 커밋 사용(PAYGO/Commit) 계약으로 추가 할인이 가능합니다.
-{% endhint %}
+
 
 ---
 
@@ -191,9 +191,9 @@ ML 학습 (GPU)
 | **추가 비용** | 없음 (쓰기 시 자동 적용) | Reclustering 크레딧 소모 | VACUUM/ANALYZE 시간 | 없음 |
 | **파티셔닝 대체** | Liquid Clustering이 파티셔닝을 완전 대체 | 마이크로 파티셔닝이 기본 | 파티셔닝 별도 | 파티셔닝 + 클러스터링 병행 |
 
-{% hint style="info" %}
+> **참고**
 **Liquid Clustering의 혁신**: 기존 Hive-style 파티셔닝의 문제점(파티션 키 변경 불가, 소규모 파티션 문제, Z-Order 비용)을 완전히 해결합니다. `ALTER TABLE ... CLUSTER BY (col1, col2)` 한 줄로 적용되며, 기존 데이터는 점진적으로 재배치됩니다.
-{% endhint %}
+
 
 ---
 
@@ -218,9 +218,9 @@ ML 학습 (GPU)
 | **NVIDIA A100 (40/80GB)** | 지원 (AWS/Azure/GCP) | 대규모 학습, 파인튜닝 | 높음 |
 | **NVIDIA H100** | 지원 (AWS/Azure) | 초대규모 학습, LLM 파인튜닝 | 매우 높음 |
 
-{% hint style="success" %}
+> **성공**
 **SA/SE 핵심 메시지**: Databricks는 **동일 플랫폼에서 CPU(SQL/ETL)와 GPU(ML/AI) 워크로드를 모두 실행** 할 수 있으며, Unity Catalog로 데이터→모델→서빙 전체 거버넌스를 통합합니다. SageMaker나 Vertex AI는 데이터 플랫폼과 분리되어 있어 데이터 복사와 거버넌스 이중화가 불가피합니다.
-{% endhint %}
+
 
 ---
 
@@ -256,6 +256,6 @@ ML 학습 (GPU)
    └─ 주 사용자: 개발자, 탐색 분석
 ```
 
-{% hint style="info" %}
+> **참고**
 **비용 최적화 팁**: SQL Warehouse와 Serverless Compute는 유휴 시 자동 종료되므로 비용이 사용량에 정확히 비례합니다. All-Purpose Cluster는 Auto-terminate를 반드시 설정하여 유휴 비용을 방지하세요.
-{% endhint %}
+

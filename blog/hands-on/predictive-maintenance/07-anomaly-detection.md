@@ -15,9 +15,9 @@
 - 사전학습된 CNN(ResNet)의 중간 레이어 피처를 패치 단위로 추출
 - 메모리 뱅크에 정상 패턴을 저장하고, 테스트 시 거리 기반 이상 점수 산출
 
-{% hint style="warning" %}
-이 노트북은 **GPU 클러스터**(g5.2xlarge 또는 g4dn.2xlarge)에서 실행해야 합니다.
-{% endhint %}
+> **주의**
+> 이 노트북은 **GPU 클러스터**(g5.2xlarge 또는 g4dn.2xlarge)에서 실행해야 합니다.
+
 
 ## 1. MVTec AD 데이터 모듈 설정
 
@@ -92,13 +92,13 @@ client.set_registered_model_alias(
 )
 ```
 
-{% hint style="success" %}
-비정형 모델도 정형 모델과 **동일한 Unity Catalog 거버넌스** 체계로 관리됩니다. 에일리어스, 태그, 접근 제어 모두 통일된 방식으로 적용됩니다.
-{% endhint %}
+> **성공**
+> 비정형 모델도 정형 모델과 **동일한 Unity Catalog 거버넌스** 체계로 관리됩니다. 에일리어스, 태그, 접근 제어 모두 통일된 방식으로 적용됩니다.
 
-{% hint style="info" %}
+
+> **참고**
 **모델 선택 가이드**— 정확도 우선이면 PatchCore(AUROC 99.1%), 속도/비용 우선이면 EfficientAD, 실시간 추론이면 Reverse Distillation을 권장합니다.
-{% endhint %}
+
 
 ---
 
@@ -125,9 +125,9 @@ model = EfficientAd()  # PatchCore 대신 EfficientAD
 # 나머지 코드(학습, 평가, 등록)는 완전히 동일!
 ```
 
-{% hint style="info" %}
+> **참고**
 **모델 선택 가이드**: PoC 단계에서는 **PatchCore**(정확도 최고)로 시작하고, 양산 적용 시 추론 속도 요구사항에 따라 **EfficientAD**(실시간) 또는 **Reverse Distillation**(균형)으로 전환을 검토합니다.
-{% endhint %}
+
 
 ### VisA 데이터셋 — 전자부품 검사용
 
@@ -156,8 +156,8 @@ datamodule = Visa(
 | **SAM + 이상탐지** | 2024 | Segment Anything Model로 결함 영역 정밀 분할 | 픽셀 수준 결함 경계 정확도 향상 |
 | **AnomalyGPT** | 2024 | LLM + 비전 모델 결합, 대화형 이상 분석 | "이 결함의 원인이 무엇인가?"에 텍스트로 답변 |
 
-{% hint style="success" %}
-Foundation Model 기반 접근은 아직 연구 단계이지만, 향후 "카메라 모듈에서 렌즈 스크래치를 찾아줘"라는 **자연어 지시만으로** 결함을 탐지하는 것이 가능해질 것입니다. Databricks의 GPU 클러스터와 MLflow 인프라가 이러한 최신 모델의 실험/배포를 지원합니다.
-{% endhint %}
+> **성공**
+> Foundation Model 기반 접근은 아직 연구 단계이지만, 향후 "카메라 모듈에서 렌즈 스크래치를 찾아줘"라는 **자연어 지시만으로** 결함을 탐지하는 것이 가능해질 것입니다. Databricks의 GPU 클러스터와 MLflow 인프라가 이러한 최신 모델의 실험/배포를 지원합니다.
+
 
 **다음 단계**: [08. 모델 모니터링](08-model-monitoring.md)

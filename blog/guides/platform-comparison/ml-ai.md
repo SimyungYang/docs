@@ -24,13 +24,13 @@
 | **Agent 평가** | Agent Evaluation — 자동 품질 측정 | 미지원 | 제한적 (수동) | 제한적 (수동) | 제한적 |
 | **Agent 도구 연결** | Unity Catalog Functions as Tools (거버넌스 통합) | 제한적 | Lambda Functions | Cloud Functions | Azure Functions |
 
-{% hint style="success" %}
+> **성공**
 **Databricks AI 핵심 차별화**: 데이터가 있는 곳에서 바로 ML 학습, 모델 서빙, GenAI Agent 구축, 평가까지 수행합니다. MLflow(업계 표준 OSS)로 전 과정을 추적하고, Agent Evaluation으로 체계적 품질 측정이 가능합니다. **데이터 복사나 서비스 전환 없이 End-to-End AI를 구현하는 유일한 플랫폼** 입니다.
-{% endhint %}
 
-{% hint style="warning" %}
+
+> **주의**
 **경쟁사 장점**: AWS Bedrock은 가장 다양한 외부 LLM 모델(Anthropic Claude, Meta Llama, Cohere 등)을 지원합니다. GCP Vertex AI는 Gemini 모델과의 긴밀한 통합, 멀티모달 AI에서 강점이 있습니다. MS Fabric은 Azure OpenAI와 네이티브 연동되어 GPT-4 계열 모델을 쉽게 활용할 수 있습니다.
-{% endhint %}
+
 
 ---
 
@@ -75,9 +75,9 @@ Unity Catalog
       └─ 사용 로그 → System Tables에 자동 기록
 ```
 
-{% hint style="info" %}
+> **참고**
 **경쟁사와의 핵심 차이**: SageMaker에서는 학습 데이터(S3) → 모델(SageMaker Registry) → 서빙(SageMaker Endpoint)이 **각각 다른 거버넌스** 를 가집니다. Lake Formation은 데이터만, SageMaker는 모델만 관리하며, 둘 사이의 리니지는 수동으로 추적해야 합니다.
-{% endhint %}
+
 
 ---
 
@@ -106,9 +106,9 @@ Unity Catalog
 | **온라인 서빙** | Model Serving에서 자동 Feature Lookup | SageMaker Endpoint + Feature Store | Vertex AI Endpoint + Feature Store |
 | **모니터링** | Lakehouse Monitor로 Feature 드리프트 감지 | 수동 | 수동 |
 
-{% hint style="success" %}
+> **성공**
 **Feature Store의 핵심 가치**: Databricks Feature Store는 **Unity Catalog에 통합** 되어 있으므로, Feature 테이블도 일반 테이블과 동일한 접근 제어, 리니지, 감사가 적용됩니다. SageMaker/Vertex AI의 Feature Store는 데이터 카탈로그와 **분리** 되어 있어, Feature에 대한 거버넌스가 별도로 필요합니다.
-{% endhint %}
+
 
 ---
 
@@ -181,9 +181,9 @@ print(results.metrics)
 # {'correctness': 0.85, 'groundedness': 0.92, 'relevance': 0.88, 'safety': 1.0}
 ```
 
-{% hint style="success" %}
+> **성공**
 **Agent Evaluation은 프로덕션 AI Agent의 필수 요소** 입니다. Agent를 배포한 후에도 지속적으로 품질을 모니터링하고, 모델/프롬프트 변경 시 성능 저하를 조기 감지해야 합니다. 경쟁사에서는 이를 수동으로 구축해야 하며, Databricks는 **MLflow 한 줄로 자동화** 합니다.
-{% endhint %}
+
 
 ---
 
@@ -235,9 +235,9 @@ Vector Search 인덱스 (항상 최신 상태)
 | **모델 설명** | SHAP 값 자동 생성 | SHAP 지원 | Feature Importance | 제한적 |
 | **MLflow 통합** | 자동 (모든 실험 자동 기록) | SageMaker Experiments | Vertex AI Experiments | 미지원 |
 
-{% hint style="info" %}
+> **참고**
 **Glass-box AutoML의 가치**: Databricks AutoML은 모델뿐 아니라 **전체 코드를 생성** 합니다. 데이터 사이언티스트는 이 코드를 기반으로 커스터마이징할 수 있으며, 블랙박스 모델에 대한 우려 없이 **모든 과정이 투명** 합니다. 규제 산업(금융, 의료)에서는 이 투명성이 필수 요구사항입니다.
-{% endhint %}
+
 
 ---
 
@@ -266,6 +266,6 @@ Vector Search 인덱스 (항상 최신 상태)
 | **Custom Model Serving (GPU)** | 대규모 ML/DL 모델 | GPU DBU/초 | 높은 처리량 |
 | **External Model** | 외부 API 프록시 (OpenAI 등) | 사용량 기반 | 통합 관리/모니터링 |
 
-{% hint style="success" %}
+> **성공**
 **SA/SE 핵심 메시지**: Databricks Model Serving은 **데이터가 있는 곳에서 바로 모델을 서빙** 합니다. Feature Store 자동 조회, Unity Catalog 거버넌스, System Tables 모니터링이 통합되어 있어, SageMaker Endpoint처럼 데이터를 복사하거나 별도 거버넌스를 구축할 필요가 없습니다.
-{% endhint %}
+

@@ -65,9 +65,9 @@ notebooks = {
 }
 ```
 
-{% hint style="info" %}
-이 데모는 제조 현장의 예지보전(Predictive Maintenance)과 비전 기반 이상탐지를 하나의 MLOps 파이프라인으로 통합합니다. 정형/비정형 모델 모두 동일한 Unity Catalog 거버넌스 체계로 관리됩니다.
-{% endhint %}
+> **참고**
+> 이 데모는 제조 현장의 예지보전(Predictive Maintenance)과 비전 기반 이상탐지를 하나의 MLOps 파이프라인으로 통합합니다. 정형/비정형 모델 모두 동일한 Unity Catalog 거버넌스 체계로 관리됩니다.
+
 
 ## 데이터셋 소개
 
@@ -88,8 +88,8 @@ GROUP BY machine_failure
 
 **비정형 데이터**— MVTec AD 15개 카테고리, 5,000장 이상 고해상도 이미지. 정상 이미지로 학습하고, 이상 이미지로 테스트합니다.
 
-{% hint style="success" %}
-정형 모델과 비정형 모델이 **동일한 Unity Catalog** 내에서 관리되므로, 향후 두 모델의 예측을 결합한 **복합 판단 시스템(Compound AI System)** 으로 확장할 수 있습니다.
-{% endhint %}
+> **성공**
+> 정형 모델과 비정형 모델이 **동일한 Unity Catalog** 내에서 관리되므로, 향후 두 모델의 예측을 결합한 **복합 판단 시스템(Compound AI System)** 으로 확장할 수 있습니다.
+
 
 **다음 단계**: [02. 피처 엔지니어링](02-feature-engineering.md)

@@ -1,12 +1,3 @@
----
-original_title: "Databricks Announces Lakewatch: New Open, Agentic SIEM"
-authors: "Reynold Xin, Andrew Krioukov, Molly Limaye, Taylor Kain, Keegan Dubbs"
-date: "2026-03-24"
-category: "Announcements"
-original_url: "https://www.databricks.com/blog/databricks-announces-lakewatch-new-open-agentic-siem"
-translated_date: "2026-04-07"
----
-
 > **원문**: [Databricks Announces Lakewatch: New Open, Agentic SIEM](https://www.databricks.com/blog/databricks-announces-lakewatch-new-open-agentic-siem)
 
 # Databricks Lakewatch 발표: 새로운 오픈형 에이전틱 SIEM
@@ -90,17 +81,17 @@ Lakewatch는 다음을 통해 이를 가능하게 합니다:
 
 Databricks는 오늘날의 위협이 고객이 자신의 데이터를 완전히 제어하는 에코시스템 전반에 걸친 오픈 협력을 필요로 한다고 믿습니다. 그래서 우리는 "오픈 Security Lakehouse 에코시스템"을 발표하게 되어 기쁩니다. 이는 [Akamai](https://www.akamai.com/), [Anvilogic](https://www.anvilogic.com/), [Arctic Wolf](https://arcticwolf.com/), [Cribl](https://cribl.io/), [Deloitte](https://www.deloitte.com/us/en/alliances/articles/enhancing-cyber-defense-with-databricks-dbx.html), [Obsidian](https://www.obsidiansecurity.com/), [Okta](https://www.okta.com/), [1Password](https://1password.com/), [Palo Alto Networks](https://www.paloaltonetworks.com/), [Panther](https://panther.com/), [Proofpoint](https://www.proofpoint.com/us), [Rearc](https://rearc.io/services/databricks-cyber-intelligence), [Slack](https://slack.com/), [TrendAI](https://www.trendmicro.com/en_us/business.html), [Wiz](https://www.wiz.io/)(현재 Google Cloud의 일부), [Zscaler](https://www.zscaler.com/)를 포함한 빠르게 성장하는 주요 보안 벤더 및 전달 파트너 그룹입니다.
 
-{% hint style="info" %}
-"Zscaler는 오픈 에코시스템에 대한 Databricks의 헌신을 공유합니다. 우리는 오픈 Security Lakehouse 에코시스템에 합류하게 되어 기쁘며, 상호 고객에게 AI 네이티브 솔루션으로 AI 네이티브 공격을 방어하는 데 필요한 데이터와 도구를 제공할 것입니다."
+> **참고**
+> "Zscaler는 오픈 에코시스템에 대한 Databricks의 헌신을 공유합니다. 우리는 오픈 Security Lakehouse 에코시스템에 합류하게 되어 기쁘며, 상호 고객에게 AI 네이티브 솔루션으로 AI 네이티브 공격을 방어하는 데 필요한 데이터와 도구를 제공할 것입니다."
 
 — **Eddie Parra**, VP Solutions Architect Partner Ecosystem, Zscaler
-{% endhint %}
 
-{% hint style="info" %}
-"사이버 위협이 AI 기반의 머신 규모 공격으로 진화함에 따라, 조직들은 이에 발맞추기 위한 근본적으로 새로운 아키텍처가 필요할 수 있습니다. Lakewatch는 보안 운영에서 한 걸음 앞선 접근 방식을 제시하며, Databricks 레이크하우스의 힘을 SOC(보안 운영 센터)에 가져와 팀이 데이터를 활용하고, 지능형 에이전트를 배포하며, 진화하는 위협보다 앞서 나갈 수 있도록 지원합니다."
+
+> **참고**
+> "사이버 위협이 AI 기반의 머신 규모 공격으로 진화함에 따라, 조직들은 이에 발맞추기 위한 근본적으로 새로운 아키텍처가 필요할 수 있습니다. Lakewatch는 보안 운영에서 한 걸음 앞선 접근 방식을 제시하며, Databricks 레이크하우스의 힘을 SOC(보안 운영 센터)에 가져와 팀이 데이터를 활용하고, 지능형 에이전트를 배포하며, 진화하는 위협보다 앞서 나갈 수 있도록 지원합니다."
 
 — **Jennifer Vitalbo**, Managing Director, Government and Public Services Cyber Defense and Resilience Offering Leader, Deloitte & Touche LLP
-{% endhint %}
+
 
 ---
 

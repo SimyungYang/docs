@@ -94,9 +94,9 @@ customer 타입 (Customer-Managed VPC용):
 }
 ```
 
-{% hint style="info" %}
-Terraform `databricks_aws_crossaccount_policy` data source를 사용하면 최신 Policy JSON을 자동 생성할 수 있습니다.
-{% endhint %}
+> **참고**
+> Terraform `databricks_aws_crossaccount_policy` data source를 사용하면 최신 Policy JSON을 자동 생성할 수 있습니다.
+
 
 *참고: [Cross-account policy](https://docs.databricks.com/aws/en/admin/account-settings-e2/credentials) · [Terraform: databricks_aws_crossaccount_policy](https://registry.terraform.io/providers/databricks/databricks/latest/docs/data-sources/aws_crossaccount_policy)*
 
@@ -118,6 +118,6 @@ Databricks Account Console에서 등록합니다.
 
 - **Credential ID** 생성됨 → Workspace 생성 시 사용
 
-{% hint style="warning" %}
-IAM Role 생성 직후 등록 시 **eventual consistency** 문제로 실패할 수 있음 — 10~30초 대기 후 재시도
-{% endhint %}
+> **주의**
+> IAM Role 생성 직후 등록 시 **eventual consistency** 문제로 실패할 수 있음 — 10~30초 대기 후 재시도
+

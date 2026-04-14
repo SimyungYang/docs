@@ -4,7 +4,7 @@ Marketplace 구독부터 PrivateLink까지, AWS Console 기반으로 Databricks 
 
 > **슬라이드 버전**: [AWS Workspace 구성 가이드 (웹 슬라이드)](https://simyungyang.github.io/databricks-enablement-blog/aws-workspace-setup.html)
 
-{% embed url="https://simyungyang.github.io/databricks-enablement-blog/aws-workspace-setup.html" %}
+[https://simyungyang.github.io/databricks-enablement-blog/aws-workspace-setup.html](https://simyungyang.github.io/databricks-enablement-blog/aws-workspace-setup.html)
 
 ## 대상
 
@@ -48,9 +48,9 @@ Marketplace 구독부터 PrivateLink까지, AWS Console 기반으로 Databricks 
 | **데이터** | Notebook, Unity Catalog 메타데이터 | DBFS Root Storage (S3), 고객 데이터 |
 | **역할** | 오케스트레이션, IAM | 실제 연산 수행, 데이터 접근 |
 
-{% hint style="info" %}
+> **참고**
 **핵심**: 고객 데이터는 **고객 AWS 계정** 에 머무름 — Control Plane은 메타데이터와 오케스트레이션만 담당
-{% endhint %}
+
 
 *참고: [Databricks Concepts](https://docs.databricks.com/aws/en/getting-started/concepts)*
 
@@ -64,9 +64,9 @@ Marketplace 구독부터 PrivateLink까지, AWS Console 기반으로 Databricks 
 | **PrivateLink** | 구성 가능 (Backend + Frontend) | NCC 기반 별도 구성 |
 | **적합 시나리오** | 프로덕션, 보안 요건 | PoC, 빠른 시작 |
 
-{% hint style="info" %}
+> **참고**
 **이 가이드는 Classic Workspace 구성** 을 다룹니다 — 고객이 AWS 리소스를 직접 구성하는 방식
-{% endhint %}
+
 
 ### Serverless Workspace 아키텍처
 

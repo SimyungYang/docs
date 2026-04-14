@@ -98,9 +98,9 @@ crew = Crew(agents=[researcher], tasks=[analysis_task])
 result = crew.kickoff()
 ```
 
-{% hint style="success" %}
+> **성공**
 **Databricks 환경 권장**: Databricks Agent Framework(ChatAgent)를 기본으로 사용하고, 복잡한 워크플로우가 필요한 경우 LangGraph를 MLflow와 함께 활용하세요.
-{% endhint %}
+
 
 ---
 

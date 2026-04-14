@@ -18,9 +18,9 @@
 
 ### 핵심 원칙
 
-{% hint style="info" %}
+> **참고**
 **기본 동작**: 고객 데이터는 워크스페이스와 동일한 Geo 내에서만 처리됩니다. Cross-Geo 처리를 명시적으로 활성화하지 않는 한, 데이터는 해당 Geo 경계를 벗어나지 않습니다.
-{% endhint %}
+
 
 ---
 
@@ -92,9 +92,9 @@ Designated Services가 아닌 일반 기능(예: 노트북 실행, SQL 쿼리, J
 
 Databricks는 기본적으로 Designated Services의 데이터를 **워크스페이스 Geo 내에서만** 처리합니다. 이는 데이터 주권 규제를 준수하기 위한 가장 보수적인 설정입니다.
 
-{% hint style="warning" %}
+> **주의**
 **예외**: US/EU 외 지역에서 **Compliance Security Profile** 이 없는 워크스페이스는 기본적으로 Cross-Geo 처리가 활성화되어 있습니다. 규제 준수가 필요하다면 반드시 설정을 확인하세요.
-{% endhint %}
+
 
 ### Cross-Geo 활성화 방법
 
@@ -108,9 +108,9 @@ Cross-Geo 처리를 활성화하면, 해당 Geo에서 직접 지원하지 않는
 4. **Security and compliance** 탭 클릭
 5. **"Enforce data processing within workspace Geography for Designated Services"** 항목 확인
 
-{% hint style="warning" %}
-이 설정은 **Account Admin** 권한이 있어야 볼 수 있습니다. Workspace Admin 권한으로는 접근할 수 없으므로, 설정 확인이 필요하면 Account Admin에게 요청하세요.
-{% endhint %}
+> **주의**
+> 이 설정은 **Account Admin** 권한이 있어야 볼 수 있습니다. Workspace Admin 권한으로는 접근할 수 없으므로, 설정 확인이 필요하면 Account Admin에게 요청하세요.
+
 
 이 옵션을 **비활성화** 하면 Cross-Geo 처리가 **활성화** 됩니다 (이중 부정에 주의). 즉:
 
@@ -119,9 +119,9 @@ Cross-Geo 처리를 활성화하면, 해당 Geo에서 직접 지원하지 않는
 
 ### 데이터 저장 vs 데이터 처리
 
-{% hint style="info" %}
+> **참고**
 **중요 보장**: Cross-Geo 처리를 활성화하더라도, 데이터 **저장(storage)** 은 항상 워크스페이스 Geo 내에 유지됩니다. Cross-Geo는 데이터 **처리(processing)** 에만 적용됩니다. 즉, AI 모델 추론 시 데이터가 일시적으로 다른 Geo의 GPU에서 처리될 수 있지만, 그 결과는 원래 Geo로 돌아와 저장됩니다.
-{% endhint %}
+
 
 ### Cross-Geo 활성화가 필요한 대표적 시나리오
 
@@ -162,9 +162,9 @@ Cross-Geo 처리를 활성화하면, 해당 Geo에서 직접 지원하지 않는
 
 ### 개인정보보호법 관점에서의 고려사항
 
-{% hint style="warning" %}
+> **주의**
 **한국 개인정보보호법 관련**: Cross-Geo를 비활성화(Enforce = ON)하면, 데이터가 Asia Geo 외부로 나가지 않으므로 국외 이전에 해당하지 않습니다. 단, Cross-Geo를 활성화하면 데이터가 Americas 또는 Europe Geo에서 처리될 수 있으므로, 개인정보가 포함된 데이터를 다루는 경우 **정보주체 동의** 또는 **보호위원회 인정** 등 법적 근거를 확보해야 합니다.
-{% endhint %}
+
 
 ### 실전 트러블슈팅
 
@@ -195,9 +195,9 @@ Serverless compute는 Databricks가 관리하는 인프라에서 실행되지만
 
 ### Preview 기능
 
-{% hint style="info" %}
-Public Preview 또는 Private Preview 단계의 기능은, 별도의 명시가 없는 한 워크스페이스의 **Geo 설정을 따릅니다** . 그러나 Preview 기능의 데이터 거주 보장은 GA(General Availability) 기능보다 제한적일 수 있으므로, 규제가 엄격한 환경에서는 Preview 기능의 데이터 처리 위치를 Databricks 지원팀에 확인하는 것을 권장합니다.
-{% endhint %}
+> **참고**
+> Public Preview 또는 Private Preview 단계의 기능은, 별도의 명시가 없는 한 워크스페이스의 **Geo 설정을 따릅니다** . 그러나 Preview 기능의 데이터 거주 보장은 GA(General Availability) 기능보다 제한적일 수 있으므로, 규제가 엄격한 환경에서는 Preview 기능의 데이터 처리 위치를 Databricks 지원팀에 확인하는 것을 권장합니다.
+
 
 ### 아키텍처 요약
 

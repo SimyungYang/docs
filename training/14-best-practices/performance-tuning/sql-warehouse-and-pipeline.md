@@ -195,9 +195,9 @@ ORDER BY spill_to_disk_bytes DESC
 LIMIT 10;
 ```
 
-{% hint style="info" %}
+> **참고**
 **Query History 활용 팁**: 주 1회 Query History를 분석하여 상위 10개 비용 쿼리를 최적화하면, 전체 SQL Warehouse 비용의 20~40%를 절감할 수 있습니다.
-{% endhint %}
+
 
 ---
 
@@ -234,7 +234,7 @@ def silver_events():
 
 | 모드 | 동작 방식 | 장점 | 단점 | 적합한 상황 |
 |------|----------|------|------|-----------|
-| **Directory Listing** | 주기적 디렉토리 스캔 | 설정 간단, 추가 인프라 불필요 | 파일 수 증가 시 스캔 비용 증가 | 파일 수 < 100만, 간단한 구조 |
+| **Directory Listing** | 주기적 디렉토리 스캔 | 설정 간단, 추가 인프라 불필요 | 파일 수 증가 시 스캔 비용 증가 | 파일 수 \< 100만, 간단한 구조 |
 | **File Notification** | SNS/SQS 이벤트 기반 | 즉시 감지, 대규모에 효율적 | 클라우드 리소스 설정 필요 | 파일 수 > 100만, 실시간 요구 |
 
 ```python
@@ -260,7 +260,7 @@ df = (spark.readStream
 
 | 지연시간 목표 | 트리거 설정 | 적합한 워크로드 |
 |-------------|-----------|---------------|
-| **< 1초** | `trigger(processingTime="0 seconds")` | 실시간 대시보드, 알림 |
+| **\< 1초** | `trigger(processingTime="0 seconds")` | 실시간 대시보드, 알림 |
 | **1~10초** | `trigger(processingTime="5 seconds")` | 준실시간 분석 |
 | **10초~5분** | `trigger(processingTime="1 minute")` | 마이크로 배치 ETL |
 | **5분+** | `trigger(availableNow=True)` | 스케줄 기반 배치 |
@@ -285,7 +285,7 @@ df = (spark.readStream
 
 | 파이프라인 유형 | 데이터 규모 | 권장 구성 | 비고 |
 |-------------|-----------|----------|------|
-| **소규모 배치** | < 10GB/실행 | Serverless (기본) | 관리 불필요 |
+| **소규모 배치** | \< 10GB/실행 | Serverless (기본) | 관리 불필요 |
 | **중규모 배치** | 10~100GB/실행 | Serverless Enhanced | 자동 스케일링 |
 | **대규모 배치** | 100GB+/실행 | Classic, 8+ workers | Spot 활용 |
 | **실시간 스트리밍** | 연속 | Serverless | 자동 확장/축소 |
@@ -401,9 +401,9 @@ if progress:
     print(f"입력 행: {input_rows}, 처리 시간: {processing_time}ms")
 ```
 
-{% hint style="info" %}
+> **참고**
 **관측 가능성 모범 사례**: AI/BI Dashboard로 파이프라인 모니터링 대시보드를 구축하고, Alert를 설정하여 이상 발생 시 Slack으로 즉시 알림을 받으세요. 시스템 테이블 (`system.query.history`, Event Log)을 데이터 소스로 활용합니다.
-{% endhint %}
+
 
 ---
 

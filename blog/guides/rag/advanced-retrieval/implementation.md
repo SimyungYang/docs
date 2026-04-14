@@ -25,9 +25,9 @@
                    └─ No → Dense만으로 충분
 ```
 
-{% hint style="info" %}
-처음에는 **Dense Retriever + Reranking** 조합으로 시작하고, 평가 결과에 따라 Hybrid나 Multi-Query를 점진적으로 추가하는 것을 권장합니다.
-{% endhint %}
+> **참고**
+> 처음에는 **Dense Retriever + Reranking** 조합으로 시작하고, 평가 결과에 따라 Hybrid나 Multi-Query를 점진적으로 추가하는 것을 권장합니다.
+
 
 ---
 
@@ -194,9 +194,9 @@ workflow.add_edge("generate", END)
 app = workflow.compile()
 ```
 
-{% hint style="info" %}
+> **참고**
 **로드맵 적용 팁**: 각 Phase를 넘어갈 때마다 반드시 **평가 메트릭** 을 비교하세요. Phase 2가 Phase 1보다 검색 정밀도(Precision@5)에서 최소 10% 이상 개선되지 않는다면, 기존 Phase의 튜닝(가중치, 청크 크기, 임베딩 모델)에 더 투자하는 것이 효율적입니다.
-{% endhint %}
+
 
 ---
 

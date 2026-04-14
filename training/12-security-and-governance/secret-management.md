@@ -274,7 +274,7 @@ connection_config = {
 > ```python
 > # 실제 사고 코드 (일부 마스킹)
 > api_key = "sk-proj-abc123xxxxxxxxxxxxxxxx"  # ← 이 줄이 문제
-> response = requests.get(url, headers={"Authorization": f"Bearer {api_key}"})
+> response = requests.get(url, headers=\{"Authorization": f"Bearer \{api_key\}"\})
 > ```
 >
 > 이 노트북이 Git Repo에 커밋되었고, 해당 Repo가 **퍼블릭 리포지토리** 로 설정되어 있었습니다. 24시간도 안 되어 외부에서 API 키를 탈취하여 **약 $2,000(약 270만원)의 부정 API 호출** 이 발생했습니다. GitHub에는 Secret 탐지 봇이 돌고 있어서 퍼블릭 리포의 Secret은 수분 내에 발견됩니다.

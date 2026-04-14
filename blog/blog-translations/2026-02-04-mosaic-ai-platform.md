@@ -1,13 +1,3 @@
----
-original_title: "Mosaic AI: Build and Deploy Production-quality AI Agent Systems"
-authors: "Patrick Wendell, Naveen Rao"
-date: "2024-06-12"
-category: "Data Science and ML"
-original_url: "https://www.databricks.com/blog/mosaic-ai-build-and-deploy-production-quality-compound-ai-systems"
-translated_date: "2026-02-04"
-note: "원문 URL(databricks-mosaic-ai-complete-platform)은 404로 확인되지 않아, 동일 주제의 가장 근접한 공식 블로그 포스트로 대체하였습니다."
----
-
 # Mosaic AI: 프로덕션 수준의 AI Agent 시스템을 빌드하고 배포하기
 
 > **원문**: [Mosaic AI: Build and Deploy Production-quality AI Agent Systems](https://www.databricks.com/blog/mosaic-ai-build-and-deploy-production-quality-compound-ai-systems)
@@ -70,13 +60,13 @@ Databricks MLflow는 Databricks 플랫폼 외부의 이해관계자들도 모델
 
 **MLflow 2.14:** MLflow는 LLM과 AI 시스템을 평가하기 위한 모델 비종속적(model-agnostic) 프레임워크로, 고객이 각 단계에서 파라미터를 측정하고 추적할 수 있게 합니다. MLflow 2.14에서 MLflow Tracing을 발표하게 되어 기쁩니다. Tracing을 통해 개발자는 모델 및 에이전트 인퍼런스의 각 단계를 기록하여 성능 문제를 디버그하고 향후 개선 사항을 테스트하기 위한 평가 데이터셋을 구축할 수 있습니다. Tracing은 Databricks MLflow Experiments, Databricks Notebooks, Databricks Inference Tables와 긴밀히 통합되어 개발부터 프로덕션까지 성능 인사이트를 제공합니다.
 
-{% hint style="info" %}
+> **참고**
 **고객 사례 — Corning**
 
 "Corning은 소재 과학 기업으로, 우리의 유리 및 세라믹 기술은 많은 산업 및 과학 응용 분야에 사용됩니다. 따라서 데이터를 이해하고 활용하는 것이 필수적입니다. 우리는 미국 특허청 데이터를 포함한 수십만 건의 문서를 인덱싱하기 위해 Databricks Mosaic AI Agent Framework를 활용하여 AI 리서치 어시스턴트를 구축했습니다. LLM 기반 어시스턴트가 높은 정확도로 질문에 답변하는 것이 우리에게 매우 중요했습니다. 그래야 연구원들이 진행 중인 작업을 쉽게 찾고 발전시킬 수 있기 때문입니다. 이를 구현하기 위해 미국 특허청 데이터로 강화된 Hi Hello Generative AI 솔루션을 구축하는 데 Databricks Mosaic AI Agent Framework를 활용했습니다. Databricks Data Intelligence Platform을 활용하여 검색 속도, 응답 품질, 정확도를 크게 향상시킬 수 있었습니다."
 
 — Denis Kamotsky, Principal Software Engineer, Corning
-{% endhint %}
+
 
 ## AI 시스템 거버닝하기
 
@@ -88,13 +78,13 @@ Databricks MLflow는 Databricks 플랫폼 외부의 이해관계자들도 모델
 
 **system.ai 카탈로그:** Unity Catalog에서 관리될 수 있는 최첨단 오픈소스 모델의 큐레이션 목록을 제공합니다. Model Serving Foundation Model API를 사용하여 이러한 모델을 쉽게 배포하거나 Model Training으로 파인튜닝할 수 있습니다. 고객은 또한 Settings > Developer > Personalized Homepage로 이동하여 Mosaic AI 홈페이지에서 지원되는 모든 모델을 확인할 수 있습니다.
 
-{% hint style="info" %}
+> **참고**
 **고객 사례 — Edmunds.com**
 
 "Databricks Model Serving은 Databricks 내외에서 호스팅된 모델을 포함하여 여러 SaaS 및 오픈 모델에 안전하게 접근하고 관리하기 쉽게 해줌으로써 AI 기반 프로젝트를 가속화하고 있습니다. 중앙화된 접근 방식은 보안과 비용 관리를 단순화하여, 우리 데이터 팀이 행정적인 오버헤드보다 혁신에 더 집중할 수 있게 합니다."
 
 — Greg Rokita, AVP, Technology at Edmunds.com
-{% endhint %}
+
 
 ## 마치며
 

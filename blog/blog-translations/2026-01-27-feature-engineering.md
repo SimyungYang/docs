@@ -1,13 +1,3 @@
----
-original_title: "What is a Feature Store? A Complete Guide to ML Feature Engineering"
-authors: "Databricks Staff"
-date: "2025-11-28"
-category: "Data Science and ML"
-original_url: "https://www.databricks.com/blog/what-feature-store-complete-guide-ml-feature-engineering"
-translated_date: "2026-04-07"
-note: "요청된 URL(feature-engineering-production-ml)은 404로 존재하지 않습니다. 가장 관련성 높은 포스트(Feature Store 완전 가이드)로 대체 번역하였습니다."
----
-
 > **원문**: [What is a Feature Store? A Complete Guide to ML Feature Engineering](https://www.databricks.com/blog/what-feature-store-complete-guide-ml-feature-engineering)
 
 # Feature Store란 무엇인가? ML Feature Engineering 완전 가이드
@@ -188,9 +178,9 @@ Feature Store를 사용한 모델 학습은 선언적(Declarative) 접근 방식
 
 Feature Store의 MLflow 통합을 통해 모델이 로깅되면, 모델의 피처 의존성이 자동으로 기록됩니다. 추론 시점에 모델은 무엇이 필요한지 알고 있습니다. Feature Store는 필요한 피처를 조회하고 조인하는 작업을 처리하여, [모델 서빙(Model Serving)](https://www.databricks.com/product/model-serving) 시 수동 피처 파이프라인 코드를 제거합니다.
 
-{% hint style="info" %}
+> **참고**
 **MLOps Big Book 다운로드**: Databricks의 MLOps 완전 가이드 e북을 통해 Feature Store를 포함한 프로덕션 ML 운영의 전체 그림을 이해할 수 있습니다. [지금 다운로드](https://www.databricks.com/resources/ebook/the-big-book-of-mlops)
-{% endhint %}
+
 
 ## 실제 사용 사례
 

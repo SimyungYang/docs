@@ -1,16 +1,12 @@
 ---
 title: "Lakehouse Federation: 외부 데이터를 이동 없이 쿼리하기"
-date: 2023-06-28
-author: "Databricks"
-original_url: "https://www.databricks.com/blog/introducing-lakehouse-federation-capabilities-unity-catalog"
-tags: [lakehouse-federation, unity-catalog, query-federation, data-governance, databricks]
 ---
 
 > **원문**: [Introducing Lakehouse Federation Capabilities in Unity Catalog](https://www.databricks.com/blog/introducing-lakehouse-federation-capabilities-unity-catalog)
 
-{% hint style="info" %}
-요청하신 URL(`lakehouse-federation-querying-external-data`)은 현재 404 오류를 반환합니다. 광범위한 검색 결과, 해당 슬러그의 블로그 포스트는 존재하지 않으며, 동일한 주제(Lakehouse Federation + 외부 데이터 쿼리)를 다루는 가장 유사한 공식 포스트들을 종합하여 번역합니다. 주요 출처: Databricks 공식 블로그(2023년 6월 발표, 2024년 8월 GA 발표), 공식 보도자료(PR Newswire), 공식 문서(docs.databricks.com).
-{% endhint %}
+> **참고**
+> 요청하신 URL(`lakehouse-federation-querying-external-data`)은 현재 404 오류를 반환합니다. 광범위한 검색 결과, 해당 슬러그의 블로그 포스트는 존재하지 않으며, 동일한 주제(Lakehouse Federation + 외부 데이터 쿼리)를 다루는 가장 유사한 공식 포스트들을 종합하여 번역합니다. 주요 출처: Databricks 공식 블로그(2023년 6월 발표, 2024년 8월 GA 발표), 공식 보도자료(PR Newswire), 공식 문서(docs.databricks.com).
+
 
 # Lakehouse Federation: 외부 데이터를 이동 없이 쿼리하기
 
@@ -229,14 +225,14 @@ Lakehouse Federation을 사용하려면 아래 요건을 충족해야 합니다.
 | **권한** | `CREATE CONNECTION` 권한 (metastore 수준), `CREATE CATALOG` 권한 |
 | **자격 증명** | 각 외부 시스템에 대한 적절한 데이터베이스 자격 증명 |
 
-{% hint style="warning" %}
+> **주의**
 **알려진 제한 사항:**
 
 - 대부분의 외부 소스에 대한 쿼리는 **읽기 전용** 입니다 (Hive 메타스토어 연합 제외).
 - Databricks 쿼리 캐싱은 연합 쿼리에서 지원되지 않습니다.
 - 결과 집합이 너무 크면 executor 메모리 문제가 발생할 수 있습니다. 이런 경우 구체화된 뷰나 필터링을 통해 데이터 양을 줄이는 것을 권장합니다.
 - 파일 기반 외부 데이터(S3, ADLS 등)의 경우 Lakehouse Federation보다 Unity Catalog의 외부 테이블(External Tables), 뷰, 볼륨(Volumes)이 더 적합합니다.
-{% endhint %}
+
 
 ---
 

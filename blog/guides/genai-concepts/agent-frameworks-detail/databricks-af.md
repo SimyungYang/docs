@@ -2,9 +2,9 @@
 
 Databricks Agent Framework는 **"빌드보다 배포가 중요하다"** 는 철학 아래 설계되었습니다. 오픈소스 프레임워크들이 "Agent를 어떻게 만들 것인가"에 집중한다면, Databricks는 **"Agent를 어떻게 안전하게 운영할 것인가"** 에 집중합니다.
 
-{% hint style="info" %}
+> **참고**
 **핵심 인사이트**: 실제 엔터프라이즈에서 Agent를 프로덕션에 배포할 때 가장 큰 과제는 "Agent를 만드는 것"이 아니라 "누가 어떤 데이터에 접근하는지 통제하고, 응답 품질을 모니터링하고, 문제 발생 시 원인을 추적하는 것"입니다. Databricks Agent Framework는 이 문제를 해결합니다.
-{% endhint %}
+
 
 ---
 
@@ -175,9 +175,9 @@ class LangGraphOnDatabricks(ChatAgent):
         )
 ```
 
-{% hint style="success" %}
+> **성공**
 **Databricks Agent Framework의 진짜 가치**: 오픈소스 프레임워크는 "Agent를 만드는 10%의 시간"을 줄여주고, Databricks Agent Framework는 "나머지 90%인 배포, 모니터링, 거버넌스, 평가"를 해결합니다.
-{% endhint %}
+
 
 ---
 

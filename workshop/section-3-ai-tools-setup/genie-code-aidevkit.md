@@ -112,22 +112,22 @@ AI Dev Kit은 44개 도구를 제공하지만, Genie Code는 **전체 MCP 서버
 
 ### 다른 업무 프로필
 
-<details>
-<summary>데이터 엔지니어 프로필 (파이프라인 + Job 중심)</summary>
+\<details>
+\<summary>데이터 엔지니어 프로필 (파이프라인 + Job 중심)</summary>
 
 `manage_pipeline`, `manage_jobs`, `manage_job_runs`, `execute_code`, `execute_sql`, `manage_uc_objects`, `manage_uc_grants`, `manage_dashboard`, `manage_workspace_files`, `manage_cluster`, `manage_sql_warehouse`, `manage_genie`, `get_table_stats_and_schema`, `list_compute`, `manage_pipeline_run`
 
 </details>
 
-<details>
-<summary>AI/ML 엔지니어 프로필 (Agent Bricks + Serving 중심)</summary>
+\<details>
+\<summary>AI/ML 엔지니어 프로필 (Agent Bricks + Serving 중심)</summary>
 
 `manage_mas`, `manage_ka`, `manage_genie`, `manage_serving_endpoint`, `manage_vs_index`, `manage_vs_endpoint`, `manage_vs_data`, `execute_code`, `manage_uc_objects`, `manage_uc_grants`, `manage_app`, `manage_jobs`, `manage_job_runs`, `manage_workspace_files`, `manage_lakebase_database`
 
 </details>
 
-<details>
-<summary>데이터 분석가 프로필 (대시보드 + Genie 중심)</summary>
+\<details>
+\<summary>데이터 분석가 프로필 (대시보드 + Genie 중심)</summary>
 
 `manage_dashboard`, `manage_genie`, `execute_sql`, `execute_sql_multi`, `get_table_stats_and_schema`, `manage_uc_objects`, `manage_jobs`, `manage_job_runs`, `manage_uc_grants`, `manage_workspace_files`, `execute_code`, `manage_ka`, `manage_mas`, `manage_sql_warehouse`, `list_compute`
 

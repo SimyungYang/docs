@@ -15,7 +15,7 @@
 
 | PSI 값 | 판정 |
 |--------|------|
-| < 0.1 | 안정 |
+| \< 0.1 | 안정 |
 | 0.1 ~ 0.2 | 주의 |
 | > 0.2 | 드리프트 감지 — 재학습 권장 |
 
@@ -76,13 +76,13 @@ monitor = w.quality_monitors.create(
 )
 ```
 
-{% hint style="info" %}
-Lakehouse Monitoring이 생성되면 자동으로 **드리프트 분석 테이블** 과 **프로필 테이블** 이 생성됩니다. 이를 기반으로 AI/BI Dashboard를 구성하거나, 임계값 초과 시 Slack/이메일 알림을 설정할 수 있습니다.
-{% endhint %}
+> **참고**
+> Lakehouse Monitoring이 생성되면 자동으로 **드리프트 분석 테이블** 과 **프로필 테이블** 이 생성됩니다. 이를 기반으로 AI/BI Dashboard를 구성하거나, 임계값 초과 시 Slack/이메일 알림을 설정할 수 있습니다.
 
-{% hint style="warning" %}
-제조 데이터는 계절 변화, 설비 노후화, 공정 변경 등으로 인해 드리프트가 빈번합니다. 스케줄 기반 재학습만으로는 부족하며, **드리프트 기반 + 성능 기반 하이브리드 트리거** 를 권장합니다.
-{% endhint %}
+
+> **주의**
+> 제조 데이터는 계절 변화, 설비 노후화, 공정 변경 등으로 인해 드리프트가 빈번합니다. 스케줄 기반 재학습만으로는 부족하며, **드리프트 기반 + 성능 기반 하이브리드 트리거** 를 권장합니다.
+
 
 ---
 
@@ -111,9 +111,9 @@ dbutils.jobs.taskValues.set(key="drift_features", value=str(drift_features))
 dbutils.jobs.taskValues.set(key="max_psi", value=float(max(psi_results.values())))
 ```
 
-{% hint style="info" %}
-`taskValues`는 Databricks Workflows Job 내에서만 동작합니다. 노트북을 단독으로 실행할 때는 `taskValues` 호출이 무시되므로, try/except로 감싸서 방어적으로 처리합니다.
-{% endhint %}
+> **참고**
+> `taskValues`는 Databricks Workflows Job 내에서만 동작합니다. 노트북을 단독으로 실행할 때는 `taskValues` 호출이 무시되므로, try/except로 감싸서 방어적으로 처리합니다.
+
 
 ### 5단계 드리프트 대응 절차
 
@@ -125,9 +125,9 @@ dbutils.jobs.taskValues.set(key="max_psi", value=float(max(psi_results.values())
 | **4. 재학습** | 새 데이터 포함하여 모델 재학습 | ML 엔지니어 | 03d 노트북 자동 실행 |
 | **5. 재배포** | 검증 후 새 모델 배포 | MLOps | 05번 → 06번 자동 실행 |
 
-{% hint style="warning" %}
-드리프트가 감지되었다고 해서 반드시 모델이 나빠진 것은 아닙니다. 공정이 **개선** 되어 데이터 분포가 바뀐 경우도 있으므로, 드리프트 원인을 반드시 공정팀과 함께 분석해야 합니다.
-{% endhint %}
+> **주의**
+> 드리프트가 감지되었다고 해서 반드시 모델이 나빠진 것은 아닙니다. 공정이 **개선** 되어 데이터 분포가 바뀐 경우도 있으므로, 드리프트 원인을 반드시 공정팀과 함께 분석해야 합니다.
+
 
 ### Workflows와의 연동
 

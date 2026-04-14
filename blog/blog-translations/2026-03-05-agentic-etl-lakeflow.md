@@ -1,16 +1,12 @@
 ---
 title: "Lakeflow와 Agent Bricks를 활용한 AI 우선 데이터 엔지니어링 접근법"
-date: 2026-02-24
-author: "Databricks"
-original_url: "https://www.databricks.com/blog/ai-first-approach-data-engineering-lakeflow-and-agent-bricks"
-tags: [lakeflow, agent-bricks, agentic-etl, data-engineering, ai-functions]
 ---
 
 > **원문**: [An AI-First Approach to Data Engineering with Lakeflow and Agent Bricks](https://www.databricks.com/blog/ai-first-approach-data-engineering-lakeflow-and-agent-bricks)
 
-{% hint style="info" %}
-요청하신 URL(`databricks-announces-industry-first-agentic-etl-lakeflow`)은 현재 404 오류를 반환합니다. 광범위한 검색 결과, 해당 URL의 블로그 포스트는 존재하지 않으며, 동일한 주제(Lakeflow + Agentic ETL)를 다루는 가장 유사한 공식 포스트인 위 원문을 번역합니다.
-{% endhint %}
+> **참고**
+> 요청하신 URL(`databricks-announces-industry-first-agentic-etl-lakeflow`)은 현재 404 오류를 반환합니다. 광범위한 검색 결과, 해당 URL의 블로그 포스트는 존재하지 않으며, 동일한 주제(Lakeflow + Agentic ETL)를 다루는 가장 유사한 공식 포스트인 위 원문을 번역합니다.
+
 
 # Lakeflow와 Agent Bricks를 활용한 AI 우선 데이터 엔지니어링 접근법
 

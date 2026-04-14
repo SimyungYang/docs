@@ -1,19 +1,10 @@
----
-original_title: "Databricks Grows >55% YoY, Surpasses $4.8B Revenue Run-Rate, and is Raising >$4B Series L at $134B Valuation"
-authors: "Databricks"
-date: "2025-12-16"
-category: "Company News"
-original_url: "https://www.databricks.com/blog/q3-2025-launch-summary"
-translated_date: "2026-04-07"
----
-
 # Databricks, 전년 대비 55% 이상 성장 — 연간 매출 런레이트 $48억 돌파 및 기업 가치 $1,340억에 $40억 이상 Series L 투자 유치
 
 > **원문**: [Databricks Grows >55% YoY, Surpasses $4.8B Revenue Run-Rate, and is Raising >$4B Series L at $134B Valuation](https://www.databricks.com/blog/q3-2025-launch-summary)
 
-{% hint style="warning" %}
-이 블로그 포스트의 원문 URL(https://www.databricks.com/blog/q3-2025-launch-summary)은 현재 직접 접근이 되지 않습니다. 동일한 내용이 [PRNewswire](https://www.prnewswire.com/news-releases/databricks-grows-55-yoy-surpasses-4-8b-revenue-run-rate-and-is-raising-4b-series-l-at-134b-valuation-302643445.html) 및 [Databricks 뉴스룸](https://www.databricks.com/company/newsroom/press-releases/databricks-surpasses-4-8b-revenue-run-rate-growing-55-year-over-year)을 통해 게시되었습니다.
-{% endhint %}
+> **주의**
+> 이 블로그 포스트의 원문 URL(https://www.databricks.com/blog/q3-2025-launch-summary)은 현재 직접 접근이 되지 않습니다. 동일한 내용이 [PRNewswire](https://www.prnewswire.com/news-releases/databricks-grows-55-yoy-surpasses-4-8b-revenue-run-rate-and-is-raising-4b-series-l-at-134b-valuation-302643445.html) 및 [Databricks 뉴스룸](https://www.databricks.com/company/newsroom/press-releases/databricks-surpasses-4-8b-revenue-run-rate-growing-55-year-over-year)을 통해 게시되었습니다.
+
 
 Databricks는 오늘 **$40억(4 billion) 이상**의 Series L 투자 유치를 발표했습니다. 이번 투자로 회사 가치는 **$1,340억(134 billion)** 으로 평가받았습니다. 또한 Databricks는 Q3(회계 3분기) 기간 동안 **연간 매출 런레이트(revenue run-rate) $48억** 을 돌파하며 전년 대비 **55% 이상 성장** 을 기록했습니다. 이 중에는 데이터 웨어하우징(Data Warehousing) 비즈니스에서 **$10억 이상의 연간 매출 런레이트** 와 AI 제품에서 **$10억 이상의 연간 매출 런레이트** 가 포함되어 있으며, 지난 12개월 동안 지속적으로 **플러스(positive) 잉여현금흐름(free cash flow)** 을 달성했습니다.
 

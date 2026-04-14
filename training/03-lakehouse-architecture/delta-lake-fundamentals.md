@@ -419,7 +419,7 @@ VACUUM catalog.schema.huge_table RETAIN 168 HOURS;
 
 | 테이블 규모 | 파일 수 | 일 커밋 수 | 권장 설정 |
 |------------|---------|-----------|----------|
-| 소규모 (< 100GB) | ~1,000개 | < 100 | 기본 설정으로 충분합니다 |
+| 소규모 (\< 100GB) | ~1,000개 | \< 100 | 기본 설정으로 충분합니다 |
 | 중규모 (100GB ~ 1TB) | ~10,000개 | 100~1,000 | OPTIMIZE 주 1회, VACUUM 주 1회 |
 | 대규모 (1TB ~ 10TB) | ~100,000개 | 1,000~10,000 | OPTIMIZE 일 1회 + Liquid Clustering, VACUUM 일 1회 |
 | 초대규모 (> 10TB) | 100,000개+ | 10,000+ | Liquid Clustering 필수, Predictive Optimization 활성화 |

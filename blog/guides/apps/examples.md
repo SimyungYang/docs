@@ -14,14 +14,14 @@ Unity Catalog 테이블을 읽어 Streamlit 대시보드에 표시하고, 데이
 - Unity Catalog 테이블에 대한 `MODIFY` 권한 (편집 기능 사용 시)
 - SQL Warehouse에 대한 `CAN USE` 권한
 
-{% hint style="warning" %}
+> **주의**
 **권한 부여를 잊지 마세요**: 가장 흔한 실수가 이 단계를 건너뛰는 것입니다. 앱은 정상 배포되지만 데이터 조회 시 `Permission denied` 오류가 발생합니다. 앱의 Overview 페이지에서 서비스 프린시펄 이름을 확인한 후, SQL Editor에서 다음을 실행하세요:
 ```sql
 GRANT SELECT, MODIFY ON TABLE catalog.schema.table TO `<sp-application-id>`;
 GRANT USE CATALOG ON CATALOG catalog TO `<sp-application-id>`;
 GRANT USE SCHEMA ON SCHEMA catalog.schema TO `<sp-application-id>`;
 ```
-{% endhint %}
+
 
 ### requirements.txt
 
@@ -96,9 +96,9 @@ def read_table(table_name: str, conn) -> pd.DataFrame:
 
 `fetchall_arrow().to_pandas()`는 Arrow 포맷으로 데이터를 가져온 뒤 Pandas DataFrame으로 변환합니다. Arrow를 거치는 이유는 **대용량 데이터 전송에서 JSON 직렬화보다 훨씬 빠르기 때문** 입니다.
 
-{% hint style="warning" %}
+> **주의**
 **SQL 인젝션 주의**: 이 예제에서 `f"SELECT * FROM {table_name}"`은 사용자 입력을 직접 SQL에 넣으므로 SQL 인젝션에 취약합니다. 프로덕션에서는 테이블 이름을 허용 목록으로 검증하거나, 파라미터화된 쿼리를 사용하세요.
-{% endhint %}
+
 
 ```python
 def format_value(val):
@@ -381,13 +381,13 @@ def execute_query(request: QueryRequest):
         raise HTTPException(status_code=500, detail=str(e))
 ```
 
-{% hint style="warning" %}
+> **주의**
 **보안 경고**: `/query` 엔드포인트는 임의의 SQL을 실행하므로, 프로덕션에서는 반드시 다음을 구현하세요:
-1. **허용된 SQL 유형만 실행**(예: `SELECT`만 허용, `DROP`/`DELETE` 차단)
-2. **쿼리 크기 제한**(LIMIT 강제 추가)
-3. **접근 가능한 카탈로그/스키마 제한**
-4. **감사 로그**(누가 어떤 쿼리를 실행했는지 기록)
-{% endhint %}
+> 1. **허용된 SQL 유형만 실행**(예: `SELECT`만 허용, `DROP`/`DELETE` 차단)
+> 2. **쿼리 크기 제한**(LIMIT 강제 추가)
+> 3. **접근 가능한 카탈로그/스키마 제한**
+> 4. **감사 로그**(누가 어떤 쿼리를 실행했는지 기록)
+
 
 ### API 사용 예시
 
@@ -407,9 +407,9 @@ curl -X POST "https://<app-url>/query" \
   -d '{"sql": "SELECT count(*) as cnt FROM my_catalog.my_schema.my_table"}'
 ```
 
-{% hint style="info" %}
+> **참고**
 **API 문서 자동 생성**: 앱 URL에 `/docs`를 추가하면 Swagger UI가 열립니다. 여기서 모든 엔드포인트를 인터랙티브하게 테스트할 수 있습니다. `/redoc`에서는 ReDoc 스타일의 읽기 전용 문서를 볼 수 있습니다.
-{% endhint %}
+
 
 ### 프로덕션 전환 시 고려사항
 
@@ -518,13 +518,13 @@ if prompt := st.chat_input("질문을 입력하세요..."):
 
 **`response.choices[0].message.content`**: OpenAI ChatCompletion API와 동일한 응답 형식입니다. Databricks Model Serving은 이 형식을 표준으로 사용합니다.
 
-{% hint style="info" %}
+> **참고**
 **Agent 앱 확장 아이디어**:
 - **대화 이력 저장**: UC 테이블에 대화 이력을 저장하면 세션 간 대화가 유지됩니다
 - **피드백 수집**: 각 응답에 좋아요/싫어요 버튼을 추가하여 모델 품질 개선에 활용
 - **파일 업로드**: `st.file_uploader()`로 문서를 업로드하고 RAG에 활용
 - **스트리밍 응답**: `stream=True`로 토큰 단위 스트리밍 지원 (UX 개선)
-{% endhint %}
+
 
 ### 프로덕션 전환 시 고려사항
 
@@ -552,11 +552,11 @@ if prompt := st.chat_input("질문을 입력하세요..."):
 | `OSError: [Errno 98] Address already in use` | 포트 충돌 | `$DATABRICKS_APP_PORT` 사용 확인 |
 | `StreamlitAPIException` | Streamlit 버전 호환성 문제 | `requirements.txt`에서 Streamlit 버전 명시 |
 
-{% hint style="info" %}
+> **참고**
 **디버깅 순서**: 오류가 발생하면 다음 순서로 확인하세요:
-1. **Logs 탭** 에서 에러 메시지 확인 (가장 중요)
-2. **SP 권한** 확인 — `GRANT` SQL 실행 여부
-3. **환경변수** 확인 — `app.yaml`의 `valueFrom`과 `resources`의 `name` 일치 여부
-4. **Warehouse/Endpoint 상태** 확인 — `Running` 상태인지
-5. **로컬에서 재현**— `databricks apps run-local --debug`로 동일 오류 발생하는지
-{% endhint %}
+> 1. **Logs 탭** 에서 에러 메시지 확인 (가장 중요)
+> 2. **SP 권한** 확인 — `GRANT` SQL 실행 여부
+> 3. **환경변수** 확인 — `app.yaml`의 `valueFrom`과 `resources`의 `name` 일치 여부
+> 4. **Warehouse/Endpoint 상태** 확인 — `Running` 상태인지
+> 5. **로컬에서 재현**— `databricks apps run-local --debug`로 동일 오류 발생하는지
+

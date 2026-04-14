@@ -4,9 +4,9 @@ Databricks 고객을 위한 **실전 가이드 & 핸즈온 워크샵** 모음입
 
 > **Databricks Korea Field Engineering**
 
-{% hint style="info" %}
-Databricks 전체 기능에 대한 종합 교육 자료는 **[Databricks 종합 교육 자료 (한글)](https://simyungyang.gitbook.io/databricks-training/)** 에서 확인하세요.
-{% endhint %}
+> **참고**
+> Databricks 전체 기능에 대한 종합 교육 자료는 **[Databricks 종합 교육 자료 (한글)](https://simyungyang.gitbook.io/databricks-training/)** 에서 확인하세요.
+
 
 ---
 

@@ -13,13 +13,13 @@
 | **동시성** | SQL Warehouse별 독립, 자동 스케일링 | Multi-cluster Warehouse | Concurrency Scaling (추가 비용) | Slot 기반 | Capacity 기반 |
 | **TPC-DS 성능** | 100TB 기준 업계 최고 수준 (Photon) | 상위권 | 상위권 | 상위권 | 상위권 |
 
-{% hint style="info" %}
+> **참고**
 **Genie Code**: 비즈니스 사용자가 자연어로 "지난달 매출 트렌드를 분석해줘"라고 질문하면, SQL/Python 코드를 자동 생성하고 실행합니다. Cortex Analyst는 SQL만 생성하는 반면, Genie Code는 Python 분석까지 가능합니다.
-{% endhint %}
 
-{% hint style="warning" %}
+
+> **주의**
 **경쟁사 장점**: Snowflake는 SQL 중심 워크플로에서 가장 직관적인 사용 경험을 제공하며, Data Sharing이 매우 간편합니다. MS Fabric은 Power BI와의 네이티브 통합이 압도적이고 Direct Lake 모드로 데이터 복사 없이 대시보드를 구성합니다. BigQuery는 프로비저닝 없이 즉시 SQL을 실행할 수 있습니다.
-{% endhint %}
+
 
 ---
 
@@ -50,9 +50,9 @@
 | **Large** | 대규모 | 대규모 BI 워크로드 | 50-100 |
 | **X-Large ~ 4X-Large** | 최대규모 | 엔터프라이즈 BI, 수백 동시 사용자 | 100+ |
 
-{% hint style="info" %}
+> **참고**
 **크기 선택 팁**: **Serverless SQL Warehouse** 를 사용하면 크기를 고민할 필요 없이 Databricks가 쿼리 복잡도에 따라 자동으로 최적 리소스를 할당합니다. 자동 스케일링도 클러스터 수 기반으로 동시성을 자동 관리합니다.
-{% endhint %}
+
 
 ---
 
@@ -84,9 +84,9 @@
 | **접근 제어** | Unity Catalog 권한 자동 적용 (RLS/Column Mask 포함) | 플랫폼별 상이 |
 | **신뢰할 수 있는 자산** | 검증된 테이블만 Genie에 노출 (데이터 신뢰성 보장) | 제한적 |
 
-{% hint style="success" %}
+> **성공**
 **Genie Code의 핵심 차별화**: Cortex Analyst는 **SQL만 생성** 하지만, Genie Code는 **SQL + Python** 을 생성하고 실행합니다. 이는 단순 쿼리를 넘어 **통계 분석, 시계열 예측, 이상치 탐지** 등 고급 분석까지 자연어로 가능하게 합니다. 또한 Genie를 **MCP Tool로 노출** 하여 AI Agent가 Genie의 분석 능력을 활용할 수 있습니다.
-{% endhint %}
+
 
 ---
 
@@ -156,9 +156,9 @@ SELECT
 FROM catalog.schema.user_sessions;
 ```
 
-{% hint style="info" %}
+> **참고**
 **AI_QUERY의 전략적 가치**: SQL 분석가가 **Python 없이도 AI를 활용** 할 수 있습니다. Foundation Model API든 커스텀 모델이든 SQL 한 줄로 호출 가능합니다. Snowflake Cortex도 유사한 함수를 제공하지만, **커스텀 모델 호출은 Databricks만 가능** 합니다.
-{% endhint %}
+
 
 ---
 
@@ -185,9 +185,9 @@ FROM catalog.schema.user_sessions;
 | **임베딩/공유** | 내장 공유 + 스케줄 알림 | Snowsight 공유 | 임베딩 가능 | 공유 링크 | 임베딩 + 공유 |
 | **커스터마이징** | Markdown + SQL + 시각화 위젯 | 제한적 | 풍부한 위젯 | 풍부한 위젯 | **가장 풍부** |
 
-{% hint style="success" %}
+> **성공**
 **SA/SE 핵심 메시지**: Databricks는 **AI/BI Dashboard로 간단한 대시보드를 플랫폼 내에서 직접 구성** 할 수 있고, 고급 BI가 필요하면 **Tableau, Power BI, Looker와 완벽 연동** 됩니다. 특히 Power BI Direct Lake 모드로 데이터 복사 없이 대규모 대시보드를 구성할 수 있습니다.
-{% endhint %}
+
 
 ---
 
@@ -226,6 +226,6 @@ FROM catalog.schema.user_sessions;
 | DBSQL Serverless (Medium) | ~$4,500 | ML/AI 통합 + 자동 스케일링 |
 | Redshift Serverless | ~$4,000 | AWS 네이티브 |
 
-{% hint style="info" %}
+> **참고**
 **핵심 인사이트**: BigQuery On-demand는 **쿼리 빈도가 극히 낮은 경우** 에만 경제적입니다. 일정 규모 이상에서는 DBSQL Serverless나 BigQuery Editions가 더 경제적이며, DBSQL은 추가로 **AI 함수, Genie Code, ML 통합** 이라는 가치를 제공합니다.
-{% endhint %}
+

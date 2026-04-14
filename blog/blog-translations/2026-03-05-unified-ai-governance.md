@@ -1,8 +1,5 @@
 ---
 title: "AI Agent를 확신 있게 확장하기 위한 새로운 거버넌스 기능 소개"
-date: 2025-03-10
-author: "Archika Dogra, Vladimir Kolovski, Sid Murching"
-tags: [ai-governance, ai-agents, unity-catalog, ai-gateway, genie]
 ---
 
 > **원문**: [Introducing New Governance Capabilities to Scale AI Agents with Confidence](https://www.databricks.com/blog/introducing-new-governance-capabilities-scale-ai-agents-confidence)

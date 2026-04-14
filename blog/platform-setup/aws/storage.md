@@ -38,9 +38,9 @@ S3 → Bucket → Permissions → Bucket policy 에서 설정합니다.
 }
 ```
 
-{% hint style="warning" %}
-`<BUCKET>` = S3 버킷 이름, `<ACCOUNT-ID>` = Databricks Account UUID — 반드시 교체
-{% endhint %}
+> **주의**
+> `<BUCKET>` = S3 버킷 이름, `<ACCOUNT-ID>` = Databricks Account UUID — 반드시 교체
+
 
 ## Storage 등록 — Account Console
 
@@ -60,8 +60,8 @@ Databricks Account Console에서 등록합니다.
 
 - **Storage Configuration ID** 생성됨 → Workspace 생성 시 사용
 
-{% hint style="warning" %}
-이 설정은 **수정 불가**— 변경 필요 시 삭제 후 재생성 (Workspace가 연결된 경우 삭제 불가)
-{% endhint %}
+> **주의**
+> 이 설정은 **수정 불가**— 변경 필요 시 삭제 후 재생성 (Workspace가 연결된 경우 삭제 불가)
+
 
 *참고: [Configure storage](https://docs.databricks.com/aws/en/admin/account-settings-e2/storage) · [Terraform: databricks_mws_storage_configurations](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/mws_storage_configurations)*

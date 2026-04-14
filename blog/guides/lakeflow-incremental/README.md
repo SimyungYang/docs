@@ -6,9 +6,9 @@ Lakeflow Declarative Pipeline(구 DLT)은 선언적으로 데이터 파이프라
 
 이 문제는 단순히 "시간이 오래 걸린다"는 수준이 아닙니다.
 
-{% hint style="warning" %}
+> **주의**
 **Streaming Table** 의 Full Refresh는 체크포인트가 초기화되어 **데이터 손실 또는 중복** 위험이 있습니다. **Materialized View** 의 Full Recompute는 전체 소스를 다시 읽어 **비용이 수십~수백 배 폭증** 할 수 있습니다.
-{% endhint %}
+
 
 실제 프로덕션 환경에서 테라바이트급 테이블의 Full Refresh가 발생하면, 수 시간의 다운타임과 수천 달러의 추가 비용이 발생합니다. 이 가이드는 Full Refresh가 **언제, 왜** 발생하는지 정확히 이해하고, 이를 **방지하거나 안전하게 관리** 하는 전략을 제공합니다.
 

@@ -69,9 +69,9 @@ compression_retriever = ContextualCompressionRetriever(
 )
 ```
 
-{% hint style="tip" %}
-`bge-reranker-v2-m3`는 다국어를 지원하므로 한국어 문서에도 효과적입니다. Databricks Model Serving에 배포하여 사용할 수도 있습니다.
-{% endhint %}
+> **팁**
+> `bge-reranker-v2-m3`는 다국어를 지원하므로 한국어 문서에도 효과적입니다. Databricks Model Serving에 배포하여 사용할 수도 있습니다.
+
 
 ## ColBERT (Late Interaction) 활용
 
@@ -123,9 +123,9 @@ def llm_rerank(query: str, documents: list, top_n: int = 5) -> list:
     return [documents[i] for i in ranked_indices if i < len(documents)]
 ```
 
-{% hint style="warning" %}
-LLM 기반 Reranking은 문맥 이해가 가장 뛰어나지만, **비용과 지연 시간이 매우 높습니다**(문서당 수백~수천 토큰 소비). 고가치 쿼리나 배치 처리에만 사용하고, 실시간 서비스에는 Cross-Encoder나 ColBERT를 권장합니다.
-{% endhint %}
+> **주의**
+> LLM 기반 Reranking은 문맥 이해가 가장 뛰어나지만, **비용과 지연 시간이 매우 높습니다**(문서당 수백~수천 토큰 소비). 고가치 쿼리나 배치 처리에만 사용하고, 실시간 서비스에는 Cross-Encoder나 ColBERT를 권장합니다.
+
 
 ## Re-ranking 전략 상세: 언제, 얼마나 Rerank할 것인가
 
@@ -158,6 +158,6 @@ final_retriever = ContextualCompressionRetriever(
 )
 ```
 
-{% hint style="warning" %}
-Reranker는 쿼리-문서 쌍별로 추론을 수행하므로, 초기 검색 결과가 많을수록 지연 시간이 증가합니다. P95(전체 요청의 95%가 이 시간 이내에 완료되는 기준) 지연 시간 목표를 기준으로 Top-K를 설정하세요. 일반적으로 K=20이면 Reranking에 100~300ms가 추가됩니다.
-{% endhint %}
+> **주의**
+> Reranker는 쿼리-문서 쌍별로 추론을 수행하므로, 초기 검색 결과가 많을수록 지연 시간이 증가합니다. P95(전체 요청의 95%가 이 시간 이내에 완료되는 기준) 지연 시간 목표를 기준으로 Top-K를 설정하세요. 일반적으로 K=20이면 Reranking에 100~300ms가 추가됩니다.
+

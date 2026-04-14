@@ -1,13 +1,3 @@
----
-original_title: "Data Quality Monitoring at scale with Agentic AI"
-authors: "Jacqueline Li, Danny Chiao, Saravanan Balasubramanian"
-date: "2026-02-04"
-category: "Product"
-original_url: "https://www.databricks.com/blog/data-quality-monitoring-scale-agentic-ai"
-translated_date: "2026-04-07"
-note: "요청된 URL(introducing-intelligent-monitoring)은 404로 확인되지 않아, 동일 주제(Intelligent/Agentic Data Quality Monitoring)의 공식 블로그 포스트로 대체하였습니다."
----
-
 # Agentic AI로 대규모 데이터 품질 모니터링하기
 
 > **원문**: [Data Quality Monitoring at scale with Agentic AI](https://www.databricks.com/blog/data-quality-monitoring-scale-agentic-ai)
@@ -55,13 +45,13 @@ Databricks 플랫폼과의 깊은 통합은 단순한 감지 이상의 기능을
 
 플랫폼 네이티브 모니터링을 통해 팀은 더 일찍 문제를 감지하고, 가장 중요한 것에 집중하며, 엔터프라이즈 규모에서 더 빠르게 문제를 해결할 수 있습니다.
 
-{% hint style="info" %}
+> **참고**
 **고객 사례: Alinta Energy**
 
 "우리의 목표는 항상 데이터 자체가 문제가 있을 때 우리에게 알려주는 것이었습니다. Databricks의 Data Quality Monitoring은 AI 기반 접근 방식을 통해 마침내 그것을 실현했습니다. UI에 완벽하게 통합되어 설정 없이 모든 테이블을 모니터링합니다. 설정이 부족한 것이 다른 제품들의 항상 한계였는데, 이제 사용자가 문제를 보고하는 대신 데이터 자체가 먼저 문제를 알려줘 플랫폼의 품질, 신뢰도 및 무결성을 향상시킵니다."
 
 — Jake Roussis, Alinta Energy Lead Data Engineer
-{% endhint %}
+
 
 ---
 
@@ -87,13 +77,13 @@ Databricks 플랫폼과의 깊은 통합은 단순한 감지 이상의 기능을
 
 ![데이터 프로파일링 및 이상 감지 UI 화면](https://www.databricks.com/sites/default/files/inline-images/image2_72.png?v=1770222081)
 
-{% hint style="info" %}
+> **참고**
 **고객 사례: OnePay**
 
 "OnePay에서 우리의 미션은 사람들이 돈을 저축하고, 지출하고, 빌리고, 키울 수 있도록 지원하여 재정적 발전을 이루도록 돕는 것입니다. 모든 데이터셋에 걸친 높은 품질의 데이터는 그 미션을 실현하는 데 매우 중요합니다. Data Quality Monitoring을 통해 문제를 조기에 발견하고 신속하게 조치를 취할 수 있습니다. 분석, 보고, 견고한 ML 모델 개발에서 정확성을 보장할 수 있으며, 이 모든 것이 고객을 더 잘 서비스하는 데 기여합니다."
 
 — Nameet Pai, OnePay Head of Platform & Data Engineering
-{% endhint %}
+
 
 ---
 
@@ -139,10 +129,10 @@ Databricks 플랫폼과의 깊은 통합은 단순한 감지 이상의 기능을
 2. 제품 내에서 모든 모니터링 테이블의 전체적인 뷰를 확인합니다.
 3. 제공된 템플릿으로 알림(alert)을 설정합니다.
 
-{% hint style="info" %}
+> **참고**
 **관련 리소스**
 
 - [Data Quality Monitoring 제품 페이지](https://www.databricks.com/product/machine-learning/lakehouse-monitoring)
 - [AWS 문서: 데이터 품질 모니터링](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring)
 - [Azure Databricks 문서: 데이터 품질 모니터링](https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/data-quality-monitoring/)
-{% endhint %}
+

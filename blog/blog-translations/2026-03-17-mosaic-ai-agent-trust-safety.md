@@ -1,20 +1,10 @@
----
-original_title: "Announcing Mosaic AI Agent Framework and Agent Evaluation"
-authors: "Eric Peter, Akhil Gupta, Mani Parkhe, Alkis Polyzotis, Chenen Liang, Maheswaran Venkatachalam, Michael Carbin, Niall Turbitt"
-date: "2024-07-02"
-category: "Data Science and ML"
-original_url: "https://www.databricks.com/blog/announcing-mosaic-ai-agent-framework-and-agent-evaluation"
-translated_date: "2026-04-07"
-note: "요청한 원본 URL(https://www.databricks.com/blog/how-mosaic-ai-agent-framework-enables-trust-and-safety-agentic-systems)은 404를 반환합니다. 동일 주제의 공식 Databricks 블로그 포스트 2편을 번역했습니다: (1) Mosaic AI Agent Framework & Agent Evaluation 발표 포스트, (2) Agent Bricks AI Gateway 보안·거버넌스 발표 포스트(2024-09-09, 저자: Ahmed Bilal, Kasey Uhlenhuth, Archika Dogra)."
----
-
 > **원문**: [Announcing Mosaic AI Agent Framework and Agent Evaluation](https://www.databricks.com/blog/announcing-mosaic-ai-agent-framework-and-agent-evaluation)
 
 # Mosaic AI Agent Framework와 Agent Evaluation 발표: 신뢰할 수 있는 에이전틱 시스템을 위한 안전 및 거버넌스
 
-{% hint style="info" %}
+> **참고**
 **번역 참고**: 요청한 원본 URL은 현재 접근 불가(404) 상태입니다. 동일 주제를 다루는 공식 Databricks 블로그 포스트 2편을 함께 번역했습니다. (1) **Mosaic AI Agent Framework & Agent Evaluation 발표** (2024-07-02), (2) **Agent Bricks AI Gateway의 고급 보안 및 거버넌스 발표** (2024-09-09).
-{% endhint %}
+
 
 ---
 
@@ -74,10 +64,10 @@ Agent Framework와 Agent Evaluation을 사용하여 고품질 애플리케이션
 
 ![리뷰 애플리케이션을 사용하여 PoC에 대한 이해관계자 피드백 수집](https://www.databricks.com/sites/default/files/inline-images/image3_1.gif)
 
-{% hint style="info" %}
+> **참고**
 **고객 사례 — Corning**: "우리는 수십만 개의 미국 특허청 데이터를 포함한 문서들을 색인화하기 위해 Databricks Mosaic AI Agent Framework를 사용하여 AI 연구 보조 도구를 구축했습니다. LLM 기반 보조 도구가 높은 정확도로 질문에 답변하는 것이 우리에게는 매우 중요했습니다. Databricks Data Intelligence Platform을 활용함으로써 검색 속도, 응답 품질, 정확도를 크게 향상시켰습니다."
-— Denis Kamotsky, Principal Software Engineer, Corning
-{% endhint %}
+> — Denis Kamotsky, Principal Software Engineer, Corning
+
 
 **3단계: AI 심사위원으로 품질 평가**
 
@@ -97,28 +87,28 @@ Agent Framework와 Agent Evaluation을 사용하여 고품질 애플리케이션
 
 ![평가 세트의 각 개별 레코드를 검사하여 상황 파악](https://www.databricks.com/sites/default/files/inline-images/image1_5.gif)
 
-{% hint style="info" %}
+> **참고**
 **고객 사례 — Lippert**: "Mosaic AI Agent Framework는 우리에게 게임 체인저였습니다. GenAI 애플리케이션의 결과를 평가하고 데이터 소스에 대한 완전한 제어를 유지하면서 출력의 정확도를 입증할 수 있었습니다. Databricks Data Intelligence Platform 덕분에 프로덕션 배포에 자신감을 갖게 되었습니다."
-— Kenan Colson, VP Data & AI, Lippert
-{% endhint %}
+> — Kenan Colson, VP Data & AI, Lippert
+
 
 **4단계: 프로덕션 배포**
 
 품질을 반복적으로 개선하고 만족스러운 수준에 도달하면, 애플리케이션이 이미 Unity Catalog에 등록되어 있기 때문에 최소한의 노력으로 프로덕션 워크스페이스에 배포할 수 있습니다.
 
-{% hint style="info" %}
+> **참고**
 **고객 사례 — Burberry**: "Mosaic AI Agent Framework를 통해 모든 개인 데이터가 우리 통제 하에 있다는 확신 속에서 강화된 LLM을 빠르게 실험할 수 있었습니다. MLflow 및 Model Serving과의 원활한 통합으로 ML 엔지니어링 팀이 최소한의 복잡성으로 PoC에서 프로덕션으로 확장할 수 있었습니다."
-— Ben Halsall, Analytics Director, Burberry
-{% endhint %}
+> — Ben Halsall, Analytics Director, Burberry
+
 
 ### 거버넌스, 추적성, 안전성의 통합
 
 이러한 기능들은 거버넌스를 위해 **Unity Catalog** 와, 계보(lineage) 및 메타데이터 관리를 위해 **MLflow** 와, 안전성을 위해 **LLM Guardrails** 와 긴밀하게 통합되어 있습니다. 거버넌스와 가드레일이 적용되면 유해한 응답을 방지하고 애플리케이션이 조직의 정책을 따르도록 보장할 수 있습니다.
 
-{% hint style="info" %}
+> **참고**
 **고객 사례 — FordDirect**: "Databricks Mosaic AI Agent Framework를 통해 RAG를 사용하는 생성형 AI 솔루션에 우리의 독자적인 데이터와 문서를 통합할 수 있었습니다. Mosaic AI와 Databricks Delta Tables 및 Unity Catalog의 통합으로 배포된 모델을 건드리지 않고도 소스 데이터가 업데이트될 때 벡터 인덱스를 실시간으로 원활하게 유지할 수 있었습니다."
-— Tom Thomas, VP of Analytics, FordDirect
-{% endhint %}
+> — Tom Thomas, VP of Analytics, FordDirect
+
 
 ### 가격 책정
 

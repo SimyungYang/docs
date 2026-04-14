@@ -180,9 +180,9 @@ ALTER TABLE prod_sales.gold.transactions
 ALTER COLUMN customer_id SET MASK prod_sales.gold.hash_customer_id;
 ```
 
-{% hint style="info" %}
+> **참고**
 **해시 기반 마스킹의 장점**: SHA2 해시를 사용하면 원본 데이터를 볼 수 없으면서도, 동일한 고객의 거래를 GROUP BY나 JOIN으로 분석할 수 있습니다. 분석 가능성과 프라이버시를 동시에 확보하는 패턴입니다.
-{% endhint %}
+
 
 ---
 
@@ -234,9 +234,9 @@ USING (
 );
 ```
 
-{% hint style="warning" %}
+> **주의**
 **Security Policy는 Preview 기능입니다**: 태그 기반 자동 마스킹 Security Policy는 현재 Public Preview입니다. 프로덕션에 적용하기 전에 테스트 환경에서 충분히 검증하세요. 현재는 개별 테이블에 Row Filter/Column Mask를 수동 설정하는 것이 안정적입니다.
-{% endhint %}
+
 
 ---
 
@@ -321,9 +321,9 @@ GRANT SELECT ON SHARE partner_analytics_share TO RECIPIENT partner_company;
 | **Databricks-to-Databricks** | Databricks | Unity Catalog 통합 | 가장 간편 |
 | **Open Sharing** | Spark, Pandas, 기타 | Bearer Token | 다양한 플랫폼 지원 |
 
-{% hint style="info" %}
+> **참고**
 **Delta Sharing 거버넌스**: Delta Sharing으로 공유된 데이터는 수신자가 복사할 수 있습니다. 민감한 데이터는 Column Mask가 적용된 View를 공유하거나, 집계된 Gold 테이블만 공유하세요.
-{% endhint %}
+
 
 ---
 
@@ -396,9 +396,9 @@ WHERE privilege = 'ALL PRIVILEGES'
 AND securable_type = 'CATALOG';
 ```
 
-{% hint style="warning" %}
+> **주의**
 **감사 로그 보존**: 시스템 테이블의 감사 로그는 기본 365일 보존됩니다. 규제 요건에 따라 장기 보존이 필요하면, 감사 로그를 별도 스토리지(S3/ADLS)로 Export하는 파이프라인을 구축하세요.
-{% endhint %}
+
 
 ---
 

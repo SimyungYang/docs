@@ -1,8 +1,8 @@
 # Tesla, xAI & 기타 AI 기업 동향 (2026년 초 기준)
 
-{% hint style="info" %}
+> **참고**
 **이 문서의 범위**: Tesla의 물리적 AI, xAI(Grok), 그리고 Mistral, DeepSeek, Perplexity 등 주목할 AI 기업들을 분석합니다.
-{% endhint %}
+
 
 ---
 
@@ -152,9 +152,9 @@ Elon Musk가 2023년 설립한 AI 기업으로, **"우주의 진정한 본질을
 | **MLA 혁신** | Multi-Head Latent Attention으로 KV 캐시 메모리 93% 절감 |
 | **추론 모델** | R1은 별도 SFT 없이 **순수 강화학습(RL)만으로** 추론 능력 획득 |
 
-{% hint style="warning" %}
+> **주의**
 **주의**: 중국 AI 모델은 **데이터 주권, 콘텐츠 검열, 규제 리스크** 를 고려해야 합니다. 중국 정부의 요구에 따라 특정 주제(천안문, 대만, 티베트 등)에서 편향된 답변을 할 수 있으며, 기업 환경에서는 자체 배포 시에도 보안 검토가 필요합니다.
-{% endhint %}
+
 
 ---
 
@@ -254,9 +254,9 @@ Elon Musk가 2023년 설립한 AI 기업으로, **"우주의 진정한 본질을
 | **AI 칩** | NVIDIA B200 독주 vs AMD/Google/AWS 추격, 전력 소비가 핵심 병목 |
 | **규제** | EU AI Act 시행(2025.08), 미국 연방 AI 규제 논의 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks 시사점**: Databricks는 모델 제공자에 종속되지 않는 플랫폼으로, DeepSeek, Mistral 등 오픈소스 모델을 Model Serving에 자유롭게 배포할 수 있습니다. 특히 DeepSeek의 비용 효율적 모델과 Databricks의 데이터 레이크하우스를 결합하면, 최소 비용으로 프라이빗 AI를 구축할 수 있습니다.
-{% endhint %}
+
 
 ---
 

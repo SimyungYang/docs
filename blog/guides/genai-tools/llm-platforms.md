@@ -106,9 +106,9 @@ Claude의 200K 토큰 컨텍스트는 단순히 "긴 텍스트를 넣을 수 있
 
 **선택 기준**: 비용이 최우선 고려사항인 경우, 추론(reasoning) 작업이 많은 경우
 
-{% hint style="warning" %}
-DeepSeek는 중국 기반 회사로, 일부 기업에서는 데이터 규제/보안 정책상 사용이 제한될 수 있습니다. 민감한 데이터를 다루는 경우 반드시 조직의 보안 정책을 확인하세요. 오픈소스 모델(DeepSeek R1)을 자체 인프라에서 호스팅하는 방식으로 이 문제를 우회할 수 있습니다.
-{% endhint %}
+> **주의**
+> DeepSeek는 중국 기반 회사로, 일부 기업에서는 데이터 규제/보안 정책상 사용이 제한될 수 있습니다. 민감한 데이터를 다루는 경우 반드시 조직의 보안 정책을 확인하세요. 오픈소스 모델(DeepSeek R1)을 자체 인프라에서 호스팅하는 방식으로 이 문제를 우회할 수 있습니다.
+
 
 ---
 
@@ -153,9 +153,9 @@ DeepSeek는 중국 기반 회사로, 일부 기업에서는 데이터 규제/보
 
 이 패턴을 적용하면 **평균 API 비용을 60~80% 절감** 하면서 사용자 경험은 유지하거나 오히려 향상시킬 수 있습니다. 간단한 질문에는 빠른 모델이 응답하여 지연시간도 줄어들기 때문입니다.
 
-{% hint style="info" %}
-Databricks Foundation Model APIs를 사용하면 하나의 엔드포인트에서 여러 모델을 호출할 수 있으므로, **AI Gateway** 패턴으로 모델 라우팅을 구현하기 용이합니다. Unity Catalog의 접근 제어와 결합하면 모델별 사용 권한도 세밀하게 관리할 수 있습니다.
-{% endhint %}
+> **참고**
+> Databricks Foundation Model APIs를 사용하면 하나의 엔드포인트에서 여러 모델을 호출할 수 있으므로, **AI Gateway** 패턴으로 모델 라우팅을 구현하기 용이합니다. Unity Catalog의 접근 제어와 결합하면 모델별 사용 권한도 세밀하게 관리할 수 있습니다.
+
 
 ---
 
@@ -219,6 +219,6 @@ response = client.chat.completions.create(
 
 각 모델은 `databricks-<model-name>` 형식의 엔드포인트로 즉시 사용 가능합니다. 별도의 API 키 발급이나 외부 서비스 가입이 필요 없습니다.
 
-{% hint style="info" %}
-Foundation Model APIs 외에도, **Model Serving** 을 통해 커스텀 파인튜닝된 모델이나 Hugging Face 모델을 직접 배포할 수 있습니다. 자세한 내용은 [오픈소스 LLM 생태계](opensource-llm.md) 페이지를 참조하세요.
-{% endhint %}
+> **참고**
+> Foundation Model APIs 외에도, **Model Serving** 을 통해 커스텀 파인튜닝된 모델이나 Hugging Face 모델을 직접 배포할 수 있습니다. 자세한 내용은 [오픈소스 LLM 생태계](opensource-llm.md) 페이지를 참조하세요.
+

@@ -93,9 +93,9 @@ chunks = semantic_splitter.create_documents([long_document_text])
 print(f"의미 기반 분할 결과: {len(chunks)}개 청크")
 ```
 
-{% hint style="warning" %}
+> **주의**
 **트레이드오프**: 의미 기반 청킹은 모든 문장을 임베딩해야 하므로 Recursive 대비 처리 시간이 길고, 청크 크기가 불균일합니다. 또한 임베딩 모델의 품질에 크게 의존하므로, 도메인 특화 문서에서는 해당 도메인에 맞는 임베딩 모델을 사용하는 것이 중요합니다.
-{% endhint %}
+
 
 ---
 
@@ -159,9 +159,9 @@ propositions = extract_propositions(text)
 # ]
 ```
 
-{% hint style="warning" %}
+> **주의**
 **비용 주의**: 명제 기반 청킹은 모든 문서를 LLM으로 처리해야 하므로, 대규모 문서에서는 비용이 급증합니다. **고가치 문서(법률 계약서, 기술 사양서)** 에만 선택적으로 적용하고, 일반 문서는 Semantic 또는 Recursive 청킹을 사용하세요.
-{% endhint %}
+
 
 ---
 
@@ -200,9 +200,9 @@ Late: [============ 전체 문서 임베딩 ============]
 - **경계 문제 완화**: 청크 경계에서 잘린 정보도 전체 문맥에서 보완됨
 - **추가 비용 없음**: LLM 호출 불필요 (임베딩 모델만 사용)
 
-{% hint style="info" %}
+> **참고**
 **제약 사항**: Late Chunking은 임베딩 모델의 **최대 입력 길이** 에 제한됩니다. 대부분의 임베딩 모델은 512~8192 토큰이므로, 긴 문서는 섹션별로 나누어 Late Chunking을 적용해야 합니다. Jina의 jina-embeddings-v3는 8192 토큰까지 지원합니다.
-{% endhint %}
+
 
 ---
 
@@ -267,9 +267,9 @@ for size, score in results.items():
 | **1000 토큰** | 중간 | 높음 | 높음 | 긴 설명이 필요한 문서에 적합 |
 | **2000 토큰** | 낮음 | 높음 | 중간 | 노이즈 증가. LLM이 핵심을 놓칠 수 있음 |
 
-{% hint style="info" %}
+> **참고**
 **경험적 가이드**: 특별한 이유가 없다면 **500 토큰 + 20% 오버랩** 으로 시작하세요. 이후 RAGAS 메트릭 기반으로 미세 조정합니다.
-{% endhint %}
+
 
 ---
 
@@ -398,6 +398,6 @@ for strategy_name, vectorstore in strategies.items():
 # Proposition:    Recall@5 = 0.91
 ```
 
-{% hint style="info" %}
+> **참고**
 **실무 팁**: Recall@5 기준으로 **0.85 이상** 이면 양호한 청킹입니다. 0.80 미만이면 청킹 전략을 재검토하세요. 평가 데이터셋은 최소 **50~100개의 Q&A 쌍** 이 필요합니다.
-{% endhint %}
+

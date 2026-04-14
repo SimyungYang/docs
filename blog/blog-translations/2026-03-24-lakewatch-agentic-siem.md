@@ -1,12 +1,3 @@
----
-original_title: "Databricks Announces Lakewatch: New Open, Agentic SIEM"
-authors: "Databricks"
-date: "2026-03-24"
-category: "Product"
-original_url: "https://www.databricks.com/blog/databricks-announces-lakewatch-new-open-agentic-siem"
-translated_date: "2026-04-07"
----
-
 > **원문**: [Databricks Announces Lakewatch: New Open, Agentic SIEM](https://www.databricks.com/blog/databricks-announces-lakewatch-new-open-agentic-siem)
 
 # Databricks, 새로운 오픈형 에이전틱 SIEM 'Lakewatch' 발표
@@ -73,11 +64,11 @@ Lakewatch는 현재 **Private Preview**로 제공됩니다.
 
 ---
 
-{% hint style="info" %}
+> **참고**
 **Lakewatch에 대해 더 알아보기**
 
 Lakewatch 제품 페이지: [databricks.com/product/lakewatch](https://www.databricks.com/product/lakewatch)
-{% endhint %}
+
 
 ---
 

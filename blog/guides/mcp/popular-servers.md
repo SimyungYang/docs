@@ -2,13 +2,13 @@
 
 업계에서 가장 많이 사용되는 MCP 서버들과, 이들을 조합하여 실무 자동화를 구현하는 시나리오를 정리합니다.
 
-{% hint style="info" %}
+> **참고**
 **학습 목표**
 - 카테고리별 인기 MCP 서버와 주요 기능을 파악한다
 - 여러 MCP 서버를 조합한 실전 자동화 시나리오를 설계할 수 있다
 - Genie Code / Claude Code에 MCP 서버를 추가하는 방법을 이해한다
 - MCP 서버 디렉토리에서 필요한 서버를 찾고 평가할 수 있다
-{% endhint %}
+
 
 ---
 
@@ -25,9 +25,9 @@ MCP 서버를 찾을 수 있는 주요 사이트입니다:
 | **Awesome MCP Servers** | [github.com/punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) | GitHub Awesome 리스트. 커뮤니티 큐레이션 |
 | **Cursor Directory** | [cursor.directory](https://cursor.directory) | Cursor IDE 중심의 MCP 서버 목록 |
 
-{% hint style="tip" %}
+> **팁**
 **서버 선택 기준**: GitHub Star 수, 최근 커밋 활동, 이슈 응답 속도, 공식(Anthropic/벤더) 여부를 확인하세요. 커뮤니티 서버는 품질 편차가 큽니다.
-{% endhint %}
+
 
 ---
 
@@ -147,9 +147,9 @@ MCP 서버를 찾을 수 있는 주요 사이트입니다:
 2. **Slack MCP**→ `#data-ops` 채널에 실패 요약 메시지 전송
 3. **JIRA MCP**→ 실패 상세 내용으로 Bug 티켓 생성
 
-{% hint style="info" %}
+> **참고**
 **Genie Code에서 구현**: Databricks SQL은 Managed MCP로 기본 제공됩니다. Slack과 JIRA는 External MCP(Unity Catalog Connection)로 연결합니다.
-{% endhint %}
+
 
 ---
 
@@ -390,9 +390,9 @@ resources:
     type: databricks_host
 ```
 
-{% hint style="warning" %}
+> **주의**
 **Genie Code 제한**: 전체 MCP 서버에 걸쳐 **최대 20개 Tool** 만 사용할 수 있습니다. 핵심 도구만 선택적으로 등록하세요.
-{% endhint %}
+
 
 ---
 
@@ -482,9 +482,9 @@ claude mcp list
 }
 ```
 
-{% hint style="tip" %}
-`${ENV_VAR}` 구문으로 환경변수를 참조하면, `.mcp.json`을 git에 커밋해도 토큰이 노출되지 않습니다. 팀원은 각자 환경변수만 설정하면 됩니다.
-{% endhint %}
+> **팁**
+> `${ENV_VAR}` 구문으로 환경변수를 참조하면, `.mcp.json`을 git에 커밋해도 토큰이 노출되지 않습니다. 팀원은 각자 환경변수만 설정하면 됩니다.
+
 
 ---
 
@@ -543,9 +543,9 @@ claude mcp list
 | **ML 엔지니어** | Databricks SQL, GitHub, Slack, Vector Search | MLflow (UC Functions) | 10-15개 |
 | **DevOps/SRE** | Kubernetes, Datadog/Prometheus, Slack, PagerDuty | AWS, GitHub | 10-15개 |
 
-{% hint style="tip" %}
+> **팁**
 **실전 팁**: 처음에는 Slack + 핵심 데이터 소스(Databricks SQL 또는 PostgreSQL) 2개만 연결하세요. 이 조합만으로도 "분석 → 결과 공유" 워크플로가 가능하며, 추가 MCP는 필요성이 입증된 후에 하나씩 추가하는 것이 가장 효과적입니다.
-{% endhint %}
+
 
 ---
 
@@ -563,9 +563,9 @@ MCP 서버를 선택할 때 확인해야 할 항목들입니다:
 | **에러 처리** | 실패 시 의미 있는 에러 메시지를 반환하는가? |
 | **문서화** | 설치 가이드, Tool 설명, 예제가 충분한가? |
 
-{% hint style="warning" %}
+> **주의**
 **커뮤니티 서버 주의사항**: 커뮤니티 MCP 서버는 공식 서버에 비해 유지보수가 불안정할 수 있습니다. 프로덕션 환경에서는 반드시 코드를 검토하고, 가능하면 공식 서버나 벤더 공식 서버를 우선 사용하세요.
-{% endhint %}
+
 
 ---
 
@@ -592,9 +592,9 @@ MCP 서버를 선택할 때 확인해야 할 항목들입니다:
 - **PagerDuty**: 인시던트 대응 자동화
 - **Custom MCP**: 사내 시스템 연동
 
-{% hint style="tip" %}
+> **팁**
 **경험적 법칙**: 처음 2개 MCP 서버(Slack + 데이터 소스)로 80%의 가치를 얻을 수 있습니다. 나머지 20%의 가치를 위해 추가 서버를 도입하는 것은 기본 워크플로가 안정된 후에 진행하세요.
-{% endhint %}
+
 
 ---
 

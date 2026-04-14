@@ -53,8 +53,8 @@ df = (spark.readStream
 
 | 질문 | 조건 | 권장 모드 |
 |------|------|----------|
-| 디렉토리 파일 수? | < 10만 개 + 실시간 불필요 | Directory Listing (간편 설정) |
-| 디렉토리 파일 수? | < 10만 개 + 실시간 필요 | File Notification |
+| 디렉토리 파일 수? | \< 10만 개 + 실시간 불필요 | Directory Listing (간편 설정) |
+| 디렉토리 파일 수? | \< 10만 개 + 실시간 필요 | File Notification |
 | 디렉토리 파일 수? | > 10만 개 + 클라우드 권한 있음 | File Notification 설정 |
 | 디렉토리 파일 수? | > 10만 개 + 클라우드 권한 없음 | Directory Listing + incremental listing 활성화 |
 

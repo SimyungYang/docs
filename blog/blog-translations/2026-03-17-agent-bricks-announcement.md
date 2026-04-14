@@ -1,12 +1,3 @@
----
-original_title: "Introducing Agent Bricks: Auto-Optimized Agents Using Your Data"
-authors: "Databricks"
-date: "2025-06-11"
-category: "Product"
-original_url: "https://www.databricks.com/blog/introducing-agent-bricks"
-translated_date: "2026-04-07"
----
-
 # Agent Bricks 소개: 여러분의 데이터로 자동 최적화되는 AI 에이전트
 
 > **원문**: [Introducing Agent Bricks: Auto-Optimized Agents Using Your Data](https://www.databricks.com/blog/introducing-agent-bricks)
@@ -81,8 +72,8 @@ Agent Bricks와 함께 이러한 혁신들은 Databricks를 빌딩·튜닝부터
 
 ---
 
-{% hint style="info" %}
+> **참고**
 **Agent Bricks 시작하기**
 
 Agent Bricks는 Databricks 플랫폼 내에서 바로 사용할 수 있습니다. Knowledge Assistant, Information Extraction Agent, Multi-Agent Supervisor, Custom LLM Agent의 네 가지 에이전트 유형 중 비즈니스 목적에 맞는 유형을 선택하고, 자연어로 작업을 설명한 뒤 데이터 소스를 연결하면 됩니다. 자세한 내용은 [공식 문서](https://docs.databricks.com/aws/en/generative-ai/agent-bricks/)를 참조하세요.
-{% endhint %}
+

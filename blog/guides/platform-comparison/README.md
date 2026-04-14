@@ -14,9 +14,9 @@
 | **Google BigQuery** | Serverless Analytics | 서버리스 우선 분석 엔진 |
 | **Microsoft Fabric/Synapse** | Unified Analytics Platform | OneLake 기반 SaaS 통합 분석 |
 
-{% hint style="info" %}
+> **참고**
 **핵심 메시지**: Databricks는 업계 유일하게 DW + Data Lake + ML + GenAI를 **하나의 플랫폼, 하나의 거버넌스(Unity Catalog)** 아래에서 통합합니다. 경쟁 플랫폼은 SQL 분석 또는 개별 영역에서 강점이 있지만, 전체 데이터-AI 라이프사이클을 하나로 아우르지는 못합니다.
-{% endhint %}
+
 
 ## 목차
 
@@ -89,9 +89,9 @@
   └─ NO → 편의성/기존 생태계 기준으로 선택
 ```
 
-{% hint style="success" %}
+> **성공**
 **결론**: SQL만 필요하다면 모든 플랫폼이 경쟁력 있습니다. 하지만 **데이터와 AI를 통합** 하고, **오픈 포맷으로 벤더 종속을 탈피** 하며, **자연어로 누구나 접근 가능** 하게 하려면 — Databricks가 현재 유일하게 이 모든 요구를 충족하는 플랫폼입니다.
-{% endhint %}
+
 
 ---
 
@@ -109,9 +109,9 @@
 | **확장성 한계** | 데이터 증가 시 아키텍처 재설계 필요 | 6-12개월 + 인력 투입 |
 | **거버넌스 공백** | 데이터/AI가 분리된 플랫폼에서 관리될 때 규제 대응 비용 | 컴플라이언스 위반 리스크 |
 
-{% hint style="warning" %}
+> **주의**
 **실제 사례**: 국내 대기업 A사는 Snowflake로 DW를 구축한 후 ML 워크로드가 필요해져 SageMaker를 추가 도입했습니다. 결과적으로 데이터 복사 비용(월 수천만 원), 거버넌스 이중화, 팀 간 사일로가 발생하여 2년 후 Databricks로 통합 마이그레이션을 결정했습니다.
-{% endhint %}
+
 
 ### 각 벤더의 핵심 철학 차이
 
@@ -228,9 +228,9 @@ TCO(20%)              4×0.20     3×0.20    3×0.20   4×0.20   3×0.20
 | **Hadoop/Spark → Databricks** | 낮음 | Spark 코드 거의 그대로 실행, Hive 메타스토어 마이그레이션 |
 | **MS Fabric → Databricks** | 중간 | OneLake(Delta) 포맷 호환, Power BI 연동은 DBSQL로 대체 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks Lakeflow Connect** 를 활용하면 기존 플랫폼의 데이터를 증분 방식으로 Databricks Lakehouse에 동기화할 수 있어, 빅뱅 마이그레이션 없이 점진적 전환이 가능합니다.
-{% endhint %}
+
 
 ---
 

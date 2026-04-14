@@ -1,21 +1,12 @@
----
-original_title: "Introducing Apache Spark 4.0"
-authors: "Wenchen Fan, Serge Rielau, Herman van Hövell, Hyukjin Kwon, Allison Wang, Anish Shrigondekar, Daniel Tenedorio, Martin Grund, DB Tsai, Xiao Li, Reynold Xin"
-date: "2025-05-28"
-category: "Open Source"
-original_url: "https://www.databricks.com/blog/introducing-apache-spark-40"
-translated_date: "2026-04-07"
----
-
 # Apache Spark 4.0 소개
 
 > **원문**: [Introducing Apache Spark 4.0](https://www.databricks.com/blog/introducing-apache-spark-40)
 
 ![Apache Spark 4.0](https://www.databricks.com/sites/default/files/2025-05/2025-05-blog-introducing-apache-spark-4-now-available-in-databricks-runtime-17-og-1200x628.png)
 
-{% hint style="info" %}
-Free Edition이 Community Edition을 대체하여, 비용 없이 더 향상된 기능을 제공합니다. 지금 바로 [Free Edition](https://login.databricks.com/?intent=SIGN_UP&signup_experience_step=EXPRESS&provider=DB_FREE_TIER&dbx_source=www) 을 사용해 보세요.
-{% endhint %}
+> **참고**
+> Free Edition이 Community Edition을 대체하여, 비용 없이 더 향상된 기능을 제공합니다. 지금 바로 [Free Edition](https://login.databricks.com/?intent=SIGN_UP&signup_experience_step=EXPRESS&provider=DB_FREE_TIER&dbx_source=www) 을 사용해 보세요.
+
 
 Apache Spark 4.0은 Spark 분석 엔진 발전 역사에서 중요한 이정표입니다. 이번 릴리스는 SQL 언어 기능 강화와 연결성 확장부터 새로운 Python 기능, 스트리밍 개선, 사용성 향상까지 전 영역에 걸쳐 획기적인 발전을 이루었습니다. Spark 4.0은 기존 Spark 워크로드와의 호환성을 유지하면서도 그 어느 때보다 강력하고, ANSI 표준을 준수하며, 사용자 친화적인 플랫폼으로 설계되었습니다. 이 포스트에서는 Spark 4.0에 도입된 주요 기능과 개선 사항을 설명하고, 빅데이터 처리 경험을 어떻게 향상시키는지 소개합니다.
 

@@ -10,13 +10,13 @@
 
 ---
 
-{% hint style="info" %}
+> **참고**
 **요약**
 
 - 조직이 성장할수록 레거시 Hive Metastore(HMS)는 거버넌스 공백, 사일로화된 접근, 운영 병목을 초래합니다. Unity Catalog(UC)는 모든 데이터 및 AI 자산에 대한 통합 거버넌스 모델을 제공합니다.
 - 신중한 Metastore 및 Catalog 설계, Infrastructure as Code(IaC)를 활용한 자동화, 파일럿 기반 단계적 도입을 통해 마이그레이션 위험을 최소화할 수 있습니다.
 - HMS Federation을 통한 Soft Migration은 코드 변경 없이 Unity Catalog 거버넌스를 단계적으로 채택하게 해주며, Hard Migration은 Unity Catalog의 모든 기능을 완전히 활용하고 HMS를 완전히 퇴역시킬 수 있게 합니다.
-{% endhint %}
+
 
 ---
 

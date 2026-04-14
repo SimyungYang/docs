@@ -17,9 +17,9 @@
 
 ## 왜 Agent 업계 동향을 알아야 하는가?
 
-{% hint style="info" %}
+> **참고**
 **SA/CE 필수 역량**: 고객이 _"OpenAI도 Agent 플랫폼 있고, Google ADK도 있고, AWS Bedrock Agents도 있는데... Databricks Agent Framework를 왜 써야 하나요?"_ 라고 물을 때, 명확한 근거와 차별점을 제시할 수 있어야 한다.
-{% endhint %}
+
 
 ### 실무적 필요성
 
@@ -29,9 +29,9 @@
 
 3. **경쟁 인텔리전스**: 고객 미팅에서 경쟁사 제품이 언급될 때, 표면적 기능 비교가 아닌 **아키텍처 철학 수준의 차이** 를 설명할 수 있어야 신뢰를 얻는다.
 
-{% hint style="warning" %}
+> **주의**
 **주의**: 이 문서의 정보는 2025년 상반기 기준이다. AI Agent 시장은 분기 단위로 급변하므로, 특정 제품의 GA 여부나 가격 정책은 반드시 최신 공식 문서를 확인해야 한다.
-{% endhint %}
+
 
 ---
 
@@ -44,9 +44,9 @@
 | Enterprise AI Agent 도입율 | **40%**(2026년 예상, Gartner) |
 | 2028년 자율 의사결정 비율 | **15%**(Gartner) |
 
-{% hint style="info" %}
+> **참고**
 **시장 해석**: 2025년 $7.6B에서 2030년 최대 $100B까지 성장한다는 것은, 현재 시장이 아직 **극초기 단계** 라는 의미다. 즉, 지금 Agent 아키텍처를 올바르게 설계하면 고객에게 5년간 유효한 플랫폼 전략을 제공할 수 있다. 반대로 특정 벤더에 lock-in되면 전환 비용이 매우 크다.
-{% endhint %}
+
 
 ---
 
@@ -64,13 +64,13 @@
 
 ### 핵심 인사이트
 
-{% hint style="info" %}
+> **참고**
 **패턴 분석**: 벤더별 전략을 관통하는 3가지 축이 있다.
 
 1. **수직 통합 vs 수평 개방**: OpenAI/Google은 모델부터 배포까지 수직 통합, AWS/Databricks는 모델 중립적 수평 플랫폼
 2. **Consumer vs Enterprise**: OpenAI는 ChatGPT로 Consumer 시장을 장악한 뒤 Enterprise로 확장, Databricks/AWS는 Enterprise-first
 3. **프로토콜 주도 vs 플랫폼 주도**: Anthropic은 MCP로 생태계를 만들고, Google은 A2A로, Microsoft는 둘 다 수용하는 전략
-{% endhint %}
+
 
 ---
 
@@ -122,9 +122,9 @@ A2A = 수평 연결 (Agent끼리 협업)
 → 두 프로토콜은 경쟁이 아닌 상호보완 관계
 ```
 
-{% hint style="warning" %}
+> **주의**
 **실무 가이드**: 현재 시점에서 **MCP는 필수 도입**, A2A는 **선택적 도입** 이 권장된다. MCP는 이미 모든 주요 벤더가 지원하며 생태계가 성숙한 반면, A2A는 아직 초기 단계로 프로덕션 사례가 제한적이다.
-{% endhint %}
+
 
 ---
 
@@ -140,9 +140,9 @@ A2A = 수평 연결 (Agent끼리 협업)
 | **핵심 속성** | Tool 사용, 반복 실행, 자율성 | 계획(Planning), 오케스트레이션, 메모리, 안전성 |
 | **Databricks 대응** | Knowledge Assistant, Genie Agent | Supervisor Agent, Agent Bricks 전체 |
 
-{% hint style="info" %}
+> **참고**
 **실전 팁**: 고객 미팅에서 "Agent"라는 단어가 나올 때, 고객이 의미하는 것이 **단일 챗봇 수준** 인지 **멀티에이전트 오케스트레이션** 인지를 먼저 확인하라. 이 구분에 따라 제안 아키텍처가 완전히 달라진다.
-{% endhint %}
+
 
 ---
 

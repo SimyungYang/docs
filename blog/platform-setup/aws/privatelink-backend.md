@@ -11,9 +11,9 @@
 | **DNS 추가 구성** | 불필요 (private DNS enabled) | Route 53 Private Hosted Zone 필요 |
 | **핵심 이점** | 인터넷 없이 클러스터 운영 | End-to-End 프라이빗 접근 |
 
-{% hint style="warning" %}
+> **주의**
 **Enterprise 티어 필수**— Customer-Managed VPC + SCC 활성화 필요
-{% endhint %}
+
 
 *참고: [PrivateLink Concepts](https://docs.databricks.com/aws/en/security/network/classic/privatelink-concepts) · [Enable PrivateLink](https://docs.databricks.com/aws/en/security/network/classic/privatelink)*
 
@@ -33,9 +33,9 @@ com.amazonaws.vpce.ap-northeast-2.vpce-svc-0babb9bde64f34d7e
 com.amazonaws.vpce.ap-northeast-2.vpce-svc-0dc0e98a5800db5c4
 ```
 
-{% hint style="info" %}
-AWS Console → VPC → Endpoints → " **Find service by name**" 에 위 값을 붙여넣기 → **Verify service** 클릭
-{% endhint %}
+> **참고**
+> AWS Console → VPC → Endpoints → " **Find service by name**" 에 위 값을 붙여넣기 → **Verify service** 클릭
+
 
 *출처: [Databricks regional endpoint service names](https://docs.databricks.com/aws/en/resources/ip-domain-region) · [Terraform: databricks_mws_vpc_endpoint](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/mws_vpc_endpoint)*
 
@@ -77,9 +77,9 @@ AWS Console → VPC → Subnets → Create subnet
 |-------------|--------|
 | `10.4.0.0/16` (VPC CIDR) | local |
 
-{% hint style="warning" %}
-VPC Endpoint Subnet에는 NAT Gateway 라우트를 넣지 않음 — local 전용
-{% endhint %}
+> **주의**
+> VPC Endpoint Subnet에는 NAT Gateway 라우트를 넣지 않음 — local 전용
+
 
 ## Step 2: VPC Endpoint Security Group
 
@@ -127,9 +127,9 @@ AWS Console → VPC → Endpoints → Create endpoint (x2)
 | **Service name** | `com.amazonaws.vpce.ap-northeast-2.vpce-svc-0dc0e98a5800db5c4` |
 | 나머지 | Workspace Endpoint와 동일 설정 |
 
-{% hint style="info" %}
-"Verify service" 클릭 시 " **Service name verified**" 확인 후 진행. `private_dns_enabled = true` 필수
-{% endhint %}
+> **참고**
+> "Verify service" 클릭 시 " **Service name verified**" 확인 후 진행. `private_dns_enabled = true` 필수
+
 
 ## Step 4: Databricks에 VPC Endpoint 등록
 
@@ -171,8 +171,8 @@ Account Console → Security → Networking → Private access settings
 | **프라이빗 전용** | Disabled | ACCOUNT | 계정 내 모든 VPC Endpoint 허용 |
 | **특정 Endpoint만** | Disabled | ENDPOINT | 지정된 Endpoint만 허용 |
 
-{% hint style="warning" %}
-처음에는 **Public access = Enabled** 로 시작 → 검증 완료 후 **Disabled** 로 전환 권장
-{% endhint %}
+> **주의**
+> 처음에는 **Public access = Enabled** 로 시작 → 검증 완료 후 **Disabled** 로 전환 권장
+
 
 *참고: [Private access settings](https://docs.databricks.com/aws/en/security/network/classic/privatelink) · [Terraform: databricks_mws_private_access_settings](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/mws_private_access_settings)*

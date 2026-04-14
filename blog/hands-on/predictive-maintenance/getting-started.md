@@ -53,6 +53,6 @@ cd databricks-enablement-blog/hands-on/predictive-maintenance/notebooks/
 | **Compute** | ML Runtime 15.4+ (GPU: 07번 노트북) |
 | **권한** | Catalog/Schema 생성 권한 |
 
-{% hint style="warning" %}
-노트북 01번을 먼저 실행하여 Catalog, Schema, 샘플 데이터를 생성해야 합니다.
-{% endhint %}
+> **주의**
+> 노트북 01번을 먼저 실행하여 Catalog, Schema, 샘플 데이터를 생성해야 합니다.
+

@@ -2,9 +2,9 @@
 
 이 섹션은 Databricks 플랫폼에서 Generative AI를 활용하기 위해 알아야 할 배경지식을 체계적으로 정리합니다.
 
-{% hint style="info" %}
-각 가이드는 독립적으로 읽을 수 있지만, LLM 기초 → Agent 아키텍처 → Prompt Engineering 순서로 읽으면 이해가 더 수월합니다.
-{% endhint %}
+> **참고**
+> 각 가이드는 독립적으로 읽을 수 있지만, LLM 기초 → Agent 아키텍처 → Prompt Engineering 순서로 읽으면 이해가 더 수월합니다.
+
 
 ---
 
@@ -68,9 +68,9 @@ Databricks의 GenAI 기능(Mosaic AI, Agent Framework, AI Playground 등)을 제
 
 ## GenAI 기술 발전 타임라인
 
-{% hint style="info" %}
-Transformer 이전의 NLP 발전사(규칙 기반 → 통계 → Word2Vec → RNN/LSTM → Seq2Seq → Attention)는 [NLP에서 LLM까지: 발전사](nlp-evolution/README.md)에서 상세히 다룹니다.
-{% endhint %}
+> **참고**
+> Transformer 이전의 NLP 발전사(규칙 기반 → 통계 → Word2Vec → RNN/LSTM → Seq2Seq → Attention)는 [NLP에서 LLM까지: 발전사](nlp-evolution/README.md)에서 상세히 다룹니다.
+
 
 | 시기 | 주요 이벤트 | 핵심 키워드 | 영향 |
 |------|-------------|-------------|------|

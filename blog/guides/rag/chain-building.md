@@ -28,9 +28,9 @@ RAG 체인은 크게 **세 가지 핵심 컴포넌트** 로 구성됩니다. 각
 
 품질 영향도에서 Retriever가 60%를 차지하는 이유는, 아무리 뛰어난 LLM이라도 관련 없는 문서가 제공되면 정확한 답변을 생성할 수 없기 때문입니다. 반대로 검색 품질이 높으면, 상대적으로 작은 모델로도 충분한 답변을 생성할 수 있습니다.
 
-{% hint style="info" %}
-RAG 품질 문제의 대부분은 **Retriever 단계** 에서 발생합니다. 답변이 부정확하다면 LLM을 바꾸기 전에 검색 결과의 품질을 먼저 점검하세요. MLflow Tracing으로 각 단계의 입출력을 확인할 수 있습니다.
-{% endhint %}
+> **참고**
+> RAG 품질 문제의 대부분은 **Retriever 단계** 에서 발생합니다. 답변이 부정확하다면 LLM을 바꾸기 전에 검색 결과의 품질을 먼저 점검하세요. MLflow Tracing으로 각 단계의 입출력을 확인할 수 있습니다.
+
 
 ### LCEL (LangChain Expression Language)이란?
 
@@ -100,9 +100,9 @@ retriever = DatabricksVectorSearch(
 docs = retriever.invoke("Vector Search 설정 방법")
 ```
 
-{% hint style="info" %}
-`search_kwargs`에서 `k` 값은 검색할 문서 수입니다. 너무 크면 컨텍스트가 길어져 비용이 증가하고, 너무 작으면 관련 정보를 놓칠 수 있습니다. 3~5개가 적절합니다.
-{% endhint %}
+> **참고**
+> `search_kwargs`에서 `k` 값은 검색할 문서 수입니다. 너무 크면 컨텍스트가 길어져 비용이 증가하고, 너무 작으면 관련 정보를 놓칠 수 있습니다. 3~5개가 적절합니다.
+
 
 ## 3. Prompt Template 설계
 
@@ -159,9 +159,9 @@ prompt_template = ChatPromptTemplate.from_messages([
 ])
 ```
 
-{% hint style="warning" %}
-프롬프트에 "컨텍스트에 없는 내용은 답변하지 마라"는 지시를 반드시 포함하세요. 이것이 LLM의 환각(Hallucination)을 줄이는 핵심 방법입니다.
-{% endhint %}
+> **주의**
+> 프롬프트에 "컨텍스트에 없는 내용은 답변하지 마라"는 지시를 반드시 포함하세요. 이것이 LLM의 환각(Hallucination)을 줄이는 핵심 방법입니다.
+
 
 ## 4. RAG 체인 조립
 
@@ -242,9 +242,9 @@ with mlflow.start_run(run_name="rag-chain-v1"):
 print(f"모델 URI: {model_info.model_uri}")
 ```
 
-{% hint style="success" %}
-`ChatAgent` 인터페이스를 사용하면 Model Serving, Review App, MLflow Tracing과 자동으로 호환됩니다.
-{% endhint %}
+> **성공**
+> `ChatAgent` 인터페이스를 사용하면 Model Serving, Review App, MLflow Tracing과 자동으로 호환됩니다.
+
 
 ## 6. RAG 체인 디버깅 팁
 
@@ -272,9 +272,9 @@ answer = rag_chain.invoke("Vector Search 인덱스 유형을 설명해주세요"
 | **응답 시간 느림** | LLM 추론 시간 과다 | Tracing에서 각 스팬 소요 시간 확인 | 더 빠른 모델 사용, 컨텍스트 길이 축소 |
 | **"정보를 찾을 수 없습니다"** | 검색 결과 빈 배열 | Vector Search 인덱스 상태 확인 | 인덱스 동기화 실행, 임베딩 모델 확인 |
 
-{% hint style="tip" %}
-MLflow Tracing은 프로덕션 환경에서도 활성화하세요. 문제 발생 시 특정 요청의 전체 실행 경로를 재현할 수 있어 디버깅이 훨씬 수월해집니다.
-{% endhint %}
+> **팁**
+> MLflow Tracing은 프로덕션 환경에서도 활성화하세요. 문제 발생 시 특정 요청의 전체 실행 경로를 재현할 수 있어 디버깅이 훨씬 수월해집니다.
+
 
 ## 다음 단계
 

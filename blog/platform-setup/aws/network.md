@@ -68,9 +68,9 @@ Security Group과 별도로 서브넷 레벨에서 트래픽을 제어하는 Net
 | 140 | Custom TCP | TCP | 8443-8451 | 0.0.0.0/0 | ALLOW |
 | 150 | Custom TCP | TCP | 2443 | 0.0.0.0/0 | ALLOW |
 
-{% hint style="warning" %}
+> **주의**
 **NACL은 stateless**— Security Group과 달리 인바운드/아웃바운드 규칙을 모두 명시적으로 설정해야 합니다. 응답 트래픽도 자동 허용되지 않으므로 양방향 규칙이 필수입니다.
-{% endhint %}
+
 
 *참고: [Network configuration](https://docs.databricks.com/aws/en/admin/account-settings-e2/networks)*
 
@@ -91,9 +91,9 @@ AWS Console → VPC → Endpoints → Create endpoint
 
 Security → Networking → Classic network configurations
 
-{% hint style="warning" %}
+> **주의**
 **순서 주의**: Network Configuration 생성 시 **VPC Endpoint를 지정** 해야 함 → **Backend PrivateLink의 VPC Endpoint 등록을 먼저 완료** 후 진행
-{% endhint %}
+
 
 ### 입력 항목 요약
 
@@ -114,6 +114,6 @@ Security → Networking → Classic network configurations
 2. 이전 항목 입력 + VPC Endpoints 지정
 3. **Add**→ **Network ID** 생성됨 → Workspace 생성 시 사용
 
-{% hint style="info" %}
-Network configuration은 **수정 불가**— 변경 시 새로 생성 후 Workspace에서 교체 (3단계 프로세스)
-{% endhint %}
+> **참고**
+> Network configuration은 **수정 불가**— 변경 시 새로 생성 후 Workspace에서 교체 (3단계 프로세스)
+

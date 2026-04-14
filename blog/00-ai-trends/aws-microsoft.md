@@ -1,8 +1,8 @@
 # AWS & Microsoft AI 동향 분석 (2026년 초 기준)
 
-{% hint style="info" %}
+> **참고**
 **이 문서의 범위**: Amazon/AWS와 Microsoft의 AI 전략, 모델, 클라우드 AI 플랫폼을 종합 분석합니다. Agent 전략 상세는 [AWS, Microsoft & Meta AI Agent 전략](../guides/genai-concepts/agent-landscape/aws-others.md)을 참고하세요.
-{% endhint %}
+
 
 ---
 
@@ -245,9 +245,9 @@ Phi 시리즈의 전략적 의미는 **"소형 모델로도 충분한 작업에 
 | Phi-5 | 소형 모델 성능 한계 지속 돌파 |
 | OpenAI 관계 | 영리 전환 후 파트너십 재정의 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks 시사점**: Databricks는 클라우드 중립적 데이터 플랫폼으로, AWS/Azure/GCP 모두에서 동일하게 운영됩니다. AI Gateway를 통해 OpenAI, Anthropic, Google 모델을 통합 관리할 수 있으며, 이는 특정 클라우드의 AI 서비스에 종속되지 않는 핵심 차별점입니다. Unity Catalog + Delta Lake 위에서 AI Agent를 구축하면 데이터 거버넌스와 AI를 동시에 해결할 수 있습니다.
-{% endhint %}
+
 
 ---
 

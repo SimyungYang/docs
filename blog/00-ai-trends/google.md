@@ -1,8 +1,8 @@
 # Google / DeepMind 동향 분석 (2026년 초 기준)
 
-{% hint style="info" %}
+> **참고**
 **이 문서의 범위**: Google과 DeepMind의 AI 전략, 모델 라인업, Agent 생태계, 연구 성과, 인프라 전략을 종합 분석합니다. A2A 프로토콜 기술 상세는 [A2A (Agent-to-Agent)](../guides/genai-concepts/a2a-protocol/README.md), Agent 전략 상세는 [Google AI Agent 전략](../guides/genai-concepts/agent-landscape/google.md)을 참고하세요.
-{% endhint %}
+
 
 ---
 
@@ -61,9 +61,9 @@ Gemini 2.5 Pro는 Google의 현재 **플래그십 모델** 로, 가장 중요한
 | MATH | 92.0% | 76.6% | 78.3% | 수학 추론 |
 | SWE-bench Verified | 63.8% | 38.4% | 53.1% | 실제 코딩 |
 
-{% hint style="info" %}
+> **참고**
 **핵심 시사점**: Gemini 2.5 Pro는 발표 시점 기준 대부분의 벤치마크에서 최고 성능을 기록했습니다. 다만 Claude 4 Sonnet/Opus, GPT-4.1 등 후속 모델들이 빠르게 격차를 줄이고 있으며, 벤치마크 리더십은 수주 단위로 바뀌고 있습니다.
-{% endhint %}
+
 
 ### 2.3 Gemini 2.5 Flash — 실용주의의 승리
 
@@ -74,9 +74,9 @@ Gemini 2.5 Pro는 Google의 현재 **플래그십 모델** 로, 가장 중요한
 | **가격** | ~$10/1M 입력 토큰 | ~$1/1M 입력 토큰 |
 | **최적 용도** | 복잡한 추론, 연구, 코드 생성 | 대량 처리, 실시간 응답, 분류 |
 
-{% hint style="warning" %}
+> **주의**
 **실전 가이드**: 프로덕션 환경에서는 **먼저 Flash로 시작** 하고, 품질이 부족한 특정 태스크에만 Pro를 적용하는 것이 비용 대비 최적의 전략입니다.
-{% endhint %}
+
 
 ---
 
@@ -242,9 +242,9 @@ Gemma 3 27B는 **Llama 3.3 70B와 동등 성능** 이면서 단일 GPU(RTX 4090)
 | **TPU v7** | NVIDIA B200과 성능 경쟁 본격화 |
 | **AlphaFold 후속** | 소분자 약물 설계까지 확장, 제약 산업 혁명 가속 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks 시사점**: Gemini 모델은 Databricks Foundation Model API 또는 External Model Serving에서 사용 가능합니다. Gemma 3는 오픈소스이므로 Model Serving에 직접 배포하여 프라이빗 AI를 구축할 수 있습니다. A2A 프로토콜은 Databricks Agent Bricks와 향후 통합될 가능성이 있어 모니터링이 필요합니다.
-{% endhint %}
+
 
 ---
 

@@ -44,7 +44,7 @@ SET spark.sql.autoBroadcastJoinThreshold = 100m;  -- 100MB까지 자동 Broadcas
 
 | 조인 전략 | 적용 조건 | Shuffle | 성능 |
 |----------|----------|---------|------|
-| **Broadcast Hash Join** | 한쪽 < 100MB | 없음 | ★★★★★ |
+| **Broadcast Hash Join** | 한쪽 \< 100MB | 없음 | ★★★★★ |
 | **Sort Merge Join** | 양쪽 모두 대용량 | 양쪽 Shuffle | ★★★☆☆ |
 | **Shuffle Hash Join** | 한쪽 중간 크기 | 한쪽 Shuffle | ★★★★☆ |
 
@@ -129,7 +129,7 @@ Photon은 Databricks의 벡터화된 쿼리 엔진으로, 특정 워크로드에
 | Delta MERGE/UPDATE/DELETE | 2~5x 빠름 | ✅ 강력 추천 |
 | 넓은 테이블 (100+ 컬럼) 스캔 | 2~4x 빠름 | ✅ 추천 |
 | Small File이 많은 테이블 | 2~3x 빠름 | ✅ 추천 |
-| 단순 SELECT (< 2초) | 거의 효과 없음 | ⚠️ 불필요 |
+| 단순 SELECT (\< 2초) | 거의 효과 없음 | ⚠️ 불필요 |
 | Python UDF 중심 로직 | 효과 없음 | ❌ Photon 미지원 |
 | RDD API, Dataset API | 미지원 | ❌ 사용 불가 |
 | 스트리밍 (Stateful) | 미지원 | ❌ Stateless만 가능 |
@@ -191,9 +191,9 @@ SET spark.sql.adaptive.coalescePartitions.minPartitionSize = 1m;  -- 1MB 미만 
   → 수동 튜닝 불필요
 ```
 
-{% hint style="info" %}
+> **참고**
 **AQE 최대 활용 팁**: `spark.sql.shuffle.partitions` 을 높게 설정(예: 2000)하고 AQE에게 병합을 맡기세요. AQE는 파티션을 나눌 수는 없고 **병합만** 가능합니다. 초기 파티션 수가 너무 적으면 AQE가 최적화할 여지가 없습니다.
-{% endhint %}
+
 
 ---
 
@@ -295,9 +295,9 @@ SET spark.sql.autoBroadcastJoinThreshold = -1;
 | 16~64GB | 100~500MB | 대부분의 디멘션 테이블 |
 | 64GB 이상 | 500MB~1GB | 매우 큰 디멘션도 Broadcast |
 
-{% hint style="warning" %}
+> **주의**
 **OOM 주의**: Broadcast 임계값을 너무 크게 설정하면 Driver 또는 Executor에서 OutOfMemoryError가 발생할 수 있습니다. Broadcast되는 테이블은 각 Executor의 메모리에 복사되므로, Executor 메모리의 30%를 넘지 않도록 설정하세요.
-{% endhint %}
+
 
 ---
 
@@ -420,9 +420,9 @@ pandas_df = summary.toPandas()  # 작은 결과만 수집
 df.filter("date >= '2026-03-01'").write.mode("overwrite").saveAsTable("result_table")
 ```
 
-{% hint style="info" %}
+> **참고**
 **성능 문제 진단 순서**: 1) Query Profile에서 가장 느린 단계 확인 → 2) Scan이 느리면 클러스터링/통계 확인 → 3) Shuffle이 크면 조인 전략 확인 → 4) Spill이 있으면 메모리/파티션 확인 → 5) Skew가 있으면 키 분포 확인.
-{% endhint %}
+
 
 ---
 

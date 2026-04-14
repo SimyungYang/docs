@@ -31,13 +31,13 @@
 | **자동 모니터링** | Expectation 메트릭 자동 수집 + 대시보드 | 수동 모니터링 | CloudWatch 연동 | Dataplex 대시보드 | 제한적 |
 | **Lakehouse Monitor** | 프로파일링 + 드리프트 감지 + 알림 | 미지원 | 미지원 | 미지원 | 미지원 |
 
-{% hint style="success" %}
+> **성공**
 **Databricks Lakeflow(DLT)의 핵심**: "무엇을" 원하는지만 선언하면, 실행 계획, 오류 복구, 데이터 품질 검증, 의존성 관리를 플랫폼이 자동 처리합니다. `APPLY CHANGES`는 CDC를 코드 한 줄로 해결하며, 배치와 스트리밍도 동일한 코드로 통합됩니다.
-{% endhint %}
 
-{% hint style="warning" %}
+
+> **주의**
 **경쟁사 장점**: Snowflake의 Dynamic Tables는 SQL만으로 선언적 파이프라인을 구성할 수 있어 SQL 전문가에게 친숙합니다. MS Fabric의 Data Factory는 GUI 기반 파이프라인 설계로 코딩이 부담스러운 팀에게 적합합니다. BigQuery의 완전 서버리스 특성은 인프라 관리 부담을 최소화합니다.
-{% endhint %}
+
 
 ---
 
@@ -67,9 +67,9 @@
 | **환경 관리** | Development/Production 모드 내장 | 없음 | Profiles 기반 |
 | **비용** | Databricks DBU | Snowflake Credit | 오픈소스 (무료) + Compute 비용 |
 
-{% hint style="info" %}
+> **참고**
 **DLT의 핵심 장점 3가지**: (1) SQL과 Python 모두 선언적으로 사용 가능, (2) 스트리밍과 배치를 동일 코드로 통합, (3) 데이터 품질 검증이 파이프라인에 내장. dbt는 SQL만 지원하고 스트리밍이 불가하며, Dynamic Tables도 SQL만 지원합니다.
-{% endhint %}
+
 
 ### DLT 파이프라인 코드 예시 (경쟁사 대비 간결함)
 
@@ -128,9 +128,9 @@ ALTER TASK customers_merge_task RESUME;
 | **확장성** | 수십억 파일까지 확장 | 대규모 가능 | 복잡도 증가 | 대규모 가능 |
 | **비용** | Databricks 컴퓨팅 비용만 | Snowpipe Credit | Glue + Lambda 비용 | Transfer Service 비용 |
 
-{% hint style="success" %}
+> **성공**
 **Auto Loader의 핵심 차별화**: **스키마 진화 자동 처리** 와 **Rescue 컬럼** 입니다. 실 운영 환경에서 소스 시스템의 스키마 변경은 불가피합니다. Auto Loader는 새 컬럼이 추가되면 자동으로 테이블에 반영하고, 스키마 불일치 레코드는 _rescued_data에 보관하여 데이터 손실 Zero를 보장합니다.
-{% endhint %}
+
 
 ---
 
@@ -194,9 +194,9 @@ df.writeStream.format("delta") \
 | **비용** | Databricks 컴퓨팅 비용 | Snowflake Credit | AppFlow + Glue 비용 | 별도 SaaS 라이선스 |
 | **셋업 복잡도** | GUI에서 수 분 내 설정 | 소스별 상이 | 복잡 | 간단 (SaaS) |
 
-{% hint style="info" %}
+> **참고**
 **Lakeflow Connect의 전략적 의미**: Fivetran, Airbyte 같은 3rd party 데이터 수집 도구를 **Databricks 네이티브로 대체** 합니다. 별도 SaaS 비용 절감 + Unity Catalog 거버넌스 자동 적용 + 단일 플랫폼 운영이라는 3가지 이점이 있습니다.
-{% endhint %}
+
 
 ---
 
@@ -253,9 +253,9 @@ WITH (
 );
 ```
 
-{% hint style="success" %}
+> **성공**
 **SA/SE 핵심 메시지**: Databricks는 데이터 품질을 **파이프라인 레벨(DLT Expectations)** 과 **테이블 레벨(Lakehouse Monitor)** 에서 이중으로 보장합니다. 경쟁사에서는 Great Expectations, Monte Carlo, Soda 같은 **별도 3rd party 도구** 를 도입해야 동일한 수준의 품질 관리가 가능합니다.
-{% endhint %}
+
 
 ---
 
@@ -273,6 +273,6 @@ WITH (
 | **CI/CD** | Databricks Asset Bundles (DABs) | 수동 | CDK/CloudFormation | Terraform/Helm | ARM Templates |
 | **비용** | 포함 (별도 비용 없음) | 포함 | Step Functions 비용 + Glue 비용 | Composer 비용 (비쌈) | 포함 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks Workflows의 핵심**: 하나의 Job에서 **DLT 파이프라인 → SQL 쿼리 → ML 학습 → 모델 배포** 까지 전체 워크플로를 오케스트레이션할 수 있습니다. 경쟁사에서는 ETL(Glue) → SQL(Redshift) → ML(SageMaker)을 Step Functions로 연결하는 복잡한 구성이 필요합니다.
-{% endhint %}
+

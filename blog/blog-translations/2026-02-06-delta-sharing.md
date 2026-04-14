@@ -1,13 +1,3 @@
----
-original_title: "New Delta Sharing Features, Data Collaboration Ecosystem Growth, Databricks Clean Rooms in Public Preview, Marketplace Momentum"
-authors: "Zaheera Valani, Tianyi Huang, Darshana Sivakumar, Giselle Goicochea, Harish Gaur"
-date: "2024-06-13"
-category: "Data Sharing & Collaboration"
-original_url: "https://www.databricks.com/blog/whats-new-data-sharing-and-collaboration"
-translated_date: "2026-02-06"
-note: "원문 URL(delta-sharing-data-collaboration)은 404로 확인되지 않아, 동일 주제의 가장 근접한 공식 블로그 포스트로 대체하였습니다."
----
-
 # 새로운 Delta Sharing 기능, 데이터 협업 생태계 성장, Databricks Clean Rooms Public Preview, Marketplace 모멘텀
 
 > **원문**: [New Delta Sharing Features, Data Collaboration Ecosystem Growth, Databricks Clean Rooms in Public Preview, Marketplace Momentum](https://www.databricks.com/blog/whats-new-data-sharing-and-collaboration)
@@ -90,9 +80,9 @@ Clean Rooms에서 이제 클라우드 간 페더레이션 공유를 지원합니
 
 단일 메타스토어 내에서 **자기 협업(self-collaboration)** 이 가능해졌습니다. 같은 조직 내의 서로 다른 팀이나 사업부가 Clean Room 환경을 통해 내부 데이터를 프라이버시 안전하게 공유하고 분석할 수 있습니다.
 
-{% hint style="info" %}
-Databricks Clean Rooms는 LiveRamp, Habu 등 주요 파트너와 통합을 지원합니다. LiveRamp의 마이크 모로(Mike Moreau) 운영 부사장은 "LiveRamp와 Databricks Clean Rooms는 마케터들이 프라이버시를 보호하면서도 훌륭한 고객 경험을 창출하는 데 필요한 도구를 제공합니다"라고 말했습니다.
-{% endhint %}
+> **참고**
+> Databricks Clean Rooms는 LiveRamp, Habu 등 주요 파트너와 통합을 지원합니다. LiveRamp의 마이크 모로(Mike Moreau) 운영 부사장은 "LiveRamp와 Databricks Clean Rooms는 마케터들이 프라이버시를 보호하면서도 훌륭한 고객 경험을 창출하는 데 필요한 도구를 제공합니다"라고 말했습니다.
+
 
 ## Databricks Marketplace: 지속적인 성장과 혁신
 

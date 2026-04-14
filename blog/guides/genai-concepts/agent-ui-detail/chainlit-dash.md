@@ -121,9 +121,9 @@ async def main(message: cl.Message):
 - **Databricks Apps 미지원**: 현재 Databricks Apps에서 Chainlit을 직접 호스팅할 수 없음 (FastAPI 래핑으로 우회 가능)
 - **생태계 규모**: Streamlit/Gradio 대비 커뮤니티, 플러그인, 예제가 적음
 
-{% hint style="warning" %}
+> **주의**
 **Databricks 환경에서의 Chainlit 사용**: Chainlit은 Databricks Apps에서 직접 지원하지 않습니다. Databricks Apps 배포가 목표라면 Streamlit을 사용하고, Chainlit의 Step 시각화가 꼭 필요하다면 로컬 PoC 단계에서만 활용하는 것을 권장합니다.
-{% endhint %}
+
 
 ---
 
@@ -213,9 +213,9 @@ if __name__ == "__main__":
 - **개발 속도 느림**: 같은 기능을 Streamlit의 2~3배 코드로 구현
 - **채팅보다 대시보드**: Agent 채팅 UI로는 비효율적, 모니터링/분석 대시보드에 특화
 
-{% hint style="info" %}
+> **참고**
 **적합 사례**: 모델 모니터링 대시보드, A/B 테스트 결과 시각화, 비즈니스 KPI 대시보드 등 **차트와 필터가 중심** 인 앱에 Dash가 적합합니다. Agent 채팅이 주요 기능이라면 Streamlit이나 Chainlit을 선택하세요.
-{% endhint %}
+
 
 ---
 

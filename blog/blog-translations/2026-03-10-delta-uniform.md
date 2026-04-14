@@ -1,19 +1,10 @@
----
-original_title: "Delta UniForm: a universal format for lakehouse interoperability"
-authors: "Bilal Obeidat, Sirui Sun, Adam Wasserman, Susan Pierce, Fred Liu, Ryan Johnson, Himanshu Raja"
-date: "2023-08-14"
-category: "Engineering"
-original_url: "https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability"
-translated_date: "2026-04-07"
----
-
 # Delta UniForm: 레이크하우스 상호운용성을 위한 범용 포맷
 
 > **원문**: [Delta UniForm: a universal format for lakehouse interoperability](https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability)
 
-{% hint style="info" %}
+> **참고**
 **업데이트**: BigQuery는 이제 BigLake를 통해 Delta Lake를 네이티브로 지원합니다. 자세한 내용은 [문서](https://cloud.google.com/bigquery/docs)를 참고하세요.
-{% endhint %}
+
 
 오픈 데이터 레이크하우스를 도입할 때 조직이 직면하는 핵심 과제 중 하나는 데이터에 최적화된 포맷을 선택하는 것입니다. Linux Foundation Delta Lake, Apache Iceberg, Apache Hudi는 모두 데이터 민주화와 상호운용성을 가능하게 하는 훌륭한 스토리지 포맷입니다. 이 세 가지 포맷 중 어느 것을 선택하든 독점 포맷에 데이터를 저장하는 것보다는 낫습니다. 그러나 단일 스토리지 포맷으로 표준화하는 것은 결정 피로(decision fatigue)와 돌이킬 수 없는 결과에 대한 두려움을 야기할 수 있는 쉽지 않은 작업입니다.
 
@@ -130,9 +121,9 @@ UI 또는 API 방법으로 얻은 위치를 앞서 언급한 BigQuery 명령에 
 
 이제 Unity Catalog의 Iceberg REST Catalog API를 사용하여 Trino를 통해 앞서 만든 동일한 Delta UniForm 테이블을 읽어 보겠습니다.
 
-{% hint style="info" %}
+> **참고**
 **참고**: Trino는 Delta 테이블을 직접 지원하므로 Trino에서 Delta 테이블을 읽기 위해 UniForm이 반드시 필요한 것은 아닙니다. 이 예시는 UniForm이 오픈소스 생태계에서 상호운용성을 어떻게 더 확장하는지를 보여주기 위한 것입니다.
-{% endhint %}
+
 
 [Trino를 설정](https://trino.io/docs/current/installation.html)한 후, `etc/catalog/iceberg.properties` 파일을 업데이트하여 Unity Catalog의 Iceberg REST API Catalog 엔드포인트를 사용하도록 Trino를 구성할 수 있습니다:
 

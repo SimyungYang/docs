@@ -12,9 +12,9 @@ PAT(Personal Access Token)는 **워크스페이스 레벨에서 발급되는 문
 
 ### 언제 PAT를 사용하는가
 
-{% hint style="warning" %}
+> **주의**
 **Databricks는 PAT 대신 OAuth를 강력히 권장합니다.** PAT는 다음과 같은 제한적 상황에서만 사용하세요.
-{% endhint %}
+
 
 | 상황 | 사유 |
 |------|------|
@@ -67,9 +67,9 @@ databricks token-management create-obo-token \
   --profile ADMIN
 ```
 
-{% hint style="info" %}
+> **참고**
 **OBO Token vs OAuth M2M**: SP용 PAT(OBO Token)보다는 OAuth M2M(client_credentials)을 권장합니다. OAuth M2M은 토큰 자동 갱신을 지원하고, Secret 로테이션이 더 유연합니다.
-{% endhint %}
+
 
 ---
 
@@ -195,9 +195,9 @@ OAuth M2M의 가장 큰 운영 부담은 **Secret 관리** 입니다.
 | Secret 만료 시 서비스 중단 | 외부 IdP가 매번 새 토큰 발급 |
 | 멀티 환경(dev/staging/prod) Secret 관리 | 환경별 외부 토큰 자동 발급 |
 
-{% hint style="info" %}
+> **참고**
 **비유**: 호텔에서 체크인할 때 여권(외부 IdP 토큰)을 보여주면, 호텔(Databricks)이 객실 키(access_token)를 발급하는 것과 같습니다. 여권은 이미 신뢰할 수 있는 기관(정부 = IdP)이 발급했으므로, 호텔이 별도의 회원 카드(client_secret)를 요구하지 않습니다.
-{% endhint %}
+
 
 ---
 
@@ -336,9 +336,9 @@ jobs:
           databricks bundle deploy --target production
 ```
 
-{% hint style="info" %}
+> **참고**
 **Secret이 전혀 없습니다**: 위 워크플로우에서 `DATABRICKS_HOST`는 URL(공개 정보)일 뿐이고, OIDC 토큰은 GitHub가 매 실행마다 자동 발급합니다. `client_secret`이나 PAT를 GitHub Secrets에 저장할 필요가 없습니다.
-{% endhint %}
+
 
 ---
 
@@ -379,6 +379,6 @@ jobs:
 | 자동화이고, 외부 IdP가 없거나 OIDC 미지원인가? | **OAuth M2M** |
 | 5분 안에 빠르게 API 테스트해야 하는가? | **PAT** (임시용) |
 
-{% hint style="warning" %}
+> **주의**
 **프로덕션 환경에서 PAT는 사용하지 마세요.** PAT는 개발/테스트 단계의 임시 수단입니다. 프로덕션으로 전환할 때는 반드시 OAuth 기반 인증으로 교체하세요. 조직의 보안 감사(Audit)에서 PAT 사용은 거의 항상 지적 사항입니다.
-{% endhint %}
+

@@ -379,22 +379,22 @@ results = mlflow.genai.evaluate(
 )
 
 # 품질 게이트: 임계값 확인
-thresholds = {
+thresholds = \{
     "correctness/mean": 0.80,
     "safety/mean": 0.95,
     "retrieval_groundedness/mean": 0.85,
-}
+\}
 
 failed = []
 for metric, threshold in thresholds.items():
     actual = results.metrics.get(metric, 0)
-    if actual < threshold:
-        failed.append(f"{metric}: {actual:.2f} < {threshold:.2f}")
+    if actual \< threshold:
+        failed.append(f"\{metric\}: \{actual:.2f\} \< \{threshold:.2f\}")
 
 if failed:
     print("❌ Quality gate FAILED:")
     for f in failed:
-        print(f"  - {f}")
+        print(f"  - \{f\}")
     sys.exit(1)  # CI/CD 파이프라인 실패
 else:
     print("✅ Quality gate PASSED — ready for deployment")
@@ -420,7 +420,7 @@ resources:
         - task_key: evaluate
           notebook_task:
             notebook_path: ./notebooks/ci_evaluate
-          existing_cluster_id: ${var.cluster_id}
+          existing_cluster_id: $\{var.cluster_id\}
 
       # 트리거: 모델이 등록되면 자동 실행
       trigger:
@@ -434,7 +434,7 @@ resources:
 import pandas as pd
 from datetime import datetime
 
-eval_record = {
+eval_record = \{
     "timestamp": datetime.now(),
     "model_version": "challenger_v5",
     "correctness_mean": results.metrics["correctness/mean"],
@@ -442,7 +442,7 @@ eval_record = {
     "groundedness_mean": results.metrics["retrieval_groundedness/mean"],
     "eval_dataset_size": len(eval_data),
     "passed": len(failed) == 0
-}
+\}
 
 spark.createDataFrame([eval_record]).write.mode("append") \
     .saveAsTable("catalog.ml.evaluation_history")

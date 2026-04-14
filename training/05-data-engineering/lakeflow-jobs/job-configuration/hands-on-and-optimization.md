@@ -146,7 +146,7 @@ new_cluster:
 
 | 데이터 크기 | Workers 수 | 인스턴스 타입 | 비용 |
 |-----------|-----------|-------------|------|
-| < 10GB | 2 Workers | m5.xlarge | $ |
+| \< 10GB | 2 Workers | m5.xlarge | $ |
 | 10~100GB | 4~8 Workers | r5.xlarge | $$ |
 | 100GB~1TB | 8~16 Workers | r5.2xlarge | $$$ |
 | > 1TB | Auto-scaling 16~64 Workers | - | $$$$ |

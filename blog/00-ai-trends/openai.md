@@ -4,9 +4,9 @@
 
 OpenAI는 2015년 비영리로 설립되어 현재 세계 AI 시장의 **선도 기업** 으로 자리잡았습니다. 2026년 현재, OpenAI는 단순한 챗봇 제공자에서 **"AI 에이전트 플랫폼 + 추론 모델 + 코딩 자동화"** 를 아우르는 종합 AI 기업으로 전환을 완료했습니다. GPT-4o 시리즈, o-시리즈 추론 모델, Agents SDK, Codex 등을 통해 전방위 AI 생태계를 구축하고 있습니다.
 
-{% hint style="info" %}
+> **참고**
 **이 문서의 범위**: 2024년 하반기부터 2026년 초까지 OpenAI의 모델, 제품, 전략 동향을 종합 분석합니다. Agent 설계 패턴 상세는 [AI Agent 업계 동향 — OpenAI](../guides/genai-concepts/agent-landscape/openai.md)를 참고하세요.
-{% endhint %}
+
 
 ---
 
@@ -316,9 +316,9 @@ OpenAI의 2026년 전략은 세 단어로 요약됩니다: **"추론(Reasoning) 
 | **에이전트** | Agents SDK + Codex + Operator | 모델이 실제로 일을 하는 시대 |
 | **규모** | 4억 WAU + Stargate $500B | 기업 가치와 인프라에서 압도적 선두 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks 시사점**: OpenAI 모델은 Databricks의 External Model Serving을 통해 AI Gateway로 통합 가능합니다. 특히 GPT-4.1의 1M 컨텍스트와 o4-mini의 추론 능력을 Databricks Agent Framework에서 활용하면, 데이터 플랫폼 위에서 강력한 에이전트를 구축할 수 있습니다. Databricks의 장점은 모델 제공자에 종속되지 않고 OpenAI, Anthropic, Meta 모델을 동일한 인터페이스로 전환할 수 있다는 점입니다.
-{% endhint %}
+
 
 ---
 

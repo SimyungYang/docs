@@ -8,9 +8,9 @@ Genie Code는 기본적으로 관리형 MCP 서버(Unity Catalog Functions, Vect
 
 **AI Dev Kit 스킬** 은 이 지식 갭을 채워줍니다. 30개 이상의 `SKILL.md` 파일이 Genie Code의 Agent 모드에 로드되어, 요청에 맞는 코드 패턴과 워크플로를 자동으로 안내합니다. MCP 서버가 Genie Code의 **"손"** (실행 능력)이라면, AI Dev Kit 스킬은 **"머리"** (도메인 지식)에 해당합니다.
 
-{% hint style="info" %}
-AI Dev Kit GitHub: [databricks-solutions/ai-dev-kit](https://github.com/databricks-solutions/ai-dev-kit)
-{% endhint %}
+> **참고**
+> AI Dev Kit GitHub: [databricks-solutions/ai-dev-kit](https://github.com/databricks-solutions/ai-dev-kit)
+
 
 ---
 
@@ -76,9 +76,9 @@ databricks --version
 databricks auth profiles
 ```
 
-{% hint style="warning" %}
-Databricks CLI가 설치되어 있지 않다면, [공식 문서](https://docs.databricks.com/dev-tools/cli/install.html)를 참고하여 먼저 설치하세요. `pip install databricks-cli`가 아닌 **새로운 Databricks CLI** (`databricks` 명령어)가 필요합니다.
-{% endhint %}
+> **주의**
+> Databricks CLI가 설치되어 있지 않다면, [공식 문서](https://docs.databricks.com/dev-tools/cli/install.html)를 참고하여 먼저 설치하세요. `pip install databricks-cli`가 아닌 **새로운 Databricks CLI** (`databricks` 명령어)가 필요합니다.
+
 
 ### 2.2 원클릭 설치 (권장)
 
@@ -130,9 +130,9 @@ cd ai-dev-kit
 2. **Skills** 섹션에서 **User skills** 탭 확인
 3. 설치된 스킬 목록이 표시되면 정상
 
-{% hint style="info" %}
-스킬은 **User 레벨** 로 설치됩니다. 팀 전체에 공유하려면 설치 후 스킬 파일을 `/Workspace/.assistant/skills/` (워크스페이스 루트)로 복사하면 **Workspace 스킬** 로 등록됩니다.
-{% endhint %}
+> **참고**
+> 스킬은 **User 레벨** 로 설치됩니다. 팀 전체에 공유하려면 설치 후 스킬 파일을 `/Workspace/.assistant/skills/` (워크스페이스 루트)로 복사하면 **Workspace 스킬** 로 등록됩니다.
+
 
 ---
 
@@ -264,9 +264,9 @@ Genie Code가 자동으로 로드하는 스킬:
 @databricks-bundles 이 프로젝트를 DABs 구조로 변환해줘
 ```
 
-{% hint style="info" %}
-`@` 멘션은 해당 스킬을 **강제 로드** 합니다. 자동 매칭과 달리 description이 일치하지 않아도 로드됩니다. 특정 스킬의 지식이 반드시 필요한 경우에 유용합니다.
-{% endhint %}
+> **참고**
+> `@` 멘션은 해당 스킬을 **강제 로드** 합니다. 자동 매칭과 달리 description이 일치하지 않아도 로드됩니다. 특정 스킬의 지식이 반드시 필요한 경우에 유용합니다.
+
 
 ---
 
@@ -371,9 +371,9 @@ databricks workspace import /Workspace/.assistant/skills/my-custom-skill/SKILL.m
   --file ./my-custom-skill/SKILL.md --overwrite
 ```
 
-{% hint style="warning" %}
-Workspace 스킬은 해당 워크스페이스의 **모든 Genie Code 사용자** 에게 자동 적용됩니다. 조직 전체에 영향을 미치므로 배포 전 충분한 검토가 필요합니다.
-{% endhint %}
+> **주의**
+> Workspace 스킬은 해당 워크스페이스의 **모든 Genie Code 사용자** 에게 자동 적용됩니다. 조직 전체에 영향을 미치므로 배포 전 충분한 검토가 필요합니다.
+
 
 ---
 
@@ -421,9 +421,9 @@ databricks workspace delete /Workspace/Users/<your-email>/.assistant/skills/data
 
 이 표에서 알 수 있듯이, 대부분의 설치 문제는 Databricks CLI 설정과 관련되어 있습니다. CLI 인증이 정상이면 스킬 설치는 거의 실패하지 않습니다.
 
-{% hint style="info" %}
-스킬 설치 스크립트는 **멱등(idempotent)** 합니다. 여러 번 실행해도 동일한 결과를 보장하므로, 문제가 발생하면 안심하고 재실행하세요.
-{% endhint %}
+> **참고**
+> 스킬 설치 스크립트는 **멱등(idempotent)** 합니다. 여러 번 실행해도 동일한 결과를 보장하므로, 문제가 발생하면 안심하고 재실행하세요.
+
 
 ---
 

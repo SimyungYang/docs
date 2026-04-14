@@ -28,9 +28,9 @@ RAG 검색은 두 단계로 나뉩니다:
 - **1단계 (Recall 중시)**: "관련 있을 수 있는 문서를 하나도 빠뜨리지 말자" → 빠르지만 다소 부정확
 - **2단계 (Precision 중시)**: "이 후보들 중 진짜 관련 있는 것만 골라내자" → 느리지만 매우 정확
 
-{% hint style="info" %}
+> **참고**
 **왜 한 번에 정밀하게 하지 않는가?** 100만 문서를 Cross-encoder로 평가하면 한 쿼리당 수 분이 걸립니다. 20개 문서만 평가하면 수백 밀리초면 충분합니다. **비용 대비 효과** 를 최적화하는 것이 2단계 패턴의 핵심입니다.
-{% endhint %}
+
 
 ---
 
@@ -57,9 +57,9 @@ RAG 검색은 두 단계로 나뉩니다:
 
 질문과 문서를 **하나의 입력으로 결합** 하여 Transformer에 통째로 넣습니다.
 
-{% hint style="info" %}
+> **참고**
 **Transformer란?** GPT, BERT 등 현대 AI 모델의 기반 아키텍처입니다. 핵심 메커니즘은 **Attention(어텐션)** 으로, 입력 텍스트의 모든 단어가 다른 모든 단어와의 관련성을 계산하는 방식입니다. 예를 들어 "나는 **은행** 에서 돈을 인출했다"라는 문장에서, Attention은 "은행"이 "돈"과 강하게 연결됨을 파악하여 금융기관의 "은행"임을 이해합니다. 이 메커니즘 덕분에 Cross-encoder는 질문과 문서 사이의 세밀한 의미 관계를 포착할 수 있습니다.
-{% endhint %}
+
 
 ```
 입력: "[CLS] Databricks에서 벡터 검색 설정하는 방법 [SEP] Vector Search 인덱스 생성 가이드 [SEP]"
@@ -101,9 +101,9 @@ Transformer 내부에서 Attention이 작동하는 방식:
 | **Jina Reranker** | Jina AI | 오픈소스, 가벼움 | 보통 |
 | **ms-marco MiniLM** | Microsoft | 가벼움, 영어 특화 | 미지원 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks에서의 선택**: Cohere Reranker는 Foundation Model API를 통해 쉽게 사용할 수 있습니다. 오픈소스를 선호한다면 BGE Reranker v2를 Model Serving Endpoint로 배포하여 사용할 수 있습니다.
-{% endhint %}
+
 
 ---
 
@@ -164,9 +164,9 @@ answer = llm.generate(prompt_template.format(context=context, question=question)
 | 1차 검색 수 | 20 | Recall을 충분히 확보. 30-50으로 늘려도 되지만 Re-ranking 시간 증가 |
 | Re-ranking 결과 수 | 5 | LLM 컨텍스트 윈도우를 고려한 최적값. 3-7 범위 권장 |
 
-{% hint style="warning" %}
+> **주의**
 **지연 시간 고려**: Re-ranking은 20개 문서 기준 약 100-300ms가 추가됩니다. 실시간 챗봇에서는 전체 응답 시간에 영향을 줄 수 있으므로, Re-ranking 대상 수(1차 검색 결과 수)를 적절히 조절하세요. 50개 이상은 대부분 불필요합니다.
-{% endhint %}
+
 
 ---
 

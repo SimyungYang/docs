@@ -10,7 +10,7 @@
 | **모델 크기** | ONNX 변환, 양자화 | 로드 시간 50~80% 감소 |
 | **GPU 선택** | 모델 크기에 맞는 GPU | 과도한 GPU는 비용 낭비 |
 | **배치 요청** | Batch Inference 활용 | 개별 요청 대비 10~100x 처리량 |
-| **Feature Lookup** | Online Table 활용 | Feature 조회 < 10ms |
+| **Feature Lookup** | Online Table 활용 | Feature 조회 \< 10ms |
 
 ```python
 # Model Serving 엔드포인트 설정 (최적화 버전)
@@ -83,15 +83,15 @@ results = index.similarity_search(
 
 | 모델 규모 | 파라미터 수 | 최소 GPU 메모리 | 권장 인스턴스 | 비고 |
 |---------|-----------|-------------|-----------|------|
-| **소형** | < 1B | 8~16GB | g5.xlarge (A10G × 1) | scikit-learn, XGBoost도 포함 |
+| **소형** | \< 1B | 8~16GB | g5.xlarge (A10G × 1) | scikit-learn, XGBoost도 포함 |
 | **중형** | 1~7B | 24~48GB | g5.xlarge ~ g5.2xlarge | Llama 3 8B, Mistral 7B |
 | **대형** | 7~13B | 48~96GB | g5.12xlarge (A10G × 4) | Llama 3 13B |
 | **초대형** | 13~70B | 160~320GB | p4d.24xlarge (A100 × 8) | Llama 3 70B, DBRX |
 | **거대** | 70B+ | 640GB+ | p5.48xlarge (H100 × 8) | 사전 학습용 |
 
-{% hint style="info" %}
+> **참고**
 **GPU 메모리 계산 공식**: 모델 파라미터를 float16(2바이트)으로 로드할 때 필요한 GPU 메모리 = `파라미터 수 × 2바이트`. 예: 7B 모델 = 7 × 10^9 × 2 = 14GB. 학습 시에는 옵티마이저 상태와 그래디언트로 인해 **3~4배** 추가 메모리가 필요합니다.
-{% endhint %}
+
 
 ### 6.3 GPU 활용률 모니터링
 
@@ -108,7 +108,7 @@ print(result.stdout)
 
 | GPU 활용률 | 진단 | 조치 |
 |----------|------|------|
-| **< 30%** | GPU 낭비 (데이터 로딩 병목) | 데이터 로더 최적화, num_workers 증가 |
+| **\< 30%** | GPU 낭비 (데이터 로딩 병목) | 데이터 로더 최적화, num_workers 증가 |
 | **30~70%** | 적정 (약간의 여유) | 배치 사이즈 증가 시도 |
 | **70~95%** | 최적 활용 | 현재 설정 유지 |
 | **> 95%** | OOM 위험 | 배치 사이즈 축소 또는 큰 GPU |
@@ -192,9 +192,9 @@ for i, batch in enumerate(train_loader):
         optimizer.zero_grad()
 ```
 
-{% hint style="warning" %}
+> **주의**
 **분산 학습 주의사항**: 노드 간 네트워크 대역폭이 중요합니다. Databricks에서 멀티 노드 학습 시 **EFA(Elastic Fabric Adapter)** 또는 고대역폭 네트워크가 지원되는 인스턴스(p4d, p5)를 사용하세요. 네트워크 병목이 있으면 GPU가 유휴 상태로 대기합니다.
-{% endhint %}
+
 
 ---
 
@@ -204,7 +204,7 @@ for i, batch in enumerate(train_loader):
 
 | 기준 | 단일 노드 (scikit-learn, XGBoost) | Spark ML |
 |------|-------------------------------|----------|
-| **데이터 크기** | < 100GB (메모리 내) | 100GB+ (분산 처리) |
+| **데이터 크기** | \< 100GB (메모리 내) | 100GB+ (분산 처리) |
 | **모델 복잡도** | 높음 (딥러닝, 복잡한 앙상블) | 낮~중 (선형, 트리, 기본 앙상블) |
 | **Feature 수** | 1000+ | 100~1000 |
 | **학습 속도** | 빠름 (단일 노드 최적화) | 데이터 분산 오버헤드 |
@@ -419,9 +419,9 @@ for table_name in ["table1", "table2"]:
 | `spark.sql.shuffle.partitions` | ↑ | 파티션당 메모리 초과 |
 | `spark.driver.memory` | ↑ | Driver OOM, 큰 Broadcast |
 
-{% hint style="info" %}
+> **참고**
 **메모리 최적화 우선순위**: 1) 불필요한 컬럼 제거 (SELECT *  금지) → 2) 파티션 수 조정 → 3) Broadcast 임계값 조정 → 4) 인스턴스 메모리 증가. 인스턴스 업그레이드는 마지막 수단으로, 코드 최적화를 먼저 시도하세요.
-{% endhint %}
+
 
 ---
 

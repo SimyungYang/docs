@@ -42,9 +42,9 @@
 
 이 문제들의 해결책은 다음 섹션에서 다루는 **형태소 분석** 에서 시작됩니다.
 
-{% hint style="warning" %}
-한국어 RAG에서 가장 흔한 실수는 영어 기준 파이프라인을 그대로 적용하는 것입니다. 특히 BM25 기반 키워드 검색은 형태소 분석 없이는 한국어에서 제대로 작동하지 않습니다.
-{% endhint %}
+> **주의**
+> 한국어 RAG에서 가장 흔한 실수는 영어 기준 파이프라인을 그대로 적용하는 것입니다. 특히 BM25 기반 키워드 검색은 형태소 분석 없이는 한국어에서 제대로 작동하지 않습니다.
+
 
 ## 2. Kiwi 한국어 형태소 분석기
 
@@ -206,9 +206,9 @@ ensemble = EnsembleRetriever(
 )
 ```
 
-{% hint style="tip" %}
-한국어 전문 용어가 많은 도메인(법률, 의료 등)에서는 BM25 가중치를 `0.5~0.6`으로 높이면 정확한 용어 매칭이 강화됩니다.
-{% endhint %}
+> **팁**
+> 한국어 전문 용어가 많은 도메인(법률, 의료 등)에서는 BM25 가중치를 `0.5~0.6`으로 높이면 정확한 용어 매칭이 강화됩니다.
+
 
 ## 4. 한국어 청킹 전략
 
@@ -260,9 +260,9 @@ korean_splitter = RecursiveCharacterTextSplitter(
 chunks = korean_splitter.split_text(long_korean_text)
 ```
 
-{% hint style="info" %}
-한국어에서 `RecursiveCharacterTextSplitter`를 사용할 때는 종결어미(`다. `, `요. `)를 구분자에 추가하면 문장 중간에서 잘리는 것을 방지할 수 있습니다.
-{% endhint %}
+> **참고**
+> 한국어에서 `RecursiveCharacterTextSplitter`를 사용할 때는 종결어미(`다. `, `요. `)를 구분자에 추가하면 문장 중간에서 잘리는 것을 방지할 수 있습니다.
+
 
 ## 5. 한국어 임베딩 모델 선택 가이드
 
@@ -351,9 +351,9 @@ vectors = embeddings.embed_documents([
 ])
 ```
 
-{% hint style="tip" %}
-한국어 전용 임베딩 모델(KoSimCSE 등)은 한국어 내부 유사도 측정에서는 뛰어나지만, 한영 혼용 문서가 많은 환경에서는 다국어 모델(`multilingual-e5-large-instruct`, `bge-m3`)이 더 적합합니다.
-{% endhint %}
+> **팁**
+> 한국어 전용 임베딩 모델(KoSimCSE 등)은 한국어 내부 유사도 측정에서는 뛰어나지만, 한영 혼용 문서가 많은 환경에서는 다국어 모델(`multilingual-e5-large-instruct`, `bge-m3`)이 더 적합합니다.
+
 
 ## 6. 한국어 RAG 베스트 프랙티스
 
@@ -419,9 +419,9 @@ Cross-encoder(질문과 문서를 하나의 입력으로 결합하여 Transforme
 
 3. **전문 용어 문맥 이해**: "Unity Catalog 권한 설정"이라는 질문에서, Bi-encoder는 "권한"이라는 키워드와 매칭되는 모든 문서를 비슷한 점수로 반환하지만, Cross-encoder는 "Unity Catalog의 권한"이라는 **구체적 문맥** 을 이해하여 정밀하게 순위를 매깁니다.
 
-{% hint style="info" %}
+> **참고**
 **실전 수치**: 한국어 기술 문서 RAG에서 Re-ranking을 추가하면 Top-5 Precision이 일반적으로 **10~25%p 향상** 됩니다. 특히 유사한 주제의 문서가 많은 도메인(예: Databricks 공식 문서처럼 여러 기능이 비슷한 키워드를 공유하는 경우)에서 효과가 두드러집니다. Re-ranking의 구체적인 구현 방법과 모델 비교는 [Re-ranking 개념](concepts/reranking.md) 및 [Reranking 전략](advanced-retrieval/reranking.md) 페이지를 참조하세요.
-{% endhint %}
+
 
 ### 한국어 특화 전처리
 
@@ -451,9 +451,9 @@ def preprocess_korean(text: str) -> str:
 - 평가 지표: Retrieval에는 **Recall@K** (상위 K개 결과 중 정답이 포함된 비율), **MRR(Mean Reciprocal Rank, 정답 문서가 몇 번째에 위치하는지의 역수 평균)**, 생성에는 **정확성**, **근거 충실도(Faithfulness, 답변이 제공된 컨텍스트에 근거하는 정도)** 를 측정합니다.
 - MLflow Evaluate를 활용한 평가 방법은 [RAG 평가](evaluation.md) 가이드를 참조하세요.
 
-{% hint style="warning" %}
-한국어 RAG 시스템을 평가할 때, LLM-as-Judge를 사용한다면 평가 프롬프트도 한국어로 작성하거나, 한국어 이해도가 높은 모델(Claude, GPT-4 등)을 Judge로 사용해야 합니다.
-{% endhint %}
+> **주의**
+> 한국어 RAG 시스템을 평가할 때, LLM-as-Judge를 사용한다면 평가 프롬프트도 한국어로 작성하거나, 한국어 이해도가 높은 모델(Claude, GPT-4 등)을 Judge로 사용해야 합니다.
+
 
 ## 7. 한국어 RAG 실전 트러블슈팅
 
@@ -477,12 +477,12 @@ def preprocess_korean(text: str) -> str:
 | **Recall@5** | > 0.75 | > 0.85 | > 0.90 |
 | **Faithfulness** | > 0.80 | > 0.90 | > 0.95 |
 | **Answer Relevancy** | > 0.80 | > 0.85 | > 0.90 |
-| **검색 지연** | < 500ms | < 200ms | < 100ms |
-| **전체 응답 시간** | < 8초 | < 5초 | < 3초 |
+| **검색 지연** | \< 500ms | \< 200ms | \< 100ms |
+| **전체 응답 시간** | \< 8초 | \< 5초 | \< 3초 |
 
-{% hint style="info" %}
-위 수치는 한국어 기술 문서 기준의 참고값입니다. 도메인(법률, 의료 등)에 따라 기대치가 다를 수 있으며, 반드시 해당 도메인의 평가 데이터셋으로 측정해야 합니다.
-{% endhint %}
+> **참고**
+> 위 수치는 한국어 기술 문서 기준의 참고값입니다. 도메인(법률, 의료 등)에 따라 기대치가 다를 수 있으며, 반드시 해당 도메인의 평가 데이터셋으로 측정해야 합니다.
+
 
 ## 참고 문서
 

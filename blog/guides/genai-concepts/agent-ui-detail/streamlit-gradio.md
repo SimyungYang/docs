@@ -122,9 +122,9 @@ if prompt := st.chat_input("질문을 입력하세요"):
 - **WebSocket 기반**: 동시접속 50명 이상 시 서버 부하 급증 (Databricks Apps에서는 자동 스케일링으로 완화)
 - **SEO 불가**: 서버 사이드 렌더링이 아닌 WebSocket 기반이므로 검색엔진 노출 불가 (Agent 앱에서는 대부분 문제 아님)
 
-{% hint style="success" %}
+> **성공**
 **실전 팁**: Streamlit은 PoC와 파일럿 단계에서 "속도 vs 완성도" 트레이드오프의 최적 지점입니다. 2주 안에 경영진에게 데모를 보여야 한다면, Streamlit이 정답입니다.
-{% endhint %}
+
 
 ---
 
@@ -214,9 +214,9 @@ Hugging Face Spaces에 배포하면 영구 URL을 얻을 수 있습니다. GitHu
 | **생태계** | Hugging Face Spaces | Snowflake, Databricks Apps |
 | **멀티모달** | 이미지/오디오/비디오 입출력 내장 | 별도 구현 필요 |
 
-{% hint style="info" %}
+> **참고**
 **선택 기준**: ML 모델 데모, Hugging Face 모델 활용, 멀티모달 Agent라면 Gradio. 대시보드가 포함된 Agent 앱, Databricks Apps 배포가 목표라면 Streamlit.
-{% endhint %}
+
 
 ### Gradio의 한계
 

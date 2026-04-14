@@ -625,7 +625,7 @@ endpoint = client.create_endpoint(
 
 | 비용 요소 | 설명 | 절감 방법 |
 |-----------|------|---------|
-| **인스턴스 크기** | Small < Medium < Large 순으로 과금 | 실제 트래픽에 맞는 크기 선택 |
+| **인스턴스 크기** | Small \< Medium \< Large 순으로 과금 | 실제 트래픽에 맞는 크기 선택 |
 | **Scale-to-zero** | 트래픽 없을 때 인스턴스 종료 | 개발/비업무 시간에 활성화 |
 | **GPU 비용** | CPU 대비 5~10배 비용 | 실제 GPU 필요 여부 사전 검증 |
 | **Inference Table 저장** | Delta Lake 스토리지 비용 | 보존 기간 설정 (`TBLPROPERTIES`) |

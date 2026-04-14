@@ -120,9 +120,9 @@ Account Console (단일 관리 포인트)
 | **DS Workspace** | 데이터 사이언스 | `ds_dev`, `ds_prod` | `shared` 카탈로그 읽기 |
 | **Analytics Workspace** | 분석가 | `analytics` | `shared` + `de_prod` 읽기 |
 
-{% hint style="warning" %}
+> **주의**
 **팀별 분리의 함정**: 팀 간 데이터 공유가 빈번하면 Workspace 분리가 오히려 병목이 됩니다. 이 경우 단일 Workspace + Unity Catalog 카탈로그 수준 분리가 더 효과적입니다.
-{% endhint %}
+
 
 ### 2.3 프로젝트별 분리
 
@@ -167,9 +167,9 @@ Account Console (단일 관리 포인트)
 | **ALLOW** | 목록의 IP만 접근 허용 | 사무실/VPN IP 화이트리스트 |
 | **BLOCK** | 목록의 IP 접근 차단 | 특정 IP 블랙리스트 |
 
-{% hint style="info" %}
+> **참고**
 **Account 수준 vs Workspace 수준**: Account Console에서 설정한 IP Access List는 모든 Workspace에 적용됩니다. Workspace 수준에서 추가 제한을 설정할 수 있지만, Account 수준 제한을 완화할 수는 없습니다.
-{% endhint %}
+
 
 ---
 
@@ -226,9 +226,9 @@ Account Console (단일 관리 포인트)
 }
 ```
 
-{% hint style="warning" %}
+> **주의**
 **CMK 삭제 주의**: CMK를 삭제하면 해당 키로 암호화된 모든 데이터에 접근할 수 없습니다. KMS 키 삭제 대기 기간(7~30일)을 반드시 설정하고, 키 순환(rotation) 정책을 사용하세요.
-{% endhint %}
+
 
 ---
 
@@ -269,9 +269,9 @@ Account Console (단일 관리 포인트)
 └──────────────────┘                └─────────────────────┘
 ```
 
-{% hint style="info" %}
+> **참고**
 **PrivateLink 비용**: VPC Endpoint당 월 $7.30 + 데이터 처리 비용($0.01/GB)이 발생합니다. 보안 요구사항이 높은 Prod Workspace에만 적용하고, Dev에는 공용 네트워크를 사용하는 하이브리드 전략도 고려하세요.
-{% endhint %}
+
 
 ### 5.3 Azure VNet Injection + Private Endpoint
 
@@ -404,9 +404,9 @@ targets:
                   max_workers: 16
 ```
 
-{% hint style="info" %}
+> **참고**
 **IaC 권장 조합**: Workspace 인프라(VPC, IAM, Workspace 생성)는 **Terraform** 으로, 데이터 파이프라인과 Job 정의는 **DAB** 로 관리하는 이중 구조가 가장 효과적입니다. Terraform은 플랫폼 팀이, DAB는 각 데이터 팀이 관리합니다.
-{% endhint %}
+
 
 ---
 

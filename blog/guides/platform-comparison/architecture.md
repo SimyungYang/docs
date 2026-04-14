@@ -12,13 +12,13 @@
 | **멀티클라우드** | AWS, Azure, GCP 동일 경험 | AWS, Azure, GCP 지원 | AWS Only | GCP Only (Omni 제한적) | Azure 중심 (일부 멀티클라우드) |
 | **벤더 종속 리스크** | 최소 (오픈 포맷 + 고객 소유 스토리지) | 높음 (독점 포맷, 이관 시 COPY 필요) | 중간 (AWS 종속) | 중간-높음 (GCP 종속 + 독점 포맷) | 중간 (Azure/MS 생태계 종속) |
 
-{% hint style="success" %}
+> **성공**
 **Databricks 차별점**: 데이터를 **고객의 클라우드 스토리지에 오픈 포맷(Delta Lake)** 으로 저장하므로, 다른 엔진(Spark, Trino, Flink 등)에서도 직접 읽을 수 있습니다. UniForm을 통해 Iceberg 호환도 자동 보장됩니다.
-{% endhint %}
 
-{% hint style="warning" %}
+
+> **주의**
 **경쟁사 장점**: Snowflake는 완전 관리형 SaaS로 인프라 관리 부담이 거의 없고, BigQuery는 서버리스 아키텍처로 프로비저닝 자체가 불필요합니다. MS Fabric은 Microsoft 365/Power BI와의 긴밀한 통합이 강점입니다.
-{% endhint %}
+
 
 ## 데이터 소유권 및 개방성
 
@@ -59,9 +59,9 @@
 | **비용** | 저렴 (오브젝트 스토리지) | 비쌈 (전용 스토리지) | **저렴 (오브젝트 스토리지 직접)** |
 | **거버넌스** | 별도 도구 필요 | 내장 (제한적) | **Unity Catalog 통합** |
 
-{% hint style="info" %}
+> **참고**
 **Lakehouse의 핵심 혁신**: Delta Lake가 오브젝트 스토리지(S3/ADLS/GCS) 위에 **ACID 트랜잭션, 스키마 강제, 타임 트래블, 인덱싱** 을 추가하여, 저렴한 클라우드 스토리지에서 DW급 성능과 신뢰성을 달성했습니다.
-{% endhint %}
+
 
 ---
 
@@ -92,9 +92,9 @@ Delta Lake 테이블 (원본)
   └─ 기타 엔진        → Hudi 프로토콜로 읽기 (UniForm 자동 변환)
 ```
 
-{% hint style="success" %}
+> **성공**
 **UniForm의 전략적 의미**: 고객은 Delta Lake를 선택하면서도 Iceberg 생태계 도구를 자유롭게 활용할 수 있습니다. "어떤 포맷을 선택해야 하나?"라는 질문 자체가 불필요해집니다. 이것이 **오픈 포맷 전략의 완성** 입니다.
-{% endhint %}
+
 
 ---
 
@@ -119,9 +119,9 @@ Delta Lake 테이블 (원본)
 | **탄력적 확장** | 월말 보고서 시 컴퓨팅만 일시 확장 → 비용 최적화 |
 | **데이터 공유** | 하나의 스토리지를 여러 컴퓨팅 엔진이 공유 → 데이터 복사 불필요 |
 
-{% hint style="info" %}
+> **참고**
 **Databricks만의 차별점**: 스토리지가 **고객 소유 클라우드 계정** 에 있으므로, Databricks 계약 종료 후에도 데이터를 100% 보유합니다. Snowflake는 벤더 관리 스토리지이므로, 이관 시 별도 COPY 작업이 필요합니다.
-{% endhint %}
+
 
 ---
 
@@ -202,9 +202,9 @@ Delta Lake 테이블 (원본)
 | **사용자 경험** | 하나의 워크스페이스 | 서비스마다 다른 UI/UX |
 | **비용 추적** | System Tables 하나로 전체 분석 | 서비스별 별도 비용 모니터링 |
 
-{% hint style="success" %}
+> **성공**
 **SA/SE 핵심 메시지**: "Databricks는 하나의 플랫폼에서 데이터 수집→ETL→SQL 분석→ML→GenAI→거버넌스를 모두 수행합니다. AWS에서 동일한 구성을 하려면 S3 + Glue + Redshift + SageMaker + Bedrock + Lake Formation + CloudTrail을 조합해야 하며, 각 서비스 간 데이터 복사와 거버넌스 이중화가 불가피합니다."
-{% endhint %}
+
 
 ---
 
@@ -220,6 +220,6 @@ Delta Lake 테이블 (원본)
 | **크로스 클라우드 데이터 공유** | Delta Sharing (클라우드 무관) | Data Sharing (Snowflake 계정 간) | N/A | Analytics Hub (GCP 내) | 제한적 |
 | **크로스 클라우드 DR** | Active-Active 가능 | Replication 기반 | N/A | N/A | Azure Paired Region |
 
-{% hint style="info" %}
+> **참고**
 **멀티클라우드가 중요한 이유**: M&A로 인한 클라우드 혼용, 리전별 규제(데이터 주권), 벤더 협상력 확보, DR/BCP 구성 등 다양한 이유로 멀티클라우드 전략을 채택하는 기업이 증가하고 있습니다. Databricks는 이 시나리오에서 **유일하게 일관된 경험** 을 제공합니다.
-{% endhint %}
+

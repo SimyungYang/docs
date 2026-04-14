@@ -89,9 +89,9 @@ PKCE는 이 공격을 **암호학적으로 차단** 합니다.
 2. authorization_code를 토큰으로 교환할 때, CLI가 **원본 `code_verifier`** 를 전송
 3. 인증 서버가 `SHA256(code_verifier) == code_challenge`인지 검증
 
-{% hint style="warning" %}
+> **주의**
 **왜 안전한가**: 공격자가 authorization_code를 가로채더라도, `code_verifier`를 모르면 토큰 교환이 불가능합니다. `code_challenge`에서 `code_verifier`를 역산하는 것은 SHA256의 단방향성 때문에 사실상 불가능합니다.
-{% endhint %}
+
 
 ---
 
@@ -160,9 +160,9 @@ account_id = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 host = https://adb-1234567890.12.azuredatabricks.net
 ```
 
-{% hint style="info" %}
+> **참고**
 **토큰은 어디에 저장되는가**: OAuth 토큰은 `~/.databrickscfg`에 저장되지 **않습니다.** 토큰은 OS의 보안 자격 증명 저장소(macOS Keychain, Windows Credential Manager, Linux keyring)에 암호화되어 저장됩니다. `.databrickscfg`에는 호스트 URL과 프로파일 이름만 기록됩니다.
-{% endhint %}
+
 
 ### 2. 환경변수 방식
 
@@ -267,9 +267,9 @@ databricks auth describe --profile DEV
 databricks auth profiles
 ```
 
-{% hint style="warning" %}
+> **주의**
 **refresh_token도 만료됩니다**: refresh_token의 수명은 Databricks Account 관리자가 설정합니다. 기본값은 비교적 길지만 무한하지 않으므로, 오랜 기간 사용하지 않은 프로파일은 재로그인이 필요할 수 있습니다. `databricks auth login --profile <name>`으로 갱신하세요.
-{% endhint %}
+
 
 ---
 
