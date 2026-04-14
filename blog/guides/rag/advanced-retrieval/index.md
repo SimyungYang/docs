@@ -63,9 +63,9 @@ LLM과 검색은 서로의 약점을 보완하는 **공생 관계** 입니다.
 
 | 페이지 | 설명 |
 |--------|------|
-| [하이브리드 검색](hybrid-search.md) | 핵심 3요소(RRF, 정규화, 가중치) + 한국어 하이브리드 검색 도전 + Databricks 구현 |
-| [전처리 기법](preprocessing.md) | 메타데이터 필터링, Query Rewrite, Contextual Retrieval, Query Routing, 다중 쿼리 분해 |
-| [Reranking 전략](reranking.md) | Learning to Rank, Collaborative Filtering, Cross-Encoder, ColBERT, LLM 재정렬 |
-| [후처리 기법](postprocessing.md) | Self-RAG, Corrective RAG, FLARE, 출력 가드레일 |
-| [고급 청킹](chunking-advanced.md) | 부모/자식, 의미 기반, 명제 기반 (심화 내용) |
-| [구현 로드맵](implementation.md) | Databricks Advanced RAG 구현 로드맵 (Phase 1~3) |
+| [하이브리드 검색](hybrid-search) | 핵심 3요소(RRF, 정규화, 가중치) + 한국어 하이브리드 검색 도전 + Databricks 구현 |
+| [전처리 기법](preprocessing) | 메타데이터 필터링, Query Rewrite, Contextual Retrieval, Query Routing, 다중 쿼리 분해 |
+| [Reranking 전략](reranking) | Learning to Rank, Collaborative Filtering, Cross-Encoder, ColBERT, LLM 재정렬 |
+| [후처리 기법](postprocessing) | Self-RAG, Corrective RAG, FLARE, 출력 가드레일 |
+| [고급 청킹](chunking-advanced) | 부모/자식, 의미 기반, 명제 기반 (심화 내용) |
+| [구현 로드맵](implementation) | Databricks Advanced RAG 구현 로드맵 (Phase 1~3) |

@@ -453,4 +453,4 @@ AI Agent가 MLOps 운영을 자동화하는 시대가 열리고 있습니다:
 
 ---
 
-**다음 단계**: [재학습 전략](retraining-strategies.md) | [03. 모델 학습](../03-model-training.md)
+**다음 단계**: [재학습 전략](retraining-strategies) | [03. 모델 학습](../03-model-training)

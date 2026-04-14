@@ -266,4 +266,4 @@ Claude Code에서 아래 명령을 시도해보세요:
 
 환경 구성이 완료되었으면 **Module 1: Foundation** 으로 이동하여 Databricks Lakehouse 기초를 학습합니다.
 
-→ [Module 1: Foundation - Lakehouse & Unity Catalog](../01-foundation/README.md)
+→ [Module 1: Foundation - Lakehouse & Unity Catalog](../01-foundation/README)

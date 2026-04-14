@@ -10,20 +10,20 @@ Databricks Data Intelligence Platform의 핵심 기능과 아키텍처를 체계
 
 | 섹션 | 내용 |
 |------|------|
-| [00. 선행 지식](00-prerequisites/README.md) | RDB 기초, Star/Snowflake 스키마, 빅데이터 역사, 생태계, 실시간 처리 |
-| [01. 데이터 기초](01-data-fundamentals/README.md) | 데이터 엔지니어링, 웨어하우스 vs 레이크, ETL/ELT, 배치 vs 스트리밍 |
-| [02. Databricks 개요](02-databricks-overview/README.md) | Databricks란, 아키텍처, Workspace, Notebook |
-| [03. 레이크하우스](03-lakehouse-architecture/README.md) | Delta Lake, Medallion 아키텍처, Iceberg 호환 |
-| [04. 컴퓨트](04-compute-and-workspace/README.md) | Spark 기초, 클러스터, SQL Warehouse, Serverless |
-| [05. 데이터 엔지니어링](05-data-engineering/README.md) | Auto Loader, SDP, Lakeflow Connect, Lakeflow Jobs |
-| [06. 데이터 웨어하우징](06-data-warehousing/README.md) | Databricks SQL, AI 함수, 쿼리 최적화 |
-| [07. Unity Catalog](07-unity-catalog/README.md) | 거버넌스, 권한, 리니지, Delta Sharing |
-| [08. AI/BI](08-ai-bi/README.md) | 대시보드, Genie, 알림 |
-| [09. 머신러닝](09-machine-learning/README.md) | MLflow, Model Serving, Feature Engineering |
-| [10. AI 에이전트](10-agent-development/README.md) | Vector Search, RAG, Agent Evaluation, Agent Bricks |
-| [11. Lakebase](11-lakebase/README.md) | PostgreSQL OLTP, Data Sync |
-| [12. 보안](12-security-and-governance/README.md) | 인증, 네트워크, 시스템 테이블 |
-| [13. 부록](13-appendix/README.md) | CLI, Asset Bundles, 용어 사전, 학습 로드맵 |
+| [00. 선행 지식](00-prerequisites/README) | RDB 기초, Star/Snowflake 스키마, 빅데이터 역사, 생태계, 실시간 처리 |
+| [01. 데이터 기초](01-data-fundamentals/README) | 데이터 엔지니어링, 웨어하우스 vs 레이크, ETL/ELT, 배치 vs 스트리밍 |
+| [02. Databricks 개요](02-databricks-overview/README) | Databricks란, 아키텍처, Workspace, Notebook |
+| [03. 레이크하우스](03-lakehouse-architecture/README) | Delta Lake, Medallion 아키텍처, Iceberg 호환 |
+| [04. 컴퓨트](04-compute-and-workspace/README) | Spark 기초, 클러스터, SQL Warehouse, Serverless |
+| [05. 데이터 엔지니어링](05-data-engineering/README) | Auto Loader, SDP, Lakeflow Connect, Lakeflow Jobs |
+| [06. 데이터 웨어하우징](06-data-warehousing/README) | Databricks SQL, AI 함수, 쿼리 최적화 |
+| [07. Unity Catalog](07-unity-catalog/README) | 거버넌스, 권한, 리니지, Delta Sharing |
+| [08. AI/BI](08-ai-bi/README) | 대시보드, Genie, 알림 |
+| [09. 머신러닝](09-machine-learning/README) | MLflow, Model Serving, Feature Engineering |
+| [10. AI 에이전트](10-agent-development/README) | Vector Search, RAG, Agent Evaluation, Agent Bricks |
+| [11. Lakebase](11-lakebase/README) | PostgreSQL OLTP, Data Sync |
+| [12. 보안](12-security-and-governance/README) | 인증, 네트워크, 시스템 테이블 |
+| [13. 부록](13-appendix/README) | CLI, Asset Bundles, 용어 사전, 학습 로드맵 |
 
 ## 역할별 추천 경로
 

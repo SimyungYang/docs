@@ -4,7 +4,7 @@ title: "LLM 학습 과정 3단계"
 
 # LLM 학습 과정 3단계
 
-[\< LLM 기초 목차로 돌아가기](README.md)
+[\< LLM 기초 목차로 돌아가기](README)
 
 ---
 
@@ -268,4 +268,4 @@ Response: {seed['response']}
 
 ---
 
-[\< 이전: 핵심 개념](core-concepts.md) | [다음: LLM 내부 작동 직관적 이해 >](internals.md)
+[\< 이전: 핵심 개념](core-concepts) | [다음: LLM 내부 작동 직관적 이해 >](internals)

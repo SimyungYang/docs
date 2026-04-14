@@ -526,4 +526,4 @@ if drift_detected:
 
 ---
 
-**다음 단계**: [ML 트렌드 & 최신 기법](ml-trends.md) | [04. 모델 등록](../04-model-registration.md)
+**다음 단계**: [ML 트렌드 & 최신 기법](ml-trends) | [04. 모델 등록](../04-model-registration)

@@ -135,7 +135,7 @@ Genie Code는 대화 내에서 "결정 트리"를 구축합니다. 다른 맥락
 - 실행 전 Plan을 먼저 보여줘
 ```
 
-> 💡 **꿀팁**: Custom Instructions에 이 안전 규칙을 넣어두면 매번 안 써도 됩니다. → [Custom Instructions 가이드](custom-instructions.md)
+> 💡 **꿀팁**: Custom Instructions에 이 안전 규칙을 넣어두면 매번 안 써도 됩니다. → [Custom Instructions 가이드](custom-instructions)
 
 ### 실습: 안전 가드레일 테스트
 
@@ -152,4 +152,4 @@ Genie Code는 대화 내에서 "결정 트리"를 구축합니다. 다른 맥락
 
 ## 다음 단계
 
-- **[꿀팁 모음 20가지](tips-and-tricks.md)** — 현업에서 바로 쓸 수 있는 실전 팁을 모았습니다.
+- **[꿀팁 모음 20가지](tips-and-tricks)** — 현업에서 바로 쓸 수 있는 실전 팁을 모았습니다.

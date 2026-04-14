@@ -224,5 +224,5 @@ response = client.chat.completions.create(
 각 모델은 `databricks-<model-name>` 형식의 엔드포인트로 즉시 사용 가능합니다. 별도의 API 키 발급이나 외부 서비스 가입이 필요 없습니다.
 
 > **참고**
-Foundation Model APIs 외에도, **Model Serving** 을 통해 커스텀 파인튜닝된 모델이나 Hugging Face 모델을 직접 배포할 수 있습니다. 자세한 내용은 [오픈소스 LLM 생태계](opensource-llm.md) 페이지를 참조하세요.
+Foundation Model APIs 외에도, **Model Serving** 을 통해 커스텀 파인튜닝된 모델이나 Hugging Face 모델을 직접 배포할 수 있습니다. 자세한 내용은 [오픈소스 LLM 생태계](opensource-llm) 페이지를 참조하세요.
 

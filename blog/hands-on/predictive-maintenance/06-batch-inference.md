@@ -363,4 +363,4 @@ client.set_registered_model_alias("lgit_predictive_maintenance", "Champion", ver
 2. **모델 버전 불일치**-- Champion 에일리어스가 실수로 삭제되면 에러가 납니다. 에일리어스 존재 여부를 먼저 확인하는 방어 코드가 필요합니다.
 3. **디스크 용량 초과**-- append 모드로 수개월 쌓다 보면 테이블이 커집니다. 파티셔닝과 OPTIMIZE/VACUUM 전략을 미리 세워두세요.
 
-**다음 단계**: [07. 비정형 이상탐지](07-anomaly-detection.md)
+**다음 단계**: [07. 비정형 이상탐지](07-anomaly-detection)

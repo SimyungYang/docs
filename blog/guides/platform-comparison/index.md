@@ -26,13 +26,13 @@ title: "Analytics Platform 비교 가이드"
 
 | 페이지 | 설명 |
 |--------|------|
-| [아키텍처](architecture.md) | Lakehouse vs 전통 DW vs Lake, 데이터 소유권 |
-| [컴퓨팅](compute.md) | Serverless, Clusters, Scaling |
-| [데이터 엔지니어링](data-engineering.md) | ETL, 스트리밍, CDC, 데이터 품질 |
-| [SQL & Analytics](sql-analytics.md) | SQL 엔진 및 BI |
-| [ML/AI](ml-ai.md) | Built-in ML, GenAI, Model Serving, Agent |
-| [거버넌스](governance.md) | Catalog, Lineage, Sharing |
-| [가격 모델](pricing.md) | 과금 구조, 비용 최적화 |
+| [아키텍처](architecture) | Lakehouse vs 전통 DW vs Lake, 데이터 소유권 |
+| [컴퓨팅](compute) | Serverless, Clusters, Scaling |
+| [데이터 엔지니어링](data-engineering) | ETL, 스트리밍, CDC, 데이터 품질 |
+| [SQL & Analytics](sql-analytics) | SQL 엔진 및 BI |
+| [ML/AI](ml-ai) | Built-in ML, GenAI, Model Serving, Agent |
+| [거버넌스](governance) | Catalog, Lineage, Sharing |
+| [가격 모델](pricing) | 과금 구조, 비용 최적화 |
 
 ## 플랫폼 선택 가이드
 

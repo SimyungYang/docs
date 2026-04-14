@@ -103,7 +103,7 @@ lge_smart_tv 카탈로그의 모든 스키마를 보여줘
 
 ## Step 5: Custom Instructions 설정 (권장)
 
-> Custom Instructions가 무엇인지, 왜 필요한지는 [Section 1: Custom Instructions 설정](../section-1-vibe-coding-intro/genie-code/custom-instructions.md)에서 상세히 설명합니다.
+> Custom Instructions가 무엇인지, 왜 필요한지는 [Section 1: Custom Instructions 설정](../section-1-vibe-coding-intro/genie-code/custom-instructions)에서 상세히 설명합니다.
 
 Genie Code Settings(⚙️) → Custom Instructions에 아래 내용을 붙여넣기 합니다:
 
@@ -157,7 +157,7 @@ lge_smart_tv.bronze 스키마에 test_table이라는 이름으로
 
 ## 환경 요약
 
-> **참고**: 아래 테이블 수(17개, 15개, 10개)는 **목표값**입니다. 이 시점에서는 아직 테이블이 없으며, [02. 가상 데이터 생성](02-data-generation.md)과 [03. SDP 파이프라인](03-sdp-pipeline.md)을 완료하면 생성됩니다.
+> **참고**: 아래 테이블 수(17개, 15개, 10개)는 **목표값**입니다. 이 시점에서는 아직 테이블이 없으며, [02. 가상 데이터 생성](02-data-generation)과 [03. SDP 파이프라인](03-sdp-pipeline)을 완료하면 생성됩니다.
 
 | 항목 | 값 |
 |------|-----|
@@ -174,4 +174,4 @@ lge_smart_tv.bronze 스키마에 test_table이라는 이름으로
 
 ## 다음 단계
 
-- **[02. 가상 데이터 생성](02-data-generation.md)** — 17개 테이블, 250만건 webOS TV 로그 데이터 생성
+- **[02. 가상 데이터 생성](02-data-generation)** — 17개 테이블, 250만건 webOS TV 로그 데이터 생성

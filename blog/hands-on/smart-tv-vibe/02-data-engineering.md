@@ -415,4 +415,4 @@ Job을 생성하고, 구조를 설명해줘.
 
 ## 다음 단계
 
-→ [Module 3: Generative AI - 개인화 추천 & Agent Bricks](../03-genai/README.md)
+→ [Module 3: Generative AI - 개인화 추천 & Agent Bricks](../03-genai/README)

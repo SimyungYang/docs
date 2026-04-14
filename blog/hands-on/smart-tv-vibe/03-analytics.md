@@ -410,4 +410,4 @@ Genie Space를 생성해줘.
 
 ## 다음 단계
 
-→ [Module 4: Structured Streaming - 실시간 데이터 처리](../04-streaming/README.md)
+→ [Module 4: Structured Streaming - 실시간 데이터 처리](../04-streaming/README)

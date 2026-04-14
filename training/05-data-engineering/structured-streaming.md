@@ -330,7 +330,7 @@ query.lastProgress
 | `batchDuration` | 배치 처리 시간 (ms) | 트리거 간격보다 길면 병목 |
 | `stateOperators.numRowsTotal` | 상태 저장소 크기 | 지속 증가 시 메모리 부족 위험 |
 
-> 💡 `StreamingQueryListener`를 활용하면 커스텀 모니터링(Slack 알림, 메트릭 수집 등)을 구현할 수 있습니다. 자세한 내용은 [Streaming 심화](./streaming-advanced.md)를 참고하시기 바랍니다.
+> 💡 `StreamingQueryListener`를 활용하면 커스텀 모니터링(Slack 알림, 메트릭 수집 등)을 구현할 수 있습니다. 자세한 내용은 [Streaming 심화](./streaming-advanced)를 참고하시기 바랍니다.
 
 ---
 
@@ -352,7 +352,7 @@ query.lastProgress
 
 | 주제 | 문서 |
 |------|------|
-| Streaming 심화 | [윈도우 유형, Output Mode, CDF, State Store](./streaming-advanced.md) |
+| Streaming 심화 | [윈도우 유형, Output Mode, CDF, State Store](./streaming-advanced) |
 
 ---
 

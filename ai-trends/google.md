@@ -5,7 +5,7 @@ title: "Google / DeepMind 동향 분석 (2026년 초 기준)"
 # Google / DeepMind 동향 분석 (2026년 초 기준)
 
 > **참고**
-**이 문서의 범위**: Google과 DeepMind의 AI 전략, 모델 라인업, Agent 생태계, 연구 성과, 인프라 전략을 종합 분석합니다. A2A 프로토콜 기술 상세는 [A2A (Agent-to-Agent)](../guides/genai-concepts/a2a-protocol/README.md), Agent 전략 상세는 [Google AI Agent 전략](../guides/genai-concepts/agent-landscape/google.md)을 참고하세요.
+**이 문서의 범위**: Google과 DeepMind의 AI 전략, 모델 라인업, Agent 생태계, 연구 성과, 인프라 전략을 종합 분석합니다. A2A 프로토콜 기술 상세는 [A2A (Agent-to-Agent)](../guides/genai-concepts/a2a-protocol/README), Agent 전략 상세는 [Google AI Agent 전략](../guides/genai-concepts/agent-landscape/google)을 참고하세요.
 
 
 ---
@@ -114,7 +114,7 @@ AI Agent가 멀티에이전트 시스템으로 진화하면서, 이기종 Agent 
 | **상태 관리** | Task 상태 머신 내장 | Stateless |
 | **표준화** | Linux Foundation | 오픈 소스 (Anthropic 주도) |
 
-A2A와 MCP는 **경쟁이 아닌 보완** 관계입니다. 더 자세한 내용은 [A2A 프로토콜 가이드](../guides/genai-concepts/a2a-protocol/README.md)를 참고하세요.
+A2A와 MCP는 **경쟁이 아닌 보완** 관계입니다. 더 자세한 내용은 [A2A 프로토콜 가이드](../guides/genai-concepts/a2a-protocol/README)를 참고하세요.
 
 ### 3.2 ADK (Agent Development Kit)
 
@@ -258,5 +258,5 @@ Gemma 3 27B는 **Llama 3.3 70B와 동등 성능** 이면서 단일 GPU(RTX 4090)
 - [A2A 프로토콜 사양](https://google.github.io/A2A/)
 - [ADK 문서](https://google.github.io/adk-docs/)
 - [DeepMind 연구](https://deepmind.google/research/)
-- [AI Agent 업계 동향 — Google](../guides/genai-concepts/agent-landscape/google.md)
-- [A2A 프로토콜 가이드](../guides/genai-concepts/a2a-protocol/README.md)
+- [AI Agent 업계 동향 — Google](../guides/genai-concepts/agent-landscape/google)
+- [A2A 프로토콜 가이드](../guides/genai-concepts/a2a-protocol/README)

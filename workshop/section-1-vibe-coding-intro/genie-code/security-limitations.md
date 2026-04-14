@@ -252,4 +252,4 @@ Genie Code에는 다층 보안 필터가 적용됩니다:
 
 ## 다음 단계
 
-- **[내장 기능 둘러보기](built-in-features.md)** — Skills, MCP, 슬래시 명령어 등 Genie Code의 숨은 기능을 확인합니다.
+- **[내장 기능 둘러보기](built-in-features)** — Skills, MCP, 슬래시 명령어 등 Genie Code의 숨은 기능을 확인합니다.

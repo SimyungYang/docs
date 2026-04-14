@@ -4,7 +4,7 @@ title: "Multi-Agent 패턴"
 
 # Multi-Agent 패턴
 
-[← AI Agent 아키텍처 개요](README.md)
+[← AI Agent 아키텍처 개요](README)
 
 ---
 
@@ -168,4 +168,4 @@ Multi-Agent의 가장 과소평가되는 리스크는 **비용** 입니다.
 
 ---
 
-[다음: Agent 프레임워크 비교 →](frameworks.md)
+[다음: Agent 프레임워크 비교 →](frameworks)

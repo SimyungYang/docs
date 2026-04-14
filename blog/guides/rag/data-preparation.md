@@ -325,4 +325,4 @@ new_chunks_df.write.format("delta") \
 
 ## 다음 단계
 
-데이터가 Delta Table에 저장되었으면, [Vector Search 설정](vector-search.md)으로 진행하여 임베딩 인덱스를 생성합니다.
+데이터가 Delta Table에 저장되었으면, [Vector Search 설정](vector-search)으로 진행하여 임베딩 인덱스를 생성합니다.

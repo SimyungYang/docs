@@ -16,9 +16,9 @@ title: "05-1. Auto Loader"
 
 | 순서 | 문서 | 내용 |
 |------|------|------|
-| 1 | [Auto Loader란?](what-is-auto-loader.md) | 개념, 동작 방식, 파일 감지 모드, 스키마 관리를 설명합니다 |
-| 2 | [주요 옵션](auto-loader-options.md) | 파일 포맷별 설정, 에러 처리, 메타데이터 컬럼을 다룹니다 |
-| 3 | [Auto Loader 실습](auto-loader-hands-on.md) | SDP 기반 수집 파이프라인을 구축합니다 |
+| 1 | [Auto Loader란?](what-is-auto-loader) | 개념, 동작 방식, 파일 감지 모드, 스키마 관리를 설명합니다 |
+| 2 | [주요 옵션](auto-loader-options) | 파일 포맷별 설정, 에러 처리, 메타데이터 컬럼을 다룹니다 |
+| 3 | [Auto Loader 실습](auto-loader-hands-on) | SDP 기반 수집 파이프라인을 구축합니다 |
 
 ## 참고 문서
 - [Databricks: Auto Loader](https://docs.databricks.com/aws/en/ingestion/auto-loader/)

@@ -352,7 +352,7 @@ FROM STREAM(analytics.bronze.orders)
 WHERE _change_type != 'DELETE';
 ```
 
-> 💡 **SCD Type 1 vs Type 2**: SCD Type 1은 변경 시 기존 데이터를 덮어씁니다(항상 최신 상태만 유지). SCD Type 2는 변경 이력을 모두 보존합니다. 자세한 내용은 [SDP: CDC와 SCD](../spark-declarative-pipelines/cdc-and-scd.md) 문서를 참고하시기 바랍니다.
+> 💡 **SCD Type 1 vs Type 2**: SCD Type 1은 변경 시 기존 데이터를 덮어씁니다(항상 최신 상태만 유지). SCD Type 2는 변경 이력을 모두 보존합니다. 자세한 내용은 [SDP: CDC와 SCD](../spark-declarative-pipelines/cdc-and-scd) 문서를 참고하시기 바랍니다.
 
 ---
 

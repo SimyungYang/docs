@@ -9,7 +9,7 @@ title: "OpenAI 동향 분석 (2026년 초 기준)"
 OpenAI는 2015년 비영리로 설립되어 현재 세계 AI 시장의 **선도 기업** 으로 자리잡았습니다. 2026년 현재, OpenAI는 단순한 챗봇 제공자에서 **"AI 에이전트 플랫폼 + 추론 모델 + 코딩 자동화"** 를 아우르는 종합 AI 기업으로 전환을 완료했습니다. GPT-4o 시리즈, o-시리즈 추론 모델, Agents SDK, Codex 등을 통해 전방위 AI 생태계를 구축하고 있습니다.
 
 > **참고**
-**이 문서의 범위**: 2024년 하반기부터 2026년 초까지 OpenAI의 모델, 제품, 전략 동향을 종합 분석합니다. Agent 설계 패턴 상세는 [AI Agent 업계 동향 — OpenAI](../guides/genai-concepts/agent-landscape/openai.md)를 참고하세요.
+**이 문서의 범위**: 2024년 하반기부터 2026년 초까지 OpenAI의 모델, 제품, 전략 동향을 종합 분석합니다. Agent 설계 패턴 상세는 [AI Agent 업계 동향 — OpenAI](../guides/genai-concepts/agent-landscape/openai)를 참고하세요.
 
 
 ---
@@ -332,4 +332,4 @@ OpenAI의 2026년 전략은 세 단어로 요약됩니다: **"추론(Reasoning) 
 - [o3 & o4-mini 발표](https://openai.com/index/introducing-o3-and-o4-mini/)
 - [Agents SDK 문서](https://openai.github.io/openai-agents-python/)
 - [Responses API 문서](https://platform.openai.com/docs/api-reference/responses)
-- [AI Agent 업계 동향 — OpenAI](../guides/genai-concepts/agent-landscape/openai.md)
+- [AI Agent 업계 동향 — OpenAI](../guides/genai-concepts/agent-landscape/openai)

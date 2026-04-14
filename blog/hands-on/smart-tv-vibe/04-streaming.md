@@ -269,4 +269,4 @@ SDP에서 Streaming Table과 Materialized View의 차이도 설명해줘.
 
 ## 다음 단계
 
-→ [Module 5: ML/AI - 개인화 추천 모델](../05-ml/README.md)
+→ [Module 5: ML/AI - 개인화 추천 모델](../05-ml/README)

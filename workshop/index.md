@@ -50,20 +50,20 @@ LG Smart TV webOS 텔레메트리 데이터를 기반으로, 자연어 프롬프
 
 | 단계 | 핵심 메시지 |
 |------|-----------|
-| [AI Gateway](section-3-ai-tools-setup/ai-gateway.md) | 비용을 통제하면서 AI 도구를 도입할 수 있다 |
-| [Claude Code](section-3-ai-tools-setup/claude-code.md) | 이 환경에서 Claude Code를 안전하게 쓸 수 있다 |
-| [AI Dev Kit 설치](section-3-ai-tools-setup/ai-dev-kit-setup.md) | MCP 서버 + Skills로 Databricks를 확장한다 |
-| [Genie Code 연결](section-3-ai-tools-setup/genie-code-aidevkit.md) | 노트북 안에서도 크로스 프로덕트 작업이 가능해진다 |
+| [AI Gateway](section-3-ai-tools-setup/ai-gateway) | 비용을 통제하면서 AI 도구를 도입할 수 있다 |
+| [Claude Code](section-3-ai-tools-setup/claude-code) | 이 환경에서 Claude Code를 안전하게 쓸 수 있다 |
+| [AI Dev Kit 설치](section-3-ai-tools-setup/ai-dev-kit-setup) | MCP 서버 + Skills로 Databricks를 확장한다 |
+| [Genie Code 연결](section-3-ai-tools-setup/genie-code-aidevkit) | 노트북 안에서도 크로스 프로덕트 작업이 가능해진다 |
 
 ### Section 4: LG Smart TV E2E 핸즈온
 
 | 모듈 | 내용 |
 |------|------|
-| [01. 환경 설정](section-4-smart-tv-handson/01-setup.md) | 카탈로그/스키마 생성, Custom Instructions 설정 |
-| [02. 가상 데이터 생성](section-4-smart-tv-handson/02-data-generation.md) | webOS TV 로그 기반 17테이블 250만건 |
-| [03. SDP 파이프라인](section-4-smart-tv-handson/03-sdp-pipeline.md) | 데이터 품질, Medallion Architecture, 증분 처리, Expectations |
-| [04. 대시보드 & Genie Space](section-4-smart-tv-handson/04-dashboard-genie.md) | 대시보드 3개, Genie Space 3개, 정확도 고도화 |
-| [05. 에이전트 개발](section-4-smart-tv-handson/05-agent-development.md) | KA + Genie Agent + Supervisor Agent + Lakebase(선택) |
+| [01. 환경 설정](section-4-smart-tv-handson/01-setup) | 카탈로그/스키마 생성, Custom Instructions 설정 |
+| [02. 가상 데이터 생성](section-4-smart-tv-handson/02-data-generation) | webOS TV 로그 기반 17테이블 250만건 |
+| [03. SDP 파이프라인](section-4-smart-tv-handson/03-sdp-pipeline) | 데이터 품질, Medallion Architecture, 증분 처리, Expectations |
+| [04. 대시보드 & Genie Space](section-4-smart-tv-handson/04-dashboard-genie) | 대시보드 3개, Genie Space 3개, 정확도 고도화 |
+| [05. 에이전트 개발](section-4-smart-tv-handson/05-agent-development) | KA + Genie Agent + Supervisor Agent + Lakebase(선택) |
 
 ---
 

@@ -27,7 +27,7 @@ Unity Catalog에서 **외부 로케이션(External Location)** 은 클라우드 
 | **External Location** | 특정 경로를 Unity Catalog에 등록한 "주소" | 건물 내 특정 사무실 |
 | **External Table/Volume** | 외부 로케이션 안에 존재하는 데이터 객체 | 사무실 안의 문서 |
 
-> 💡 **Storage Credential** 에 대한 자세한 내용은 [스토리지 자격 증명](./storage-credentials.md) 문서를 참고하세요.
+> 💡 **Storage Credential** 에 대한 자세한 내용은 [스토리지 자격 증명](./storage-credentials) 문서를 참고하세요.
 
 ---
 
@@ -46,9 +46,9 @@ CREATE EXTERNAL LOCATION [IF NOT EXISTS] <location_name>
 
 | 클라우드 | URL 형식 | 예시 |
 |---------|---------|------|
-| **AWS S3** | `s3://<bucket>/<path>` | `s3://my-company-data/production/` |
-| **Azure ADLS** | `abfss://<container>@<account>.dfs.core.windows.net/<path>` | `abfss://data@myaccount.dfs.core.windows.net/prod/` |
-| **GCP GCS** | `gs://<bucket>/<path>` | `gs://my-company-data/production/` |
+| **AWS S3** | `s3://<bucket>/` | `s3://my-company-data/production/` |
+| **Azure ADLS** | `abfss://<container>@<account>.dfs.core.windows.net/` | `abfss://data@myaccount.dfs.core.windows.net/prod/` |
+| **GCP GCS** | `gs://<bucket>/` | `gs://my-company-data/production/` |
 
 ### 실전 예시
 

@@ -4,7 +4,7 @@ title: "LLM 내부 작동 직관적 이해"
 
 # LLM 내부 작동 직관적 이해
 
-[\< LLM 기초 목차로 돌아가기](README.md)
+[\< LLM 기초 목차로 돌아가기](README)
 
 ---
 
@@ -261,7 +261,7 @@ LLM이 토큰을 하나씩 생성할 때, 이전에 계산한 **Key와 Value 벡
 
 추론 모델은 **더 많은 토큰(=더 많은 연산)을 생성** 하여 답의 정확도를 높입니다. "시험 시간에 더 오래 고민하면 더 정확한 답을 낸다"는 직관과 같습니다.
 
-> 추론 모델의 상세한 작동 원리와 활용법은 [추론 모델 (Reasoning Models)](../reasoning.md) 페이지를 참고하세요.
+> 추론 모델의 상세한 작동 원리와 활용법은 [추론 모델 (Reasoning Models)](../reasoning) 페이지를 참고하세요.
 
 ---
 
@@ -292,4 +292,4 @@ LLM이 토큰을 하나씩 생성할 때, 이전에 계산한 **Key와 Value 벡
 
 ---
 
-[\< 이전: LLM 학습 과정](training.md) | [다음: Hallucination >](hallucination.md)
+[\< 이전: LLM 학습 과정](training) | [다음: Hallucination >](hallucination)

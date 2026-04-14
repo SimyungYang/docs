@@ -96,4 +96,4 @@ GROUP BY machine_failure
 정형 모델과 비정형 모델이 **동일한 Unity Catalog** 내에서 관리되므로, 향후 두 모델의 예측을 결합한 **복합 판단 시스템(Compound AI System)** 으로 확장할 수 있습니다.
 
 
-**다음 단계**: [02. 피처 엔지니어링](02-feature-engineering.md)
+**다음 단계**: [02. 피처 엔지니어링](02-feature-engineering)

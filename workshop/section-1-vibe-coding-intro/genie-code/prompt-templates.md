@@ -244,4 +244,4 @@ Stop. {무엇이 잘못됐는지 구체적으로 설명}.
 
 ## 다음 단계
 
-- **[Custom Instructions 설정](custom-instructions.md)** — 매번 반복하는 규칙을 한 번에 설정합니다.
+- **[Custom Instructions 설정](custom-instructions)** — 매번 반복하는 규칙을 한 번에 설정합니다.

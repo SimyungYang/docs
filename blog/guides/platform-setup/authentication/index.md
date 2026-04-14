@@ -123,9 +123,9 @@ Databricks 인증에서 가장 중요하면서도 자주 혼동되는 개념이 
 
 | 가이드 | 내용 |
 |--------|------|
-| [OAuth U2M (사용자 인증)](oauth-u2m.md) | PKCE 흐름, 브라우저 인증, 토큰 갱신, CLI/SDK 설정 |
-| [OAuth M2M (서비스 인증)](oauth-m2m.md) | Service Principal, client_credentials, 코드 예시 |
-| [PAT & Token Federation](pat-federation.md) | PAT 생성/관리, Token Federation 개념, GitHub Actions 연동 |
+| [OAuth U2M (사용자 인증)](oauth-u2m) | PKCE 흐름, 브라우저 인증, 토큰 갱신, CLI/SDK 설정 |
+| [OAuth M2M (서비스 인증)](oauth-m2m) | Service Principal, client_credentials, 코드 예시 |
+| [PAT & Token Federation](pat-federation) | PAT 생성/관리, Token Federation 개념, GitHub Actions 연동 |
 
 > **참고**
 **권장 읽기 순서**: 개발자라면 OAuth U2M → OAuth M2M → PAT & Token Federation 순서로 읽으세요. 플랫폼 관리자라면 이 README의 비교 테이블을 기준으로 팀에 적합한 인증 정책을 먼저 결정한 후, 해당 방법의 상세 가이드를 참고하세요.

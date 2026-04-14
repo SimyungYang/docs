@@ -107,7 +107,7 @@ AS
 | **학습 곡선** | 비기술 사용자: 수 일~수 주 | Genie: **즉시 사용 가능** (자연어) |
 | **복잡 계산** | DAX, LOD 표현식 필요 | Metric View로 **중앙 정의 후 재사용** |
 
-> 💡 Databricks AI/BI는 Tableau, Power BI를 **대체** 하는 것이 아니라 **보완** 합니다. 하이브리드 전략에 대한 자세한 내용은 [하이브리드 BI 전략](./hybrid-bi-strategy.md) 문서를 참고하세요.
+> 💡 Databricks AI/BI는 Tableau, Power BI를 **대체** 하는 것이 아니라 **보완** 합니다. 하이브리드 전략에 대한 자세한 내용은 [하이브리드 BI 전략](./hybrid-bi-strategy) 문서를 참고하세요.
 
 ---
 
@@ -519,11 +519,11 @@ CLUSTER BY (sale_date, region);
 
 | 주제 | 문서 |
 |------|------|
-| 대시보드 상세 | [AI/BI 대시보드](./lakeview-dashboards.md) |
-| Genie 상세 | [Genie](./genie.md) |
-| 알림 상세 | [알림과 스케줄링](./alerts-and-scheduling.md) |
-| 기술 아키텍처 | [AI/BI 아키텍처 심화](./aibi-architecture.md) |
-| 외부 BI 연동 | [하이브리드 BI 전략](./hybrid-bi-strategy.md) |
+| 대시보드 상세 | [AI/BI 대시보드](./lakeview-dashboards) |
+| Genie 상세 | [Genie](./genie) |
+| 알림 상세 | [알림과 스케줄링](./alerts-and-scheduling) |
+| 기술 아키텍처 | [AI/BI 아키텍처 심화](./aibi-architecture) |
+| 외부 BI 연동 | [하이브리드 BI 전략](./hybrid-bi-strategy) |
 
 ---
 

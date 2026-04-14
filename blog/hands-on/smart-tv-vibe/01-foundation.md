@@ -314,4 +314,4 @@ Unity Catalog에서 데이터 거버넌스가 왜 중요한지,
 
 ## 다음 단계
 
-→ [Module 2: Data Engineering - 스마트TV 데이터 파이프라인](../02-data-engineering/README.md)
+→ [Module 2: Data Engineering - 스마트TV 데이터 파이프라인](../02-data-engineering/README)

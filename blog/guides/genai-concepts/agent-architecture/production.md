@@ -4,7 +4,7 @@ title: "프로덕션 운영 가이드"
 
 # 프로덕션 운영 가이드
 
-[← AI Agent 아키텍처 개요](README.md)
+[← AI Agent 아키텍처 개요](README)
 
 ---
 
@@ -254,4 +254,4 @@ RPA(Robotic Process Automation)는 **규칙 기반(if-then)** 자동화입니다
 
 ---
 
-[← AI Agent 아키텍처 개요로 돌아가기](README.md)
+[← AI Agent 아키텍처 개요로 돌아가기](README)

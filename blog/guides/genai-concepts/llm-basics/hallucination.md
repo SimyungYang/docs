@@ -4,7 +4,7 @@ title: "Hallucination (환각)"
 
 # Hallucination (환각)
 
-[\< LLM 기초 목차로 돌아가기](README.md)
+[\< LLM 기초 목차로 돌아가기](README)
 
 ---
 
@@ -286,4 +286,4 @@ safety:
 
 ---
 
-[\< 이전: LLM 내부 작동 직관적 이해](internals.md) | [다음: 주요 LLM 모델 비교 >](models.md)
+[\< 이전: LLM 내부 작동 직관적 이해](internals) | [다음: 주요 LLM 모델 비교 >](models)

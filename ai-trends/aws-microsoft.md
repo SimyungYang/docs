@@ -5,7 +5,7 @@ title: "AWS & Microsoft AI 동향 분석 (2026년 초 기준)"
 # AWS & Microsoft AI 동향 분석 (2026년 초 기준)
 
 > **참고**
-**이 문서의 범위**: Amazon/AWS와 Microsoft의 AI 전략, 모델, 클라우드 AI 플랫폼을 종합 분석합니다. Agent 전략 상세는 [AWS, Microsoft & Meta AI Agent 전략](../guides/genai-concepts/agent-landscape/aws-others.md)을 참고하세요.
+**이 문서의 범위**: Amazon/AWS와 Microsoft의 AI 전략, 모델, 클라우드 AI 플랫폼을 종합 분석합니다. Agent 전략 상세는 [AWS, Microsoft & Meta AI Agent 전략](../guides/genai-concepts/agent-landscape/aws-others)을 참고하세요.
 
 
 ---
@@ -262,4 +262,4 @@ Phi 시리즈의 전략적 의미는 **"소형 모델로도 충분한 작업에 
 - [Microsoft Copilot](https://copilot.microsoft.com/)
 - [GitHub Copilot](https://github.com/features/copilot)
 - [Phi-4 기술 보고서](https://www.microsoft.com/en-us/research/publication/phi-4-technical-report/)
-- [AI Agent 업계 동향 — AWS, Microsoft & Meta](../guides/genai-concepts/agent-landscape/aws-others.md)
+- [AI Agent 업계 동향 — AWS, Microsoft & Meta](../guides/genai-concepts/agent-landscape/aws-others)

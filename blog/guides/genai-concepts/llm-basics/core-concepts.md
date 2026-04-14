@@ -4,7 +4,7 @@ title: "핵심 개념"
 
 # 핵심 개념
 
-[\< LLM 기초 목차로 돌아가기](README.md)
+[\< LLM 기초 목차로 돌아가기](README)
 
 ---
 
@@ -191,4 +191,4 @@ Self-Attention은 모든 토큰 쌍의 관계를 계산합니다. 토큰 수가 
 
 ---
 
-[\< 이전: Transformer 아키텍처](transformer.md) | [다음: LLM 학습 과정 >](training.md)
+[\< 이전: Transformer 아키텍처](transformer) | [다음: LLM 학습 과정 >](training)

@@ -280,4 +280,4 @@ MLflow Experiment UI에서 여러 Run을 시각적으로 비교할 수 있습니
 
 ## 다음 단계
 
-평가가 완료되면 [RAG 배포](deployment.md)에서 프로덕션 환경에 배포합니다.
+평가가 완료되면 [RAG 배포](deployment)에서 프로덕션 환경에 배포합니다.

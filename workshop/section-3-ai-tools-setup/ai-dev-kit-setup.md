@@ -5,8 +5,8 @@ title: "AI Dev Kit 설치 & 구성"
 # AI Dev Kit 설치 & 구성
 
 > **사전 조건**:
-> - **방법 1 (Claude Code 로컬)**: Databricks CLI 인증 완료 ([claude-code.md Step 2](claude-code.md) 참조)
-> - **방법 2 (Genie Code MCP)**: [Section 2: AI Builder App 배포](../section-2-ai-builder-app/README.md) 완료
+> - **방법 1 (Claude Code 로컬)**: Databricks CLI 인증 완료 ([claude-code.md Step 2](claude-code) 참조)
+> - **방법 2 (Genie Code MCP)**: [Section 2: AI Builder App 배포](../section-2-ai-builder-app/README) 완료
 
 ---
 
@@ -40,7 +40,7 @@ claude
 
 Genie Code에서 AI Dev Kit을 사용하려면 **Databricks App으로 MCP 서버를 배포**해야 합니다.
 
-전체 절차 (레포 클론 → 앱 생성 → 소스 업로드 → 배포 → 서비스 프린시펄 권한 부여)는 **[Section 2: AI Builder App 배포 핸즈온](../section-2-ai-builder-app/README.md)**에서 단계별로 상세히 안내합니다.
+전체 절차 (레포 클론 → 앱 생성 → 소스 업로드 → 배포 → 서비스 프린시펄 권한 부여)는 **[Section 2: AI Builder App 배포 핸즈온](../section-2-ai-builder-app/README)**에서 단계별로 상세히 안내합니다.
 
 > 💡 **핵심 포인트**: 앱 이름은 반드시 `mcp-` 접두사로 시작해야 Genie Code Settings에서 MCP 서버로 인식됩니다.
 
@@ -97,4 +97,4 @@ SDP 파이프라인 관련 Skill이 있으면 내용을 요약해줘.
 
 ## 다음 단계
 
-- **[Genie Code + AI Dev Kit 연결](genie-code-aidevkit.md)** — MCP 서버를 Genie Code에 연결하고 테스트
+- **[Genie Code + AI Dev Kit 연결](genie-code-aidevkit)** — MCP 서버를 Genie Code에 연결하고 테스트

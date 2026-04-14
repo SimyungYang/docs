@@ -4,9 +4,9 @@ title: "04. AI/BI 대시보드 & Genie Space — 분석과 자연어 탐색"
 
 # 04. AI/BI 대시보드 & Genie Space — 분석과 자연어 탐색
 
-> **소요 시간**: ~1.5시간 | **사전 조건**: [03. SDP 파이프라인](03-sdp-pipeline.md) 완료 (Gold 테이블 10개 필요)
+> **소요 시간**: ~1.5시간 | **사전 조건**: [03. SDP 파이프라인](03-sdp-pipeline) 완료 (Gold 테이블 10개 필요)
 >
-> **MCP 필수**: Genie Space 생성에는 AI Dev Kit MCP 연결이 필요합니다 ([Section 3 참조](../section-3-ai-tools-setup/genie-code-aidevkit.md)). MCP가 안 되면 [UI 대안 경로](../section-3-ai-tools-setup/genie-code-aidevkit.md#mcp-문제-발생-시-대안-경로)를 사용하세요. 대시보드는 MCP 없이도 Genie Code 사이드 패널에서 생성 가능합니다.
+> **MCP 필수**: Genie Space 생성에는 AI Dev Kit MCP 연결이 필요합니다 ([Section 3 참조](../section-3-ai-tools-setup/genie-code-aidevkit)). MCP가 안 되면 [UI 대안 경로](../section-3-ai-tools-setup/genie-code-aidevkit#mcp-문제-발생-시-대안-경로)를 사용하세요. 대시보드는 MCP 없이도 Genie Code 사이드 패널에서 생성 가능합니다.
 >
 > **핵심 메시지**: "대시보드는 '알려진 질문'에 답하고, Genie는 '아직 모르는 질문'에 답한다"
 
@@ -762,4 +762,4 @@ Smart TV Operations Dashboard를 Databricks Apps로 배포해줘.
 
 ## 다음 단계
 
-- **[05. 에이전트 개발](05-agent-development.md)** — Knowledge Assistant, Genie Agent, Supervisor Agent 구축
+- **[05. 에이전트 개발](05-agent-development)** — Knowledge Assistant, Genie Agent, Supervisor Agent 구축

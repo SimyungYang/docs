@@ -4,7 +4,7 @@ title: "Agent 프레임워크 비교"
 
 # Agent 프레임워크 비교
 
-[← AI Agent 아키텍처 개요](README.md)
+[← AI Agent 아키텍처 개요](README)
 
 ---
 
@@ -122,4 +122,4 @@ result = crew.kickoff()
 
 ---
 
-[다음: 프로덕션 운영 가이드 →](production.md)
+[다음: 프로덕션 운영 가이드 →](production)

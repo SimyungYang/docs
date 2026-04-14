@@ -16,10 +16,10 @@ title: "11. Lakebase (OLTP 데이터베이스)"
 
 | 순서 | 문서 | 내용 |
 |------|------|------|
-| 1 | [Lakebase란?](what-is-lakebase.md) | 개념, PostgreSQL 호환성, 오토스케일링, 사용 시나리오를 설명합니다 |
-| 2 | [Lakebase 설정](lakebase-setup.md) | 인스턴스 생성, 연결, 테이블 관리를 안내합니다 |
-| 3 | [Data Sync](data-sync.md) | Lakebase ↔ Delta Lake 자동 동기화를 설명합니다 |
-| 4 | [Apps 연동](lakebase-with-apps.md) | Databricks Apps에서 Lakebase를 백엔드로 활용하는 방법을 다룹니다 |
+| 1 | [Lakebase란?](what-is-lakebase) | 개념, PostgreSQL 호환성, 오토스케일링, 사용 시나리오를 설명합니다 |
+| 2 | [Lakebase 설정](lakebase-setup) | 인스턴스 생성, 연결, 테이블 관리를 안내합니다 |
+| 3 | [Data Sync](data-sync) | Lakebase ↔ Delta Lake 자동 동기화를 설명합니다 |
+| 4 | [Apps 연동](lakebase-with-apps) | Databricks Apps에서 Lakebase를 백엔드로 활용하는 방법을 다룹니다 |
 
 ## 참고 문서
 - [Databricks: Lakebase](https://docs.databricks.com/aws/en/lakebase/)

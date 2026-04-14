@@ -14,19 +14,19 @@ AI 시장은 2025-2026년을 기점으로 **"모델 경쟁"에서 "에이전트 
 
 | 기업 | 핵심 모델/제품 | 2026년 핵심 전략 | 상세 |
 |------|--------------|-----------------|------|
-| **OpenAI** | GPT-4o, o3/o4-mini, Codex | 추론 모델 + Agent SDK | [상세 보기](openai.md) |
-| **Anthropic** | Claude 4.5/4.6 Opus | MCP 프로토콜 + Claude Code | [상세 보기](anthropic.md) |
-| **Google** | Gemini 2.5 Pro/Flash | A2A 프로토콜 + Agentspace | [상세 보기](google.md) |
-| **Meta** | Llama 4 Scout/Maverick | 오픈소스 MoE + 제품 통합 | [상세 보기](meta.md) |
-| **AWS & Microsoft** | Nova, Amazon Q / Copilot, Phi | 클라우드 AI 플랫폼 | [상세 보기](aws-microsoft.md) |
-| **Tesla & xAI** | FSD, Optimus / Grok 3 | 물리적 AI + 슈퍼컴퓨터 | [상세 보기](tesla-xai-others.md) |
+| **OpenAI** | GPT-4o, o3/o4-mini, Codex | 추론 모델 + Agent SDK | [상세 보기](openai) |
+| **Anthropic** | Claude 4.5/4.6 Opus | MCP 프로토콜 + Claude Code | [상세 보기](anthropic) |
+| **Google** | Gemini 2.5 Pro/Flash | A2A 프로토콜 + Agentspace | [상세 보기](google) |
+| **Meta** | Llama 4 Scout/Maverick | 오픈소스 MoE + 제품 통합 | [상세 보기](meta) |
+| **AWS & Microsoft** | Nova, Amazon Q / Copilot, Phi | 클라우드 AI 플랫폼 | [상세 보기](aws-microsoft) |
+| **Tesla & xAI** | FSD, Optimus / Grok 3 | 물리적 AI + 슈퍼컴퓨터 | [상세 보기](tesla-xai-others) |
 
 ## 특별 주제
 
 | 주제 | 설명 | 상세 |
 |------|------|------|
-| **한국어 LLM 동향** | HyperCLOVA X, SOLAR, Qwen, DeepSeek의 한국어 지원 | [상세 보기](korean-llm.md) |
-| **2026 AI 트렌드 종합** | Agentic AI, 추론 모델, 멀티모달, 오픈소스 등 핵심 트렌드 | [상세 보기](trends-summary.md) |
+| **한국어 LLM 동향** | HyperCLOVA X, SOLAR, Qwen, DeepSeek의 한국어 지원 | [상세 보기](korean-llm) |
+| **2026 AI 트렌드 종합** | Agentic AI, 추론 모델, 멀티모달, 오픈소스 등 핵심 트렌드 | [상세 보기](trends-summary) |
 
 ## 2026년 핵심 키워드
 

@@ -7,7 +7,7 @@ title: "ML 핵심 개념"
 이 섹션은 머신러닝의 기초부터 최신 기법까지, GenAI 이전의 **전통적 ML/DL** 지식을 체계적으로 정리합니다. GenAI가 주목받는 시대에도, 예측 모델링, 이상 탐지, 추천 시스템 등 많은 비즈니스 문제는 여전히 전통 ML로 해결됩니다.
 
 > **참고**
-**학습 경로**: GenAI가 처음이라면 [GenAI 핵심 개념](../genai-concepts/README.md)부터 시작하세요. ML 모델링 경험이 있고 최신 기법/운영 전략이 필요하다면 이 섹션이 적합합니다.
+**학습 경로**: GenAI가 처음이라면 [GenAI 핵심 개념](../genai-concepts/README)부터 시작하세요. ML 모델링 경험이 있고 최신 기법/운영 전략이 필요하다면 이 섹션이 적합합니다.
 
 
 ---
@@ -40,9 +40,9 @@ title: "ML 핵심 개념"
 
 | 가이드 | 설명 | 난이도 |
 |--------|------|--------|
-| [Databricks ML 기능 전체 가이드](databricks-ml-features.md) | Databricks ML/AI 플랫폼 전체 아키텍처, Feature Store, AutoML, MLflow, Model Serving, GenAI Agent, MLOps 파이프라인 | 입문~고급 |
-| [ML 트렌드 & 최신 기법](ml-trends.md) | 알고리즘 70년 진화, Gradient Boosting 비교, 불균형 데이터, HPO, AutoML, 앙상블, Feature Selection, 이상탐지 트렌드 | 중급~고급 |
-| [재학습 전략](retraining-strategies.md) | Data/Concept Drift, 재학습 트리거, Incremental/Continual/Online Learning, Active Learning, RL 기반 전략 자동 선택 | 중급~고급 |
+| [Databricks ML 기능 전체 가이드](databricks-ml-features) | Databricks ML/AI 플랫폼 전체 아키텍처, Feature Store, AutoML, MLflow, Model Serving, GenAI Agent, MLOps 파이프라인 | 입문~고급 |
+| [ML 트렌드 & 최신 기법](ml-trends) | 알고리즘 70년 진화, Gradient Boosting 비교, 불균형 데이터, HPO, AutoML, 앙상블, Feature Selection, 이상탐지 트렌드 | 중급~고급 |
+| [재학습 전략](retraining-strategies) | Data/Concept Drift, 재학습 트리거, Incremental/Continual/Online Learning, Active Learning, RL 기반 전략 자동 선택 | 중급~고급 |
 
 ---
 
@@ -63,6 +63,6 @@ title: "ML 핵심 개념"
 
 ## 다음 단계
 
-- ML을 실전에 적용하고 싶다면 → [MLOps 핸즈온 워크샵](../../hands-on/predictive-maintenance/README.md)
-- GenAI를 배우고 싶다면 → [GenAI 핵심 개념](../genai-concepts/README.md)
-- RAG 시스템을 만들고 싶다면 → [RAG 가이드](../rag/README.md)
+- ML을 실전에 적용하고 싶다면 → [MLOps 핸즈온 워크샵](../../hands-on/predictive-maintenance/README)
+- GenAI를 배우고 싶다면 → [GenAI 핵심 개념](../genai-concepts/README)
+- RAG 시스템을 만들고 싶다면 → [RAG 가이드](../rag/README)

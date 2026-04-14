@@ -202,7 +202,7 @@ for table in tables:
     print(f"✅ {table} 유지 보수 완료")
 ```
 
-> 💡 **Predictive Optimization** 이 활성화된 Managed Table이라면, OPTIMIZE와 VACUUM을 Databricks가 자동으로 실행합니다. 수동 유지 보수가 필요 없어지므로, 가능하다면 Predictive Optimization 사용을 권장합니다. 자세한 내용은 [Predictive Optimization](./predictive-optimization.md) 문서를 참고하세요.
+> 💡 **Predictive Optimization** 이 활성화된 Managed Table이라면, OPTIMIZE와 VACUUM을 Databricks가 자동으로 실행합니다. 수동 유지 보수가 필요 없어지므로, 가능하다면 Predictive Optimization 사용을 권장합니다. 자세한 내용은 [Predictive Optimization](./predictive-optimization) 문서를 참고하세요.
 
 ---
 

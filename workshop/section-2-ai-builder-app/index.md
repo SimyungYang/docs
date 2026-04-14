@@ -234,7 +234,7 @@ mcp-ai-dev-kit 앱이 정상적으로 배포됐는지 확인해줘.
 | **MCP 도구 호출 실패** | "Error calling tool: manage_genie" | 서비스 프린시펄 권한 부족 또는 앱 크래시 | 1) `databricks apps logs mcp-ai-dev-kit`로 에러 확인 2) 권한 재부여 3) 앱 재배포 |
 | **앱이 갑자기 CRASHED** | Settings에서 서버가 빨간색 | 메모리 초과 또는 내부 오류 | `databricks apps get mcp-ai-dev-kit`로 상태 확인 후 재배포: `databricks apps deploy mcp-ai-dev-kit --source-code-path "$APP_PATH"` |
 | **새 도구가 반영 안 됨** | AI Dev Kit 업데이트 후 도구 목록이 그대로 | 앱 소스 코드가 이전 버전 | git pull → 소스 재업로드 → 재배포 |
-| **Genie Space 생성 시 권한 에러** | `manage_genie` 호출 후 403 | 서비스 프린시펄에 Genie Space CAN_MANAGE 권한 없음 | [Section 3 Step 4](../section-3-ai-tools-setup/genie-code-aidevkit.md) 권한 부여 스크립트 실행 |
+| **Genie Space 생성 시 권한 에러** | `manage_genie` 호출 후 403 | 서비스 프린시펄에 Genie Space CAN_MANAGE 권한 없음 | [Section 3 Step 4](../section-3-ai-tools-setup/genie-code-aidevkit) 권한 부여 스크립트 실행 |
 | **SQL 실행 도구 에러** | `execute_sql` 호출 시 "Warehouse not found" | 서비스 프린시펄에 SQL Warehouse 접근 권한 없음 | Step 5의 SQL Warehouse 권한 부여 재실행 |
 
 ### MCP 서버 상태 진단 프롬프트
@@ -275,4 +275,4 @@ watch databricks apps get mcp-ai-dev-kit
 
 ## 다음 단계
 
-앱 배포가 완료되면 **[Section 3: AI 도구 환경 구성](../section-3-ai-tools-setup/README.md)**으로 이동하여 AI Gateway → Claude Code → AI Dev Kit 순서로 구성합니다.
+앱 배포가 완료되면 **[Section 3: AI 도구 환경 구성](../section-3-ai-tools-setup/README)**으로 이동하여 AI Gateway → Claude Code → AI Dev Kit 순서로 구성합니다.

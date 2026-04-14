@@ -408,7 +408,7 @@ GitHub MCP 서버를 연결하면 Genie Code에서 엔터프라이즈 코드 검
 | **Vector Search** | RAG 패턴으로 관련 문서 검색 후 분석에 활용 |
 
 > **팁**
-업계에서 많이 활용되는 MCP 서버 전체 목록과 실전 자동화 시나리오는 [인기 MCP 서버 & 활용 시나리오](../mcp/popular-servers.md)에서 확인하세요. Slack/Teams 알림, JIRA 티켓 생성, 스프린트 보고서 자동화 등 10가지 실전 시나리오를 다룹니다.
+업계에서 많이 활용되는 MCP 서버 전체 목록과 실전 자동화 시나리오는 [인기 MCP 서버 & 활용 시나리오](../mcp/popular-servers)에서 확인하세요. Slack/Teams 알림, JIRA 티켓 생성, 스프린트 보고서 자동화 등 10가지 실전 시나리오를 다룹니다.
 
 
 ### 제한 사항
@@ -501,8 +501,8 @@ MCP에 대한 더 깊은 내용은 별도의 MCP 가이드에서 다룹니다:
 
 | 가이드 | 내용 |
 |--------|------|
-| [MCP 개요](../mcp/README.md) | MCP 프로토콜의 전략적 의미, 아키텍처, 표준화 동향 |
-| [일반 MCP 설정](../mcp/setup-general.md) | Claude Desktop, Claude Code, Cursor 등에서 MCP 설정 |
-| [Databricks MCP 활용](../mcp/databricks-mcp.md) | Managed/External/Custom MCP의 아키텍처와 보안 |
-| [인기 서버 & 시나리오](../mcp/popular-servers.md) | 카테고리별 인기 MCP 서버, 실전 조합 전략 |
-| [베스트 프랙티스](../mcp/best-practices.md) | Tool 설계, 비용 최적화, 프로덕션 운영 가이드 |
+| [MCP 개요](../mcp/README) | MCP 프로토콜의 전략적 의미, 아키텍처, 표준화 동향 |
+| [일반 MCP 설정](../mcp/setup-general) | Claude Desktop, Claude Code, Cursor 등에서 MCP 설정 |
+| [Databricks MCP 활용](../mcp/databricks-mcp) | Managed/External/Custom MCP의 아키텍처와 보안 |
+| [인기 서버 & 시나리오](../mcp/popular-servers) | 카테고리별 인기 MCP 서버, 실전 조합 전략 |
+| [베스트 프랙티스](../mcp/best-practices) | Tool 설계, 비용 최적화, 프로덕션 운영 가이드 |

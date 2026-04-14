@@ -446,10 +446,10 @@ st.write(response.choices[0].message.content)
 
 | 리소스 | 설명 |
 |--------|------|
-| [Databricks Apps 가이드](../../apps/README.md) | 이 블로그의 Databricks Apps 상세 가이드 |
-| [Agent Bricks 가이드](../../agent-bricks/README.md) | Knowledge Assistant, Genie Agent, Supervisor Agent |
-| [Builder App (AI Dev Kit)](../../builder-app/README.md) | Agent 개발 프레임워크 |
-| [AI Agent 아키텍처](../agent-architecture.md) | ReAct, Tool Use, Multi-Agent 패턴 |
+| [Databricks Apps 가이드](../../apps/README) | 이 블로그의 Databricks Apps 상세 가이드 |
+| [Agent Bricks 가이드](../../agent-bricks/README) | Knowledge Assistant, Genie Agent, Supervisor Agent |
+| [Builder App (AI Dev Kit)](../../builder-app/README) | Agent 개발 프레임워크 |
+| [AI Agent 아키텍처](../agent-architecture) | ReAct, Tool Use, Multi-Agent 패턴 |
 
 ### 추천 학습 경로
 
@@ -460,4 +460,4 @@ st.write(response.choices[0].message.content)
 
 ---
 
-[README로 돌아가기](README.md)
+[README로 돌아가기](README)

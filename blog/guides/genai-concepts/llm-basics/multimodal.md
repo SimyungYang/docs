@@ -4,7 +4,7 @@ title: "멀티모달 AI (Multimodal)"
 
 # 멀티모달 AI (Multimodal)
 
-[\< LLM 기초 목차로 돌아가기](README.md)
+[\< LLM 기초 목차로 돌아가기](README)
 
 ---
 
@@ -230,7 +230,7 @@ print(response.choices[0].message.content)
 
 ### 이미지 기반 이상탐지 (MLOps 핸즈온 연계)
 
-본 Enablement 블로그의 [예지보전 MLOps 핸즈온](../../../hands-on/predictive-maintenance/07-anomaly-detection.md)에서 실제 **이미지 기반 이상탐지** 파이프라인을 구현합니다. 센서 데이터뿐 아니라 제품 이미지를 활용한 이상탐지가 멀티모달의 대표적인 실전 사례입니다.
+본 Enablement 블로그의 [예지보전 MLOps 핸즈온](../../../hands-on/predictive-maintenance/07-anomaly-detection)에서 실제 **이미지 기반 이상탐지** 파이프라인을 구현합니다. 센서 데이터뿐 아니라 제품 이미지를 활용한 이상탐지가 멀티모달의 대표적인 실전 사례입니다.
 
 ### 대규모 이미지 전처리 파이프라인
 
@@ -318,4 +318,4 @@ results_df.write.saveAsTable("catalog.schema.image_analysis_results")
 
 ---
 
-[\< 이전: 실전 가이드](practical.md) | [LLM 기초 목차로 돌아가기](README.md)
+[\< 이전: 실전 가이드](practical) | [LLM 기초 목차로 돌아가기](README)

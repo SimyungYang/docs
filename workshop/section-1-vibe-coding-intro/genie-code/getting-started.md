@@ -116,4 +116,4 @@ Agent Mode가 코드를 실행하려 할 때 3가지 옵션이 나타납니다:
 
 ## 다음 단계
 
-- **[프롬프트 5대 원칙](prompt-principles.md)** — 같은 Genie Code를 써도 프롬프트에 따라 결과가 3배 차이납니다.
+- **[프롬프트 5대 원칙](prompt-principles)** — 같은 Genie Code를 써도 프롬프트에 따라 결과가 3배 차이납니다.

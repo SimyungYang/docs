@@ -24,7 +24,7 @@ Step 4: Genie Code + MCP — 노트북 안에서도 확장된 기능을 쓴다
 
 | 단계 | 배우는 것 | 핵심 메시지 |
 |------|----------|-----------|
-| [AI Gateway](ai-gateway.md) | 비용 관리, Rate Limit, 모니터링 | "AI 도구를 비용 통제하면서 도입할 수 있다" |
-| [Claude Code 사용하기](claude-code.md) | 설치, AI Gateway 연결, 사용법 | "이 환경에서 Claude Code를 안전하게 쓸 수 있다" |
-| [AI Dev Kit 설치](ai-dev-kit-setup.md) | MCP 서버 배포, Skills 배포 | "AI Dev Kit으로 Databricks 기능을 확장한다" |
-| [Genie Code + AI Dev Kit](genie-code-aidevkit.md) | MCP 연결, 도구 선택, 테스트 | "Genie Code에서 크로스 프로덕트 작업이 가능해진다" |
+| [AI Gateway](ai-gateway) | 비용 관리, Rate Limit, 모니터링 | "AI 도구를 비용 통제하면서 도입할 수 있다" |
+| [Claude Code 사용하기](claude-code) | 설치, AI Gateway 연결, 사용법 | "이 환경에서 Claude Code를 안전하게 쓸 수 있다" |
+| [AI Dev Kit 설치](ai-dev-kit-setup) | MCP 서버 배포, Skills 배포 | "AI Dev Kit으로 Databricks 기능을 확장한다" |
+| [Genie Code + AI Dev Kit](genie-code-aidevkit) | MCP 연결, 도구 선택, 테스트 | "Genie Code에서 크로스 프로덕트 작업이 가능해진다" |

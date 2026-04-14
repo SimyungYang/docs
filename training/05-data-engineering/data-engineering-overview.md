@@ -203,7 +203,7 @@ AS SELECT * FROM silver_sales_agg;
 | 순서 | 문서 | 핵심 학습 내용 |
 |:----:|------|-------------|
 | 1 | **본 문서** | 전체 그림 파악, 각 도구의 역할 이해 |
-| 2 | [수집 방법 선택 가이드](./choosing-ingestion-method.md) | 상황별 최적 수집 방법 결정 |
+| 2 | [수집 방법 선택 가이드](./choosing-ingestion-method) | 상황별 최적 수집 방법 결정 |
 | 3 | [Auto Loader](./auto-loader/) | 파일 기반 데이터 수집 마스터 |
 | 4 | [Lakeflow Connect](./lakeflow-connect/) | DB/SaaS 관리형 수집 이해 |
 | 5 | [SDP (선언적 파이프라인)](./spark-declarative-pipelines/) | 선언적 변환, 데이터 품질 관리 |
@@ -217,7 +217,7 @@ AS SELECT * FROM silver_sales_agg;
 
 | 주제 | 문서 |
 |------|------|
-| 파이프라인 오케스트레이션 패턴 | [실전 파이프라인 오케스트레이션 패턴](./pipeline-orchestration-patterns.md) |
+| 파이프라인 오케스트레이션 패턴 | [실전 파이프라인 오케스트레이션 패턴](./pipeline-orchestration-patterns) |
 
 ---
 

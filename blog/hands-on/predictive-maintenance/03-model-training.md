@@ -180,4 +180,4 @@ mlflow.log_metric("optimal_threshold", optimal_threshold)
 - **최적점**: PR 곡선에서 비용함수를 최소화하는 점 = `cost = FN x 50000 + FP x 3000`
 
 
-**다음 단계**: [04. 모델 등록](04-model-registration.md)
+**다음 단계**: [04. 모델 등록](04-model-registration)

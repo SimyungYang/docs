@@ -81,7 +81,7 @@ MCP Server는 독립적으로 사용할 수 있습니다. Builder App 없이도 
 | **Auth** | contextvars 기반 | 요청별 자격 증명 격리, 멀티 유저 지원 |
 
 > **팁**
-Builder App에 대한 상세 소개는 [Builder App](builder-app.md) 서브페이지를 참고하세요.
+Builder App에 대한 상세 소개는 [Builder App](builder-app) 서브페이지를 참고하세요.
 
 
 ### 3. Skills & Plugins
@@ -190,11 +190,11 @@ Builder App을 로컬 또는 Databricks Apps에 배포하여 사용하는 방법
 
 | 페이지 | 설명 |
 |--------|------|
-| [Builder App](builder-app.md) | Builder App 개요 -- 아키텍처, 핵심 컴포넌트, AI Playground와 비교 |
-| [Getting Started](getting-started.md) | 로컬 환경 설치부터 첫 프로젝트 생성까지 단계별 가이드 |
-| [배포 가이드](deployment-guide.md) | Databricks Apps 배포 전체 절차 -- Lakebase, LLM 선택, 트러블슈팅 |
-| [Tool 목록 및 상세](tools.md) | MCP 도구 30개+ 전체 목록, Built-in Tools, Skills System 상세 |
-| [활용 사례](use-cases.md) | 데이터 분석, RAG 구축, MLOps, 데모 환경 등 실전 시나리오 |
+| [Builder App](builder-app) | Builder App 개요 -- 아키텍처, 핵심 컴포넌트, AI Playground와 비교 |
+| [Getting Started](getting-started) | 로컬 환경 설치부터 첫 프로젝트 생성까지 단계별 가이드 |
+| [배포 가이드](deployment-guide) | Databricks Apps 배포 전체 절차 -- Lakebase, LLM 선택, 트러블슈팅 |
+| [Tool 목록 및 상세](tools) | MCP 도구 30개+ 전체 목록, Built-in Tools, Skills System 상세 |
+| [활용 사례](use-cases) | 데이터 분석, RAG 구축, MLOps, 데모 환경 등 실전 시나리오 |
 
 ---
 

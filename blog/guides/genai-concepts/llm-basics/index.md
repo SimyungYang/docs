@@ -33,11 +33,11 @@ LLM은 대규모 텍스트 데이터로 학습된 딥러닝 모델로, 자연어
 
 | 페이지 | 내용 |
 |--------|------|
-| [Transformer 아키텍처](transformer.md) | Self-Attention, Multi-Head Attention, Positional Encoding, Encoder vs Decoder |
-| [핵심 개념](core-concepts.md) | Token, 토큰화 알고리즘, Context Window, Temperature, Top-p |
-| [LLM 학습 과정](training.md) | Pre-training, SFT, RLHF/DPO 3단계 |
-| [LLM 내부 작동 직관적 이해](internals.md) | 패턴 매칭, 세계 모델, Scaling, 비유 모음 |
-| [Hallucination](hallucination.md) | 유형, 원인, 해결, 업종별 리스크 |
-| [주요 LLM 모델 비교](models.md) | 모델 비교표, MoE 아키텍처, Emergent Abilities |
-| [실전 가이드](practical.md) | Fine-tuning vs RAG vs Prompting, 추론 최적화, 비용 최적화, 모델 선택, 고객 FAQ |
-| [추론 모델](reasoning.md) | o1, o3, R1, Extended Thinking, Test-time Compute Scaling |
+| [Transformer 아키텍처](transformer) | Self-Attention, Multi-Head Attention, Positional Encoding, Encoder vs Decoder |
+| [핵심 개념](core-concepts) | Token, 토큰화 알고리즘, Context Window, Temperature, Top-p |
+| [LLM 학습 과정](training) | Pre-training, SFT, RLHF/DPO 3단계 |
+| [LLM 내부 작동 직관적 이해](internals) | 패턴 매칭, 세계 모델, Scaling, 비유 모음 |
+| [Hallucination](hallucination) | 유형, 원인, 해결, 업종별 리스크 |
+| [주요 LLM 모델 비교](models) | 모델 비교표, MoE 아키텍처, Emergent Abilities |
+| [실전 가이드](practical) | Fine-tuning vs RAG vs Prompting, 추론 최적화, 비용 최적화, 모델 선택, 고객 FAQ |
+| [추론 모델](reasoning) | o1, o3, R1, Extended Thinking, Test-time Compute Scaling |

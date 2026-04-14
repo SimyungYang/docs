@@ -424,7 +424,7 @@ Cross-encoder(질문과 문서를 하나의 입력으로 결합하여 Transforme
 3. **전문 용어 문맥 이해**: "Unity Catalog 권한 설정"이라는 질문에서, Bi-encoder는 "권한"이라는 키워드와 매칭되는 모든 문서를 비슷한 점수로 반환하지만, Cross-encoder는 "Unity Catalog의 권한"이라는 **구체적 문맥** 을 이해하여 정밀하게 순위를 매깁니다.
 
 > **참고**
-**실전 수치**: 한국어 기술 문서 RAG에서 Re-ranking을 추가하면 Top-5 Precision이 일반적으로 **10~25%p 향상** 됩니다. 특히 유사한 주제의 문서가 많은 도메인(예: Databricks 공식 문서처럼 여러 기능이 비슷한 키워드를 공유하는 경우)에서 효과가 두드러집니다. Re-ranking의 구체적인 구현 방법과 모델 비교는 [Re-ranking 개념](concepts/reranking.md) 및 [Reranking 전략](advanced-retrieval/reranking.md) 페이지를 참조하세요.
+**실전 수치**: 한국어 기술 문서 RAG에서 Re-ranking을 추가하면 Top-5 Precision이 일반적으로 **10~25%p 향상** 됩니다. 특히 유사한 주제의 문서가 많은 도메인(예: Databricks 공식 문서처럼 여러 기능이 비슷한 키워드를 공유하는 경우)에서 효과가 두드러집니다. Re-ranking의 구체적인 구현 방법과 모델 비교는 [Re-ranking 개념](concepts/reranking) 및 [Reranking 전략](advanced-retrieval/reranking) 페이지를 참조하세요.
 
 
 ### 한국어 특화 전처리
@@ -453,7 +453,7 @@ def preprocess_korean(text: str) -> str:
 
 - **한국어 평가 데이터셋을 직접 구축** 해야 합니다. 영어 벤치마크 결과가 한국어 성능을 보장하지 않습니다.
 - 평가 지표: Retrieval에는 **Recall@K** (상위 K개 결과 중 정답이 포함된 비율), **MRR(Mean Reciprocal Rank, 정답 문서가 몇 번째에 위치하는지의 역수 평균)**, 생성에는 **정확성**, **근거 충실도(Faithfulness, 답변이 제공된 컨텍스트에 근거하는 정도)** 를 측정합니다.
-- MLflow Evaluate를 활용한 평가 방법은 [RAG 평가](evaluation.md) 가이드를 참조하세요.
+- MLflow Evaluate를 활용한 평가 방법은 [RAG 평가](evaluation) 가이드를 참조하세요.
 
 > **주의**
 한국어 RAG 시스템을 평가할 때, LLM-as-Judge를 사용한다면 평가 프롬프트도 한국어로 작성하거나, 한국어 이해도가 높은 모델(Claude, GPT-4 등)을 Judge로 사용해야 합니다.

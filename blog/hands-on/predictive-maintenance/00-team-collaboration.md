@@ -356,4 +356,4 @@ api_key = dbutils.secrets.get(scope="lgit-secrets", key="openai-api-key")
 
 ---
 
-**다음 단계**: [01. Overview](01-overview.md) 에서 전체 PoC 아키텍처를 확인합니다.
+**다음 단계**: [01. Overview](01-overview) 에서 전체 PoC 아키텍처를 확인합니다.

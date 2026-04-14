@@ -16,10 +16,10 @@ title: "05-4. Lakeflow Jobs (워크플로우)"
 
 | 순서 | 문서 | 내용 |
 |------|------|------|
-| 1 | [Lakeflow Jobs란?](what-is-lakeflow-jobs.md) | 워크플로우 오케스트레이션 개념, Task 유형, 시스템 제약을 설명합니다 |
-| 2 | [작업 구성](job-configuration.md) | 태스크, 의존성, 매개변수, Asset Bundles 설정을 다룹니다 |
-| 3 | [스케줄링과 트리거](scheduling-and-triggers.md) | Cron, 파일 도착 트리거, Continuous 모드를 안내합니다 |
-| 4 | [모니터링과 알림](monitoring-and-alerting.md) | 실행 이력, 시스템 테이블 쿼리, 비용 추적을 설명합니다 |
+| 1 | [Lakeflow Jobs란?](what-is-lakeflow-jobs) | 워크플로우 오케스트레이션 개념, Task 유형, 시스템 제약을 설명합니다 |
+| 2 | [작업 구성](job-configuration) | 태스크, 의존성, 매개변수, Asset Bundles 설정을 다룹니다 |
+| 3 | [스케줄링과 트리거](scheduling-and-triggers) | Cron, 파일 도착 트리거, Continuous 모드를 안내합니다 |
+| 4 | [모니터링과 알림](monitoring-and-alerting) | 실행 이력, 시스템 테이블 쿼리, 비용 추적을 설명합니다 |
 
 ## 참고 문서
 - [Databricks: Lakeflow Jobs](https://docs.databricks.com/aws/en/jobs/)

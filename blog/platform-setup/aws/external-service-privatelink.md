@@ -210,7 +210,7 @@ Databricks가 자동으로 VPC Endpoint를 생성합니다.
 승인 후 수 분 내에 NCC의 상태가 **ESTABLISHED** 로 변경됩니다.
 
 > **참고**
-NCC 구성에 대한 상세 가이드는 [Serverless NCC 가이드](serverless-ncc.md) 페이지를 참고하세요.
+NCC 구성에 대한 상세 가이드는 [Serverless NCC 가이드](serverless-ncc) 페이지를 참고하세요.
 
 
 ---
@@ -255,4 +255,4 @@ NCC 구성에 대한 상세 가이드는 [Serverless NCC 가이드](serverless-n
 
 ### NCC / Serverless Private Connectivity (Databricks → 외부)
 * [Configure serverless private connectivity (NCC)](https://docs.databricks.com/aws/en/security/network/serverless-network-security/serverless-private-connectivity)
-* [Serverless NCC 가이드 (본 블로그)](serverless-ncc.md)
+* [Serverless NCC 가이드 (본 블로그)](serverless-ncc)

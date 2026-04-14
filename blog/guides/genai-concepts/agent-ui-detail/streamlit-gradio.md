@@ -231,4 +231,4 @@ Hugging Face Spaces에 배포하면 영구 URL을 얻을 수 있습니다. GitHu
 
 ---
 
-[README로 돌아가기](README.md) | 다음: [Chainlit & Dash](chainlit-dash.md)
+[README로 돌아가기](README) | 다음: [Chainlit & Dash](chainlit-dash)

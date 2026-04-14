@@ -382,7 +382,7 @@ df_filtered = (
 
 ### 다음 단계
 
-- [JSON 수집과 스키마 진화](json-and-schema-evolution.md) — JSON 포맷 수집과 새 컬럼이 추가되었을 때의 자동 대응을 실습합니다.
+- [JSON 수집과 스키마 진화](json-and-schema-evolution) — JSON 포맷 수집과 새 컬럼이 추가되었을 때의 자동 대응을 실습합니다.
 
 ---
 

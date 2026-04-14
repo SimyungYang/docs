@@ -4,7 +4,7 @@ title: "03. SDP 파이프라인 — 데이터 품질과 Medallion Architecture"
 
 # 03. SDP 파이프라인 — 데이터 품질과 Medallion Architecture
 
-> **소요 시간**: ~1시간 | **사전 조건**: [02. 가상 데이터 생성](02-data-generation.md) 완료 (17개 Bronze 테이블 필요)
+> **소요 시간**: ~1시간 | **사전 조건**: [02. 가상 데이터 생성](02-data-generation) 완료 (17개 Bronze 테이블 필요)
 >
 > **핵심 메시지**: "Raw 데이터를 신뢰할 수 있는 분석용 데이터로 바꾸는 과정을 자연어 한 줄로 자동화한다"
 
@@ -24,7 +24,7 @@ title: "03. SDP 파이프라인 — 데이터 품질과 Medallion Architecture"
 1. **수동 CTAS**로 Bronze→Silver→Gold 변환 로직을 이해한 뒤
 2. **SDP(Spark Declarative Pipeline)**로 동일 로직을 선언적으로 자동화합니다
 
-> **참고**: 데이터 품질 위반 레코드를 격리하는 `quarantine` 스키마는 [01. 환경 설정](01-setup.md)에서 이미 생성했습니다.
+> **참고**: 데이터 품질 위반 레코드를 격리하는 `quarantine` 스키마는 [01. 환경 설정](01-setup)에서 이미 생성했습니다.
 
 > Genie Code에서 전체 파이프라인을 한 번의 대화로 생성합니다.
 
@@ -583,4 +583,4 @@ lge_smart_tv_pipeline을 매일 자동 실행하는 Job을 만들어줘.
 
 ## 다음 단계
 
-- **[04. 대시보드 & Genie Space](04-dashboard-genie.md)** — Gold 테이블로 대시보드와 Genie Space 구축, 정확도 고도화
+- **[04. 대시보드 & Genie Space](04-dashboard-genie)** — Gold 테이블로 대시보드와 Genie Space 구축, 정확도 고도화

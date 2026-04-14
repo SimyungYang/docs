@@ -11,7 +11,7 @@ Anthropic은 2021년 OpenAI 출신 Dario Amodei, Daniela Amodei 형제가 설립
 이 문서는 Anthropic의 모델 진화, 핵심 제품, 생태계 전략, 안전성 연구, 비즈니스 현황을 종합적으로 분석합니다.
 
 > **참고**
-**이 문서의 범위**: 2024년 하반기부터 2026년 초까지의 Anthropic 동향을 다룹니다. Agent 설계 패턴, MCP 기술 상세, Claude Code 활용법 등은 별도의 전문 가이드([Anthropic AI Agent 전략](../guides/genai-concepts/agent-landscape/anthropic.md), [MCP 가이드](../guides/mcp/README.md))를 참고하세요.
+**이 문서의 범위**: 2024년 하반기부터 2026년 초까지의 Anthropic 동향을 다룹니다. Agent 설계 패턴, MCP 기술 상세, Claude Code 활용법 등은 별도의 전문 가이드([Anthropic AI Agent 전략](../guides/genai-concepts/agent-landscape/anthropic), [MCP 가이드](../guides/mcp/README))를 참고하세요.
 
 
 ---

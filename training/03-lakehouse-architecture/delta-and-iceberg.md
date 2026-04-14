@@ -350,7 +350,7 @@ iceberg.rest-catalog.oauth2.token=<access-token>
 | **Credential Vending** | 외부 엔진에 임시 클라우드 자격증명을 발급하여 안전한 데이터 접근을 보장합니다 |
 | **Foreign Iceberg Tables** | 외부 Iceberg 테이블을 Databricks에서 읽는 기능입니다 |
 
-이것으로 **레이크하우스 아키텍처** 섹션을 마치겠습니다. 다음 섹션에서는 코드를 실행하는 [컴퓨트와 워크스페이스](../04-compute-and-workspace/README.md)에 대해 알아보겠습니다.
+이것으로 **레이크하우스 아키텍처** 섹션을 마치겠습니다. 다음 섹션에서는 코드를 실행하는 [컴퓨트와 워크스페이스](../04-compute-and-workspace/README)에 대해 알아보겠습니다.
 
 ---
 

@@ -185,4 +185,4 @@ class LangGraphOnDatabricks(ChatAgent):
 
 ---
 
-[README로 돌아가기](README.md) | 다음: [종합 비교 & 선택 가이드](comparison.md)
+[README로 돌아가기](README) | 다음: [종합 비교 & 선택 가이드](comparison)

@@ -39,15 +39,15 @@ Lakeflow Declarative Pipeline(구 DLT)은 선언적으로 데이터 파이프라
 
 이 가이드는 세 개의 서브페이지로 구성됩니다.
 
-### [Streaming Table 증분 처리](streaming-table.md)
+### [Streaming Table 증분 처리](streaming-table)
 
 Streaming Table에서 Full Refresh가 발생하는 정확한 조건, Full Refresh 없이 가능한 변경, 보호 설정(`pipelines.reset.allowed`), Append Flow 패턴, 체크포인트 복구 옵션을 다룹니다.
 
-### [Materialized View 증분 처리](materialized-view.md)
+### [Materialized View 증분 처리](materialized-view)
 
 Enzyme(Databricks 내부 최적화 엔진)의 동작 원리, Full Recompute를 유발하는 5가지 원인, 소스 테이블 전제조건(Row Tracking, Deletion Vectors, CDF), 쿼리 설계 원칙, REFRESH POLICY(Beta)를 다룹니다.
 
-### [CDC & 실전 체크리스트](cdc-checklist.md)
+### [CDC & 실전 체크리스트](cdc-checklist)
 
 APPLY CHANGES(AUTO CDC)를 활용한 SCD Type 1/2 패턴과, 파이프라인 설계/수정/모니터링을 위한 실전 체크리스트를 제공합니다.
 

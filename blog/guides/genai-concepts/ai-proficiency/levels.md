@@ -142,4 +142,4 @@ D사는 기술적으로 완벽한 AI CoE를 구축했습니다. 최고의 ML 엔
 
 ---
 
-[README로 돌아가기](README.md) | 다음: [레벨 전환 & ROI](transition.md)
+[README로 돌아가기](README) | 다음: [레벨 전환 & ROI](transition)

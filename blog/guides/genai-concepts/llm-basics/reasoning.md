@@ -4,7 +4,7 @@ title: "추론 모델 (Reasoning Models)"
 
 # 추론 모델 (Reasoning Models)
 
-[\< LLM 기초 목차로 돌아가기](README.md)
+[\< LLM 기초 목차로 돌아가기](README)
 
 ---
 
@@ -354,15 +354,15 @@ Databricks Foundation Model APIs를 통해 주요 추론 모델을 바로 사용
 
 | 페이지 | 내용 |
 |--------|------|
-| [Transformer 아키텍처](transformer.md) | Self-Attention, Multi-Head Attention, Positional Encoding |
-| [핵심 개념](core-concepts.md) | Token, 토큰화, Context Window, Temperature, Top-p |
-| [LLM 학습 과정](training.md) | Pre-training, SFT, RLHF/DPO 3단계 |
-| [LLM 내부 작동 직관적 이해](internals.md) | 패턴 매칭, 세계 모델, Scaling, 비유 모음 |
-| [Hallucination](hallucination.md) | 유형, 원인, 해결, 업종별 리스크 |
-| [주요 LLM 모델 비교](models.md) | 모델 비교표, MoE 아키텍처, Emergent Abilities |
-| [실전 가이드](practical.md) | Fine-tuning vs RAG vs Prompting, 추론 최적화, 비용 최적화 |
+| [Transformer 아키텍처](transformer) | Self-Attention, Multi-Head Attention, Positional Encoding |
+| [핵심 개념](core-concepts) | Token, 토큰화, Context Window, Temperature, Top-p |
+| [LLM 학습 과정](training) | Pre-training, SFT, RLHF/DPO 3단계 |
+| [LLM 내부 작동 직관적 이해](internals) | 패턴 매칭, 세계 모델, Scaling, 비유 모음 |
+| [Hallucination](hallucination) | 유형, 원인, 해결, 업종별 리스크 |
+| [주요 LLM 모델 비교](models) | 모델 비교표, MoE 아키텍처, Emergent Abilities |
+| [실전 가이드](practical) | Fine-tuning vs RAG vs Prompting, 추론 최적화, 비용 최적화 |
 | **추론 모델**(현재 페이지) | o1, o3, R1, Extended Thinking, Test-time Compute |
 
 ---
 
-[\< LLM 기초 목차로 돌아가기](README.md) · [다음: Transformer 아키텍처 →](transformer.md)
+[\< LLM 기초 목차로 돌아가기](README) · [다음: Transformer 아키텍처 →](transformer)

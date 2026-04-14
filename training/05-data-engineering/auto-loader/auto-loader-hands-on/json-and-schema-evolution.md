@@ -24,7 +24,7 @@ JSON (JavaScript Object Notation) 파일을 수집하면서, 소스 시스템이
 
 ## 사전 준비
 
-[실습 1: 사전 준비와 CSV 수집](setup-and-csv.md) 을 완료해야 합니다.
+[실습 1: 사전 준비와 CSV 수집](setup-and-csv) 을 완료해야 합니다.
 
 - 카탈로그 `training`, 스키마 `auto_loader_lab`, Volume `raw_data` 가 존재해야 합니다.
 - 다음 Python 임포트를 노트북 첫 셀에서 실행합니다:
@@ -432,7 +432,7 @@ df_large = (
 
 ### 다음 단계
 
-- [SDP와 Auto Loader 통합](sdp-integration.md) — `read_files()` 함수로 Medallion Architecture (메달리온 아키텍처) 파이프라인을 구축합니다.
+- [SDP와 Auto Loader 통합](sdp-integration) — `read_files()` 함수로 Medallion Architecture (메달리온 아키텍처) 파이프라인을 구축합니다.
 
 ---
 

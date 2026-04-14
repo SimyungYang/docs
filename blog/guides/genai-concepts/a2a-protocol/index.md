@@ -140,9 +140,9 @@ A2A Task 위임:
 
 | 페이지 | 내용 |
 |--------|------|
-| [핵심 개념](concepts.md) | Agent Card, Task 라이프사이클, Message & Artifact, Streaming |
-| [구현 가이드](implementation.md) | 동작 흐름, 여행 예약 시나리오, A2A+MCP 결합, Python 구현 예시 |
-| [프로덕션 운영](production.md) | 보안, 현실적 한계와 대안, 설계 패턴 카탈로그, Databricks 활용, FAQ |
+| [핵심 개념](concepts) | Agent Card, Task 라이프사이클, Message & Artifact, Streaming |
+| [구현 가이드](implementation) | 동작 흐름, 여행 예약 시나리오, A2A+MCP 결합, Python 구현 예시 |
+| [프로덕션 운영](production) | 보안, 현실적 한계와 대안, 설계 패턴 카탈로그, Databricks 활용, FAQ |
 
 ---
 

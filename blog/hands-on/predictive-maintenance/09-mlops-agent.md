@@ -443,4 +443,4 @@ AI Agent는 단순한 자동화 스크립트가 아닙니다. **상황을 이해
 - **Human-in-the-Loop**: 중요한 결정(예: Champion 모델 교체)은 사람의 승인을 받고 실행
 - **Autonomous MLOps**: 2025~2026년 트렌드로, Agent가 전체 ML 생명주기를 자율적으로 관리
 
-**다음 단계**: [10. Job 스케줄링](10-job-scheduling.md)
+**다음 단계**: [10. Job 스케줄링](10-job-scheduling)

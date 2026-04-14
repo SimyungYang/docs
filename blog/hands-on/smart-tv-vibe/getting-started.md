@@ -53,14 +53,14 @@ cd databricks-enablement-blog/hands-on/smart-tv-vibe/notebooks/
 
 | 파일 | 내용 | 링크 |
 |------|------|------|
-| `track-b-ai-guided/PROMPT_GUIDE.md` | AI 가이드 프롬프트 | [GitHub](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/smart-tv-vibe/notebooks/track-b-ai-guided/PROMPT_GUIDE.md) |
-| `track-b-ai-guided/PROMPT_DETAILED.md` | 상세 프롬프트 | [GitHub](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/smart-tv-vibe/notebooks/track-b-ai-guided/PROMPT_DETAILED.md) |
+| `track-b-ai-guided/PROMPT_GUIDE.md` | AI 가이드 프롬프트 | [GitHub](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/smart-tv-vibe/notebooks/track-b-ai-guided/PROMPT_GUIDE) |
+| `track-b-ai-guided/PROMPT_DETAILED.md` | 상세 프롬프트 | [GitHub](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/smart-tv-vibe/notebooks/track-b-ai-guided/PROMPT_DETAILED) |
 
 ### Track C — Genie Code (자연어 기반)
 
 | 파일 | 내용 | 링크 |
 |------|------|------|
-| `track-c-genie-code/GENIE_CODE_GUIDE.md` | Genie Code 가이드 | [GitHub](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/smart-tv-vibe/notebooks/track-c-genie-code/GENIE_CODE_GUIDE.md) |
+| `track-c-genie-code/GENIE_CODE_GUIDE.md` | Genie Code 가이드 | [GitHub](https://github.com/SimyungYang/databricks-enablement-blog/blob/main/hands-on/smart-tv-vibe/notebooks/track-c-genie-code/GENIE_CODE_GUIDE) |
 
 ---
 

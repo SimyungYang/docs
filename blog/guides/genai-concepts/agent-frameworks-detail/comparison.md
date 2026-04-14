@@ -407,12 +407,12 @@ with mlflow.start_run():
 
 ### 추가 학습 자료
 
-- **Databricks Agent Bricks 가이드**: [Agent Bricks](../../agent-bricks/README.md) -- Knowledge Assistant, Genie Agent, Supervisor Agent 실전 구축
-- **RAG 가이드**: [RAG (검색 증강 생성)](../../rag/README.md) -- Agent의 도구로 활용되는 RAG 파이프라인 구축
-- **MCP 가이드**: [MCP (Model Context Protocol)](../../mcp/README.md) -- Agent의 도구 접근 프로토콜 표준
-- **A2A 가이드**: [A2A (Agent-to-Agent)](../a2a-protocol/README.md) -- Agent 간 통신 프로토콜
-- **AI Agent 아키텍처**: [Agent 아키텍처](../agent-architecture.md) -- ReAct, Tool Use, Multi-Agent 패턴의 기초
+- **Databricks Agent Bricks 가이드**: [Agent Bricks](../../agent-bricks/README) -- Knowledge Assistant, Genie Agent, Supervisor Agent 실전 구축
+- **RAG 가이드**: [RAG (검색 증강 생성)](../../rag/README) -- Agent의 도구로 활용되는 RAG 파이프라인 구축
+- **MCP 가이드**: [MCP (Model Context Protocol)](../../mcp/README) -- Agent의 도구 접근 프로토콜 표준
+- **A2A 가이드**: [A2A (Agent-to-Agent)](../a2a-protocol/README) -- Agent 간 통신 프로토콜
+- **AI Agent 아키텍처**: [Agent 아키텍처](../agent-architecture) -- ReAct, Tool Use, Multi-Agent 패턴의 기초
 
 ---
 
-[README로 돌아가기](README.md)
+[README로 돌아가기](README)

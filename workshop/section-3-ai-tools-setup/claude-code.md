@@ -61,7 +61,7 @@ databricks current-user me
 
 Claude Code에 Databricks AI Dev Kit을 설치하면, **44개 MCP 도구 + 25개 Skills**가 추가됩니다.
 
-> 설치 방법과 상세 구성은 **[AI Dev Kit 설치 & 구성](ai-dev-kit-setup.md)**을 참조하세요.
+> 설치 방법과 상세 구성은 **[AI Dev Kit 설치 & 구성](ai-dev-kit-setup)**을 참조하세요.
 
 설치 완료 확인:
 ```bash
@@ -150,4 +150,4 @@ ORDER BY tokens DESC
 
 ## 다음 단계
 
-- **[AI Dev Kit 설치 상세](ai-dev-kit-setup.md)** — MCP 서버 앱 배포, Skills 워크스페이스 배포
+- **[AI Dev Kit 설치 상세](ai-dev-kit-setup)** — MCP 서버 앱 배포, Skills 워크스페이스 배포

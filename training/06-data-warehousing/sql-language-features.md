@@ -156,9 +156,9 @@ FROM raw_events;
 
 | 주제 | 문서 |
 |------|------|
-| 윈도우 함수 심화 | [윈도우 함수](./window-functions.md) |
-| SQL 스크립팅 | [SQL 스크립팅](./sql-scripting.md) |
-| PIVOT과 UNPIVOT | [PIVOT과 UNPIVOT](./pivot-unpivot.md) |
+| 윈도우 함수 심화 | [윈도우 함수](./window-functions) |
+| SQL 스크립팅 | [SQL 스크립팅](./sql-scripting) |
+| PIVOT과 UNPIVOT | [PIVOT과 UNPIVOT](./pivot-unpivot) |
 
 ---
 

@@ -4,7 +4,7 @@ title: "05. 에이전트 개발 — Knowledge Assistant, Genie Agent, Supervisor
 
 # 05. 에이전트 개발 — Knowledge Assistant, Genie Agent, Supervisor
 
-> **소요 시간**: ~2시간 | **사전 조건**: [04. 대시보드 & Genie Space](04-dashboard-genie.md) 완료 (Genie Space 3개 필요)
+> **소요 시간**: ~2시간 | **사전 조건**: [04. 대시보드 & Genie Space](04-dashboard-genie) 완료 (Genie Space 3개 필요)
 >
 > **핵심 메시지**: "대시보드는 보는 것, Genie는 묻는 것, 에이전트는 행동하는 것"
 

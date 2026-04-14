@@ -303,4 +303,4 @@ user_proxy.initiate_chat(
 
 ---
 
-[README로 돌아가기](README.md) | 다음: [Databricks Agent Framework](databricks-af.md)
+[README로 돌아가기](README) | 다음: [Databricks Agent Framework](databricks-af)

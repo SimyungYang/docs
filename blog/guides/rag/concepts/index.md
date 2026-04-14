@@ -24,12 +24,12 @@ RAG 파이프라인은 여러 기술의 조합입니다. 각 기술이 **왜 존
 
 | # | 개념 | 한 줄 설명 | 페이지 |
 |---|------|-----------|--------|
-| 1 | **임베딩 (Embedding)** | 텍스트를 의미를 담은 숫자 벡터로 변환하는 기술 | [embedding.md](embedding.md) |
-| 2 | **유사도 측정 (Similarity)** | 두 벡터가 얼마나 비슷한지 수학적으로 측정하는 방법 | [similarity.md](similarity.md) |
-| 3 | **벡터 인덱스 & ANN** | 수백만 벡터에서 밀리초 안에 유사 벡터를 찾는 자료 구조 | [vector-index.md](vector-index.md) |
-| 4 | **BM25 & 키워드 검색** | 단어 빈도와 희소성 기반의 고전적이지만 강력한 검색 알고리즘 | [bm25.md](bm25.md) |
-| 5 | **하이브리드 검색 & RRF** | Dense + Sparse 검색을 결합하여 서로의 약점을 보완 | [hybrid-search.md](hybrid-search.md) |
-| 6 | **Re-ranking** | 1차 검색 결과를 정교한 모델로 재정렬하여 정밀도를 높이는 기법 | [reranking.md](reranking.md) |
+| 1 | **임베딩 (Embedding)** | 텍스트를 의미를 담은 숫자 벡터로 변환하는 기술 | [embedding.md](embedding) |
+| 2 | **유사도 측정 (Similarity)** | 두 벡터가 얼마나 비슷한지 수학적으로 측정하는 방법 | [similarity.md](similarity) |
+| 3 | **벡터 인덱스 & ANN** | 수백만 벡터에서 밀리초 안에 유사 벡터를 찾는 자료 구조 | [vector-index.md](vector-index) |
+| 4 | **BM25 & 키워드 검색** | 단어 빈도와 희소성 기반의 고전적이지만 강력한 검색 알고리즘 | [bm25.md](bm25) |
+| 5 | **하이브리드 검색 & RRF** | Dense + Sparse 검색을 결합하여 서로의 약점을 보완 | [hybrid-search.md](hybrid-search) |
+| 6 | **Re-ranking** | 1차 검색 결과를 정교한 모델로 재정렬하여 정밀도를 높이는 기법 | [reranking.md](reranking) |
 
 ---
 
@@ -37,10 +37,10 @@ RAG 파이프라인은 여러 기술의 조합입니다. 각 기술이 **왜 존
 
 아래 개념들은 별도 페이지에서 더 깊이 다룹니다:
 
-- **청킹 (Chunking)**: [청킹 전략](../chunking-strategies.md) 페이지 참고
-- **토크나이저 & 한국어 처리**: [한국어 RAG 최적화](../korean-nlp.md) 페이지 참고
-- **프롬프트 엔지니어링**: [RAG 체인 구축](../chain-building.md) 페이지 참고
-- **평가 메트릭**: [RAG 평가](../evaluation.md) 페이지 참고
+- **청킹 (Chunking)**: [청킹 전략](../chunking-strategies) 페이지 참고
+- **토크나이저 & 한국어 처리**: [한국어 RAG 최적화](../korean-nlp) 페이지 참고
+- **프롬프트 엔지니어링**: [RAG 체인 구축](../chain-building) 페이지 참고
+- **평가 메트릭**: [RAG 평가](../evaluation) 페이지 참고
 
 ---
 
@@ -55,4 +55,4 @@ RAG 파이프라인은 여러 기술의 조합입니다. 각 기술이 **왜 존
 | **RRF** | 서로 다른 검색 결과를 순위 기반으로 결합 |
 | **Cross-encoder** | 질문+문서를 함께 입력하여 정밀하게 관련성 평가 |
 
-> **다음 단계**: 개념을 이해했다면, [데이터 준비](../data-preparation.md)부터 시작하여 실제 RAG 파이프라인을 구축해보세요.
+> **다음 단계**: 개념을 이해했다면, [데이터 준비](../data-preparation)부터 시작하여 실제 RAG 파이프라인을 구축해보세요.

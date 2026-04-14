@@ -16,12 +16,12 @@ title: "GenAI 도구 생태계"
 
 | 카테고리 | 대표 도구 | 핵심 가치 | 상세 페이지 |
 |---------|----------|----------|------------|
-| **AI 코딩 어시스턴트** | GitHub Copilot, Cursor, Claude Code, Windsurf | 개발 생산성 2~10배 향상, Vibe Coding | [코딩 어시스턴트](coding-assistants.md) |
-| **LLM API & 플랫폼** | OpenAI GPT-4.1, Claude 4, Gemini 2.5, Llama 4 | 애플리케이션의 두뇌, API 호출로 지능 추가 | [LLM 플랫폼](llm-platforms.md) |
-| **노코드 AI 빌더** | Dify, n8n, Flowise, LangFlow | 비개발자도 AI 워크플로 구축 | [AI 빌더](ai-builders.md) |
-| **AI 생산성 & 검색** | Perplexity, NotebookLM, Notion AI, Midjourney | 일상 업무의 AI 자동화 | [생산성 도구](ai-productivity.md) |
-| **오픈소스 LLM** | Ollama, vLLM, Hugging Face, LM Studio | 데이터 주권, 비용 절감, 커스터마이징 | [오픈소스 LLM](opensource-llm.md) |
-| **AI 관측성 & 평가** | MLflow Tracing, LangSmith, W&B, Phoenix | LLM 앱의 품질 보장과 디버깅 | [관측성 & 평가](ai-observability.md) |
+| **AI 코딩 어시스턴트** | GitHub Copilot, Cursor, Claude Code, Windsurf | 개발 생산성 2~10배 향상, Vibe Coding | [코딩 어시스턴트](coding-assistants) |
+| **LLM API & 플랫폼** | OpenAI GPT-4.1, Claude 4, Gemini 2.5, Llama 4 | 애플리케이션의 두뇌, API 호출로 지능 추가 | [LLM 플랫폼](llm-platforms) |
+| **노코드 AI 빌더** | Dify, n8n, Flowise, LangFlow | 비개발자도 AI 워크플로 구축 | [AI 빌더](ai-builders) |
+| **AI 생산성 & 검색** | Perplexity, NotebookLM, Notion AI, Midjourney | 일상 업무의 AI 자동화 | [생산성 도구](ai-productivity) |
+| **오픈소스 LLM** | Ollama, vLLM, Hugging Face, LM Studio | 데이터 주권, 비용 절감, 커스터마이징 | [오픈소스 LLM](opensource-llm) |
+| **AI 관측성 & 평가** | MLflow Tracing, LangSmith, W&B, Phoenix | LLM 앱의 품질 보장과 디버깅 | [관측성 & 평가](ai-observability) |
 
 이 조감도에서 주목할 점은 각 카테고리가 독립적이지 않다는 것입니다. 예를 들어, **AI 코딩 어시스턴트** 는 내부적으로 **LLM API** 를 호출하고, 그 LLM은 **오픈소스 모델** 일 수 있으며, 전체 파이프라인의 품질은 **관측성 도구** 로 모니터링합니다. 도구 선택 시 이러한 상호 의존성을 이해하는 것이 중요합니다.
 

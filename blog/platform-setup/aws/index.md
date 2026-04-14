@@ -20,18 +20,18 @@ Marketplace 구독부터 PrivateLink까지, AWS Console 기반으로 Databricks 
 | # | 단계 | 설명 |
 |---|------|------|
 | 0 | Databricks on AWS 아키텍처 | Control Plane / Compute Plane 구조, PrivateLink 아키텍처 |
-| 1 | [AWS Marketplace 구독](marketplace.md) | Marketplace vs Direct 계약, 기존 계정 연결 |
-| 2 | [사전 준비](prerequisites.md) | IAM 권한, STS 엔드포인트, Enterprise 티어 |
-| 3 | [Credential 구성](credential.md) | Cross-Account IAM Role — Trust Policy, Permission Policy |
-| 4 | [Storage 구성](storage.md) | Root S3 Bucket, Bucket Policy |
-| 5 | [Network 구성](network.md) | VPC, Private Subnet, Security Group, AWS Service Endpoints |
-| 6 | [Backend PrivateLink](privatelink-backend.md) | VPC Endpoint (REST API + SCC Relay), Private Access Settings |
-| 7 | [Frontend PrivateLink (옵션)](privatelink-frontend.md) | Transit VPC, Route 53 DNS, Inbound Resolver |
-| 8 | [Workspace 생성](workspace.md) | Account Console에서 프로비저닝 |
-| 9 | [Unity Catalog](unity-catalog.md) | UC Metastore + Storage Credential + File Events IAM |
-| 10 | [Serverless NCC](serverless-ncc.md) | Serverless Compute 네트워크 제어 |
-| 11 | [기존 WS에 PrivateLink 추가](privatelink-migration.md) | 운영 중 Workspace에 PrivateLink 사후 적용 |
-| A | [Terraform 자동화](terraform.md) | IaC 전환 참고 (Appendix) |
+| 1 | [AWS Marketplace 구독](marketplace) | Marketplace vs Direct 계약, 기존 계정 연결 |
+| 2 | [사전 준비](prerequisites) | IAM 권한, STS 엔드포인트, Enterprise 티어 |
+| 3 | [Credential 구성](credential) | Cross-Account IAM Role — Trust Policy, Permission Policy |
+| 4 | [Storage 구성](storage) | Root S3 Bucket, Bucket Policy |
+| 5 | [Network 구성](network) | VPC, Private Subnet, Security Group, AWS Service Endpoints |
+| 6 | [Backend PrivateLink](privatelink-backend) | VPC Endpoint (REST API + SCC Relay), Private Access Settings |
+| 7 | [Frontend PrivateLink (옵션)](privatelink-frontend) | Transit VPC, Route 53 DNS, Inbound Resolver |
+| 8 | [Workspace 생성](workspace) | Account Console에서 프로비저닝 |
+| 9 | [Unity Catalog](unity-catalog) | UC Metastore + Storage Credential + File Events IAM |
+| 10 | [Serverless NCC](serverless-ncc) | Serverless Compute 네트워크 제어 |
+| 11 | [기존 WS에 PrivateLink 추가](privatelink-migration) | 운영 중 Workspace에 PrivateLink 사후 적용 |
+| A | [Terraform 자동화](terraform) | IaC 전환 참고 (Appendix) |
 
 ---
 

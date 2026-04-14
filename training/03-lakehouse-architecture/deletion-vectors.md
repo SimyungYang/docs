@@ -368,4 +368,4 @@ OPTIMIZE catalog.schema.orders;
 - [Databricks: Deletion Vectors](https://docs.databricks.com/aws/en/delta/deletion-vectors.html)
 - [Azure Databricks: What are deletion vectors?](https://learn.microsoft.com/en-us/azure/databricks/delta/deletion-vectors)
 - [Databricks Blog: Deletion Vectors](https://www.databricks.com/blog/2023/07/05/deletion-vectors.html)
-- [Delta Lake: Deletion Vectors Protocol](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#deletion-vectors)
+- [Delta Lake: Deletion Vectors Protocol](https://github.com/delta-io/delta/blob/master/PROTOCOL#deletion-vectors)

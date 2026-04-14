@@ -223,4 +223,4 @@ if __name__ == "__main__":
 
 ---
 
-[README로 돌아가기](README.md) | 다음: [FastAPI 백엔드](fastapi-backend.md)
+[README로 돌아가기](README) | 다음: [FastAPI 백엔드](fastapi-backend)

@@ -156,12 +156,12 @@ A2A = 수평 연결 (Agent끼리 협업)
 
 | 가이드 | 내용 |
 | --- | --- |
-| [OpenAI](openai.md) | Agents SDK, Responses API, GPT-4.1, Codex, Operator, Deep Research |
-| [Anthropic](anthropic.md) | Claude Code, MCP/AAIF, Agent SDK, Computer Use, 멀티에이전트 패턴 |
-| [Google](google.md) | ADK, Vertex AI Agent Builder, Gemini 2.5, A2A, Jules, Mariner, Astra |
-| [AWS, Microsoft & Meta](aws-others.md) | Bedrock Agents, AgentCore, Copilot Studio, Llama 4 |
-| [Databricks](databricks.md) | Agent Bricks, TAO/ALHF, Supervisor Agent, Gateway, MLflow 3.0 |
-| [멀티에이전트 트렌드](multi-agent-trends.md) | 오케스트레이션 패턴, Observability, 메모리, 안전성, Vibe Coding |
+| [OpenAI](openai) | Agents SDK, Responses API, GPT-4.1, Codex, Operator, Deep Research |
+| [Anthropic](anthropic) | Claude Code, MCP/AAIF, Agent SDK, Computer Use, 멀티에이전트 패턴 |
+| [Google](google) | ADK, Vertex AI Agent Builder, Gemini 2.5, A2A, Jules, Mariner, Astra |
+| [AWS, Microsoft & Meta](aws-others) | Bedrock Agents, AgentCore, Copilot Studio, Llama 4 |
+| [Databricks](databricks) | Agent Bricks, TAO/ALHF, Supervisor Agent, Gateway, MLflow 3.0 |
+| [멀티에이전트 트렌드](multi-agent-trends) | 오케스트레이션 패턴, Observability, 메모리, 안전성, Vibe Coding |
 
 ---
 
@@ -169,6 +169,6 @@ A2A = 수평 연결 (Agent끼리 협업)
 
 이 섹션의 벤더별 분석을 마친 후, 다음 개념 가이드에서 기술적 깊이를 더할 수 있다:
 
-* [AI Agent 아키텍처](../agent-architecture/README.md) — ReAct, Planning, Tool Use 등 Agent의 내부 동작 원리
-* [Agent 프레임워크 생태계](../agent-frameworks-detail/README.md) — LangGraph, CrewAI, AutoGen 등 실제 구현 프레임워크 비교
-* [A2A (Agent-to-Agent)](../a2a-protocol/README.md) — A2A 프로토콜의 기술 상세와 구현 가이드
+* [AI Agent 아키텍처](../agent-architecture/README) — ReAct, Planning, Tool Use 등 Agent의 내부 동작 원리
+* [Agent 프레임워크 생태계](../agent-frameworks-detail/README) — LangGraph, CrewAI, AutoGen 등 실제 구현 프레임워크 비교
+* [A2A (Agent-to-Agent)](../a2a-protocol/README) — A2A 프로토콜의 기술 상세와 구현 가이드

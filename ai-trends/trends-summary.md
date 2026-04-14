@@ -246,8 +246,8 @@ MoE의 핵심 이점은 **"큰 뇌, 작은 연산"** — 방대한 지식을 담
 
 **참고 자료:**
 - 각 기업별 상세 분석은 이 섹션의 개별 문서를 참고하세요
-- [OpenAI 동향](openai.md) | [Anthropic 동향](anthropic-trends-2026.md) | [Google 동향](google.md)
-- [Meta 동향](meta.md) | [AWS & Microsoft 동향](aws-microsoft.md) | [Tesla, xAI & 기타](tesla-xai-others.md)
-- [한국어 LLM 동향](korean-llm.md)
-- [기존 Agent 업계 동향](../guides/genai-concepts/agent-landscape/README.md)
-- [기존 Agent 프레임워크 비교](../guides/genai-concepts/agent-frameworks-detail/README.md)
+- [OpenAI 동향](openai) | [Anthropic 동향](anthropic-trends-2026) | [Google 동향](google)
+- [Meta 동향](meta) | [AWS & Microsoft 동향](aws-microsoft) | [Tesla, xAI & 기타](tesla-xai-others)
+- [한국어 LLM 동향](korean-llm)
+- [기존 Agent 업계 동향](../guides/genai-concepts/agent-landscape/README)
+- [기존 Agent 프레임워크 비교](../guides/genai-concepts/agent-frameworks-detail/README)

@@ -173,4 +173,4 @@ async def websocket_chat(websocket: WebSocket):
 
 ---
 
-[README로 돌아가기](README.md) | 다음: [Databricks Apps & 종합 가이드](databricks-apps.md)
+[README로 돌아가기](README) | 다음: [Databricks Apps & 종합 가이드](databricks-apps)

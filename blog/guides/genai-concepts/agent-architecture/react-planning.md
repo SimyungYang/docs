@@ -4,7 +4,7 @@ title: "ReAct 패턴 & Planning"
 
 # ReAct 패턴 & Planning
 
-[← AI Agent 아키텍처 개요](README.md)
+[← AI Agent 아키텍처 개요](README)
 
 ---
 
@@ -159,4 +159,4 @@ LangGraph는 [Plan-and-Execute 템플릿](https://langchain-ai.github.io/langgra
 
 ---
 
-[다음: Tool Use / Function Calling →](tool-use.md)
+[다음: Tool Use / Function Calling →](tool-use)

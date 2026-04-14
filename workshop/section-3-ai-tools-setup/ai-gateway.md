@@ -194,4 +194,4 @@ system.serving.served_entities_usage 테이블을 활용하여
 
 ## 다음 단계
 
-- **[Claude Code 사용하기](claude-code.md)** — AI Gateway 환경에서 Claude Code를 설치하고 연결합니다.
+- **[Claude Code 사용하기](claude-code)** — AI Gateway 환경에서 Claude Code를 설치하고 연결합니다.

@@ -296,6 +296,6 @@ Databricks Apps로 배포하면 `X-Forwarded-User`와 `X-Forwarded-Access-Token`
 
 ## 다음 단계
 
-- [Tool 목록 및 상세](tools.md) - MCP 도구 전체 목록과 스킬 시스템
-- [활용 사례](use-cases.md) - Builder App 실전 시나리오
-- [Databricks Apps 배포 가이드](../apps/README.md) - Apps 배포 상세
+- [Tool 목록 및 상세](tools) - MCP 도구 전체 목록과 스킬 시스템
+- [활용 사례](use-cases) - Builder App 실전 시나리오
+- [Databricks Apps 배포 가이드](../apps/README) - Apps 배포 상세

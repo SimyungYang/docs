@@ -164,4 +164,4 @@ datamodule = Visa(
 Foundation Model 기반 접근은 아직 연구 단계이지만, 향후 "카메라 모듈에서 렌즈 스크래치를 찾아줘"라는 **자연어 지시만으로** 결함을 탐지하는 것이 가능해질 것입니다. Databricks의 GPU 클러스터와 MLflow 인프라가 이러한 최신 모델의 실험/배포를 지원합니다.
 
 
-**다음 단계**: [08. 모델 모니터링](08-model-monitoring.md)
+**다음 단계**: [08. 모델 모니터링](08-model-monitoring)

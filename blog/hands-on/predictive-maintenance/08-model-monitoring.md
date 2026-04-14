@@ -145,4 +145,4 @@ Level 2 파이프라인에서는 이 모니터링 태스크 다음에 **03d_retr
    자동 재학습 → 모델 등록 → Champion 교체
 ```
 
-**다음 단계**: [09. MLOps Agent](09-mlops-agent.md)
+**다음 단계**: [09. MLOps Agent](09-mlops-agent)
