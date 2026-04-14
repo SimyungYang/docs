@@ -85,7 +85,7 @@ Attention 가중치:     0.1 0.1 0.5 0.2 0.1  ← "이 단어를 번역할 때 h
 | **Transformer** | **28.4** | **12시간**(8 GPU) | 완전 병렬화 |
 
 > **성공**
-> Transformer는 성능과 학습 속도를 **동시에** 크게 개선했습니다. 이것이 모든 후속 LLM이 Transformer를 기반으로 삼는 이유입니다.
+Transformer는 성능과 학습 속도를 **동시에** 크게 개선했습니다. 이것이 모든 후속 LLM이 Transformer를 기반으로 삼는 이유입니다.
 
 
 ### 왜 Google이 Transformer를 만들었는가

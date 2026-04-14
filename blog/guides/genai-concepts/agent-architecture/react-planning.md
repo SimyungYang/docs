@@ -24,7 +24,7 @@ ReAct는 2022년 Yao et al.이 제안한 패턴으로, LLM이 **추론(Reasoning
 | **Answer** | 최종 분석 보고서 생성 |
 
 > **주의**
-> ReAct 루프가 무한히 반복되지 않도록 **최대 반복 횟수**(보통 5~15회)와 **타임아웃** 을 반드시 설정하세요.
+ReAct 루프가 무한히 반복되지 않도록 **최대 반복 횟수**(보통 5~15회)와 **타임아웃** 을 반드시 설정하세요.
 
 
 ---
@@ -150,7 +150,7 @@ Execute: 각 단계를 순차 실행, 실패 시 Plan 수정
 | **대표 구현** | LangGraph ReAct Agent | LangGraph Plan-and-Execute 템플릿 |
 
 > **참고**
-> LangGraph는 [Plan-and-Execute 템플릿](https://langchain-ai.github.io/langgraph/tutorials/plan-and-execute/plan-and-execute/)을 공식 제공합니다. Planner 노드가 계획을 생성하고, Executor 노드가 실행하며, Replanner 노드가 결과를 보고 계획을 수정하는 구조입니다.
+LangGraph는 [Plan-and-Execute 템플릿](https://langchain-ai.github.io/langgraph/tutorials/plan-and-execute/plan-and-execute/)을 공식 제공합니다. Planner 노드가 계획을 생성하고, Executor 노드가 실행하며, Replanner 노드가 결과를 보고 계획을 수정하는 구조입니다.
 
 
 ---

@@ -266,7 +266,7 @@ results_df.write.saveAsTable("catalog.schema.image_analysis_results")
 ## 7. 고객 FAQ
 
 > **참고**
-> 아래는 고객 미팅에서 자주 받는 멀티모달 관련 질문과 권장 답변입니다.
+아래는 고객 미팅에서 자주 받는 멀티모달 관련 질문과 권장 답변입니다.
 
 
 ### "멀티모달 AI로 기존 비전 시스템을 대체할 수 있나요?"

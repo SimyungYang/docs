@@ -26,7 +26,7 @@ Azure Portal(`https://portal.azure.com`)에 로그인합니다.
 | `Project` | `databricks-platform` |
 
 > **참고**
-> 태그는 비용 관리와 거버넌스에 중요합니다. 조직의 태깅 정책에 맞게 설정하세요.
+태그는 비용 관리와 거버넌스에 중요합니다. 조직의 태깅 정책에 맞게 설정하세요.
 
 
 ## Step 5 — 검토 + 만들기

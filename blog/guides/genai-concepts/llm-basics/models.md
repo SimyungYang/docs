@@ -20,7 +20,7 @@
 | Mistral Large | Mistral AI | 비공개 | 128K | 유럽 기반, 다국어 강점 | ~$2.00 | 부분 |
 
 > **주의**
-> 모델 성능은 빠르게 변화합니다. 최신 벤치마크는 [LMSYS Chatbot Arena](https://chat.lmsys.org/)를 참고하세요. 위 가격은 2025년 기준 대략적 수치이며, 공식 가격표를 확인하세요.
+모델 성능은 빠르게 변화합니다. 최신 벤치마크는 [LMSYS Chatbot Arena](https://chat.lmsys.org/)를 참고하세요. 위 가격은 2025년 기준 대략적 수치이며, 공식 가격표를 확인하세요.
 
 
 ## MoE (Mixture of Experts) 아키텍처

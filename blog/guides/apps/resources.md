@@ -285,7 +285,7 @@ const warehouseId = process.env.WAREHOUSE_ID;
 ```
 
 > **주의**
-> `app.yaml` 외부에서 정의한 환경 변수는 앱에서 사용할 수 없습니다. 유일한 예외는 `DATABRICKS_APP_PORT`입니다.
+`app.yaml` 외부에서 정의한 환경 변수는 앱에서 사용할 수 없습니다. 유일한 예외는 `DATABRICKS_APP_PORT`입니다.
 
 
 > **참고**

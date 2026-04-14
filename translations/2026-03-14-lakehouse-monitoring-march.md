@@ -5,7 +5,7 @@ title: "Lakehouse Monitoring GA: 지능형 데이터 품질 프로파일링, 진
 > **원문**: [Lakehouse Monitoring GA: Profiling, Diagnosing, and Enforcing Data Quality with Intelligence](https://www.databricks.com/blog/lakehouse-monitoring-ga-profiling-diagnosing-and-enforcing-data-quality-intelligence)
 
 > **참고**
-> 이 블로그 포스트는 2024년 Data and AI Summit에서 발표된 Databricks Data Quality Monitoring (Lakehouse Monitoring) GA 출시를 다룹니다. 요청하신 URL(databricks-lakehouse-monitoring-update-march-2026)은 현재 존재하지 않으며, 가장 관련성 높은 공식 블로그 포스트를 번역하였습니다.
+이 블로그 포스트는 2024년 Data and AI Summit에서 발표된 Databricks Data Quality Monitoring (Lakehouse Monitoring) GA 출시를 다룹니다. 요청하신 URL(databricks-lakehouse-monitoring-update-march-2026)은 현재 존재하지 않으며, 가장 관련성 높은 공식 블로그 포스트를 번역하였습니다.
 
 
 Data and AI Summit에서 우리는 **Databricks Data Quality Monitoring** 의 정식 출시(General Availability)를 발표했습니다. 데이터와 AI를 모니터링하는 통합적인 접근 방식을 통해, **Databricks Data Intelligence Platform** 내에서 품질을 손쉽게 프로파일링하고, 진단하고, 적용할 수 있습니다. **Unity Catalog** 위에 직접 구축된 Lakehouse Monitoring([AWS](https://docs.databricks.com/aws/en/lakehouse-monitoring) | [Azure](https://learn.microsoft.com/en-us/azure/databricks/lakehouse-monitoring))은 추가적인 도구나 복잡성 없이 사용할 수 있습니다. 다운스트림 프로세스가 영향을 받기 전에 품질 문제를 발견함으로써, 조직은 데이터에 대한 접근을 민주화하고 신뢰를 회복할 수 있습니다.

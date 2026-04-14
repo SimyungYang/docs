@@ -269,7 +269,7 @@ databricks apps deploy my-dashboard-app \
 
 > **주의**
 **가장 빈번한 실수 TOP 3**:
-> 1. **SP 권한 미부여**: 앱이 `Running`이지만 데이터 접근 시 `Permission denied`. 앱의 서비스 프린시펄에 `GRANT SELECT`와 Warehouse `CAN USE` 권한을 부여했는지 확인하세요.
-> 2. **포트 미설정**: FastAPI/Flask에서 `host=0.0.0.0`과 `port=$DATABRICKS_APP_PORT`를 지정하지 않으면 앱이 시작되지만 외부에서 접속할 수 없습니다.
-> 3. **requirements.txt 불일치**: 로컬에서는 잘 되지만 배포 후 에러가 나는 경우, 로컬에 설치된 패키지가 `requirements.txt`에 누락되었을 가능성이 높습니다. `pip freeze > requirements.txt`로 현재 환경을 캡처하세요 (단, 불필요한 패키지는 제거).
+1. **SP 권한 미부여**: 앱이 `Running`이지만 데이터 접근 시 `Permission denied`. 앱의 서비스 프린시펄에 `GRANT SELECT`와 Warehouse `CAN USE` 권한을 부여했는지 확인하세요.
+2. **포트 미설정**: FastAPI/Flask에서 `host=0.0.0.0`과 `port=$DATABRICKS_APP_PORT`를 지정하지 않으면 앱이 시작되지만 외부에서 접속할 수 없습니다.
+3. **requirements.txt 불일치**: 로컬에서는 잘 되지만 배포 후 에러가 나는 경우, 로컬에 설치된 패키지가 `requirements.txt`에 누락되었을 가능성이 높습니다. `pip freeze > requirements.txt`로 현재 환경을 캡처하세요 (단, 불필요한 패키지는 제거).
 

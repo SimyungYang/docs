@@ -10,7 +10,7 @@
 **원문 URL**: https://www.databricks.com/blog/building-near-real-time-application-zerobus-ingest-and-lakebase
 
 > **참고**
-> 요청하신 URL(real-time-analytics-operational-data-without-etl)은 현재 404 상태입니다. 동일한 주제(ETL 없는 운영 데이터 실시간 분석)를 다루는 가장 관련성 높은 공식 Databricks 블로그 포스트를 번역했습니다.
+요청하신 URL(real-time-analytics-operational-data-without-etl)은 현재 404 상태입니다. 동일한 주제(ETL 없는 운영 데이터 실시간 분석)를 다루는 가장 관련성 높은 공식 Databricks 블로그 포스트를 번역했습니다.
 
 
 ---
@@ -123,7 +123,7 @@ UI에서 다음을 선택합니다.
 이렇게 하면 앱이 최소한의 지연으로 최신 데이터를 반영할 수 있습니다.
 
 > **참고**
-> Databricks SDK를 사용하여 동기화 파이프라인을 프로그래밍 방식으로 생성할 수도 있습니다.
+Databricks SDK를 사용하여 동기화 파이프라인을 프로그래밍 방식으로 생성할 수도 있습니다.
 
 
 #### ForeachWriter를 통한 실시간 모드

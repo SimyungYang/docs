@@ -93,7 +93,7 @@ Workspace와 별개로 UC용 IAM Role이 필요합니다.
 External Location을 생성하면 **File Events가 기본적으로 활성화** 됩니다. File Events는 S3 버킷의 파일 변경 사항을 SQS/SNS를 통해 Databricks에 알려주는 기능으로, Auto Loader (File Notification 모드)와 Job File-Arrival Trigger에서 사용됩니다.
 
 > **주의**
-> External Location 생성 시 **File Events가 기본 활성화** 되어 있습니다. IAM Role에 SQS/SNS 권한이 없으면 **Test Connection의 "File Events Read" 체크가 실패** 합니다. File Events가 불필요한 경우 External Location → Advanced Options에서 비활성화할 수 있습니다.
+External Location 생성 시 **File Events가 기본 활성화** 되어 있습니다. IAM Role에 SQS/SNS 권한이 없으면 **Test Connection의 "File Events Read" 체크가 실패** 합니다. File Events가 불필요한 경우 External Location → Advanced Options에서 비활성화할 수 있습니다.
 
 
 ### SQS/SNS 권한이 필요한 이유
@@ -172,7 +172,7 @@ Databricks는 File Events를 위해 `csms-*` prefix가 붙은 SQS Queue와 SNS T
 ```
 
 > **참고**
-> `csms-*` prefix는 Databricks가 자동 생성·관리하는 리소스 (Customer-Side Managed Service)를 의미합니다. Resource scope를 `csms-*`로 제한하면 Databricks 관련 리소스에만 권한이 부여됩니다.
+`csms-*` prefix는 Databricks가 자동 생성·관리하는 리소스 (Customer-Side Managed Service)를 의미합니다. Resource scope를 `csms-*`로 제한하면 Databricks 관련 리소스에만 권한이 부여됩니다.
 
 
 ### File Events 비활성화 방법
@@ -194,7 +194,7 @@ File Events가 불필요한 경우 (예: Directory Listing 모드만 사용):
 Metastore는 Unity Catalog의 최상위 컨테이너로, 데이터 거버넌스의 기본 단위입니다. **리전당 1개의 Metastore** 가 존재하며, 해당 리전의 모든 Workspace가 공유합니다.
 
 > **참고**
-> 이미 동일 리전(예: `ap-northeast-2`)에 Metastore가 존재하면 새로 생성할 필요 없이 기존 Metastore에 Workspace를 할당하면 됩니다.
+이미 동일 리전(예: `ap-northeast-2`)에 Metastore가 존재하면 새로 생성할 필요 없이 기존 Metastore에 Workspace를 할당하면 됩니다.
 
 
 ### 사전 준비
@@ -255,7 +255,7 @@ Account Console에서 생성합니다.
 3. 할당할 Workspace 선택 → **Assign**
 
 > **주의**
-> 1개 Workspace는 **1개 Metastore에만** 할당 가능합니다. 할당 변경 시 기존 데이터 접근 권한이 초기화될 수 있으므로 주의하세요.
+1개 Workspace는 **1개 Metastore에만** 할당 가능합니다. 할당 변경 시 기존 데이터 접근 권한이 초기화될 수 있으므로 주의하세요.
 
 
 *참고: [Create a Unity Catalog metastore](https://docs.databricks.com/aws/en/data-governance/unity-catalog/create-metastore)*

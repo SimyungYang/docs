@@ -151,7 +151,7 @@ run = w.jobs.run_now(
     notebook_params={"retrain_reason": reason}
 )
 ```
-> UC Function으로 등록하면 Agent가 SQL로 직접 호출할 수도 있습니다: `SELECT trigger_retraining('data_drift_detected')`
+UC Function으로 등록하면 Agent가 SQL로 직접 호출할 수도 있습니다: `SELECT trigger_retraining('data_drift_detected')`
 
 
 ### Tool 3: run_batch_prediction (배치 예측 실행)
@@ -301,7 +301,7 @@ def mlops_agent_workflow(trigger_type: str = "full_cycle"):
 ```
 
 > **참고**
-> 실제 운영에서는 이 Agent를 **Model Serving 엔드포인트** 로 배포하여, Workflow Trigger나 API 호출로 자동 실행할 수 있습니다. MLflow Tracing으로 Agent의 모든 Tool 호출 이력이 추적됩니다.
+실제 운영에서는 이 Agent를 **Model Serving 엔드포인트** 로 배포하여, Workflow Trigger나 API 호출로 자동 실행할 수 있습니다. MLflow Tracing으로 Agent의 모든 Tool 호출 이력이 추적됩니다.
 
 
 ---
@@ -412,7 +412,7 @@ result = agent.invoke({"drift_detected": False, "max_psi": 0.0,
 ```
 
 > **참고**
-> 이것이 단순 if-else 스크립트와 LangGraph Agent의 차이입니다 -- LLM이 상황에 맞게 판단합니다. 실제 실행하려면 `%pip install langchain langgraph langchain-databricks` 설치가 필요합니다.
+이것이 단순 if-else 스크립트와 LangGraph Agent의 차이입니다 -- LLM이 상황에 맞게 판단합니다. 실제 실행하려면 `%pip install langchain langgraph langchain-databricks` 설치가 필요합니다.
 
 
 ---

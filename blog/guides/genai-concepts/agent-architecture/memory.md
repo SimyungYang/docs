@@ -429,7 +429,7 @@ def build_scratchpad_prompt(state: AgentState) -> str:
 
 
 > **주의**
-> 현재 대부분의 Agent는 **Short-term Memory만** 가집니다. Long-term Memory는 Vector Search나 Lakebase(PostgreSQL)를 활용하여 별도 구현해야 합니다. Agent 프레임워크가 자동으로 제공하는 것이 아닙니다.
+현재 대부분의 Agent는 **Short-term Memory만** 가집니다. Long-term Memory는 Vector Search나 Lakebase(PostgreSQL)를 활용하여 별도 구현해야 합니다. Agent 프레임워크가 자동으로 제공하는 것이 아닙니다.
 
 
 ---

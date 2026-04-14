@@ -23,7 +23,7 @@ Databricks Vector Search는 **HNSW** 알고리즘을 사용합니다. 이 알고
 HNSW가 다른 ANN 알고리즘 대비 메모리 사용량이 높은 이유는 각 노드가 여러 계층에 걸쳐 연결 정보를 유지하기 때문입니다. 하지만 검색 속도와 정확도의 균형이 가장 우수하여, 대부분의 상용 벡터 DB(Pinecone, Weaviate, Qdrant 등)에서도 HNSW를 기본 알고리즘으로 채택하고 있습니다.
 
 > **참고**
-> Databricks Vector Search는 HNSW 알고리즘의 파라미터를 자동 최적화합니다. 사용자가 `ef_construction`이나 `M` 값을 직접 설정할 필요가 없으므로, 인덱스 유형과 임베딩 모델 선택에 집중하면 됩니다.
+Databricks Vector Search는 HNSW 알고리즘의 파라미터를 자동 최적화합니다. 사용자가 `ef_construction`이나 `M` 값을 직접 설정할 필요가 없으므로, 인덱스 유형과 임베딩 모델 선택에 집중하면 됩니다.
 
 
 ## 1. Vector Search Endpoint 생성
@@ -52,7 +52,7 @@ client.create_endpoint(
 | **적합한 케이스** | 일반 RAG | 대규모 문서 컬렉션 |
 
 > **참고**
-> 대부분의 RAG 사용 사례에서는 **Standard** 엔드포인트로 충분합니다. 워크스페이스당 최대 100개 엔드포인트, 엔드포인트당 최대 50개 인덱스를 생성할 수 있습니다.
+대부분의 RAG 사용 사례에서는 **Standard** 엔드포인트로 충분합니다. 워크스페이스당 최대 100개 엔드포인트, 엔드포인트당 최대 50개 인덱스를 생성할 수 있습니다.
 
 
 ## 2. Vector Search Index 유형
@@ -200,7 +200,7 @@ index.sync()
 ```
 
 > **팁**
-> 대부분의 RAG 사용 사례에서는 **TRIGGERED** 모드로 충분합니다. 문서가 자주 변경되지 않는 경우 불필요한 CONTINUOUS 동기화 비용을 절약할 수 있습니다. 일 단위 갱신이면 Databricks Job으로 `index.sync()`를 스케줄링하세요.
+대부분의 RAG 사용 사례에서는 **TRIGGERED** 모드로 충분합니다. 문서가 자주 변경되지 않는 경우 불필요한 CONTINUOUS 동기화 비용을 절약할 수 있습니다. 일 단위 갱신이면 Databricks Job으로 `index.sync()`를 스케줄링하세요.
 
 
 ### 인덱스 상태 모니터링
@@ -237,7 +237,7 @@ sync_status = index.wait_until_ready(timeout=timedelta(minutes=30))
 5. **문서 수명 관리**: 더 이상 필요 없는 문서는 소스 테이블에서 삭제하여 인덱스 크기를 줄입니다.
 
 > **주의**
-> Storage-Optimized 엔드포인트는 쿼리 지연이 약 250ms 추가되지만, 대규모 데이터셋에서 인덱싱 비용이 크게 절감됩니다. 10만 건 이하에서는 Standard가 비용 효율적이고, 100만 건 이상에서는 Storage-Optimized를 고려하세요.
+Storage-Optimized 엔드포인트는 쿼리 지연이 약 250ms 추가되지만, 대규모 데이터셋에서 인덱싱 비용이 크게 절감됩니다. 10만 건 이하에서는 Standard가 비용 효율적이고, 100만 건 이상에서는 Storage-Optimized를 고려하세요.
 
 
 ## 다음 단계

@@ -5,7 +5,7 @@ title: "MLflow 3 출시 발표"
 > **원문**: [Announcing MLflow 3](https://mlflow.org/blog/mlflow-3-launch)
 
 > **참고**
-> 요청하신 URL(`databricks.com/blog/mlflow-3-release`)은 404 오류를 반환합니다. 동일한 주제를 다루는 공식 MLflow 블로그의 출시 공지 포스트를 번역합니다.
+요청하신 URL(`databricks.com/blog/mlflow-3-release`)은 404 오류를 반환합니다. 동일한 주제를 다루는 공식 MLflow 블로그의 출시 공지 포스트를 번역합니다.
 
 
 # MLflow 3 출시 발표

@@ -39,7 +39,7 @@
 | **중간자 공격** | 통신 가로채기 | TLS 암호화 필수 |
 
 > **주의**
-> 보안 설계의 핵심 원칙: **최소 권한 원칙(Principle of Least Privilege)** 을 적용하세요. 각 Agent에게는 작업 수행에 필요한 최소한의 skill과 데이터 접근 권한만 부여합니다.
+보안 설계의 핵심 원칙: **최소 권한 원칙(Principle of Least Privilege)** 을 적용하세요. 각 Agent에게는 작업 수행에 필요한 최소한의 skill과 데이터 접근 권한만 부여합니다.
 
 
 ---
@@ -209,7 +209,7 @@ Orchestrator ←──결과 C── Agent C (5초)
 | **Supervisor 패턴 확장** | Databricks Supervisor Agent가 A2A로 외부 Agent에 작업 위임 |
 
 > **주의**
-> A2A는 2025년 초 발표된 프로토콜로, 아직 초기 단계입니다. Databricks의 공식 A2A 지원은 추후 발표를 확인하세요.
+A2A는 2025년 초 발표된 프로토콜로, 아직 초기 단계입니다. Databricks의 공식 A2A 지원은 추후 발표를 확인하세요.
 
 
 ---

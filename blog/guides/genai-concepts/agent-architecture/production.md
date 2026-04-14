@@ -19,7 +19,7 @@ Agent에게 부여하는 도구 권한은 **최소 권한 원칙(Least Privilege
 | **3단계: Read-Write (전체)** | 모든 쓰기 가능 | `UPDATE`, `DELETE` 포함 — 주의 필요 |
 
 > **참고**
-> Databricks에서는 **Unity Catalog 권한** 이 이를 자동으로 강제합니다. Agent의 서비스 프린시펄에 `SELECT` 권한만 부여하면, Agent가 아무리 `DELETE` 쿼리를 생성해도 실행이 거부됩니다.
+Databricks에서는 **Unity Catalog 권한** 이 이를 자동으로 강제합니다. Agent의 서비스 프린시펄에 `SELECT` 권한만 부여하면, Agent가 아무리 `DELETE` 쿼리를 생성해도 실행이 거부됩니다.
 
 
 ### Human-in-the-Loop 승인 패턴

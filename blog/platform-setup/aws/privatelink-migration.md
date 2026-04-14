@@ -73,7 +73,7 @@ AWS Console → **VPC**→ **Endpoints**→ **Create endpoint**
 3. 각 Endpoint의 **VPC Endpoint ID**(`vpce-xxxxxxxxxxxxxxxxx`)를 메모
 
 > **주의**
-> 상태가 " **Failed**" 또는 " **Rejected**"인 경우:
+상태가 " **Failed**" 또는 " **Rejected**"인 경우:
 - Service name이 올바른지 확인
 - VPC의 리전과 Service name의 리전이 일치하는지 확인
 - Security Group에서 TCP 443 인바운드가 허용되는지 확인
@@ -126,7 +126,7 @@ Account Console → **Security**→ **Networking**→ **Classic network configur
 3. " **Add**" 클릭 → 새 Network Configuration ID 생성
 
 > **주의**
-> VPC, Subnet, Security Group은 **기존 Workspace와 반드시 동일한 값** 을 입력해야 합니다. 다른 VPC로 변경하면 Workspace가 제대로 작동하지 않습니다.
+VPC, Subnet, Security Group은 **기존 Workspace와 반드시 동일한 값** 을 입력해야 합니다. 다른 VPC로 변경하면 Workspace가 제대로 작동하지 않습니다.
 
 
 ## Step 5: Private Access Settings 생성
@@ -204,7 +204,7 @@ nslookup tunnel.<workspace-url>.cloud.databricks.com
 4. SQL Warehouse 시작 → 쿼리 실행 확인
 
 > **참고**
-> DNS 전파가 완료되지 않은 상태에서는 Public access가 Enabled이므로 기존 경로(인터넷)로 접속됩니다. `nslookup`에서 Private IP가 반환되는 것을 확인한 후 Step 8로 진행하세요.
+DNS 전파가 완료되지 않은 상태에서는 Public access가 Enabled이므로 기존 경로(인터넷)로 접속됩니다. `nslookup`에서 Private IP가 반환되는 것을 확인한 후 Step 8로 진행하세요.
 
 
 ## Step 8 (선택): Public Access 비활성화
@@ -230,7 +230,7 @@ PrivateLink 전환 후 문제가 발생한 경우:
 5. 다시 프로비저닝 (~10-15분 소요, 추가 다운타임 발생)
 
 > **주의**
-> 롤백 시에도 다운타임이 발생합니다. 따라서 최초 전환 전에 충분한 테스트를 수행하는 것이 중요합니다. Non-production Workspace에서 먼저 테스트하는 것을 강력히 권장합니다.
+롤백 시에도 다운타임이 발생합니다. 따라서 최초 전환 전에 충분한 테스트를 수행하는 것이 중요합니다. Non-production Workspace에서 먼저 테스트하는 것을 강력히 권장합니다.
 
 
 ## Troubleshooting

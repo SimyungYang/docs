@@ -1,11 +1,11 @@
-# <img src="https://www.databricks.com/wp-content/uploads/2022/06/db-nav-logo.svg" alt="Databricks" width="160"> Enablements
+# \<img src="https://www.databricks.com/wp-content/uploads/2022/06/db-nav-logo.svg" alt="Databricks" width="160"> Enablements
 
 Databricks 고객을 위한 **실전 가이드 & 핸즈온 워크샵** 모음입니다.
 
 > **Databricks Korea Field Engineering**
 
 > **참고**
-> Databricks 전체 기능에 대한 종합 교육 자료는 **[Databricks 종합 교육 자료 (한글)](https://simyungyang.gitbook.io/databricks-training/)** 에서 확인하세요.
+Databricks 전체 기능에 대한 종합 교육 자료는 **[Databricks 종합 교육 자료 (한글)](https://simyungyang.gitbook.io/databricks-training/)** 에서 확인하세요.
 
 
 ---

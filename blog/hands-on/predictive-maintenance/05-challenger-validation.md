@@ -64,7 +64,7 @@ inference_passed = preds_df.count() > 0
 Challenger의 F1 Score가 Champion의 F1 Score보다 **같거나 높으면** 통과합니다. Champion이 아직 없는 경우(첫 번째 모델)는 자동으로 통과 처리됩니다.
 
 > **참고**
-> 전체 성능만 보면 안 됩니다. 제품 유형(L/M/H)별, 교대 시간대별, 특정 설비별로 성능을 슬라이스해서 봐야 합니다. 전체 F1이 0.9여도 특정 제품 유형에서 F1이 0.3이면, 그 유형의 설비는 사실상 보호받지 못하고 있는 것입니다. 이것을 **Slice-based Evaluation** 이라고 하며, Responsible AI의 핵심 요소입니다.
+전체 성능만 보면 안 됩니다. 제품 유형(L/M/H)별, 교대 시간대별, 특정 설비별로 성능을 슬라이스해서 봐야 합니다. 전체 F1이 0.9여도 특정 제품 유형에서 F1이 0.3이면, 그 유형의 설비는 사실상 보호받지 못하고 있는 것입니다. 이것을 **Slice-based Evaluation** 이라고 하며, Responsible AI의 핵심 요소입니다.
 
 
 ## Check 4: 비즈니스 가치 평가
@@ -96,7 +96,7 @@ business_value = (
 ```
 
 > **주의**
-> 비즈니스 KPI 평가에서 **False Negative(미탐지 고장)** 의 비용이 **False Positive(오탐)** 보다 훨씬 높습니다. 이는 Recall을 우선시하는 이유이기도 합니다.
+비즈니스 KPI 평가에서 **False Negative(미탐지 고장)** 의 비용이 **False Positive(오탐)** 보다 훨씬 높습니다. 이는 Recall을 우선시하는 이유이기도 합니다.
 
 
 ## 종합 검증 및 Champion 승급
@@ -123,7 +123,7 @@ else:
 ```
 
 > **참고**
-> Champion/Challenger 패턴은 **코드 변경 없이** 모델을 교체할 수 있게 합니다. 추론 코드는 항상 `models:/{model_name}@Champion`을 참조하므로, Alias만 변경하면 운영 모델이 자동으로 전환됩니다.
+Champion/Challenger 패턴은 **코드 변경 없이** 모델을 교체할 수 있게 합니다. 추론 코드는 항상 `models:/{model_name}@Champion`을 참조하므로, Alias만 변경하면 운영 모델이 자동으로 전환됩니다.
 
 
 ---

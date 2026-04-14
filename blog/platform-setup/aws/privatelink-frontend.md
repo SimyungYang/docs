@@ -55,7 +55,7 @@ AWS Console → VPC → Endpoints → Create endpoint
 | **Enable private DNS names** | **No**(Route 53으로 관리) |
 
 > **주의**
-> Frontend Endpoint는 반드시 **Enable private DNS names = No**
+Frontend Endpoint는 반드시 **Enable private DNS names = No**
 
 
 ## Step 2: Databricks 등록

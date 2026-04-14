@@ -139,7 +139,7 @@ submitted → working → completed
 | `canceled` | 취소 | (종료) |
 
 > **참고**
-> `input-required`는 A2A의 핵심 상태입니다. Agent가 작업 중 "추가 정보가 필요합니다"라고 요청할 수 있어, 진정한 **대화형 협업** 이 가능합니다.
+`input-required`는 A2A의 핵심 상태입니다. Agent가 작업 중 "추가 정보가 필요합니다"라고 요청할 수 있어, 진정한 **대화형 협업** 이 가능합니다.
 
 
 ### 에러 핸들링 심화

@@ -39,7 +39,7 @@ Unity Catalog의 **최상위 컨테이너** 입니다. 리전당 1개의 Metasto
 3. `dbw-prod-koreacentral` 선택 → **Assign**
 
 > **성공**
-> Metastore가 Workspace에 할당되면, 해당 Workspace에서 Unity Catalog 기능을 사용할 수 있습니다.
+Metastore가 Workspace에 할당되면, 해당 Workspace에서 Unity Catalog 기능을 사용할 수 있습니다.
 
 
 *참고: [Unity Catalog Metastore 생성](https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/create-metastore)*
@@ -114,7 +114,7 @@ SELECT * FROM prod_catalog.bronze.test_table;
 ```
 
 > **성공**
-> 테이블 생성, 데이터 삽입, 조회가 모두 성공하면 Unity Catalog 구성이 완료된 것입니다. ADLS Gen2에 데이터가 Delta 형식으로 저장되었는지 Storage Account에서도 확인해 보세요.
+테이블 생성, 데이터 삽입, 조회가 모두 성공하면 Unity Catalog 구성이 완료된 것입니다. ADLS Gen2에 데이터가 Delta 형식으로 저장되었는지 Storage Account에서도 확인해 보세요.
 
 
 ### 3-Level Namespace

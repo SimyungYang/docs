@@ -66,7 +66,7 @@ Agent Framework와 Agent Evaluation을 사용하여 고품질 애플리케이션
 
 > **참고**
 **고객 사례 — Corning**: "우리는 수십만 개의 미국 특허청 데이터를 포함한 문서들을 색인화하기 위해 Databricks Mosaic AI Agent Framework를 사용하여 AI 연구 보조 도구를 구축했습니다. LLM 기반 보조 도구가 높은 정확도로 질문에 답변하는 것이 우리에게는 매우 중요했습니다. Databricks Data Intelligence Platform을 활용함으로써 검색 속도, 응답 품질, 정확도를 크게 향상시켰습니다."
-> — Denis Kamotsky, Principal Software Engineer, Corning
+— Denis Kamotsky, Principal Software Engineer, Corning
 
 
 **3단계: AI 심사위원으로 품질 평가**
@@ -89,7 +89,7 @@ Agent Framework와 Agent Evaluation을 사용하여 고품질 애플리케이션
 
 > **참고**
 **고객 사례 — Lippert**: "Mosaic AI Agent Framework는 우리에게 게임 체인저였습니다. GenAI 애플리케이션의 결과를 평가하고 데이터 소스에 대한 완전한 제어를 유지하면서 출력의 정확도를 입증할 수 있었습니다. Databricks Data Intelligence Platform 덕분에 프로덕션 배포에 자신감을 갖게 되었습니다."
-> — Kenan Colson, VP Data & AI, Lippert
+— Kenan Colson, VP Data & AI, Lippert
 
 
 **4단계: 프로덕션 배포**
@@ -98,7 +98,7 @@ Agent Framework와 Agent Evaluation을 사용하여 고품질 애플리케이션
 
 > **참고**
 **고객 사례 — Burberry**: "Mosaic AI Agent Framework를 통해 모든 개인 데이터가 우리 통제 하에 있다는 확신 속에서 강화된 LLM을 빠르게 실험할 수 있었습니다. MLflow 및 Model Serving과의 원활한 통합으로 ML 엔지니어링 팀이 최소한의 복잡성으로 PoC에서 프로덕션으로 확장할 수 있었습니다."
-> — Ben Halsall, Analytics Director, Burberry
+— Ben Halsall, Analytics Director, Burberry
 
 
 ### 거버넌스, 추적성, 안전성의 통합
@@ -107,7 +107,7 @@ Agent Framework와 Agent Evaluation을 사용하여 고품질 애플리케이션
 
 > **참고**
 **고객 사례 — FordDirect**: "Databricks Mosaic AI Agent Framework를 통해 RAG를 사용하는 생성형 AI 솔루션에 우리의 독자적인 데이터와 문서를 통합할 수 있었습니다. Mosaic AI와 Databricks Delta Tables 및 Unity Catalog의 통합으로 배포된 모델을 건드리지 않고도 소스 데이터가 업데이트될 때 벡터 인덱스를 실시간으로 원활하게 유지할 수 있었습니다."
-> — Tom Thomas, VP of Analytics, FordDirect
+— Tom Thomas, VP of Analytics, FordDirect
 
 
 ### 가격 책정

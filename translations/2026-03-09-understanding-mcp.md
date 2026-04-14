@@ -5,7 +5,7 @@ title: "Model Context Protocol (MCP)이란 무엇인가?"
 > **원문**: [What is the Model Context Protocol (MCP)?](https://www.databricks.com/blog/what-is-model-context-protocol)
 
 > **참고**
-> 요청하신 URL(`understanding-mcp-standard-interface-ai-agents-and-tools`)은 404 오류로 존재하지 않습니다. 동일한 주제를 다루는 Databricks 공식 블로그 포스트 "What is the Model Context Protocol (MCP)?"로 대체하였습니다.
+요청하신 URL(`understanding-mcp-standard-interface-ai-agents-and-tools`)은 404 오류로 존재하지 않습니다. 동일한 주제를 다루는 Databricks 공식 블로그 포스트 "What is the Model Context Protocol (MCP)?"로 대체하였습니다.
 
 
 ## 요약

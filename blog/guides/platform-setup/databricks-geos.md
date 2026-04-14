@@ -109,7 +109,7 @@ Cross-Geo 처리를 활성화하면, 해당 Geo에서 직접 지원하지 않는
 5. **"Enforce data processing within workspace Geography for Designated Services"** 항목 확인
 
 > **주의**
-> 이 설정은 **Account Admin** 권한이 있어야 볼 수 있습니다. Workspace Admin 권한으로는 접근할 수 없으므로, 설정 확인이 필요하면 Account Admin에게 요청하세요.
+이 설정은 **Account Admin** 권한이 있어야 볼 수 있습니다. Workspace Admin 권한으로는 접근할 수 없으므로, 설정 확인이 필요하면 Account Admin에게 요청하세요.
 
 
 이 옵션을 **비활성화** 하면 Cross-Geo 처리가 **활성화** 됩니다 (이중 부정에 주의). 즉:
@@ -196,7 +196,7 @@ Serverless compute는 Databricks가 관리하는 인프라에서 실행되지만
 ### Preview 기능
 
 > **참고**
-> Public Preview 또는 Private Preview 단계의 기능은, 별도의 명시가 없는 한 워크스페이스의 **Geo 설정을 따릅니다** . 그러나 Preview 기능의 데이터 거주 보장은 GA(General Availability) 기능보다 제한적일 수 있으므로, 규제가 엄격한 환경에서는 Preview 기능의 데이터 처리 위치를 Databricks 지원팀에 확인하는 것을 권장합니다.
+Public Preview 또는 Private Preview 단계의 기능은, 별도의 명시가 없는 한 워크스페이스의 **Geo 설정을 따릅니다** . 그러나 Preview 기능의 데이터 거주 보장은 GA(General Availability) 기능보다 제한적일 수 있으므로, 규제가 엄격한 환경에서는 Preview 기능의 데이터 처리 위치를 Databricks 지원팀에 확인하는 것을 권장합니다.
 
 
 ### 아키텍처 요약

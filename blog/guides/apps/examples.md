@@ -383,10 +383,10 @@ def execute_query(request: QueryRequest):
 
 > **주의**
 **보안 경고**: `/query` 엔드포인트는 임의의 SQL을 실행하므로, 프로덕션에서는 반드시 다음을 구현하세요:
-> 1. **허용된 SQL 유형만 실행**(예: `SELECT`만 허용, `DROP`/`DELETE` 차단)
-> 2. **쿼리 크기 제한**(LIMIT 강제 추가)
-> 3. **접근 가능한 카탈로그/스키마 제한**
-> 4. **감사 로그**(누가 어떤 쿼리를 실행했는지 기록)
+1. **허용된 SQL 유형만 실행**(예: `SELECT`만 허용, `DROP`/`DELETE` 차단)
+2. **쿼리 크기 제한**(LIMIT 강제 추가)
+3. **접근 가능한 카탈로그/스키마 제한**
+4. **감사 로그**(누가 어떤 쿼리를 실행했는지 기록)
 
 
 ### API 사용 예시
@@ -554,9 +554,9 @@ if prompt := st.chat_input("질문을 입력하세요..."):
 
 > **참고**
 **디버깅 순서**: 오류가 발생하면 다음 순서로 확인하세요:
-> 1. **Logs 탭** 에서 에러 메시지 확인 (가장 중요)
-> 2. **SP 권한** 확인 — `GRANT` SQL 실행 여부
-> 3. **환경변수** 확인 — `app.yaml`의 `valueFrom`과 `resources`의 `name` 일치 여부
-> 4. **Warehouse/Endpoint 상태** 확인 — `Running` 상태인지
-> 5. **로컬에서 재현**— `databricks apps run-local --debug`로 동일 오류 발생하는지
+1. **Logs 탭** 에서 에러 메시지 확인 (가장 중요)
+2. **SP 권한** 확인 — `GRANT` SQL 실행 여부
+3. **환경변수** 확인 — `app.yaml`의 `valueFrom`과 `resources`의 `name` 일치 여부
+4. **Warehouse/Endpoint 상태** 확인 — `Running` 상태인지
+5. **로컬에서 재현**— `databricks apps run-local --debug`로 동일 오류 발생하는지
 

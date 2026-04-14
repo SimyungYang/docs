@@ -83,7 +83,7 @@ AWS Organizations를 사용하는 경우, SCP가 Databricks 운영에 필요한 
 ```
 
 > **주의**
-> SCP에서 특정 리전만 허용하는 정책(`aws:RequestedRegion` 조건)이 있다면, Databricks가 사용하는 리전(배포 리전 + `us-west-2`)이 모두 포함되어야 합니다.
+SCP에서 특정 리전만 허용하는 정책(`aws:RequestedRegion` 조건)이 있다면, Databricks가 사용하는 리전(배포 리전 + `us-west-2`)이 모두 포함되어야 합니다.
 
 
 ## Databricks 계정 요구사항
@@ -169,7 +169,7 @@ Cross-account IAM Role 생성 시, Trust Policy에 Databricks 측 AWS Account ID
 ```
 
 > **참고**
-> `<Databricks-Account-ID>`는 Account Console → **Settings** 에서 확인할 수 있는 UUID 형식의 값입니다 (AWS Account ID와 다릅니다).
+`<Databricks-Account-ID>`는 Account Console → **Settings** 에서 확인할 수 있는 UUID 형식의 값입니다 (AWS Account ID와 다릅니다).
 
 
 ## 최종 체크리스트

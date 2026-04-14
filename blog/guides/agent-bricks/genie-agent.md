@@ -39,7 +39,7 @@ SQL Warehouse에서 실행
 - 텍스트 지시사항 및 대화 이력
 
 > **참고**
-> Genie는 **읽기 전용 SQL만 생성** 합니다. INSERT, UPDATE, DELETE 등의 쓰기 쿼리는 절대 실행되지 않으므로 데이터 안전성이 보장됩니다.
+Genie는 **읽기 전용 SQL만 생성** 합니다. INSERT, UPDATE, DELETE 등의 쓰기 쿼리는 절대 실행되지 않으므로 데이터 안전성이 보장됩니다.
 
 
 ---

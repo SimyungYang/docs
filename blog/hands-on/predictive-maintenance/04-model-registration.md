@@ -86,7 +86,7 @@ except:
 ```
 
 > **참고**
-> Unity Catalog Explorer에서 모델의 버전, 에일리어스, **계보(Lineage)** 를 시각적으로 확인할 수 있습니다. 학습 데이터 테이블 → MLflow 실험 → 등록된 모델 간의 전체 추적이 자동으로 생성됩니다.
+Unity Catalog Explorer에서 모델의 버전, 에일리어스, **계보(Lineage)** 를 시각적으로 확인할 수 있습니다. 학습 데이터 테이블 → MLflow 실험 → 등록된 모델 간의 전체 추적이 자동으로 생성됩니다.
 
 
 **다음 단계**: [05. 챌린저 검증](05-challenger-validation.md)

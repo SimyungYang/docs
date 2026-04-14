@@ -71,7 +71,7 @@ MCP 서버를 찾을 수 있는 주요 디렉토리입니다:
 ```
 
 > **주의**
-> 설정 파일 수정 후 Claude Desktop을 **재시작** 해야 MCP 서버가 활성화됩니다. 메뉴 바에서 완전 종료 후 다시 실행하세요.
+설정 파일 수정 후 Claude Desktop을 **재시작** 해야 MCP 서버가 활성화됩니다. 메뉴 바에서 완전 종료 후 다시 실행하세요.
 
 
 ### 설정 파일 구조 이해
@@ -143,7 +143,7 @@ claude mcp list
 ```
 
 > **팁**
-> `.mcp.json`에서 `${ENV_VAR}` 구문을 사용하면 실제 토큰 값을 파일에 넣지 않고 환경변수에서 읽을 수 있습니다. 이 파일은 git에 커밋해도 안전합니다.
+`.mcp.json`에서 `${ENV_VAR}` 구문을 사용하면 실제 토큰 값을 파일에 넣지 않고 환경변수에서 읽을 수 있습니다. 이 파일은 git에 커밋해도 안전합니다.
 
 
 ### 보안 고려사항: 스코프 계층 이해
@@ -214,7 +214,7 @@ IDE마다 프로젝트 설정 파일의 관례가 다르기 때문입니다. Cur
 ```
 
 > **참고**
-> VS Code에서는 `"servers"` 키를 사용하지만, Claude Desktop과 Cursor에서는 `"mcpServers"` 키를 사용합니다. 설정 파일을 복사할 때 이 차이를 주의하세요.
+VS Code에서는 `"servers"` 키를 사용하지만, Claude Desktop과 Cursor에서는 `"mcpServers"` 키를 사용합니다. 설정 파일을 복사할 때 이 차이를 주의하세요.
 
 
 ### Databricks Genie Code에서 MCP 설정
@@ -248,7 +248,7 @@ Genie Code 패널 > 설정 아이콘 > MCP Servers > Add Server
 | **Jira** | `@anthropic/jira-mcp-server` | 이슈 생성/검색/관리 |
 
 > **참고**
-> 위 패키지들은 `npx -y <패키지명>`으로 바로 실행할 수 있습니다. Node.js 18+ 가 설치되어 있어야 합니다.
+위 패키지들은 `npx -y <패키지명>`으로 바로 실행할 수 있습니다. Node.js 18+ 가 설치되어 있어야 합니다.
 
 
 ### 서버 설치 전 확인사항
@@ -347,7 +347,7 @@ mcp dev server.py
 ```
 
 > **팁**
-> `mcp dev server.py` 명령어는 브라우저에서 MCP Inspector를 열어, 서버의 도구를 대화형으로 테스트할 수 있게 해줍니다. 개발 중 반드시 활용하세요.
+`mcp dev server.py` 명령어는 브라우저에서 MCP Inspector를 열어, 서버의 도구를 대화형으로 테스트할 수 있게 해줍니다. 개발 중 반드시 활용하세요.
 
 
 ---

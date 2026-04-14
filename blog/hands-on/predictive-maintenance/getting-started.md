@@ -54,5 +54,5 @@ cd databricks-enablement-blog/hands-on/predictive-maintenance/notebooks/
 | **권한** | Catalog/Schema 생성 권한 |
 
 > **주의**
-> 노트북 01번을 먼저 실행하여 Catalog, Schema, 샘플 데이터를 생성해야 합니다.
+노트북 01번을 먼저 실행하여 Catalog, Schema, 샘플 데이터를 생성해야 합니다.
 

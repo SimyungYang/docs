@@ -5,7 +5,7 @@
 NCC(Network Connectivity Configuration)는 Serverless Compute의 네트워크 제어를 위한 **Account-level 구성** 입니다. Serverless SQL Warehouse, Serverless Notebook, Model Serving 등이 외부 리소스에 프라이빗하게 접근해야 할 때 사용합니다.
 
 > **참고**
-> Classic Compute(고객 VPC)와 달리, Serverless Compute는 Databricks 관리 VPC에서 실행됩니다. NCC를 통해 Serverless 환경에서도 프라이빗 연결을 구성할 수 있습니다.
+Classic Compute(고객 VPC)와 달리, Serverless Compute는 Databricks 관리 VPC에서 실행됩니다. NCC를 통해 Serverless 환경에서도 프라이빗 연결을 구성할 수 있습니다.
 
 
 ## NCC vs Classic PrivateLink 비교
@@ -113,7 +113,7 @@ Serverless Compute에서 특정 S3 버킷에 프라이빗 네트워크 경로로
 4. 상태가 " **Pending**" → " **Established**"로 변경될 때까지 대기 (수 분 소요)
 
 > **주의**
-> Endpoint Service에서 **Acceptance required: Yes** 로 설정한 경우, AWS Console → VPC → Endpoint Services → Endpoint connections에서 Databricks의 연결 요청을 **수동 승인** 해야 합니다.
+Endpoint Service에서 **Acceptance required: Yes** 로 설정한 경우, AWS Console → VPC → Endpoint Services → Endpoint connections에서 Databricks의 연결 요청을 **수동 승인** 해야 합니다.
 
 
 ### Step 4: Workspace에 NCC 연결
@@ -148,7 +148,7 @@ NCC 구성 후 연결이 정상 작동하는지 확인합니다.
    - 대상 리소스에 대한 쿼리 실행 (예: JDBC를 통한 RDS 접근)
 
 > **참고**
-> 연결 실패 시 확인 사항:
+연결 실패 시 확인 사항:
 - NCC의 엔드포인트 규칙 상태가 " **Established**"인지 확인
 - S3 버킷 이름이 정확한지 확인 (오타 주의)
 - VPC Endpoint Service의 **Allowed principals** 에 Databricks Account ID가 포함되어 있는지 확인

@@ -28,7 +28,7 @@ Databricks가 사전 구성한 즉시 사용 가능한 MCP 서버입니다. Unit
 | **Databricks SQL** | AI 생성 SQL 실행 (읽기/쓰기) | `/api/2.0/mcp/sql` |
 
 > **참고**
-> Managed MCP 서버는 별도의 설정 없이 워크스페이스에서 바로 사용할 수 있습니다. Unity Catalog 권한으로 접근이 제어됩니다.
+Managed MCP 서버는 별도의 설정 없이 워크스페이스에서 바로 사용할 수 있습니다. Unity Catalog 권한으로 접근이 제어됩니다.
 
 
 **Managed MCP의 아키텍처 심화**: Managed MCP가 강력한 이유는 **Unity Catalog의 거버넌스가 자동 적용** 되기 때문입니다. 외부 AI 에이전트가 Databricks SQL MCP를 통해 쿼리를 실행하면, 해당 사용자의 UC 권한에 따라 접근 가능한 테이블만 조회됩니다. Row-level security, Column masking 등 모든 보안 정책이 투명하게 적용됩니다. 별도의 보안 설정 없이도 엔터프라이즈 수준의 데이터 보호가 보장되는 것입니다.
@@ -60,7 +60,7 @@ https://<workspace-hostname>/api/2.0/mcp/external/{connection_name}
 ```
 
 > **주의**
-> 외부 MCP 서버를 연결하려면 해당 서버가 **Streamable HTTP 전송 방식** 을 지원해야 합니다. stdio 방식만 지원하는 서버는 직접 연결할 수 없습니다.
+외부 MCP 서버를 연결하려면 해당 서버가 **Streamable HTTP 전송 방식** 을 지원해야 합니다. stdio 방식만 지원하는 서버는 직접 연결할 수 없습니다.
 
 
 **Unity Catalog Connection의 보안 메커니즘 심화**: External MCP의 핵심은 **자격 증명이 사용자에게 노출되지 않는다** 는 것입니다. 전통적으로 Slack MCP 서버를 사용하려면 각 사용자가 Slack Bot Token을 보유해야 했습니다. 이는 보안 위험이고 관리 부담입니다. Databricks의 External MCP는 이 문제를 다음과 같이 해결합니다:
@@ -94,7 +94,7 @@ https://<workspace-hostname>/api/2.0/mcp/external/{connection_name}
 4. MCP 엔드포인트 확인: `https://<app-url>/mcp`
 
 > **주의**
-> 커스텀 MCP 앱은 **stateless 아키텍처** 로 구현해야 합니다. CORS 이슈 방지를 위해 워크스페이스 URL을 허용 오리진에 추가하세요.
+커스텀 MCP 앱은 **stateless 아키텍처** 로 구현해야 합니다. CORS 이슈 방지를 위해 워크스페이스 URL을 허용 오리진에 추가하세요.
 
 
 **Custom MCP 서버 개발 실전 가이드**: 자체 MCP 서버를 개발할 때 자주 겪는 문제와 해결 방법입니다:
@@ -157,7 +157,7 @@ app.mount("/mcp", mcp.get_asgi_app())
 ```
 
 > **팁**
-> Custom MCP 서버를 개발할 때 가장 중요한 것은 **Tool의 설명(docstring)** 입니다. LLM은 이 설명만 보고 언제 이 도구를 호출할지 결정합니다. "모니터링 조회"보다 "데이터 파이프라인의 최근 실행 상태를 조회합니다. 성공/실패 횟수, 평균 실행 시간, 마지막 성공 시각을 반환합니다."처럼 **구체적으로** 작성하세요.
+Custom MCP 서버를 개발할 때 가장 중요한 것은 **Tool의 설명(docstring)** 입니다. LLM은 이 설명만 보고 언제 이 도구를 호출할지 결정합니다. "모니터링 조회"보다 "데이터 파이프라인의 최근 실행 상태를 조회합니다. 성공/실패 횟수, 평균 실행 시간, 마지막 성공 시각을 반환합니다."처럼 **구체적으로** 작성하세요.
 
 
 ---
@@ -165,7 +165,7 @@ app.mount("/mcp", mcp.get_asgi_app())
 ## Genie Code에서 MCP 사용
 
 > **주의**
-> MCP 서버는 **Genie Code Agent 모드에서만** 지원됩니다. Chat 모드에서는 사용할 수 없습니다.
+MCP 서버는 **Genie Code Agent 모드에서만** 지원됩니다. Chat 모드에서는 사용할 수 없습니다.
 
 
 ### 설정 단계
@@ -263,7 +263,7 @@ $$;
 ```
 
 > **팁**
-> 함수의 `COMMENT`가 LLM이 도구를 선택할 때 참고하는 설명이 됩니다. 명확하고 구체적으로 작성하세요. 예를 들어 "검색" 대신 "고객 정보를 이름 또는 이메일로 검색합니다"처럼 작성합니다.
+함수의 `COMMENT`가 LLM이 도구를 선택할 때 참고하는 설명이 됩니다. 명확하고 구체적으로 작성하세요. 예를 들어 "검색" 대신 "고객 정보를 이름 또는 이메일로 검색합니다"처럼 작성합니다.
 
 
 ### UC Functions를 MCP Tool로 활용하는 실전 패턴

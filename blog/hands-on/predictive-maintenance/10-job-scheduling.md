@@ -123,7 +123,7 @@ prod_training_tasks = [
 비전 이상탐지(07번 노트북)는 GPU 클러스터가 필요하므로 별도 Job으로 분리합니다. g5.2xlarge (NVIDIA A10G GPU)를 사용하며, 주 1회 재학습 + 일 1회 배치 추론으로 설정합니다.
 
 > **주의**
-> GPU 클러스터(g5.2xlarge)는 CPU 클러스터 대비 약 10배 비쌉니다. 주 1회 15분 실행 기준 월 약 8 DBU로, 전체 파이프라인 비용의 약 30%를 차지합니다. 비용 최적화를 위해 Spot Instance 활용과 Auto-termination 5분 설정을 권장합니다.
+GPU 클러스터(g5.2xlarge)는 CPU 클러스터 대비 약 10배 비쌉니다. 주 1회 15분 실행 기준 월 약 8 DBU로, 전체 파이프라인 비용의 약 30%를 차지합니다. 비용 최적화를 위해 Spot Instance 활용과 Auto-termination 5분 설정을 권장합니다.
 
 
 ## 비용 최적화 가이드
@@ -151,7 +151,7 @@ prod_training_tasks = [
 | 간단한 태스크 | Serverless | 가장 낮음 | 클러스터 관리 불필요, 가장 비용 효율적 |
 
 > **성공**
-> Databricks **Serverless Compute** 를 사용하면 클러스터 관리 없이 자동으로 리소스가 할당됩니다. 정형 데이터 처리에는 Serverless를 권장합니다. 비정형(GPU) 작업만 전용 클러스터를 사용하세요. 개발 환경에서는 Spot Instance(최대 90% 저렴)를 활용하면 비용을 크게 줄일 수 있습니다.
+Databricks **Serverless Compute** 를 사용하면 클러스터 관리 없이 자동으로 리소스가 할당됩니다. 정형 데이터 처리에는 Serverless를 권장합니다. 비정형(GPU) 작업만 전용 클러스터를 사용하세요. 개발 환경에서는 Spot Instance(최대 90% 저렴)를 활용하면 비용을 크게 줄일 수 있습니다.
 
 
 ## 전체 데모에서 다룬 Databricks MLOps 기능

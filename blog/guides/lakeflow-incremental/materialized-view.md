@@ -115,7 +115,7 @@ SET TBLPROPERTIES (
 ```
 
 > **참고**
-> Lakeflow Pipeline **내부** 에서 생성된 테이블(다른 ST/MV)은 Deletion Vectors가 자동으로 활성화됩니다. 하지만 **외부 소스 테이블** (파이프라인 밖에서 관리되는 Delta 테이블)은 수동 설정이 필요합니다.
+Lakeflow Pipeline **내부** 에서 생성된 테이블(다른 ST/MV)은 Deletion Vectors가 자동으로 활성화됩니다. 하지만 **외부 소스 테이블** (파이프라인 밖에서 관리되는 Delta 테이블)은 수동 설정이 필요합니다.
 
 
 ### 원인 D: Enzyme 비용 모델 판단
@@ -245,7 +245,7 @@ GROUP BY customer_id;
 기본적으로 Enzyme은 incremental과 full 중 최적의 방법을 자동으로 선택합니다. 하지만 **명시적으로 incremental을 강제** 하고 싶은 경우, `REFRESH POLICY`를 사용할 수 있습니다.
 
 > **주의**
-> REFRESH POLICY는 현재 **Beta** 기능입니다. 프로덕션 환경에서 사용 전 충분한 테스트를 권장합니다.
+REFRESH POLICY는 현재 **Beta** 기능입니다. 프로덕션 환경에서 사용 전 충분한 테스트를 권장합니다.
 
 
 ### REFRESH POLICY INCREMENTAL
@@ -301,7 +301,7 @@ Recommendation: Move CURRENT_DATE() to the source table.
 ```
 
 > **참고**
-> 새로운 MV를 정의하기 전에 `EXPLAIN MATERIALIZED VIEW FOR`로 incremental refresh 가능 여부를 확인하는 것을 습관화하세요. 배포 후 발견하는 것보다 훨씬 비용이 적습니다.
+새로운 MV를 정의하기 전에 `EXPLAIN MATERIALIZED VIEW FOR`로 incremental refresh 가능 여부를 확인하는 것을 습관화하세요. 배포 후 발견하는 것보다 훨씬 비용이 적습니다.
 
 
 ---

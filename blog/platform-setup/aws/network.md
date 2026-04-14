@@ -115,5 +115,5 @@ Security → Networking → Classic network configurations
 3. **Add**→ **Network ID** 생성됨 → Workspace 생성 시 사용
 
 > **참고**
-> Network configuration은 **수정 불가**— 변경 시 새로 생성 후 Workspace에서 교체 (3단계 프로세스)
+Network configuration은 **수정 불가**— 변경 시 새로 생성 후 Workspace에서 교체 (3단계 프로세스)
 
