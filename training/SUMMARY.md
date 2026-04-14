@@ -2,7 +2,6 @@
 title: "Table of contents"
 ---
 
-# Table of contents
 
 ## Databricks 플랫폼
 

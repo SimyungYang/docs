@@ -2,7 +2,6 @@
 title: "Table of contents"
 ---
 
-# Table of contents
 
 * [워크샵 소개](README)
 
